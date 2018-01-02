@@ -33,6 +33,7 @@ export class AppComponent {
   method: '';
   response: any;
   functionBody = [];
+  progress = false;
 
   constructor( private http: HttpClient, private jsonp: Jsonp ) {
   }
@@ -56,6 +57,7 @@ export class AppComponent {
 
   clearFields() {
     this.method = '';
+    this.response = null;
     for ( let i = 0; i < this.fields.length; i++ ) {
       this.fields[i].parameter = '';
       this.fields[i].value = '';
@@ -97,6 +99,7 @@ export class AppComponent {
     }
 
     const so = this;
+    this.progress = true;
     jQuery.ajax({
         url: this.baseUrl,
         data: jsonData,
@@ -107,19 +110,17 @@ export class AppComponent {
         contentType: 'application/json',
         crossDomain: true,
         jsonpCallback: jsonData.callback,
+        timeout: 60000, // sets timeout to 60 seconds
         success: function(data) {
 //          console.log(data);
           so.response = data;
+          so.progress = false;
         },
-        error: function (data, textStatus, errorThrown) {
-            alert(textStatus + '\n' + errorThrown);
-            so.response = [];
-        },
-        /*
-        fail: function (jqXHR, textStatus){
-        },
-        */
-        timeout: 120000 // sets timeout to 120 seconds
+        error: function (data, status, error) {
+          alert(status + ' - ' + error);
+          so.response = null;
+          so.progress = false;
+        }
     });
   }
 

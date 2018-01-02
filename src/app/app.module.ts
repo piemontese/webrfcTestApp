@@ -7,6 +7,7 @@ import { HttpClientModule, HttpClientJsonpModule, JsonpClientBackend, HTTP_INTER
 import { JsonpModule } from '@angular/http';
 
 import { MatButtonModule, MatToolbarModule, MatIconModule, MatCardModule, MatInputModule, MatFormFieldModule } from '@angular/material';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 import 'hammerjs';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -31,6 +32,7 @@ import 'jquery';
 //    JsonpClientBackend,
 //    JsonpInterceptor,
     MatButtonModule, MatToolbarModule, MatIconModule, MatCardModule, MatInputModule, MatFormFieldModule,
+    MatProgressBarModule,
     FlexLayoutModule,
     AppRoutingModule
   ],

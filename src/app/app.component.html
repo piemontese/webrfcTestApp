@@ -74,8 +74,20 @@
 	   	</div>
 		</mat-card-actions>
 		<mat-card-footer>
+			<mat-progress-bar mode="indeterminate" *ngIf="progress"></mat-progress-bar>
 		</mat-card-footer>
 	</mat-card>
+
+	<br/>
+	<mat-card mat-elevation-z8 *ngIf="response"> 
+		<mat-card-title>Response</mat-card-title>
+		<mat-card-content>
+		  <code>
+			  <pre>{{response | json}}</pre>
+		  </code>
+		</mat-card-content>
+	</mat-card>
+
 </div>
 
 <router-outlet></router-outlet>
