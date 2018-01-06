@@ -1,5 +1,5 @@
 <mat-toolbar color="primary"
-						 mat-elevation-z8>Webrfc</mat-toolbar>
+						mat-elevation-z8>Webrfc</mat-toolbar>
 
 <br/>
 
@@ -11,6 +11,7 @@
 		<form [formGroup]="form" class="full-width">
 			<div formGroupName="name">
 		-->
+		
 		<!-- 
 				<div fxLayout="row">
 				  <mat-form-field fxFlex="30">
@@ -21,6 +22,18 @@
 		    </div>
 		    -->
 				<div fxLayout="row">
+				  <mat-form-field fxFlex="30">
+					  <mat-select [(value)]="_FUNCTION"
+			   		 				name="_FUNCTION"
+			   		 				[(ngModel)]="_FUNCTION">
+					    <mat-option value="Z_WRFC_INTERFACE">Z_WRFC_INTERFACE</mat-option>
+					    <mat-option value="Z_WRFC_FUNCTION_INTERFACE">Z_WRFC_FUNCTION_INTERFACE</mat-option>
+					    <mat-option value="Z_WRFC_TABLE">Z_WRFC_TABLE</mat-option>
+					  </mat-select>
+					</mat-form-field>
+		    </div>
+		    
+		    <div fxLayout="row">
 				  <mat-form-field fxFlex="30">
 			   		 <input matInput placeholder="Method"
 			   		 				name="method"

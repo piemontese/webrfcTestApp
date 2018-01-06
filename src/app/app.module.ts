@@ -6,7 +6,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HttpClientJsonpModule, JsonpClientBackend, HTTP_INTERCEPTORS, JsonpInterceptor } from '@angular/common/http';
 import { JsonpModule } from '@angular/http';
 
-import { MatButtonModule, MatToolbarModule, MatIconModule, MatCardModule, MatInputModule, MatFormFieldModule } from '@angular/material';
+import { MatButtonModule, MatToolbarModule, MatIconModule, MatCardModule, MatInputModule, MatFormFieldModule, MatSelectModule } from '@angular/material';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 import 'hammerjs';
@@ -16,10 +16,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import 'jquery';
+import { ParameterComponent } from './components/parameter/parameter.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ParameterComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +33,7 @@ import 'jquery';
     JsonpModule,
 //    JsonpClientBackend,
 //    JsonpInterceptor,
-    MatButtonModule, MatToolbarModule, MatIconModule, MatCardModule, MatInputModule, MatFormFieldModule,
+    MatButtonModule, MatToolbarModule, MatIconModule, MatCardModule, MatInputModule, MatFormFieldModule, MatSelectModule,
     MatProgressBarModule,
     FlexLayoutModule,
     AppRoutingModule

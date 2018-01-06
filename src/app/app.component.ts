@@ -34,6 +34,7 @@ export class AppComponent {
   response: any;
   functionBody = [];
   progress = false;
+  timer = new Observable;
 
   constructor( private http: HttpClient, private jsonp: Jsonp ) {
   }
@@ -71,9 +72,9 @@ export class AppComponent {
 
   private callWebrfc() {
 
-  const headers = new HttpHeaders()
-      .set('Authorization', 'novedev init1234');
-  const webrfcUrl = `${this.baseUrl}?_FUNTION=${this.method}&callback${this.method}`;
+    const headers = new HttpHeaders()
+        .set('Authorization', 'novedev init1234');
+    const webrfcUrl = `${this.baseUrl}?_FUNTION=${this.method}&callback${this.method}`;
     /*
    return this.jsonp.request(webrfcUrl)
      .map(res => {
@@ -94,7 +95,7 @@ export class AppComponent {
 
     for ( let i = 0; i < this.fields.length; i++ ) {
       if ( this.fields[i].parameter !== '' && this.fields[i].value !== '' ) {
-        jsonData[`${this.fields[i].parameter}`] = `${this.fields[i].parameter}`;
+        jsonData[`${this.fields[i].parameter}`] = `${this.fields[i].value}`;
       }
     }
 
@@ -106,11 +107,18 @@ export class AppComponent {
         async: false,
         type: 'POST',
         dataType: 'jsonp',
-        headers: { 'Access-Control-Allow-Origin': '*' },
+        xhrFields: {
+            withCredentials: true
+        },
+        username: 'novedev',
+        password: 'init1234',
+        headers: {
+          'Access-Control-Allow-Origin': '*'
+        },
         contentType: 'application/json',
         crossDomain: true,
         jsonpCallback: jsonData.callback,
-        timeout: 60000, // sets timeout to 60 seconds
+        timeout: 6000, // sets timeout to 60 seconds
         success: function(data) {
 //          console.log(data);
           so.response = data;
@@ -122,6 +130,14 @@ export class AppComponent {
           so.progress = false;
         }
     });
+    /*
+    .catch( function(e) {
+       debugger;
+       if ( e.statusText === 'timeout') {
+         alert('Native Promise: Failed from timeout');
+       }
+     });
+     * */
   }
 
 }
