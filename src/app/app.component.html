@@ -24,11 +24,13 @@
 				<div fxLayout="row">
 				  <mat-form-field fxFlex="30">
 					  <mat-select [(value)]="_FUNCTION"
-			   		 				name="_FUNCTION"
-			   		 				[(ngModel)]="_FUNCTION">
-					    <mat-option value="Z_WRFC_INTERFACE">Z_WRFC_INTERFACE</mat-option>
-					    <mat-option value="Z_WRFC_FUNCTION_INTERFACE">Z_WRFC_FUNCTION_INTERFACE</mat-option>
-					    <mat-option value="Z_WRFC_TABLE">Z_WRFC_TABLE</mat-option>
+			   		 						name="_FUNCTION"
+			   		 						[(ngModel)]="_FUNCTION"
+			   		 						 placeholder="Function">
+					    <mat-option value="Z_WRFC_INTERFACE">Call function</mat-option>
+					    <mat-option value="Z_WRFC_FUNCTION_INTERFACE">Get function interface</mat-option>
+					    <mat-option value="Z_WRFC_TABLE">Get table entries</mat-option>
+					    <mat-option value="Z_WRFC_GET_MENU">Get palm menu</mat-option>
 					  </mat-select>
 					</mat-form-field>
 		    </div>

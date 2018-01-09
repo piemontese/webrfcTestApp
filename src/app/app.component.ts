@@ -89,9 +89,13 @@ export class AppComponent {
 
     const jsonData = {
           '_FUNCTION':  this._FUNCTION,
-          'callback':   this.callback,
-          'method':     this.method,
+          'callback':   this.callback
+//          'method':     this.method,
     };
+
+    if ( this.method !== '' ) {
+      jsonData['method'] = this.method;
+    }
 
     for ( let i = 0; i < this.fields.length; i++ ) {
       if ( this.fields[i].parameter !== '' && this.fields[i].value !== '' ) {
