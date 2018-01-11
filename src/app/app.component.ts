@@ -35,6 +35,9 @@ export class AppComponent {
   functionBody = [];
   progress = false;
   timer = new Observable;
+  authentication = true;  // pass user and password to basic http authentication
+  sapUser = 'novedev';
+  sapPassword = 'init1234';
 
   constructor( private http: HttpClient, private jsonp: Jsonp ) {
   }
@@ -90,8 +93,14 @@ export class AppComponent {
     const jsonData = {
           '_FUNCTION':  this._FUNCTION,
           'callback':   this.callback
-//          'method':     this.method,
+ //         'sap-user':   'novedev',
+ //         'sap-password': 'init1234'
     };
+
+    if ( this.authentication ) {
+      jsonData['sap-user'] = this.sapUser;
+      jsonData['sap-password'] = this.sapPassword;
+    }
 
     if ( this.method !== '' ) {
       jsonData['method'] = this.method;
@@ -111,14 +120,6 @@ export class AppComponent {
         async: false,
         type: 'POST',
         dataType: 'jsonp',
-        xhrFields: {
-            withCredentials: true
-        },
-        username: 'novedev',
-        password: 'init1234',
-        headers: {
-          'Access-Control-Allow-Origin': '*'
-        },
         contentType: 'application/json',
         crossDomain: true,
         jsonpCallback: jsonData.callback,
