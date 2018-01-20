@@ -4,8 +4,21 @@
 	 		Sample table
 	 	</mat-toolbar-row>
  		<mat-toolbar-row>
-	    <mat-form-field floatPlaceholder="never" color="accent">
-	      <!--<input matInput #filter placeholder="Filter">-->
+	    <mat-form-field color="accent">
+			  <mat-select placeholder="Company">
+			    <mat-option></mat-option>
+			    <mat-option value="option1">S100</mat-option>
+			    <mat-option value="option2">S200</mat-option>
+			    <mat-option value="option3">S300</mat-option>
+			  </mat-select>
+ 	    </mat-form-field>
+	    <mat-form-field color="accent">
+	      <input matInput placeholder="Plant">
+	    </mat-form-field>
+	    <mat-form-field color="accent">
+	      <input matInput placeholder="Material">
+	    </mat-form-field>
+	    <mat-form-field color="accent">
 	      <input matInput #filter placeholder="Filter">
 	    </mat-form-field>
 	 		<div fxLayout="row" fxFlex fxLayoutAlign="end">

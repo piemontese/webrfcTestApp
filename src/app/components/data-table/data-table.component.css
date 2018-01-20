@@ -47,7 +47,7 @@
 }
 
 .example-header-cell {
-  font-size: 12px;
+  font-size: 16px;
   font-weight: bold;
   color: rgba(0, 0, 0, 0.54);
 }
@@ -62,12 +62,11 @@
   display: flex;
   align-items: baseline;
   padding: 8px 24px 0;
-  font-size: 20px;
   justify-content: space-between;
 }
 
 .mat-form-field {
   font-size: 14px;
   flex-grow: 1;
-  margin-left: 32px;
+  margin-right: 16px;
 }
