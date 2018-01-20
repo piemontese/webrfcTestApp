@@ -1,0 +1,65 @@
+<div class="example-container mat-elevation-z8">
+ <mat-toolbar color="primary">
+ 		<mat-toolbar-row>
+	 		Sample table
+	 	</mat-toolbar-row>
+ 		<mat-toolbar-row>
+	    <mat-form-field floatPlaceholder="never" color="accent">
+	      <!--<input matInput #filter placeholder="Filter">-->
+	      <input matInput #filter placeholder="Filter">
+	    </mat-form-field>
+	 		<div fxLayout="row" fxFlex fxLayoutAlign="end">
+	 			<button mat-mini-fab color="primary" (click)="showFilterClick()"><mat-icon>filter_list</mat-icon></button>
+	 			<button mat-mini-fab color="primary"><mat-icon>refresh</mat-icon></button>
+	 		</div>
+ 		</mat-toolbar-row>
+	</mat-toolbar>
+	<!--  
+  <div class="example-header">
+    <mat-form-field floatPlaceholder="never">
+      <input matInput #filter placeholder="Filter">
+    </mat-form-field>
+  </div>
+  -->
+  <cdk-table #table [dataSource]="dataSource" class="example-table">
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+
+    <!-- ID Column -->
+    <ng-container cdkColumnDef="userId">
+      <cdk-header-cell *cdkHeaderCellDef class="example-header-cell"> ID </cdk-header-cell>
+      <cdk-cell *cdkCellDef="let row" class="example-cell"> {{row.id}} </cdk-cell>
+    </ng-container>
+
+    <!-- Progress Column -->
+    <ng-container cdkColumnDef="progress">
+      <cdk-header-cell *cdkHeaderCellDef class="example-header-cell"> Progress </cdk-header-cell>
+      <cdk-cell *cdkCellDef="let row" class="example-cell"> {{row.progress}}% </cdk-cell>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container cdkColumnDef="userName">
+      <cdk-header-cell *cdkHeaderCellDef class="example-header-cell"> Name </cdk-header-cell>
+      <cdk-cell *cdkCellDef="let row" class="example-cell"> {{row.name}} </cdk-cell>
+    </ng-container>
+
+    <!-- Color Column -->
+    <ng-container cdkColumnDef="color">
+      <cdk-header-cell *cdkHeaderCellDef class="example-header-cell"> Color </cdk-header-cell>
+      <cdk-cell *cdkCellDef="let row" class="example-cell"
+                [style.color]="row.color">
+        {{row.color}}
+      </cdk-cell>
+    </ng-container>
+
+    <cdk-header-row *cdkHeaderRowDef="displayedColumns" class="example-header-row"></cdk-header-row>
+    <cdk-row *cdkRowDef="let row; columns: displayedColumns;" class="example-row"></cdk-row>
+  </cdk-table>
+
+  <mat-paginator #paginator
+                [length]="exampleDatabase.data.length"
+                [pageIndex]="0"
+                [pageSize]="20"
+                [pageSizeOptions]="[5, 10, 25, 100]">
+  </mat-paginator>
+</div>

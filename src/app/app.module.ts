@@ -6,8 +6,12 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HttpClientJsonpModule, JsonpClientBackend, HTTP_INTERCEPTORS, JsonpInterceptor } from '@angular/common/http';
 import { JsonpModule } from '@angular/http';
 
-import { MatButtonModule, MatToolbarModule, MatIconModule, MatCardModule, MatInputModule, MatFormFieldModule, MatSelectModule } from '@angular/material';
+import { CdkTableModule } from '@angular/cdk/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+import { MatButtonModule, MatToolbarModule, MatIconModule, MatCardModule, MatInputModule, MatFormFieldModule, MatSelectModule, MatTableModule  } from '@angular/material';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 import 'hammerjs';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -17,11 +21,13 @@ import { AppComponent } from './app.component';
 
 import 'jquery';
 import { ParameterComponent } from './components/parameter/parameter.component';
+import { DataTableComponent } from './components/data-table/data-table.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ParameterComponent
+    ParameterComponent,
+    DataTableComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +39,11 @@ import { ParameterComponent } from './components/parameter/parameter.component';
     JsonpModule,
 //    JsonpClientBackend,
 //    JsonpInterceptor,
-    MatButtonModule, MatToolbarModule, MatIconModule, MatCardModule, MatInputModule, MatFormFieldModule, MatSelectModule,
+    MatPaginatorModule,
+    MatSortModule,
+    CdkTableModule,
+    MatButtonModule, MatToolbarModule, MatIconModule, MatCardModule, MatInputModule, MatFormFieldModule, MatSelectModule, MatTableModule,
+    MatExpansionModule,
     MatProgressBarModule,
     FlexLayoutModule,
     AppRoutingModule

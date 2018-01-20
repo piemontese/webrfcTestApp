@@ -1,5 +1,5 @@
 <mat-toolbar color="primary"
-						mat-elevation-z8>Webrfc</mat-toolbar>
+						 class="mat-elevation-z8" style="position: sticky; top: 0; z-index: 999;">Webrfc</mat-toolbar>
 
 <br/>
 
@@ -93,7 +93,7 @@
 	</mat-card>
 
 	<br/>
-	<mat-card mat-elevation-z8 *ngIf="response"> 
+	<mat-card class="mat-elevation-z8" *ngIf="response"> 
 		<mat-card-title>Response</mat-card-title>
 		<mat-card-content>
 		  <code>
@@ -102,6 +102,11 @@
 		</mat-card-content>
 	</mat-card>
 
+
+	<br/>
+	<mat-card class="mat-elevation-z8"> 
+		<app-data-table></app-data-table>
+	</mat-card>
 </div>
 
 <router-outlet></router-outlet>
