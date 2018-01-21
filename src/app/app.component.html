@@ -104,9 +104,25 @@
 
 
 	<br/>
-	<mat-card class="mat-elevation-z8"> 
-		<app-data-table></app-data-table>
-	</mat-card>
+	
+	<mat-expansion-panel>
+	  <mat-expansion-panel-header>
+	    <mat-panel-title>
+	      Sample table
+	    </mat-panel-title>
+	    <mat-panel-description>
+	      Sample of table usage
+	    </mat-panel-description>
+	  </mat-expansion-panel-header>
+		<div fxLayout="column" fxLayoutAlign="center center">
+			<!--  
+			<mat-card class="mat-elevation-z8"> 
+				<app-data-table></app-data-table>
+			</mat-card>
+			-->
+			<app-data-table></app-data-table>
+		</div>
+	</mat-expansion-panel>
 </div>
 
 <router-outlet></router-outlet>

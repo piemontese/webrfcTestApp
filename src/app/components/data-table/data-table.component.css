@@ -70,3 +70,9 @@
   flex-grow: 1;
   margin-right: 16px;
 }
+
+.mat-toolbar-row {
+  height: 60px;
+}
+
+
