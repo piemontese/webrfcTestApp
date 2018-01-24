@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild, OnInit } from '@angular/core';
+import { Component, ElementRef, ViewChild, OnInit, Input } from '@angular/core';
 import { DataSource } from '@angular/cdk/collections';
 import { MatPaginator, MatSort } from '@angular/material';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
@@ -16,7 +16,8 @@ import 'rxjs/add/observable/fromEvent';
   styleUrls: ['./data-table.component.css']
 })
 export class DataTableComponent implements OnInit {
-  displayedColumns = ['userId', 'userName', 'progress', 'color'];
+  @Input() displayedColumns = ['id', 'name', 'progress', 'color'];
+  @Input() displayedColumnsNames = ['ID', 'Name', 'Progress', 'Color'];
   exampleDatabase = new ExampleDatabase();
   dataSource: ExampleDataSource | null;
   showFilter = true;
@@ -51,18 +52,11 @@ const NAMES = ['Maia', 'Asher', 'Olivia', 'Atticus', 'Amelia', 'Jack',
   'Charlotte', 'Theodore', 'Isla', 'Oliver', 'Isabella', 'Jasper',
   'Cora', 'Levi', 'Violet', 'Arthur', 'Mia', 'Thomas', 'Elizabeth'];
 
-export interface UserData {
-  id: string;
-  name: string;
-  progress: string;
-  color: string;
-}
-
 /** An example database that the data source uses to retrieve data for the table. */
 export class ExampleDatabase {
   /** Stream that emits whenever the data has been modified. */
-  dataChange: BehaviorSubject<UserData[]> = new BehaviorSubject<UserData[]>([]);
-  get data(): UserData[] { return this.dataChange.value; }
+  dataChange: BehaviorSubject<any[]> = new BehaviorSubject<any[]>([]);
+  get data(): any[] { return this.dataChange.value; }
 
   constructor() {
     // Fill up the database with 100 users.
@@ -108,7 +102,7 @@ export class ExampleDataSource extends DataSource<any> {
   }
 
   /** Connect function called by the table to retrieve one stream containing the data to render. */
-  connect(): Observable<UserData[]> {
+  connect(): Observable<any[]> {
 //    return this._exampleDatabase.dataChange;
     const displayDataChanges = [
       this._exampleDatabase.dataChange,
@@ -118,7 +112,7 @@ export class ExampleDataSource extends DataSource<any> {
     ];
 
     return Observable.merge(...displayDataChanges).map(() => {
-      const data = this._exampleDatabase.data.slice().filter((item: UserData) => {
+      const data = this._exampleDatabase.data.slice().filter((item: any) => {
         const searchStr = (item.id + item.name + item.progress + item.color).toLowerCase();
         return searchStr.indexOf(this.filter.toLowerCase()) !== -1;
       });

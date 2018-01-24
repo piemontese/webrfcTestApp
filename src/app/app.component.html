@@ -105,7 +105,7 @@
 
 	<br/>
 	
-	<mat-expansion-panel>
+	<mat-expansion-panel class="mat-elevation-z8">
 	  <mat-expansion-panel-header>
 	    <mat-panel-title>
 	      Sample table
@@ -114,13 +114,16 @@
 	      Sample of table usage
 	    </mat-panel-description>
 	  </mat-expansion-panel-header>
-		<div fxLayout="column" fxLayoutAlign="center center">
+		<div fxLayout="column" fxLayout.xs="column" fxLayoutAlign="center center">
 			<!--  
 			<mat-card class="mat-elevation-z8"> 
 				<app-data-table></app-data-table>
 			</mat-card>
 			-->
-			<app-data-table style="width: 90%;"></app-data-table>
+			<app-data-table style="width: 90%; min-width: 600px;"
+											[displayedColumns]="['id', 'name', 'progress', 'color', 'field']"
+											[displayedColumnsNames]="['ID', 'Name', 'Progress', 'Color', 'Field']">
+			 </app-data-table>
 		</div>
 	</mat-expansion-panel>
 </div>
