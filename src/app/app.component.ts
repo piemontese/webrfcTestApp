@@ -38,6 +38,8 @@ export class AppComponent {
   authentication = true;  // pass user and password to basic http authentication
   sapUser = 'novedev';
   sapPassword = 'init1234';
+  sapClient = '';
+  sapLanguage = '';
 
   constructor( private http: HttpClient, private jsonp: Jsonp ) {
   }
@@ -93,8 +95,10 @@ export class AppComponent {
     const jsonData = {
           '_FUNCTION':  this._FUNCTION,
           'callback':   this.callback
- //         'sap-user':   'novedev',
- //         'sap-password': 'init1234'
+//          'sap-client': '040',
+//          'sap-language': 'EN'
+//          'sap-user':   'novedev',
+//          'sap-password': 'init1234'
     };
 
     if ( this.authentication ) {
@@ -104,6 +108,14 @@ export class AppComponent {
 
     if ( this.method !== '' ) {
       jsonData['method'] = this.method;
+    }
+
+    if ( this.sapClient !== '' ) {
+      jsonData['sap-client'] = this.sapClient;
+    }
+
+    if ( this.sapLanguage !== '' ) {
+      jsonData['sap-language'] = this.sapLanguage;
     }
 
     for ( let i = 0; i < this.fields.length; i++ ) {

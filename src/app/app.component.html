@@ -41,6 +41,20 @@
 			   		 				[(ngModel)]="method">
 			    </mat-form-field>
 		    </div>
+		    <div fxLayout="row">
+				  <mat-form-field fxFlex="30">
+			   		 <input matInput placeholder="Client"
+			   		 				name="sapClient"
+			   		 				[(ngModel)]="sapClient">
+			    </mat-form-field>
+		    </div>
+		    <div fxLayout="row">
+				  <mat-form-field fxFlex="30">
+			   		 <input matInput placeholder="Language"
+			   		 				name="sapLanguage"
+			   		 				[(ngModel)]="sapLanguage">
+			    </mat-form-field>
+		    </div>
 		    <div *ngFor="let field of fields; index as i;"
 		         fxLayout="row"
 				     fxLayoutGap="20px">
