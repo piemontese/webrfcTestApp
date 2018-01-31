@@ -134,10 +134,17 @@
 				<app-data-table></app-data-table>
 			</mat-card>
 			-->
+            <!--
 			<app-data-table style="width: 90%; min-width: 600px;"
 											[displayedColumns]="['id', 'name', 'progress', 'color', 'field']"
 											[displayedColumnsNames]="['ID', 'Name', 'Progress', 'Color', 'Field']">
-			 </app-data-table>
+			</app-data-table>
+            -->
+			<app-data-table style="width: 90%; min-width: 600px;"
+                            title="User list"
+											[displayedColumns]="['tid', 'mandt', 'bname', 'term', 'hostaddr']"
+											[displayedColumnsNames]="['TID', 'Client', 'User', 'Terminal', 'IP address']">
+			</app-data-table>
 		</div>
 	</mat-expansion-panel>
 </div>

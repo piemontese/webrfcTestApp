@@ -1,7 +1,7 @@
 <div class="example-container mat-elevation-z8">
 	<mat-toolbar>
  		<mat-toolbar-row>
-	 		Sample table
+	 		{{title}}
 	 	</mat-toolbar-row>
  		<mat-toolbar-row>
  			<button mat-button><mat-icon>search</mat-icon>View</button>
@@ -11,7 +11,7 @@
  			<button mat-button><mat-icon>delete</mat-icon>Delete</button>
 	 		<div fxLayout="row" fxFlex fxLayoutAlign="end">
 	 			<button mat-icon-button (click)="showFilterClick()"><mat-icon>filter_list</mat-icon></button>
-	 			<button mat-icon-button><mat-icon>refresh</mat-icon></button>
+	 			<button mat-icon-button (click)="refresh()"><mat-icon>refresh</mat-icon></button>
 	 			<!--  
 	 			<button mat-mini-fab color="primary" (click)="showFilterClick()"><mat-icon>filter_list</mat-icon></button>
 	 			<button mat-mini-fab color="primary"><mat-icon>refresh</mat-icon></button>
