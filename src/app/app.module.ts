@@ -23,8 +23,6 @@ import 'jquery';
 import { ParameterComponent } from './components/parameter/parameter.component';
 import { DataTableComponent } from './components/data-table/data-table.component';
 
-import { DataTableService } from './services/data-table.service';
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -51,7 +49,6 @@ import { DataTableService } from './services/data-table.service';
     AppRoutingModule
   ],
   providers: [
-      DataTableService
 //    JsonpClientBackend,
 //    { provide: JsonpCallbackContext, useFactory: jsonpCallbackContext },
 //    { provide: HTTP_INTERCEPTORS, useClass: JsonpInterceptor, multi: true },

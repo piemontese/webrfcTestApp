@@ -1,14 +1,14 @@
 .mat-header-row {
-  position: sticky;
-  top: 0;
-  background: white;
+	position: sticky;
+	top: 0;
+	background: white;
 }
 
 /* Structure */
 .example-container {
-  display: flex;
-  flex-direction: column;
-  min-width: 300px;
+	display: flex;
+	flex-direction: column;
+	min-width: 300px;
 }
 
 /*
@@ -16,64 +16,61 @@
  * https://material.io/guidelines/components/data-tables.html
  */
 .example-table {
-  flex: 1 1 auto;
-  overflow: auto;
-  max-height: 500px;
+	flex: 1 1 auto;
+	overflow: auto;
+	max-height: 500px;
 }
 
 .example-header-row {
-  position: sticky;
-  top: 0;
+	position: sticky;
+	top: 0;
 	display: flex;
-  border-top: 2px solid #ccc;
-  border-bottom: 2px solid #ccc;
-  align-items: center;
-  height: 40px;
-  padding: 0 8px;
-  background: white;
+	border-top: 2px solid #ccc;
+	border-bottom: 2px solid #ccc;
+	align-items: center;
+	height: 40px;
+	padding: 0 8px;
+	background: white;
 }
 
 .example-row {
-  top: 32;
+	top: 32;
 	display: flex;
-  border-bottom: 1px solid #ccc;
-  align-items: center;
-  height: 32px;
-  padding: 0 8px;
+	border-bottom: 1px solid #ccc;
+	align-items: center;
+	height: 32px;
+	padding: 0 8px;
 }
 
 .example-cell, .example-header-cell {
-  flex: 1;
+	flex: 1;
 }
 
 .example-header-cell {
-  font-size: 16px;
-  font-weight: bold;
-  color: rgba(0, 0, 0, 0.54);
+	font-size: 16px;
+	font-weight: bold;
+	color: rgba(0, 0, 0, 0.54);
 }
 
 .example-cell {
-  font-size: 13px;
-  color: rgba(0, 0, 0, 0.87);
+	font-size: 13px;
+	color: rgba(0, 0, 0, 0.87);
 }
 
 .example-header {
-  min-height: 64px;
-  display: flex;
-  align-items: baseline;
-  padding: 8px 24px 0;
-  justify-content: space-between;
+	min-height: 64px;
+	display: flex;
+	align-items: baseline;
+	padding: 8px 24px 0;
+	justify-content: space-between;
 }
 
 .mat-form-field {
-  font-size: 14px;
-  flex-grow: 1;
-  margin-right: 16px;
+	font-size: 14px;
+	flex-grow: 1;
+	margin-right: 16px;
 }
 
 .mat-toolbar-row {
-  height: 60px;
+	height: 60px;
 }
-
-
-

@@ -1,16 +1,5 @@
-import { Component, ElementRef, ViewChild, OnInit, Input } from '@angular/core';
-import { DataSource } from '@angular/cdk/collections';
-import { MatPaginator, MatSort } from '@angular/material';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/startWith';
-import 'rxjs/add/observable/merge';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/debounceTime';
-import 'rxjs/add/operator/distinctUntilChanged';
-import 'rxjs/add/observable/fromEvent';
-
-import { DataTableService } from '../../services/data-table.service';
+import { Component, ViewChild, OnInit, Input } from '@angular/core';
+import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
 
 @Component({
   selector: 'app-data-table',
@@ -18,141 +7,96 @@ import { DataTableService } from '../../services/data-table.service';
   styleUrls: ['./data-table.component.css']
 })
 export class DataTableComponent implements OnInit {
-  @Input() title = 'Sample table'
+  @Input() title = 'Sample table';
   @Input() displayedColumns = ['id', 'name', 'progress', 'color'];
   @Input() displayedColumnsNames = ['ID', 'Name', 'Progress', 'Color'];
-  exampleDatabase = new ExampleDatabase();
-  dataSource: ExampleDataSource | null;
+
+  dataSource: MatTableDataSource<any>;
   showFilter = true;
-  data: any; 
+  data: any;
+  baseUrl = 'http://mnibm09.novellini.it:8066/sap/bc/webrfc';
+  _FUNCTION = 'Z_WRFC_INTERFACE';
+  callback = 'JSONP_CALLBACK';
+  method = 'TH_USER_LIST';
+  response: any;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
-  @ViewChild('filter') filter: ElementRef;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor( private dataTableService: DataTableService ) { 
-//    this.exampleDatabase = new ExampleDatabase(dataTableService);
+  constructor() {
+    this.dataSource = new MatTableDataSource([]);
   }
 
+  getData() {
+    const jsonData = {
+      '_FUNCTION': this._FUNCTION,
+      'callback': this.callback,
+      'method': this.method,
+      'sap-client': '020',
+      'sap-language': 'EN',
+      'sap-user': 'novedev',
+      'sap-password': 'init1234'
+    };
+
+    const so = this;
+    //    this.progress = true;
+    jQuery.ajax({
+      url: this.baseUrl,
+      data: jsonData,
+      async: false,
+      type: 'POST',
+      dataType: 'jsonp',
+      contentType: 'application/json',
+      crossDomain: true,
+      jsonpCallback: jsonData.callback,
+      timeout: 60000, // sets timeout to 60 seconds
+      success: function(data) {
+        so.response = data;
+        so.dataSource.data = so.response.results['USRLIST'];
+      },
+      error: function(data, status, error) {
+        so.response = [];
+        so.response['results'] = { 'USRLIST': [{'tid': '1', 'mandt': '', 'vbname': '', 'termv': '', 'hostaddr': ''}]  };
+        so.dataSource.data = so.response.results['USRLIST'];
+      }
+    });
+    /*
+    .catch( function(e) {
+       debugger;
+       if ( e.statusText === 'timeout') {
+         alert('Native Promise: Failed from timeout');
+       }
+     });
+     * */
+  }
+
+
   refresh() {
-    this.dataTableService.getData();
-    debugger;
-//    const difference = a1.filter(item => a2.indexOf(item) < 0);
-    this.exampleDatabase.setDataTableService( this.dataTableService );
-    this.exampleDatabase.setData(this.dataTableService.response['USRLIST']);
+    this.getData();
   }
 
   showFilterClick() {
     this.showFilter = !this.showFilter;
   }
 
+  applyFilter(filterValue: string) {
+    filterValue = filterValue.trim(); // Remove whitespace
+    filterValue = filterValue.toLowerCase(); // Datasource defaults to lowercase matches
+    this.dataSource.filter = filterValue;
+  }
+
   ngOnInit() {
-    this.dataSource = new ExampleDataSource(this.exampleDatabase, this.paginator, this.sort);
-    Observable.fromEvent(this.filter.nativeElement, 'keyup')
-        .debounceTime(150)
-        .distinctUntilChanged()
-        .subscribe(() => {
-          if (!this.dataSource) { return; }
-          this.dataSource.filter = this.filter.nativeElement.value;
-        });
+  }
+
+  /**
+   * Set the paginator and sort after the view init since this component will
+   * be able to query its view for the initialized paginator and sort.
+   */
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
   }
 
 }
 
-/** Constants used to fill up our data base. */
-const COLORS = ['maroon', 'red', 'orange', 'yellow', 'olive', 'green', 'purple',
-  'fuchsia', 'lime', 'teal', 'aqua', 'blue', 'navy', 'black', 'gray'];
-const NAMES = ['Maia', 'Asher', 'Olivia', 'Atticus', 'Amelia', 'Jack',
-  'Charlotte', 'Theodore', 'Isla', 'Oliver', 'Isabella', 'Jasper',
-  'Cora', 'Levi', 'Violet', 'Arthur', 'Mia', 'Thomas', 'Elizabeth'];
 
-/** An example database that the data source uses to retrieve data for the table. */
-export class ExampleDatabase {
-  private dataTableService: DataTableService;
-  /** Stream that emits whenever the data has been modified. */
-  dataChange: BehaviorSubject<any[]> = new BehaviorSubject<any[]>([]);
-  get data(): any[] { return this.dataChange.value; }
-
-  constructor( /*private dataTableService: DataTableService*/ ) {
-    // Fill up the database with 100 users.
-//    for (let i = 0; i < 100; i++) { this.addUser(); }
-  }
-
-  setDataTableService ( dataTableService: DataTableService ) {
-    this.dataTableService = dataTableService;
-  }
-    
-  /** Adds a new user to the database. */
-  addUser() {
-    const copiedData = this.data.slice();
-    copiedData.push(this.createNewUser());
-    this.dataChange.next(copiedData);
-  }
-    
-  setData( data: any ) {
-    const copiedData = data.slice();
-    copiedData.push(data);
-    this.dataChange.next(copiedData);
-  }
-
-
-  /** Builds and returns a new User. */
-  private createNewUser() {
-    const name =
-        NAMES[Math.round(Math.random() * (NAMES.length - 1))] + ' ' +
-        NAMES[Math.round(Math.random() * (NAMES.length - 1))].charAt(0) + '.';
-
-    return {
-      id: (this.data.length + 1).toString(),
-      name: name,
-      progress: Math.round(Math.random() * 100).toString(),
-      color: COLORS[Math.round(Math.random() * (COLORS.length - 1))]
-    };
-  }
-}
-
-/**
- * Data source to provide what data should be rendered in the table. Note that the data source
- * can retrieve its data in any way. In this case, the data source is provided a reference
- * to a common data base, ExampleDatabase. It is not the data source's responsibility to manage
- * the underlying data. Instead, it only needs to take the data and send the table exactly what
- * should be rendered.
- */
-export class ExampleDataSource extends DataSource<any> {
-  private dataTableService: DataTableService;
-  _filterChange = new BehaviorSubject('');
-  get filter(): string { return this._filterChange.value; }
-  set filter(filter: string) { this._filterChange.next(filter); }
-
-  constructor(private _exampleDatabase: ExampleDatabase, private _paginator: MatPaginator, private _sort: MatSort) {
-    super();
-  }
-
-  setDataTableService ( dataTableService: DataTableService ) {
-    this.dataTableService = dataTableService;
-  }
-    
-  /** Connect function called by the table to retrieve one stream containing the data to render. */
-  connect(): Observable<any[]> {
-//    return this._exampleDatabase.dataChange;
-    const displayDataChanges = [
-      this._exampleDatabase.dataChange,
-      this._paginator.page,
-      this._filterChange,
-//      this._sort.sortChange,
-    ];
-
-    return Observable.merge(...displayDataChanges).map(() => {
-      const data = this._exampleDatabase.data.slice().filter((item: any) => {
-        const searchStr = (item.id + item.name + item.progress + item.color).toLowerCase();
-        return searchStr.indexOf(this.filter.toLowerCase()) !== -1;
-      });
-
-      // Grab the page's slice of data.
-      const startIndex = this._paginator.pageIndex * this._paginator.pageSize;
-      return data.splice(startIndex, this._paginator.pageSize);
-    });
-  }
-
-  disconnect() {}
-}
