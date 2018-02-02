@@ -33,14 +33,20 @@
 	 			<button mat-mini-fab color="primary"><mat-icon>refresh</mat-icon></button>
 	 			-->
 	</div>
-	</mat-toolbar-row> <mat-toolbar-row> <mat-form-field>
-	<mat-select placeholder="Company"> <mat-option></mat-option>
-	<mat-option value="option1">S100</mat-option> <mat-option
-		value="option2">S200</mat-option> <mat-option value="option3">S300</mat-option>
-	</mat-select> </mat-form-field> <mat-form-field> <input matInput placeholder="Plant">
-	</mat-form-field> <mat-form-field> <input matInput
-		placeholder="Material"> </mat-form-field> <mat-form-field> <input
-		matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter"> </mat-form-field> </mat-toolbar-row> </mat-toolbar>
+	</mat-toolbar-row> <mat-toolbar-row> 
+	<mat-form-field> 
+	<input matInput placeholder="Plant" [(ngModel)]="plant">
+	</mat-form-field> <mat-form-field> 
+	<input matInput
+  			 placeholder="Material"
+				 [(ngModel)]="material"> 
+  </mat-form-field> 
+  <mat-form-field> 
+  <input matInput (keyup)="applyFilter($event.target.value)"
+				 placeholder="Filter"> 
+	</mat-form-field> 
+	</mat-toolbar-row> 
+	</mat-toolbar>
 	<!--  
   <div class="example-header">
     <mat-form-field floatPlaceholder="never">
@@ -48,21 +54,20 @@
     </mat-form-field>
   </div>
   -->
-	<mat-table #table [dataSource]="dataSource" matSort class="example-table">
+	<mat-table #table [dataSource]="dataSource" matSort
+		class="example-table"> <ng-container
+		*ngFor="let col of displayedColumns; let i=index;"
+		matColumnDef={{col}}> <mat-header-cell
+		*matHeaderCellDef mat-sort-header class="example-header-cell">
+	{{displayedColumnsNames[i]}} </mat-header-cell> <mat-cell *matCellDef="let row"
+		class="example-cell" [style.color]="row[col]"> {{row[col]}}</mat-cell>
+	</ng-container> <!-- ID Column --> <mat-header-row *matHeaderRowDef="displayedColumns"
+		class="example-header-row"></mat-header-row> <mat-row
+		*matRowDef="let row; columns: displayedColumns;" class="example-row"></mat-row>
+	</mat-table>
 
-		<ng-container *ngFor="let col of displayedColumns; let i=index;"
-			matColumnDef={{col}}> <mat-header-cell
-			*matHeaderCellDef mat-sort-header class="example-header-cell">
-		{{displayedColumnsNames[i]}} </mat-header-cell> <mat-cell *matCellDef="let row"
-			class="example-cell" [style.color]="row[col]"> {{row[col]}}</mat-cell>
-		</ng-container> <!-- ID Column --> 
-		
-	  <mat-header-row *matHeaderRowDef="displayedColumns"
-			class="example-header-row"></mat-header-row> <mat-row
-			*matRowDef="let row; columns: displayedColumns;" class="example-row"></mat-row>
-  </mat-table>
-	
 	<mat-paginator #paginator [length]="dataSource.data.length"
-		[pageIndex]="0" [pageSize]="20" [pageSizeOptions]="[2, 10, 25, 100]">
-	</mat-paginator>
+		[pageIndex]="0" [pageSize]="25"
+		[pageSizeOptions]="[5, 10, 25, 50, 100]"> </mat-paginator>
+
 </div>

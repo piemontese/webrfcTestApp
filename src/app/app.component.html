@@ -91,29 +91,82 @@
 
 	<br />
 
+	<mat-accordion>
 	<mat-expansion-panel class="mat-elevation-z8"> <mat-expansion-panel-header>
-	<mat-panel-title> Sample table </mat-panel-title> <mat-panel-description>
-	Sample of table usage </mat-panel-description> </mat-expansion-panel-header>
-	<div fxLayout="column" fxLayout.xs="column"
-		fxLayoutAlign="center center">
-		<!--  
-			<mat-card class="mat-elevation-z8"> 
-				<app-data-table></app-data-table>
-			</mat-card>
-			-->
-		<!--
+		<mat-panel-title> User list </mat-panel-title> <mat-panel-description>
+		List of logged users </mat-panel-description> </mat-expansion-panel-header>
+		<div fxLayout="column" fxLayout.xs="column"
+			fxLayoutAlign="center center">
+			<!--  
+				<mat-card class="mat-elevation-z8"> 
+					<app-data-table></app-data-table>
+				</mat-card>
+				-->
+			<!--
+				<app-data-table style="width: 90%; min-width: 600px;"
+												[displayedColumns]="['id', 'name', 'progress', 'color', 'field']"
+												[displayedColumnsNames]="['ID', 'Name', 'Progress', 'Color', 'Field']">
+				</app-data-table>
+	            -->
 			<app-data-table style="width: 90%; min-width: 600px;"
-											[displayedColumns]="['id', 'name', 'progress', 'color', 'field']"
-											[displayedColumnsNames]="['ID', 'Name', 'Progress', 'Color', 'Field']">
+				title="User list"
+				[displayedColumns]="['tid', 'mandt', 'bname', 'term', 'hostaddr', 'guiversion']"
+				[displayedColumnsNames]="['TID', 'Client', 'User', 'Terminal', 'IP address', 'GUI version']">
 			</app-data-table>
-            -->
-		<app-data-table style="width: 90%; min-width: 600px;"
-			title="User list"
-			[displayedColumns]="['tid', 'mandt', 'bname', 'term', 'hostaddr', 'guiversion']"
-			[displayedColumnsNames]="['TID', 'Client', 'User', 'Terminal', 'IP address', 'GUI version']">
-		</app-data-table>
-	</div>
+	
+		</div>
 	</mat-expansion-panel>
+
+	<mat-expansion-panel class="mat-elevation-z8"> <mat-expansion-panel-header>
+		<mat-panel-title> User list </mat-panel-title> <mat-panel-description>
+		List of logged users </mat-panel-description> </mat-expansion-panel-header>
+		<div fxLayout="column" fxLayout.xs="column"
+			fxLayoutAlign="center center">
+			<!--  
+				<mat-card class="mat-elevation-z8"> 
+					<app-data-table></app-data-table>
+				</mat-card>
+				-->
+			<!--
+				<app-data-table style="width: 90%; min-width: 600px;"
+												[displayedColumns]="['id', 'name', 'progress', 'color', 'field']"
+												[displayedColumnsNames]="['ID', 'Name', 'Progress', 'Color', 'Field']">
+				</app-data-table>
+	            -->
+			<app-data-table style="width: 90%; min-width: 600px;"
+				title="User list">
+			</app-data-table>
+	
+		</div>
+	</mat-expansion-panel>
+
+	<mat-expansion-panel class="mat-elevation-z8"> <mat-expansion-panel-header>
+		<mat-panel-title> Stock requirement list </mat-panel-title> <mat-panel-description>
+		Stock requirement list (MD04) </mat-panel-description> </mat-expansion-panel-header>
+		<div fxLayout="column" fxLayout.xs="column"
+			fxLayoutAlign="center center">
+			<!--  
+				<mat-card class="mat-elevation-z8"> 
+					<app-data-table></app-data-table>
+				</mat-card>
+				-->
+			<!--
+				<app-data-table style="width: 90%; min-width: 600px;"
+												[displayedColumns]="['id', 'name', 'progress', 'color', 'field']"
+												[displayedColumnsNames]="['ID', 'Name', 'Progress', 'Color', 'Field']">
+				</app-data-table>
+	            -->
+			<app-data-table style="width: 90%; min-width: 600px;"
+											[displayedColumns]="['avail_date', 'mrp_elemnt', 'mrp_element_ind', 'available', 'rec_reqd_qty']"
+											[displayedColumnsNames]="['avail_date', 'mrp_elemnt', 'mrp_element_ind', 'available', 'rec_reqd_qty']"
+											title="User list"
+											method="BAPI_MATERIAL_STOCK_REQ_LIST"
+											table="MRP_IND_LINES">
+			</app-data-table>
+	
+		</div>
+	</mat-expansion-panel>
+</mat-accordion>
 </div>
 
 <router-outlet></router-outlet>

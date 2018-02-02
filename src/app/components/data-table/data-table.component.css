@@ -2,8 +2,13 @@
 	position: sticky;
 	top: 0;
 	background: white;
+	min-width: 1200px;
 }
 
+.mat-row {
+  background: white;
+  min-width: 1200px;
+}
 /* Structure */
 .example-container {
 	display: flex;

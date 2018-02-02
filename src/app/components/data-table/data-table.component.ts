@@ -8,8 +8,10 @@ import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
 })
 export class DataTableComponent implements OnInit {
   @Input() title = 'Sample table';
-  @Input() displayedColumns = ['id', 'name', 'progress', 'color'];
-  @Input() displayedColumnsNames = ['ID', 'Name', 'Progress', 'Color'];
+  @Input() displayedColumns = [];
+  @Input() displayedColumnsNames = [];
+  @Input() method = 'TH_USER_LIST';
+  @Input() table = 'USRLIST';
 
   dataSource: MatTableDataSource<any>;
   showFilter = true;
@@ -17,8 +19,9 @@ export class DataTableComponent implements OnInit {
   baseUrl = 'http://mnibm09.novellini.it:8066/sap/bc/webrfc';
   _FUNCTION = 'Z_WRFC_INTERFACE';
   callback = 'JSONP_CALLBACK';
-  method = 'TH_USER_LIST';
   response: any;
+  plant = '';
+  material = '';
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -38,6 +41,15 @@ export class DataTableComponent implements OnInit {
       'sap-password': 'init1234'
     };
 
+    debugger;
+    if ( this.plant !== '' ) {
+      jsonData['PLANT'] = this.plant;
+    }
+
+    if ( this.material !== '' ) {
+      jsonData['MATERIAL'] = this.material;
+    }
+
     const so = this;
     //    this.progress = true;
     jQuery.ajax({
@@ -51,8 +63,32 @@ export class DataTableComponent implements OnInit {
       jsonpCallback: jsonData.callback,
       timeout: 60000, // sets timeout to 60 seconds
       success: function(data) {
+        let i = 0;
+        for ( const item of so.displayedColumns ) {
+          if ( !so.displayedColumnsNames[i] || so.displayedColumnsNames[i] === '' ) {
+            so.displayedColumnsNames[i] = item;
+          }
+          i++;
+        }
         so.response = data;
-        so.dataSource.data = so.response.results['USRLIST'];
+        so.dataSource.data = so.response.results[so.table/*'USRLIST'*/];
+        if ( so.displayedColumns.length === 0 ) {
+          i = 0;
+        debugger;
+          const rec = so.dataSource.data[0];
+          for (const [key, value] of Object.entries(rec)) {
+            so.displayedColumns[i] = key;
+            so.displayedColumnsNames[i] = key;
+            i++;
+          }
+          /*
+          for ( const item of rec ) {
+            so.displayedColumns[i] = item;
+            so.displayedColumnsNames[i] = item;
+            i++;
+          }
+          */
+        }
       },
       error: function(data, status, error) {
         so.response = [];
