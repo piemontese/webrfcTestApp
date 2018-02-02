@@ -11,6 +11,8 @@ import 'rxjs/add/operator/distinctUntilChanged';
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/do';
 
+import { DialogService } from './services/dialog.service';
+
 interface Fields {
   parameter: string;
   value: string;
@@ -24,7 +26,7 @@ interface Fields {
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'app';
+  title = 'Webrfc';
   fields: Fields[] = [];
   form: FormGroup;
   baseUrl = 'http://mnibm09.novellini.it:8066/sap/bc/webrfc';
@@ -41,7 +43,7 @@ export class AppComponent {
   sapClient = '';
   sapLanguage = '';
 
-  constructor( private http: HttpClient, private jsonp: Jsonp ) {
+  constructor( public dialogService: DialogService, private http: HttpClient, private jsonp: Jsonp ) {
   }
 
   addField() {
@@ -142,9 +144,18 @@ export class AppComponent {
           so.progress = false;
         },
         error: function (data, status, error) {
-          alert(status + ' - ' + error);
+//          alert(status + ' - ' + error);
           so.response = null;
           so.progress = false;
+          so.dialogService.open( so.title,   // title
+                                 ['Server unavailable'],  // array of messages
+                                 'message',   // dialog type
+                                 'error',   // message type
+                                 [
+                                 { caption: 'Close', color: 'primary', close: true },
+      //                           { caption: "Cancel", color: "warn", close: true }
+                               ]  // buttons
+            );
         }
     });
     /*

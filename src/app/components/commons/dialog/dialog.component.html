@@ -1,0 +1,37 @@
+<div class="dialog-title" color="primary" style="margin-top: -10px;">
+	{{title}}</div>
+<mat-dialog-content>
+<div class="dialog-content">
+	<div fxLayout="row" fxLayoutAlign="start center"
+		ngShow="dialogType==='message'">
+		<div *ngIf="messageType==='info'" fxFlex="15%"
+			style="margin-left: -12px; padding-right: 25px;">
+			<mat-icon color="primary">info</mat-icon>
+		</div>
+		<div *ngIf="messageType==='error'" fxFlex="20%"
+			style="margin-left: -13px; padding-right: 25px;">
+			<mat-icon color="warn">error</mat-icon>
+		</div>
+		<div *ngIf="messageType==='warning'" fxFlex="20%"
+			style="margin-left: -13px; padding-right: 25px;">
+			<mat-icon color="accent">warning</mat-icon>
+		</div>
+		<div fxLayout="column" fxLayoutAlign="start start"
+			style="margin-left: 10px;">
+			<div *ngFor="let message of messages; let i=index;" fxLayout="row"
+				fxLayoutAlign="start center">{{message}}</div>
+		</div>
+	</div>
+	<div fxLayout="row" fxLayoutAlign="start center"
+		ngShow="dialogType==='message'">
+		<ng-template></ng-template>
+	</div>
+</div>
+</mat-dialog-content>
+<div class="dialog-actions">
+	<div fxLayout="row" fxLayoutAlign="end end">
+		<button type="button" mat-raised-button *ngFor="let button of buttons"
+			[color]="button.color" style="padding-left: 20px;"
+			(click)="onClick(button.caption)" [mat-dialog-close]>{{button.caption}}</button>
+	</div>
+</div>

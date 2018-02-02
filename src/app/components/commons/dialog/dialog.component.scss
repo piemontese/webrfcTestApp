@@ -1,0 +1,33 @@
+.dialog-title {
+//  margin-top: -10px;
+  padding-bottom: 10px;
+  height: 40px;
+  font-family: Roboto;
+  font-weight: 500;
+  font-size: 20px;
+}
+
+.dialog-content {
+  padding-bottom: 30px;
+//  height: 50px;
+  font-family: Roboto;
+  font-weight: 400;
+  font-size: 17px;
+}
+
+.dialog-actions {
+//  height: 30px;
+  font-family: Roboto;
+  font-weight: 100;
+  font-size: 17px;
+}
+
+@mixin md-icon-size($size: 24px) {
+  font-size: $size;
+  height: $size;
+  width: $size;
+}
+
+.material-icons.mat-icon {
+  @include md-icon-size(40px);
+}

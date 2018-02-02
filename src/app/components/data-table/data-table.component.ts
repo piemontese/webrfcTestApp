@@ -1,6 +1,8 @@
 import { Component, ViewChild, OnInit, Input } from '@angular/core';
 import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
 
+import { DialogService } from '../../services/dialog.service';
+
 @Component({
   selector: 'app-data-table',
   templateUrl: './data-table.component.html',
@@ -22,11 +24,12 @@ export class DataTableComponent implements OnInit {
   response: any;
   plant = '';
   material = '';
+  progress = false;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor() {
+  constructor( public dialogService: DialogService ) {
     this.dataSource = new MatTableDataSource([]);
   }
 
@@ -51,7 +54,7 @@ export class DataTableComponent implements OnInit {
     }
 
     const so = this;
-    //    this.progress = true;
+    this.progress = true;
     jQuery.ajax({
       url: this.baseUrl,
       data: jsonData,
@@ -88,12 +91,25 @@ export class DataTableComponent implements OnInit {
             i++;
           }
           */
+          so.progress = false;
         }
       },
       error: function(data, status, error) {
+        /*
         so.response = [];
         so.response['results'] = { 'USRLIST': [{'tid': '1', 'mandt': '', 'vbname': '', 'termv': '', 'hostaddr': ''}]  };
         so.dataSource.data = so.response.results['USRLIST'];
+        */
+        so.progress = false;
+        so.dialogService.open( so.title,   // title
+                               ['Server unavailable'],  // array of messages
+                               'message',   // dialog type
+                               'error',   // message type
+                               [
+                               { caption: 'Close', color: 'primary', close: true },
+    //                           { caption: "Cancel", color: "warn", close: true }
+                             ]  // buttons
+          );
       }
     });
     /*

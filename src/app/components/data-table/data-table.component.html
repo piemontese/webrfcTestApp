@@ -54,7 +54,9 @@
     </mat-form-field>
   </div>
   -->
-	<mat-table #table [dataSource]="dataSource" matSort
+	<mat-progress-bar	mode="indeterminate" *ngIf="progress"></mat-progress-bar> 
+	
+		<mat-table #table [dataSource]="dataSource" matSort
 		class="example-table"> <ng-container
 		*ngFor="let col of displayedColumns; let i=index;"
 		matColumnDef={{col}}> <mat-header-cell
