@@ -1,71 +1,85 @@
 <div class="example-container mat-elevation-z8">
 	<mat-toolbar> <mat-toolbar-row>
 	{{title}} </mat-toolbar-row> <mat-toolbar-row>
-	<button mat-button>
-		<mat-icon>search</mat-icon>
+	<button mat-button color="primary">
+		<mat-icon color="primary">search</mat-icon>
 		View
 	</button>
-	<button mat-button>
-		<mat-icon>edit</mat-icon>
+	<button mat-button color="primary">
+		<mat-icon color="primary">edit</mat-icon>
 		Edit
 	</button>
-	<button mat-button>
-		<mat-icon>content_copy</mat-icon>
+	<button mat-button color="primary">
+		<mat-icon color="primary">content_copy</mat-icon>
 		Copy
 	</button>
-	<button mat-button>
-		<mat-icon>edit</mat-icon>
+	<button mat-button color="primary">
+		<mat-icon color="primary">edit</mat-icon>
 		Create
 	</button>
-	<button mat-button>
-		<mat-icon>delete</mat-icon>
+	<button mat-button color="primary">
+		<mat-icon color="primary">delete</mat-icon>
 		Delete
 	</button>
 	<div fxLayout="row" fxFlex fxLayoutAlign="end">
-		<button mat-icon-button (click)="showFilterClick()">
-			<mat-icon>filter_list</mat-icon>
+		<button mat-icon-button (click)="showFilterClick()" 
+														color="primary">
+			<mat-icon color="primary">filter_list</mat-icon>
 		</button>
-		<button mat-icon-button (click)="refresh()">
-			<mat-icon>refresh</mat-icon>
+		<button mat-icon-button (click)="refresh()"
+													   color="primary">
+			<mat-icon color="primary">refresh</mat-icon>
 		</button>
 		<!--  
 	 			<button mat-mini-fab color="primary" (click)="showFilterClick()"><mat-icon>filter_list</mat-icon></button>
 	 			<button mat-mini-fab color="primary"><mat-icon>refresh</mat-icon></button>
 	 			-->
 	</div>
-	</mat-toolbar-row> <mat-toolbar-row> 
-	<mat-form-field> 
-	<input matInput placeholder="Plant" [(ngModel)]="plant">
-	</mat-form-field> <mat-form-field> 
-	<input matInput
-  			 placeholder="Material"
-				 [(ngModel)]="material"> 
-  </mat-form-field> 
-  <mat-form-field> 
-  <input matInput (keyup)="applyFilter($event.target.value)"
-				 placeholder="Filter"> 
-	</mat-form-field> 
+	</mat-toolbar-row> 
+	<mat-toolbar-row> 
+		 <!-- 
+		<mat-form-field color="primary"> 
+			<input matInput placeholder="Plant" 
+											[(ngModel)]="plant">
+		</mat-form-field> 
+		<mat-form-field> 
+			<input matInput
+		  			 placeholder="Material"
+						 [(ngModel)]="material"> 
+	  </mat-form-field> 
+	  -->
+		<mat-form-field *ngFor="let field of fields; let i=index;"> 
+			<input matInput
+		  			 [placeholder]="field.placeholder"
+						 [name]="field.name"
+						 [(ngModel)]="field.value"
+						 [type]="field.type"> 
+	  </mat-form-field> 
+		
+	  <mat-form-field> 
+	  <input matInput (keyup)="applyFilter($event.target.value)"
+					 placeholder="Filter"> 
+		</mat-form-field> 
 	</mat-toolbar-row> 
 	</mat-toolbar>
-	<!--  
-  <div class="example-header">
-    <mat-form-field floatPlaceholder="never">
-      <input matInput #filter placeholder="Filter">
-    </mat-form-field>
-  </div>
-  -->
+
 	<mat-progress-bar	mode="indeterminate" *ngIf="progress"></mat-progress-bar> 
 	
-		<mat-table #table [dataSource]="dataSource" matSort
-		class="example-table"> <ng-container
-		*ngFor="let col of displayedColumns; let i=index;"
-		matColumnDef={{col}}> <mat-header-cell
-		*matHeaderCellDef mat-sort-header class="example-header-cell">
-	{{displayedColumnsNames[i]}} </mat-header-cell> <mat-cell *matCellDef="let row"
-		class="example-cell" [style.color]="row[col]"> {{row[col]}}</mat-cell>
-	</ng-container> <!-- ID Column --> <mat-header-row *matHeaderRowDef="displayedColumns"
-		class="example-header-row"></mat-header-row> <mat-row
-		*matRowDef="let row; columns: displayedColumns;" class="example-row"></mat-row>
+	<mat-table #table [dataSource]="dataSource" matSort
+						class="example-table">
+		<ng-container *ngFor="let col of displayedColumns; let i=index;"
+									matColumnDef={{col}}> 
+			<mat-header-cell *matHeaderCellDef mat-sort-header class="example-header-cell">
+				{{displayedColumnsNames[i]}}
+			</mat-header-cell>
+			<mat-cell *matCellDef="let row"
+								class="example-cell" [style.color]="row[col]"> {{row[col]}}</mat-cell>
+		</ng-container> <!-- ID Column --> 
+		<mat-header-row *matHeaderRowDef="displayedColumns"
+										class="example-header-row">
+		</mat-header-row> 
+		<mat-row *matRowDef="let row; columns: displayedColumns;" 
+						 class="example-row"></mat-row>
 	</mat-table>
 
 	<mat-paginator #paginator [length]="dataSource.data.length"

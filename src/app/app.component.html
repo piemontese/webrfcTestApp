@@ -1,172 +1,118 @@
-<mat-toolbar color="primary" class="mat-elevation-z8"
-	style="position: sticky; top: 0; z-index: 999;">Webrfc</mat-toolbar>
-
+<mat-toolbar color="primary" class="mat-elevation-z8" style="position: sticky; top: 0; z-index: 999;">Webrfc</mat-toolbar>
 <br />
-
 <div fxLayout="column" fxLayoutAlign="center center">
-	<mat-card class="mat-elevation-z8"> <mat-card-title>Call
-	parameters</mat-card-title> <mat-card-content> <!-- 
-		<form [formGroup]="form" class="full-width">
-			<div formGroupName="name">
-		--> <!-- 
-				<div fxLayout="row">
-				  <mat-form-field fxFlex="30">
-			   		 <input matInput placeholder="Function"
-			   		 				name="_FUNCTION"
-			   		 				[(ngModel)]="_FUNCTION">
-			    </mat-form-field>
-		    </div>
-		    -->
-	<div fxLayout="row">
-		<mat-form-field fxFlex="30"> <mat-select
-			[(value)]="_FUNCTION" name="_FUNCTION" [(ngModel)]="_FUNCTION"
-			placeholder="Function"> <mat-option
-			value="Z_WRFC_INTERFACE">Call function</mat-option> <mat-option
-			value="Z_WRFC_FUNCTION_INTERFACE">Get function interface</mat-option>
-		<mat-option value="Z_WRFC_TABLE">Get table entries</mat-option> </mat-select> </mat-form-field>
-	</div>
-
-	<div fxLayout="row">
-		<mat-form-field fxFlex="30"> <input matInput
-			placeholder="Method" name="method" [(ngModel)]="method"> </mat-form-field>
-	</div>
-	<div fxLayout="row">
-		<mat-form-field fxFlex="30"> <input matInput
-			placeholder="Client" name="sapClient" [(ngModel)]="sapClient">
-		</mat-form-field>
-	</div>
-	<div fxLayout="row">
-		<mat-form-field fxFlex="30"> <input matInput
-			placeholder="Language" name="sapLanguage" [(ngModel)]="sapLanguage">
-		</mat-form-field>
-	</div>
-	<div *ngFor="let field of fields; index as i;" fxLayout="row"
-		fxLayoutGap="20px">
-		<mat-form-field fxFlex="30%"> <input matInput
-			placeholder="Parameter" [(ngModel)]="field.parameter"> </mat-form-field>
-		<mat-form-field fxFlex="60%"> <input matInput
-			placeholder="Value" [(ngModel)]="field.value"> </mat-form-field>
-		<div fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="end end">
-			<button mat-mini-fab color="accent" (click)="clearField(i)">
-				<mat-icon>clear</mat-icon>
-			</button>
-			<button mat-mini-fab color="warn" (click)="removeField(i)">
-				<mat-icon>remove</mat-icon>
-			</button>
-		</div>
-	</div>
-	<!-- 
-			</div>	
-		</form>
-		--> <br />
-	<div fxLayout="row" fxLayoutAlign="center center">
-		<button mat-mini-fab color="primary" (click)="addField()">
-			<mat-icon>add</mat-icon>
-		</button>
-		&nbsp;&nbsp;&nbsp;&nbsp;
-		<button mat-mini-fab color="accent" (click)="clearFields()">
-			<mat-icon>clear</mat-icon>
-		</button>
-		<div *ngIf="fields.length">
-			&nbsp;&nbsp;&nbsp;&nbsp;
-			<button mat-mini-fab color="warn" (click)="removeAllFields()">
-				<mat-icon>remove</mat-icon>
-			</button>
-		</div>
-	</div>
-	</mat-card-content> <mat-card-actions>
-	<div fxLayout="row" fxLayoutAlign="center center">
-		<button mat-raised-button color="primary" (click)="run()"
-			style="width: 200px;">Run</button>
-	</div>
-	</mat-card-actions> <mat-card-footer> <mat-progress-bar
-		mode="indeterminate" *ngIf="progress"></mat-progress-bar> </mat-card-footer> </mat-card>
-
-	<br />
-	<mat-card class="mat-elevation-z8" *ngIf="response"> <mat-card-title>Response</mat-card-title>
-	<mat-card-content> <code>
+  <mat-card class="mat-elevation-z8">
+    <mat-card-title>Call parameters</mat-card-title>
+    <mat-card-content>
+      <div fxLayout="row">
+        <mat-form-field fxFlex="30">
+          <mat-select [(value)]="_FUNCTION" name="_FUNCTION" [(ngModel)]="_FUNCTION" placeholder="Function">
+            <mat-option value="Z_WRFC_INTERFACE">Call function</mat-option>
+            <mat-option value="Z_WRFC_FUNCTION_INTERFACE">Get function interface</mat-option>
+            <mat-option value="Z_WRFC_TABLE">Get table entries</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div fxLayout="row">
+        <mat-form-field fxFlex="30">
+          <input matInput placeholder="Method" name="method" [(ngModel)]="method"> </mat-form-field>
+      </div>
+      <div fxLayout="row">
+        <mat-form-field fxFlex="30">
+          <input matInput placeholder="Client" name="sapClient" [(ngModel)]="sapClient"> </mat-form-field>
+      </div>
+      <div fxLayout="row">
+        <mat-form-field fxFlex="30">
+          <input matInput placeholder="Language" name="sapLanguage" [(ngModel)]="sapLanguage"> </mat-form-field>
+      </div>
+      <div *ngFor="let field of fields; index as i;" fxLayout="row" fxLayoutGap="20px">
+        <mat-form-field fxFlex="30%">
+          <input matInput placeholder="Parameter" [(ngModel)]="field.parameter"> </mat-form-field>
+        <mat-form-field fxFlex="60%">
+          <input matInput placeholder="Value" [(ngModel)]="field.value"> </mat-form-field>
+        <div fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="end end">
+          <button mat-mini-fab color="accent" (click)="clearField(i)">
+            <mat-icon>clear</mat-icon>
+          </button>
+          <button mat-mini-fab color="warn" (click)="removeField(i)">
+            <mat-icon>remove</mat-icon>
+          </button>
+        </div>
+      </div>
+      <br />
+      <div fxLayout="row" fxLayoutAlign="center center">
+        <button mat-mini-fab color="primary" (click)="addField()">
+          <mat-icon>add</mat-icon>
+        </button> &nbsp;&nbsp;&nbsp;&nbsp;
+        <button mat-mini-fab color="accent" (click)="clearFields()">
+          <mat-icon>clear</mat-icon>
+        </button>
+        <div *ngIf="fields.length"> &nbsp;&nbsp;&nbsp;&nbsp;
+          <button mat-mini-fab color="warn" (click)="removeAllFields()">
+            <mat-icon>remove</mat-icon>
+          </button>
+        </div>
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <div fxLayout="row" fxLayoutAlign="center center">
+        <button mat-raised-button color="primary" (click)="run()" style="width: 200px;">Run</button>
+      </div>
+    </mat-card-actions>
+    <mat-card-footer>
+      <mat-progress-bar mode="indeterminate" *ngIf="progress"></mat-progress-bar>
+    </mat-card-footer>
+  </mat-card>
+  <br />
+  <mat-card class="mat-elevation-z8" *ngIf="response">
+    <mat-card-title>Response</mat-card-title>
+    <mat-card-content> <code>
 		<pre>{{response | json}}</pre>
-	</code> </mat-card-content> </mat-card>
+	</code> </mat-card-content>
+  </mat-card>
+  <br />
+  <mat-accordion>
+    <mat-expansion-panel class="mat-elevation-z8">
+      <mat-expansion-panel-header>
+        <mat-panel-title> User list </mat-panel-title>
+        <mat-panel-description> List of logged users </mat-panel-description>
+      </mat-expansion-panel-header>
+      <div fxLayout="column" fxLayout.xs="column" fxLayoutAlign="center center">
+        <app-data-table style="width: 90%; min-width: 600px;" 
+        								title="User list" 
+        								[displayedColumns]="['tid', 'mandt', 'bname', 'term', 'hostaddr', 'guiversion']" 
+        								[displayedColumnsNames]="['TID', 'Client', 'User', 'Terminal', 'IP address', 'GUI version']"> </app-data-table>
+      </div>
+    </mat-expansion-panel>
+    
+    <mat-expansion-panel class="mat-elevation-z8">
+      <mat-expansion-panel-header>
+        <mat-panel-title> User list </mat-panel-title>
+        <mat-panel-description> List of logged users </mat-panel-description>
+      </mat-expansion-panel-header>
+      <div fxLayout="column" fxLayout.xs="column" fxLayoutAlign="center center">
+        <app-data-table style="width: 90%; min-width: 600px;" 
+        								title="User list"></app-data-table>
+      </div>
+    </mat-expansion-panel>
 
-
-	<br />
-
-	<mat-accordion>
-	<mat-expansion-panel class="mat-elevation-z8"> <mat-expansion-panel-header>
-		<mat-panel-title> User list </mat-panel-title> <mat-panel-description>
-		List of logged users </mat-panel-description> </mat-expansion-panel-header>
-		<div fxLayout="column" fxLayout.xs="column"
-			fxLayoutAlign="center center">
-			<!--  
-				<mat-card class="mat-elevation-z8"> 
-					<app-data-table></app-data-table>
-				</mat-card>
-				-->
-			<!--
-				<app-data-table style="width: 90%; min-width: 600px;"
-												[displayedColumns]="['id', 'name', 'progress', 'color', 'field']"
-												[displayedColumnsNames]="['ID', 'Name', 'Progress', 'Color', 'Field']">
-				</app-data-table>
-	            -->
-			<app-data-table style="width: 90%; min-width: 600px;"
-				title="User list"
-				[displayedColumns]="['tid', 'mandt', 'bname', 'term', 'hostaddr', 'guiversion']"
-				[displayedColumnsNames]="['TID', 'Client', 'User', 'Terminal', 'IP address', 'GUI version']">
-			</app-data-table>
-	
-		</div>
-	</mat-expansion-panel>
-
-	<mat-expansion-panel class="mat-elevation-z8"> <mat-expansion-panel-header>
-		<mat-panel-title> User list </mat-panel-title> <mat-panel-description>
-		List of logged users </mat-panel-description> </mat-expansion-panel-header>
-		<div fxLayout="column" fxLayout.xs="column"
-			fxLayoutAlign="center center">
-			<!--  
-				<mat-card class="mat-elevation-z8"> 
-					<app-data-table></app-data-table>
-				</mat-card>
-				-->
-			<!--
-				<app-data-table style="width: 90%; min-width: 600px;"
-												[displayedColumns]="['id', 'name', 'progress', 'color', 'field']"
-												[displayedColumnsNames]="['ID', 'Name', 'Progress', 'Color', 'Field']">
-				</app-data-table>
-	            -->
-			<app-data-table style="width: 90%; min-width: 600px;"
-				title="User list">
-			</app-data-table>
-	
-		</div>
-	</mat-expansion-panel>
-
-	<mat-expansion-panel class="mat-elevation-z8"> <mat-expansion-panel-header>
-		<mat-panel-title> Stock requirement list </mat-panel-title> <mat-panel-description>
-		Stock requirement list (MD04) </mat-panel-description> </mat-expansion-panel-header>
-		<div fxLayout="column" fxLayout.xs="column"
-			fxLayoutAlign="center center">
-			<!--  
-				<mat-card class="mat-elevation-z8"> 
-					<app-data-table></app-data-table>
-				</mat-card>
-				-->
-			<!--
-				<app-data-table style="width: 90%; min-width: 600px;"
-												[displayedColumns]="['id', 'name', 'progress', 'color', 'field']"
-												[displayedColumnsNames]="['ID', 'Name', 'Progress', 'Color', 'Field']">
-				</app-data-table>
-	            -->
-			<app-data-table style="width: 90%; min-width: 600px;"
-											[displayedColumns]="['avail_date', 'mrp_elemnt', 'mrp_element_ind', 'available', 'rec_reqd_qty']"
-											[displayedColumnsNames]="['avail_date', 'mrp_elemnt', 'mrp_element_ind', 'available', 'rec_reqd_qty']"
-											title="Stock requirement list"
-											method="BAPI_MATERIAL_STOCK_REQ_LIST"
-											table="MRP_IND_LINES">
-			</app-data-table>
-	
-		</div>
-	</mat-expansion-panel>
-</mat-accordion>
+    <mat-expansion-panel class="mat-elevation-z8">
+      <mat-expansion-panel-header>
+        <mat-panel-title> Stock requirement list </mat-panel-title>
+        <mat-panel-description> Stock requirement list (MD04) </mat-panel-description>
+      </mat-expansion-panel-header>
+      <div fxLayout="column" fxLayout.xs="column" fxLayoutAlign="center center">
+        <app-data-table style="width: 90%; min-width: 600px;" 
+        								[displayedColumns]="['avail_date', 'mrp_elemnt', 'mrp_element_ind', 'available', 'rec_reqd_qty']" 
+        								[displayedColumnsNames]="['Available date', 'MRP element', 'MRP element ind.', 'Available', 'Available quantity']" 
+        								[fields]="[ { name: 'plant', value:'', type: 'text', placeholder: 'Plant' },
+        													  { name: 'material', value:'', type: 'text', placeholder: 'Material' }
+        													]"
+        								title="Stock requirement list" 
+        								method="BAPI_MATERIAL_STOCK_REQ_LIST" 
+        								table="MRP_IND_LINES"></app-data-table>
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
 </div>
-
 <router-outlet></router-outlet>

@@ -3,6 +3,13 @@ import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
 
 import { DialogService } from '../../services/dialog.service';
 
+interface Fields {
+  name: string;
+  type: string;
+  placeholder: string;
+  value: string;
+}
+
 @Component({
   selector: 'app-data-table',
   templateUrl: './data-table.component.html',
@@ -14,6 +21,7 @@ export class DataTableComponent implements OnInit {
   @Input() displayedColumnsNames = [];
   @Input() method = 'TH_USER_LIST';
   @Input() table = 'USRLIST';
+  @Input() fields: Fields[] = [];
 
   dataSource: MatTableDataSource<any>;
   showFilter = true;
@@ -22,8 +30,6 @@ export class DataTableComponent implements OnInit {
   _FUNCTION = 'Z_WRFC_INTERFACE';
   callback = 'JSONP_CALLBACK';
   response: any;
-  plant = '';
-  material = '';
   progress = false;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -31,6 +37,11 @@ export class DataTableComponent implements OnInit {
 
   constructor( public dialogService: DialogService ) {
     this.dataSource = new MatTableDataSource([]);
+  }
+
+  setFieldValue( value: any, i: number ) {
+    debugger;
+    this.fields[i].value = value[i];
   }
 
   getData() {
@@ -45,12 +56,10 @@ export class DataTableComponent implements OnInit {
     };
 
     debugger;
-    if ( this.plant !== '' ) {
-      jsonData['PLANT'] = this.plant;
-    }
-
-    if ( this.material !== '' ) {
-      jsonData['MATERIAL'] = this.material;
+    for ( let i = 0; i < this.fields.length; i++ ) {
+      if ( this.fields[i].value !== '' ) {
+        jsonData[this.fields[i].name.toUpperCase()] = this.fields[i].value;
+      }
     }
 
     const so = this;
@@ -91,8 +100,8 @@ export class DataTableComponent implements OnInit {
             i++;
           }
           */
-          so.progress = false;
         }
+        so.progress = false;
       },
       error: function(data, status, error) {
         /*
