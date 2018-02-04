@@ -93,6 +93,7 @@
       </mat-expansion-panel-header>
       <div fxLayout="column" fxLayout.xs="column" fxLayoutAlign="center center">
         <app-data-table style="width: 90%; min-width: 600px;" 
+        								[filter]="false"
         								[iconButtons]="[ { icon: 'refresh', position: 'right', action: 'refresh', color: 'prymary', row: 0, tooltip: 'Refresh data' } ]"
         								title="User list"></app-data-table>
       </div>

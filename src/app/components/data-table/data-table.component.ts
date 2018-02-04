@@ -38,6 +38,7 @@ export interface IconButtons {
 })
 export class DataTableComponent implements OnInit {
   @Input() title = 'Sample table';
+  @Input() filter = true;
   @Input() displayedColumns = [];
   @Input() displayedColumnsNames = [];
   @Input() method = 'TH_USER_LIST';
