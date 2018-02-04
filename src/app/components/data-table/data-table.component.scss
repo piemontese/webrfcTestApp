@@ -51,6 +51,10 @@
 	flex: 1;
 }
 
+.example-cell, .example-header-cell {
+	flex: 1;
+}
+
 .example-header-cell {
 	font-size: 16px;
 	font-weight: bold;
@@ -78,4 +82,8 @@
 
 .mat-toolbar-row {
 	height: 60px;
+}
+
+.mat-row:hover {
+	background-color: rbg(128,128,128);
 }

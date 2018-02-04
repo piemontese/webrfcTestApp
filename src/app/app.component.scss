@@ -9,3 +9,8 @@ mat-accordion {
 mat-expansion-panel {
   width: 100%;
 }
+
+.mat-expansion-panel-header-title, 
+.mat-expansion-panel-header-description {
+  flex-basis: 0;
+}

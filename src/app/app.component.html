@@ -75,11 +75,12 @@
     <mat-expansion-panel class="mat-elevation-z8">
       <mat-expansion-panel-header>
         <mat-panel-title> User list </mat-panel-title>
-        <mat-panel-description> List of logged users </mat-panel-description>
+        <mat-panel-description> List of logged users</mat-panel-description>
       </mat-expansion-panel-header>
       <div fxLayout="column" fxLayout.xs="column" fxLayoutAlign="center center">
         <app-data-table style="width: 90%; min-width: 600px;" 
         								title="User list" 
+        								[iconButtons]="[ { icon: 'refresh', position: 'right', action: 'refresh', color: 'prymary', row: 0, tooltip: 'Refresh data' } ]"
         								[displayedColumns]="['tid', 'mandt', 'bname', 'term', 'hostaddr', 'guiversion']" 
         								[displayedColumnsNames]="['TID', 'Client', 'User', 'Terminal', 'IP address', 'GUI version']"> </app-data-table>
       </div>
@@ -88,27 +89,29 @@
     <mat-expansion-panel class="mat-elevation-z8">
       <mat-expansion-panel-header>
         <mat-panel-title> User list </mat-panel-title>
-        <mat-panel-description> List of logged users </mat-panel-description>
+        <mat-panel-description> List of logged users (all columns) </mat-panel-description>
       </mat-expansion-panel-header>
       <div fxLayout="column" fxLayout.xs="column" fxLayoutAlign="center center">
         <app-data-table style="width: 90%; min-width: 600px;" 
+        								[iconButtons]="[ { icon: 'refresh', position: 'right', action: 'refresh', color: 'prymary', row: 0, tooltip: 'Refresh data' } ]"
         								title="User list"></app-data-table>
       </div>
     </mat-expansion-panel>
 
     <mat-expansion-panel class="mat-elevation-z8">
       <mat-expansion-panel-header>
-        <mat-panel-title> Stock requirement list </mat-panel-title>
-        <mat-panel-description> Stock requirement list (MD04) </mat-panel-description>
+        <mat-panel-title> Material requirement list </mat-panel-title>
+        <mat-panel-description> Material requirement list (MD04) </mat-panel-description>
       </mat-expansion-panel-header>
       <div fxLayout="column" fxLayout.xs="column" fxLayoutAlign="center center">
         <app-data-table style="width: 90%; min-width: 600px;" 
         								[displayedColumns]="['avail_date', 'mrp_elemnt', 'mrp_element_ind', 'available', 'rec_reqd_qty']" 
         								[displayedColumnsNames]="['Available date', 'MRP element', 'MRP element ind.', 'Available', 'Available quantity']" 
         								[fields]="[ { name: 'plant', value:'', type: 'text', placeholder: 'Plant' },
-        													  { name: 'material', value:'', type: 'text', placeholder: 'Material' }
-        													]"
-        								title="Stock requirement list" 
+        													  { name: 'material', value:'', type: 'text', placeholder: 'Material' }	]"
+        								[buttons]="[ { caption:'Detail', icon: 'search', position: 'left', action: '', color: 'prymary', row: 1, tooltip: 'Row detail' } ]"
+        								[iconButtons]="[ { icon: 'refresh', position: 'right', action: 'refresh', color: 'prymary', row: 0, tooltip: 'Refresh data' } ]"
+        								title="Material requirement list" 
         								method="BAPI_MATERIAL_STOCK_REQ_LIST" 
         								table="MRP_IND_LINES"></app-data-table>
       </div>

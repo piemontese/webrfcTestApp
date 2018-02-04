@@ -10,6 +10,7 @@ import { CdkTableModule } from '@angular/cdk/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatButtonModule, MatToolbarModule, MatIconModule, MatCardModule, MatInputModule, MatFormFieldModule, MatSelectModule, MatTableModule  } from '@angular/material';
+import { MatTooltipModule  } from '@angular/material';
 import { MatDialogModule  } from '@angular/material';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatExpansionModule } from '@angular/material/expansion';
@@ -26,13 +27,17 @@ import { DataTableComponent } from './components/data-table/data-table.component
 import { DialogComponent } from './components/commons/dialog/dialog.component';
 
 import { DialogService } from './services/dialog.service';
+import { PositionPipe } from './pipes/position.pipe';
+import { RowPipe } from './pipes/row.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     ParameterComponent,
     DataTableComponent,
-    DialogComponent
+    DialogComponent,
+    PositionPipe,
+    RowPipe
   ],
   imports: [
     BrowserModule,
@@ -48,6 +53,7 @@ import { DialogService } from './services/dialog.service';
     MatSortModule,
     CdkTableModule,
     MatButtonModule, MatToolbarModule, MatIconModule, MatCardModule, MatInputModule, MatFormFieldModule, MatSelectModule, MatTableModule,
+    MatTooltipModule,
     MatDialogModule,
     MatExpansionModule,
     MatProgressBarModule,

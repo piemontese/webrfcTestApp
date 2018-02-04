@@ -2,18 +2,39 @@ import { Component, ViewChild, OnInit, Input } from '@angular/core';
 import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
 
 import { DialogService } from '../../services/dialog.service';
+// import { PositionPipe } from '../../pipes/position.pipe';
 
-interface Fields {
+export interface Fields {
   name: string;
   type: string;
   placeholder: string;
   value: string;
+  color: string;
+}
+
+export interface Buttons {
+  caption: string;
+  icon: string;      // search, edit, content_copy, add, delete
+  position: string;  // left, center, right
+  action: string;
+  color: string;     // primary, accent, warn
+  row: number;
+  tooltip: string;
+}
+
+export interface IconButtons {
+  icon: string;      // refresh, filter_list
+  position: string;  // left, center, right
+  action: string;
+  color: string;     // primary, accent, warn
+  row: number;
+  tooltip: string;
 }
 
 @Component({
   selector: 'app-data-table',
   templateUrl: './data-table.component.html',
-  styleUrls: ['./data-table.component.css']
+  styleUrls: ['./data-table.component.scss']
 })
 export class DataTableComponent implements OnInit {
   @Input() title = 'Sample table';
@@ -22,6 +43,8 @@ export class DataTableComponent implements OnInit {
   @Input() method = 'TH_USER_LIST';
   @Input() table = 'USRLIST';
   @Input() fields: Fields[] = [];
+  @Input() buttons: Buttons[] = [];
+  @Input() iconButtons: IconButtons[] = [];
 
   dataSource: MatTableDataSource<any>;
   showFilter = true;
@@ -39,9 +62,15 @@ export class DataTableComponent implements OnInit {
     this.dataSource = new MatTableDataSource([]);
   }
 
-  setFieldValue( value: any, i: number ) {
-    debugger;
-    this.fields[i].value = value[i];
+  buttonClick( button: Buttons ) {
+    if ( button.action !== '' ) {
+      eval('this.' + button.action + '()');
+    }
+  }
+  iconBbuttonClick( iconButton: IconButtons ) {
+    if ( iconButton.action !== '' ) {
+      eval('this.' + iconButton.action + '()');
+    }
   }
 
   getData() {
