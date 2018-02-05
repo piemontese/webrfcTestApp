@@ -88,6 +88,12 @@ export class DataTableComponent implements OnInit {
     console.log('row: ', row);
   }
 
+  selectAll() {
+    for ( let i = 0; i < this.dataSource.data.length; i++ ) {
+      this.dataSource.data[i].selected = !this.dataSource.data[i].selected;
+    }
+  }
+
   getData() {
     const jsonData = {
       '_FUNCTION': this._FUNCTION,

@@ -3,6 +3,12 @@
 		<mat-toolbar-row>
 			{{title}}
 			<div fxLayout="row" fxFlex fxLayoutAlign="end">
+				<button mat-icon-button *ngIf="multiSelection"
+																(click)="selectAll()"
+													 			matTooltip="Select/deselect all"
+																color="primary">
+					<mat-icon color="primary">select_all</mat-icon>
+				</button>
 				<button mat-button *ngFor="let button of buttons | position: 'right' | row: 0"
 													 (click)="buttonClick(button)"
 													 [matTooltip]="button.tooltip"
