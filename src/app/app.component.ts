@@ -140,10 +140,25 @@ export class AppComponent {
         timeout: 6000, // sets timeout to 60 seconds
         success: function(data) {
 //          console.log(data);
-          let json = decodeURIComponent( JSON.stringify( data ) );
+          const json = decodeURIComponent( JSON.stringify( data ) );
           so.response = JSON.parse( json );
 //          so.response = data;
           so.progress = false;
+          if ( so.response['errors'] ) {
+            const messages = [];
+            for ( let i = 0; i < so.response['errors'].length; i++ ) {
+              messages[i] = so.response['errors'][i]['type'] + ' - ' + so.response['errors'][i]['msg'];
+            }
+            so.dialogService.open( so.title,   // title
+                                   messages,  // array of messages
+                                   'message',   // dialog type
+                                   'info',   // message type
+                                   [
+                                   { caption: 'Close', color: 'primary', close: true },
+        //                           { caption: "Cancel", color: "warn", close: true }
+                                 ]  // buttons
+              );
+          }
         },
         error: function (data, status, error) {
 //          alert(status + ' - ' + error);

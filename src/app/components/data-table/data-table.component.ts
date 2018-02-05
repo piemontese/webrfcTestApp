@@ -46,6 +46,7 @@ export class DataTableComponent implements OnInit {
   @Input() fields: Fields[] = [];
   @Input() buttons: Buttons[] = [];
   @Input() iconButtons: IconButtons[] = [];
+  @Input() multiSelection = false;
 
   dataSource: MatTableDataSource<any>;
   showFilter = true;
@@ -55,6 +56,7 @@ export class DataTableComponent implements OnInit {
   callback = 'JSONP_CALLBACK';
   response: any;
   progress = false;
+  selectedItems: number[];
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -72,6 +74,18 @@ export class DataTableComponent implements OnInit {
     if ( iconButton.action !== '' ) {
       eval('this.' + iconButton.action + '()');
     }
+  }
+
+  selectItem( row: any ) {
+    if ( !this.multiSelection) {
+      // debugger;
+      // let data: UserData[] = this.dataSource._exampleDatabase.get();
+      for ( let i = 0; i < this.dataSource.data.length; i++ ) {
+        this.dataSource.data[i].selected = false;
+      }
+    }
+    row.selected = !row.selected;
+    console.log('row: ', row);
   }
 
   getData() {

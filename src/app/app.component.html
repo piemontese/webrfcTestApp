@@ -131,8 +131,9 @@
         								[iconButtons]="[ { icon: 'refresh', position: 'right', action: 'refresh', color: 'prymary', row: 0, tooltip: 'Refresh data' } ]"
         								[displayedColumns]="['mandt', 'werks', 'name1', 'ort01', 'pstlz', 'stras', 'land1']" 
         								[displayedColumnsNames]="['Client', 'Plant', 'Name', 'City', 'Post code', 'Street', 'Country']"
-                                        method='MSR20_MD_PLANT_GETLIST'
-                                        table="POT_PLANT"> </app-data-table>
+												multiSelection="true"
+												method='MSR20_MD_PLANT_GETLIST'
+ 												table="POT_PLANT"> </app-data-table>
       </div>
     </mat-expansion-panel>
   </mat-accordion>
