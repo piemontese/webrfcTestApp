@@ -140,7 +140,9 @@ export class AppComponent {
         timeout: 6000, // sets timeout to 60 seconds
         success: function(data) {
 //          console.log(data);
-          so.response = data;
+          let json = decodeURIComponent( JSON.stringify( data ) );
+          so.response = JSON.parse( json );
+//          so.response = data;
           so.progress = false;
         },
         error: function (data, status, error) {

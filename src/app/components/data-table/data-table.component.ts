@@ -85,7 +85,6 @@ export class DataTableComponent implements OnInit {
       'sap-password': 'init1234'
     };
 
-    debugger;
     for ( let i = 0; i < this.fields.length; i++ ) {
       if ( this.fields[i].value !== '' ) {
         jsonData[this.fields[i].name.toUpperCase()] = this.fields[i].value;
@@ -112,8 +111,20 @@ export class DataTableComponent implements OnInit {
           }
           i++;
         }
+
+      debugger;
         so.response = data;
-        so.dataSource.data = so.response.results[so.table/*'USRLIST'*/];
+        so.dataSource.data = so.response.results[so.table];
+          debugger;
+        for ( let m = 0; m < so.dataSource.data.length; m++ ) {
+          const rec = so.dataSource.data[m];
+          for (let [key, value] of Object.entries(rec)) {
+                  if ( value.indexOf('&Agrave;') > 0 )
+                      debugger;
+            so.dataSource.data[m][key] = decodeURIComponent( value );
+          }
+        }
+              
         if ( so.displayedColumns.length === 0 ) {
           i = 0;
         debugger;

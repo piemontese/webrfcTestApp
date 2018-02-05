@@ -66,9 +66,11 @@
   <br />
   <mat-card class="mat-elevation-z8" *ngIf="response">
     <mat-card-title>Response</mat-card-title>
-    <mat-card-content> <code>
+    <mat-card-content> 
+      <code>
 		<pre>{{response | json}}</pre>
-	</code> </mat-card-content>
+	  </code> 
+    </mat-card-content>
   </mat-card>
   <br />
   <mat-accordion>
@@ -115,6 +117,22 @@
         								title="Material requirement list" 
         								method="BAPI_MATERIAL_STOCK_REQ_LIST" 
         								table="MRP_IND_LINES"></app-data-table>
+      </div>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel class="mat-elevation-z8">
+      <mat-expansion-panel-header>
+        <mat-panel-title> Plant list </mat-panel-title>
+        <mat-panel-description> List of all plants</mat-panel-description>
+      </mat-expansion-panel-header>
+      <div fxLayout="column" fxLayout.xs="column" fxLayoutAlign="center center">
+        <app-data-table style="width: 90%; min-width: 600px;" 
+        								title="Plant list" 
+        								[iconButtons]="[ { icon: 'refresh', position: 'right', action: 'refresh', color: 'prymary', row: 0, tooltip: 'Refresh data' } ]"
+        								[displayedColumns]="['mandt', 'werks', 'name1', 'ort01', 'pstlz', 'stras', 'land1']" 
+        								[displayedColumnsNames]="['Client', 'Plant', 'Name', 'City', 'Post code', 'Street', 'Country']"
+                                        method='MSR20_MD_PLANT_GETLIST'
+                                        table="POT_PLANT"> </app-data-table>
       </div>
     </mat-expansion-panel>
   </mat-accordion>
