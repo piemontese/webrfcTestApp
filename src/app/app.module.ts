@@ -27,8 +27,10 @@ import { DataTableComponent } from './components/data-table/data-table.component
 import { DialogComponent } from './components/commons/dialog/dialog.component';
 
 import { DialogService } from './services/dialog.service';
+import { DataTableDetailService } from './services/data-table-detail.service';
 import { PositionPipe } from './pipes/position.pipe';
 import { RowPipe } from './pipes/row.pipe';
+import { DataTableDetailComponent } from './components/commons/data-table-detail/data-table-detail.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +39,8 @@ import { RowPipe } from './pipes/row.pipe';
     DataTableComponent,
     DialogComponent,
     PositionPipe,
-    RowPipe
+    RowPipe,
+    DataTableDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -61,13 +64,15 @@ import { RowPipe } from './pipes/row.pipe';
     AppRoutingModule
   ],
   providers: [
-    DialogService
+    DialogService,
+		DataTableDetailService
 //    JsonpClientBackend,
 //    { provide: JsonpCallbackContext, useFactory: jsonpCallbackContext },
 //    { provide: HTTP_INTERCEPTORS, useClass: JsonpInterceptor, multi: true },
   ],
   entryComponents: [
     DialogComponent,
+    DataTableDetailComponent,
   ],
   bootstrap: [AppComponent]
 })
