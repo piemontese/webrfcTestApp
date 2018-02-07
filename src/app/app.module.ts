@@ -12,8 +12,10 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatButtonModule, MatToolbarModule, MatIconModule, MatCardModule, MatInputModule, MatFormFieldModule, MatSelectModule, MatTableModule  } from '@angular/material';
 import { MatTooltipModule  } from '@angular/material';
 import { MatDialogModule  } from '@angular/material';
+import { MatListModule  } from '@angular/material';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { MatGridListModule } from '@angular/material/grid-list';
 
 import 'hammerjs';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -58,7 +60,9 @@ import { DataTableDetailComponent } from './components/commons/data-table-detail
     MatButtonModule, MatToolbarModule, MatIconModule, MatCardModule, MatInputModule, MatFormFieldModule, MatSelectModule, MatTableModule,
     MatTooltipModule,
     MatDialogModule,
+    MatListModule,
     MatExpansionModule,
+    MatGridListModule,
     MatProgressBarModule,
     FlexLayoutModule,
     AppRoutingModule

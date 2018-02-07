@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewEncapsulation } from '@angular/core';
 
 interface Button {
   caption: string;
@@ -9,12 +9,13 @@ interface Button {
 @Component({
   selector: 'app-data-table-detail',
   templateUrl: './data-table-detail.component.html',
-  styleUrls: ['./data-table-detail.component.scss']
+  styleUrls: ['./data-table-detail.component.scss'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class DataTableDetailComponent implements OnInit {
   @Input() title = 'Title';
-	@Input() fields: any[] = [];
-	
+  @Input() fields: any[] = [];
+
   public buttons: Button[];
   public response: String = '';
   public routeTo: String = '';

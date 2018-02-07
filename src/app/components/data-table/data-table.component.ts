@@ -1,8 +1,8 @@
-import { Component, ViewChild, OnInit, Input } from '@angular/core';
-import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
+import {Component, ViewChild, OnInit, Input} from '@angular/core';
+import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
 
-import { DialogService } from '../../services/dialog.service';
-import { DataTableDetailService } from '../../services/data-table-detail.service';
+import {DialogService} from '../../services/dialog.service';
+import {DataTableDetailService} from '../../services/data-table-detail.service';
 
 export interface Fields {
   name: string;
@@ -56,58 +56,61 @@ export class DataTableComponent implements OnInit {
   callback = 'JSONP_CALLBACK';
   response: any;
   progress = false;
-//  selectedItems: number[];
-	detailFields: any[] = [];
+  //  selectedItems: number[];
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-	constructor( public dialogService: DialogService, public dataTableDetailService: DataTableDetailService ) {
+  constructor(public dialogService: DialogService, public dataTableDetailService: DataTableDetailService) {
     this.dataSource = new MatTableDataSource([]);
   }
 
-  buttonClick( button: Buttons ) {
-    if ( button.action !== '' ) {
+  buttonClick(button: Buttons) {
+    if (button.action !== '') {
       eval('this.' + button.action + '()');
     }
   }
-	
-  iconBbuttonClick( iconButton: IconButtons ) {
-    if ( iconButton.action !== '' ) {
+
+  iconBbuttonClick(iconButton: IconButtons) {
+    if (iconButton.action !== '') {
       eval('this.' + iconButton.action + '()');
     }
   }
 
   detail() {
-    for ( let i = 0; i < this.dataSource.data.filter(item => item.selected === true).length; i++ ) {
-			debugger;
-			const rec = this.dataSource.data[i];
-			let detailFields = [];
-			for (let [key, value] of Object.entries(rec)) {
-				for ( let j = 0; j < this.displayedColumns.length; j++ ) {
-					if ( this.displayedColumns[j] === key ) {
-						detailFields.push({'key': this.displayedColumnsNames[j], 'value': value });
-						continue;
-					}
-				}
-			}
-      this.dataTableDetailService.open( this.title + ' detail',   // title
-																				detailFields,
-																				[{ caption: 'Close', color: 'primary', close: true } ]  // buttons
-          														);
+    for (let i = 0; i < this.dataSource.data.filter(item => item.selected === true).length; i++) {
+      debugger;
+      const rec = this.dataSource.data[i];
+      const detailFields = [];
+      for (const [key, value] of Object.entries(rec)) {
+        for (let j = 0; j < this.displayedColumns.length; j++) {
+          if (this.displayedColumns[j] === key) {
+            detailFields.push({'key': this.displayedColumnsNames[j], 'value': value});
+            continue;
+          }
+        }
+      }
+      this.dataTableDetailService.open(this.title + ' detail',   // title
+        detailFields,
+        [{caption: 'Close', color: 'primary', close: true}]  // buttons
+      );
     }
   }
 
-  selectItem( row: any ) {
-		for ( let i = 0; i < this.dataSource.data.filter(item => item.selected === true).length; i++ ) {
-			this.dataSource.data[i].selected = false;
-		}
+  selectItem(row: any) {
+    debugger;
+    if ( !this.multiSelection ) {
+      for (let i = 0; i < this.dataSource.data.filter(item => item.selected === true).length; i++) {
+//      for (let i = 0; i < this.dataSource.data.length; i++) {
+        this.dataSource.data[i].selected = false;
+      }
+    }
     row.selected = !row.selected;
     console.log('row: ', row);
   }
 
   selectAll() {
-    for ( let i = 0; i < this.dataSource.data.length; i++ ) {
+    for (let i = 0; i < this.dataSource.data.length; i++) {
       this.dataSource.data[i].selected = !this.dataSource.data[i].selected;
     }
   }
@@ -123,8 +126,8 @@ export class DataTableComponent implements OnInit {
       'sap-password': 'init1234'
     };
 
-    for ( let i = 0; i < this.fields.length; i++ ) {
-      if ( this.fields[i].value !== '' ) {
+    for (let i = 0; i < this.fields.length; i++) {
+      if (this.fields[i].value !== '') {
         jsonData[this.fields[i].name.toUpperCase()] = this.fields[i].value;
       }
     }
@@ -143,8 +146,8 @@ export class DataTableComponent implements OnInit {
       timeout: 60000, // sets timeout to 60 seconds
       success: function(data) {
         let i = 0;
-        for ( const item of so.displayedColumns ) {
-          if ( !so.displayedColumnsNames[i] || so.displayedColumnsNames[i] === '' ) {
+        for (const item of so.displayedColumns) {
+          if (!so.displayedColumnsNames[i] || so.displayedColumnsNames[i] === '') {
             so.displayedColumnsNames[i] = item;
           }
           i++;
@@ -152,18 +155,18 @@ export class DataTableComponent implements OnInit {
 
         so.response = data;
         so.dataSource.data = so.response.results[so.table];
-		
-				// decode URI
-        for ( let m = 0; m < so.dataSource.data.length; m++ ) {
+
+        // decode URI
+        for (let m = 0; m < so.dataSource.data.length; m++) {
           const rec = so.dataSource.data[m];
           for (let [key, value] of Object.entries(rec)) {
-           	so.dataSource.data[m][key] = decodeURIComponent( value );
+            so.dataSource.data[m][key] = decodeURIComponent(value);
           }
         }
-              
-        if ( so.displayedColumns.length === 0 ) {
+
+        if (so.displayedColumns.length === 0) {
           i = 0;
-        debugger;
+          debugger;
           const rec = so.dataSource.data[0];
           for (const [key, value] of Object.entries(rec)) {
             so.displayedColumns[i] = key;
@@ -187,15 +190,15 @@ export class DataTableComponent implements OnInit {
         so.dataSource.data = so.response.results['USRLIST'];
         */
         so.progress = false;
-        so.dialogService.open( so.title,   // title
-                               ['Server unavailable'],  // array of messages
-                               'message',   // dialog type
-                               'error',   // message type
-                               [
-                               { caption: 'Close', color: 'primary', close: true },
-    //                           { caption: "Cancel", color: "warn", close: true }
-                             ]  // buttons
-          );
+        so.dialogService.open(so.title,   // title
+          ['Server unavailable'],  // array of messages
+          'message',   // dialog type
+          'error',   // message type
+          [
+            {caption: 'Close', color: 'primary', close: true},
+            //                           { caption: "Cancel", color: "warn", close: true }
+          ]  // buttons
+        );
       }
     });
     /*

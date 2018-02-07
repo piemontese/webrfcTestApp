@@ -3,10 +3,25 @@
 </div>
 <mat-dialog-content>
   <div class="dialog-content">
+  <!--
     <div fxLayout="row" fxLayoutAlign="start center"
 				 								*ngFor="let field of fields;">
 			{{field.key}}  {{field.value}}
     </div>
+  	<mat-list>
+  	  <mat-list-item	*ngFor="let field of fields">
+  	  	{{field.key}}  {{field.value}}
+  	  </mat-list-item>
+  	</mat-list>
+    -->
+  	<mat-grid-list cols="7" 
+  								 rowHeight="1.5:1"
+  								 *ngFor="let field of fields">
+			<mat-grid-tile [colspan]=2 class="align-end">{{field.key}}</mat-grid-tile>
+		  <mat-grid-tile [colspan]=5 class="align-start">{{field.value}}</mat-grid-tile>
+			<mat-divider></mat-divider>
+  	</mat-grid-list>
+		<mat-divider></mat-divider>
   </div>
 </mat-dialog-content>
 <div class="dialog-actions">

@@ -13,10 +13,12 @@
   font-family: Roboto;
   font-weight: 400;
   font-size: 17px;
+  max-height: 400px;
 }
 
 .dialog-actions {
 //  height: 30px;
+//  margin-top: 20px;
   font-family: Roboto;
   font-weight: 100;
   font-size: 17px;
@@ -31,3 +33,23 @@
 .material-icons.mat-icon {
   @include md-icon-size(40px);
 }
+
+mat-list-item {
+//  height: 5px;
+}
+
+mat-grid-tile {
+//  border-bottom: 1px;
+}
+
+.align-start > figure.mat-figure {
+  font-weight: 100 !important;
+  justify-content: flex-start !important;
+}
+
+.align-end > figure.mat-figure {
+  font-weight: 400 !important;
+  width: 90% !important;
+  justify-content: flex-end !important;
+}
+
