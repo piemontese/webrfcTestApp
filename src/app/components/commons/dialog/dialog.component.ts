@@ -15,7 +15,6 @@ interface Button {
 export class DialogComponent implements OnInit {
   public dialogType: String = 'message';  // message, confirm, choise
   public title: String = '';
-//  public message: string = '';
   public messages: Array<String> = [];
   public messageType = 'info';
   public buttons: Button[];

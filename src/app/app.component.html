@@ -82,6 +82,7 @@
       <div fxLayout="column" fxLayout.xs="column" fxLayoutAlign="center center">
         <app-data-table style="width: 90%; min-width: 600px;" 
         								title="User list" 
+        								[buttons]="[ { caption:'Detail', icon: 'search', position: 'left', action: 'detail', color: 'prymary', row: 1, tooltip: 'Row detail' } ]"
         								[iconButtons]="[ { icon: 'refresh', position: 'right', action: 'refresh', color: 'prymary', row: 0, tooltip: 'Refresh data' } ]"
         								[displayedColumns]="['tid', 'mandt', 'bname', 'term', 'hostaddr', 'guiversion']" 
         								[displayedColumnsNames]="['TID', 'Client', 'User', 'Terminal', 'IP address', 'GUI version']"> </app-data-table>

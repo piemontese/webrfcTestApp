@@ -2,7 +2,7 @@ import { Component, ViewChild, OnInit, Input } from '@angular/core';
 import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
 
 import { DialogService } from '../../services/dialog.service';
-// import { PositionPipe } from '../../pipes/position.pipe';
+import { DataTableDetailService } from '../../services/data-table-detail.service';
 
 export interface Fields {
   name: string;
@@ -56,12 +56,13 @@ export class DataTableComponent implements OnInit {
   callback = 'JSONP_CALLBACK';
   response: any;
   progress = false;
-  selectedItems: number[];
+//  selectedItems: number[];
+	detailFields: any[] = [];
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor( public dialogService: DialogService ) {
+	constructor( public dialogService: DialogService, public dataTableDetailService: DataTableDetailService ) {
     this.dataSource = new MatTableDataSource([]);
   }
 
@@ -70,20 +71,37 @@ export class DataTableComponent implements OnInit {
       eval('this.' + button.action + '()');
     }
   }
+	
   iconBbuttonClick( iconButton: IconButtons ) {
     if ( iconButton.action !== '' ) {
       eval('this.' + iconButton.action + '()');
     }
   }
 
-  selectItem( row: any ) {
-    if ( !this.multiSelection) {
-      // debugger;
-      // let data: UserData[] = this.dataSource._exampleDatabase.get();
-      for ( let i = 0; i < this.dataSource.data.length; i++ ) {
-        this.dataSource.data[i].selected = false;
-      }
+  detail() {
+    for ( let i = 0; i < this.dataSource.data.filter(item => item.selected === true).length; i++ ) {
+			debugger;
+			const rec = this.dataSource.data[i];
+			let detailFields = [];
+			for (let [key, value] of Object.entries(rec)) {
+				for ( let j = 0; j < this.displayedColumns.length; j++ ) {
+					if ( this.displayedColumns[j] === key ) {
+						detailFields.push({'key': this.displayedColumnsNames[j], 'value': value });
+						continue;
+					}
+				}
+			}
+      this.dataTableDetailService.open( this.title + ' detail',   // title
+																				detailFields,
+																				[{ caption: 'Close', color: 'primary', close: true } ]  // buttons
+          														);
     }
+  }
+
+  selectItem( row: any ) {
+		for ( let i = 0; i < this.dataSource.data.filter(item => item.selected === true).length; i++ ) {
+			this.dataSource.data[i].selected = false;
+		}
     row.selected = !row.selected;
     console.log('row: ', row);
   }
@@ -132,16 +150,14 @@ export class DataTableComponent implements OnInit {
           i++;
         }
 
-      debugger;
         so.response = data;
         so.dataSource.data = so.response.results[so.table];
-          debugger;
+		
+				// decode URI
         for ( let m = 0; m < so.dataSource.data.length; m++ ) {
           const rec = so.dataSource.data[m];
           for (let [key, value] of Object.entries(rec)) {
-                  if ( value.indexOf('&Agrave;') > 0 )
-                      debugger;
-            so.dataSource.data[m][key] = decodeURIComponent( value );
+           	so.dataSource.data[m][key] = decodeURIComponent( value );
           }
         }
               

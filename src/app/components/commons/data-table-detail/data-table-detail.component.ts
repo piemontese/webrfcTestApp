@@ -1,9 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
 
-import { DataTableComponent } from '../../data-table/data-table.component';
-
-import { DialogService } from '../../../services/dialog.service';
-
 interface Button {
   caption: string;
   color: string;
@@ -13,22 +9,24 @@ interface Button {
 @Component({
   selector: 'app-data-table-detail',
   templateUrl: './data-table-detail.component.html',
-  styleUrls: ['./data-table-detail.component.css']
+  styleUrls: ['./data-table-detail.component.scss']
 })
-export class DataTableDetailComponent extends DataTableComponent implements OnInit {
+export class DataTableDetailComponent implements OnInit {
   @Input() title = 'Title';
-  public dialogButtons: Button[];
+	@Input() fields: any[] = [];
+	
+  public buttons: Button[];
   public response: String = '';
+  public routeTo: String = '';
+  public callback: Function = null;
 
-  constructor( public dialogService: DialogService ) {
-     super( dialogService );
-  }
+  constructor() {}
 
   onClick( response: string ) {
     this.response = response;
   }
 
- ngOnInit() {
+  ngOnInit() {
   }
 
 }
