@@ -100,8 +100,8 @@ export class DataTableComponent implements OnInit {
   selectItem(row: any) {
     debugger;
     if ( !this.multiSelection ) {
-      for (let i = 0; i < this.dataSource.data.filter(item => item.selected === true).length; i++) {
-//      for (let i = 0; i < this.dataSource.data.length; i++) {
+//      for (let i = 0; i < this.dataSource.data.filter(item => item.selected === true).length; i++) {
+      for (let i = 0; i < this.dataSource.data.length; i++) {
         this.dataSource.data[i].selected = false;
       }
     }
