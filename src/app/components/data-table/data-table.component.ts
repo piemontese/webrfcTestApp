@@ -1,8 +1,8 @@
 import {Component, ViewChild, OnInit, Input} from '@angular/core';
 import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
 
-import {DialogService} from '../../services/dialog.service';
-import {DataTableDetailService} from '../../services/data-table-detail.service';
+import { DialogService } from '../../services/dialog.service';
+import { DataTableDetailService } from '../../services/data-table-detail.service';
 
 export interface Fields {
   name: string;
@@ -20,6 +20,8 @@ export interface Buttons {
   color: string;     // primary, accent, warn
   row: number;
   tooltip: string;
+  disabled: boolean;
+  multiSel: boolean;
 }
 
 export interface IconButtons {
@@ -29,6 +31,8 @@ export interface IconButtons {
   color: string;     // primary, accent, warn
   row: number;
   tooltip: string;
+  disabled: boolean;
+  multiSel: boolean;
 }
 
 @Component({
@@ -56,7 +60,7 @@ export class DataTableComponent implements OnInit {
   callback = 'JSONP_CALLBACK';
   response: any;
   progress = false;
-  //  selectedItems: number[];
+  selectedItems: number[];
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -65,19 +69,19 @@ export class DataTableComponent implements OnInit {
     this.dataSource = new MatTableDataSource([]);
   }
 
-  buttonClick(button: Buttons) {
+  protected buttonClick(button: Buttons) {
     if (button.action !== '') {
       eval('this.' + button.action + '()');
     }
   }
 
-  iconBbuttonClick(iconButton: IconButtons) {
+  protected iconBbuttonClick(iconButton: IconButtons) {
     if (iconButton.action !== '') {
       eval('this.' + iconButton.action + '()');
     }
   }
 
-  detail() {
+  protected view() {
     for (let i = 0; i < this.dataSource.data.filter(item => item.selected === true).length; i++) {
       debugger;
       const rec = this.dataSource.data[i];
@@ -90,32 +94,72 @@ export class DataTableComponent implements OnInit {
           }
         }
       }
-      this.dataTableDetailService.open(this.title + ' detail',   // title
-        detailFields,
-        [{caption: 'Close', color: 'primary', close: true}]  // buttons
-      );
+      this.dataTableDetailService.open( this.title + ' view item',   // title
+                                        'view',                   // mode
+                                        detailFields,
+                                        [{caption: 'Close', color: 'primary', close: true}]  // buttons
+                                      );
     }
   }
 
-  selectItem(row: any) {
+  protected change() {
+    for (let i = 0; i < this.dataSource.data.filter(item => item.selected === true).length; i++) {
+      debugger;
+      const rec = this.dataSource.data[i];
+      const detailFields = [];
+      for (const [key, value] of Object.entries(rec)) {
+        for (let j = 0; j < this.displayedColumns.length; j++) {
+          if (this.displayedColumns[j] === key) {
+            detailFields.push({'key': this.displayedColumnsNames[j], 'value': value});
+            continue;
+          }
+        }
+      }
+      this.dataTableDetailService.open( this.title + ' change item',   // title
+                                        'edit',                   // mode
+                                        detailFields,
+                                        [
+                                         {caption: 'Cancel', color: 'warn', close: true},
+                                         {caption: 'OK', color: 'primary', close: true}
+                                        ],  // buttons
+                                        this.changedCallback,      // callback
+                                        this         // caller
+                                      );
+    }
+  }
+
+  private changedCallback( result: any, fields: any[], caller: DataTableComponent ) {
     debugger;
+    if ( result === 'OK' ) {
+      for (let i = 0; i < caller.dataSource.data.filter(item => item.selected === true).length; i++) {
+        for ( let j = 0; j < fields.length; j++ ) {
+          caller.dataSource.data[i][fields[j].key] = fields[j].value;
+        }
+      }
+    }
+  }
+
+  protected selectItem(row: any) {
     if ( !this.multiSelection ) {
-//      for (let i = 0; i < this.dataSource.data.filter(item => item.selected === true).length; i++) {
-      for (let i = 0; i < this.dataSource.data.length; i++) {
-        this.dataSource.data[i].selected = false;
+      for (let i = 0; i < this.dataSource.data.filter(item => item.selected === true).length; i++) {
+//      for (let i = 0; i < this.dataSource.data.length; i++) {
+        if ( this.dataSource.data[i] !== row ) {
+          this.dataSource.data[i].selected = false;
+        }
       }
     }
     row.selected = !row.selected;
-    console.log('row: ', row);
+    this.enableDisableButtons();
   }
 
-  selectAll() {
+  protected selectAll() {
     for (let i = 0; i < this.dataSource.data.length; i++) {
       this.dataSource.data[i].selected = !this.dataSource.data[i].selected;
     }
+    this.enableDisableButtons();
   }
 
-  getData() {
+  public getData() {
     const jsonData = {
       '_FUNCTION': this._FUNCTION,
       'callback': this.callback,
@@ -159,7 +203,7 @@ export class DataTableComponent implements OnInit {
         // decode URI
         for (let m = 0; m < so.dataSource.data.length; m++) {
           const rec = so.dataSource.data[m];
-          for (let [key, value] of Object.entries(rec)) {
+          for (const [key, value] of Object.entries(rec)) {
             so.dataSource.data[m][key] = decodeURIComponent(value);
           }
         }
@@ -212,18 +256,30 @@ export class DataTableComponent implements OnInit {
   }
 
 
-  refresh() {
+  protected refresh() {
     this.getData();
   }
 
-  showFilterClick() {
+  protected showFilterClick() {
     this.showFilter = !this.showFilter;
   }
 
-  applyFilter(filterValue: string) {
+  protected applyFilter(filterValue: string) {
     filterValue = filterValue.trim(); // Remove whitespace
     filterValue = filterValue.toLowerCase(); // Datasource defaults to lowercase matches
     this.dataSource.filter = filterValue;
+  }
+
+  private enableDisableButtons() {
+    if ( this.dataSource.data.filter(item => item.selected === true).length === 1 ) {
+      for ( let m = 0; m < this.buttons.filter(item => item.multiSel === false).length; m++ ) {
+        this.buttons[m].disabled = !this.buttons[m].disabled;   // !row.selected;
+      }
+    } else {
+      for ( let m = 0; m < this.buttons.filter(item => item.multiSel === false).length; m++ ) {
+        this.buttons[m].disabled = true;
+      }
+    }
   }
 
   ngOnInit() {

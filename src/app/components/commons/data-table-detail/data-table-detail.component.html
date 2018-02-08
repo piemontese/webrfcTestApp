@@ -18,7 +18,14 @@
   								 rowHeight="1.5:1"
   								 *ngFor="let field of fields">
 			<mat-grid-tile [colspan]=2 class="align-end">{{field.key}}</mat-grid-tile>
-		  <mat-grid-tile [colspan]=5 class="align-start">{{field.value}}</mat-grid-tile>
+		  <mat-grid-tile [colspan]=5 class="align-start" *ngIf="mode==='view'">{{field.value}}</mat-grid-tile>
+		  <mat-grid-tile [colspan]=5 class="align-start" *ngIf="mode==='edit'">
+				<mat-form-field> 
+					<input matInput
+								 [name]="field.key"
+								 [(ngModel)]="field.value"> 
+			  </mat-form-field> 
+		  </mat-grid-tile>
 			<mat-divider></mat-divider>
   	</mat-grid-list>
 		<mat-divider></mat-divider>
