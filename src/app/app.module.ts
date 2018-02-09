@@ -33,6 +33,7 @@ import { DataTableDetailService } from './services/data-table-detail.service';
 import { PositionPipe } from './pipes/position.pipe';
 import { RowPipe } from './pipes/row.pipe';
 import { DataTableDetailComponent } from './components/commons/data-table-detail/data-table-detail.component';
+import { DataSourceService } from './services/data-source.service';
 
 @NgModule({
   declarations: [
@@ -69,7 +70,8 @@ import { DataTableDetailComponent } from './components/commons/data-table-detail
   ],
   providers: [
     DialogService,
-		DataTableDetailService
+		DataTableDetailService,
+		DataSourceService
 //    JsonpClientBackend,
 //    { provide: JsonpCallbackContext, useFactory: jsonpCallbackContext },
 //    { provide: HTTP_INTERCEPTORS, useClass: JsonpInterceptor, multi: true },

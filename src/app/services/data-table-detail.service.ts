@@ -12,6 +12,7 @@ interface Button {
 @Injectable()
 export class DataTableDetailService {
   dialogRef: MatDialogRef<DataTableDetailComponent>;
+	data: any[];
 
  constructor( private dialog: MatDialog ) { }
 
