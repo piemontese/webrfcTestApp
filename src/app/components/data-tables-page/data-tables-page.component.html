@@ -17,7 +17,9 @@
       <div fxLayout="column" fxLayout.xs="column" fxLayoutAlign="center center">
         <app-data-table style="width: 90%; min-width: 600px;" 
         								title="User list" 
-        								[buttons]="[ { caption:'View', icon: 'search', position: 'left', action: 'view', color: 'prymary', row: 1, tooltip: 'View item', disabled: true, multiSel: false },
+        								method='TH_USER_LIST'
+ 												table="USRLIST"
+ 												[buttons]="[ { caption:'View', icon: 'search', position: 'left', action: 'view', color: 'prymary', row: 1, tooltip: 'View item', disabled: true, multiSel: false },
         														 { caption:'Change', icon: 'edit', position: 'left', action: 'change', color: 'prymary', row: 1, tooltip: 'Change item', disabled: true, multiSel: false } ]"
         								[iconButtons]="[ { icon: 'refresh', position: 'right', action: 'refresh', color: 'prymary', row: 0, tooltip: 'Refresh data', disabled: false, multiSel: null } ]"
         								[displayedColumns]="['tid', 'mandt', 'bname', 'term', 'hostaddr', 'guiversion']" 
@@ -35,7 +37,9 @@
         								[filter]="false"
         								[buttons]="[ { caption:'View', icon: 'search', position: 'left', action: 'view', color: 'prymary', row: 1, tooltip: 'View item', disabled: true, multiSel: false } ]"
         								[iconButtons]="[ { icon: 'refresh', position: 'right', action: 'refresh', color: 'prymary', row: 0, tooltip: 'Refresh data', disabled: false, multiSel: null } ]"
-        								title="User list"></app-data-table>
+        								method='TH_USER_LIST'
+ 												table="USRLIST"
+ 												title="User list"></app-data-table>
       </div>
     </mat-expansion-panel>
 
@@ -76,5 +80,38 @@
  												table="POT_PLANT"> </app-data-table>
       </div>
     </mat-expansion-panel>
+
+    <mat-expansion-panel class="mat-elevation-z8">
+      <mat-expansion-panel-header>
+        <mat-panel-title>Menu actions </mat-panel-title>
+        <mat-panel-description> List of menu actions</mat-panel-description>
+      </mat-expansion-panel-header>
+      <div fxLayout="column" fxLayout.xs="column" fxLayoutAlign="center center">
+        <app-data-table style="width: 90%; min-width: 600px;" 
+        								title="Menu actions" 
+        								[buttons]="[ { caption:'View', icon: 'search', position: 'left', action: 'view', color: 'prymary', row: 1, tooltip: 'View item', disabled: true, multiSel: false },
+        														 { caption:'Change', icon: 'edit', position: 'left', action: 'change', color: 'prymary', row: 1, tooltip: 'Change item', disabled: true, multiSel: false } ]"
+        								[iconButtons]="[ { icon: 'refresh', position: 'right', action: 'refresh', color: 'prymary', row: 0, tooltip: 'Refresh data', disabled: false, multiSel: null } ]"
+												method='Z_WRFC_GET_MENU'
+ 												table="ET_MENU_ACTION"> </app-data-table>
+      </div>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel class="mat-elevation-z8">
+      <mat-expansion-panel-header>
+        <mat-panel-title>Menu methodss </mat-panel-title>
+        <mat-panel-description> List of menu methods</mat-panel-description>
+      </mat-expansion-panel-header>
+      <div fxLayout="column" fxLayout.xs="column" fxLayoutAlign="center center">
+        <app-data-table style="width: 90%; min-width: 600px;" 
+        								title="Menu methods" 
+        								[buttons]="[ { caption:'View', icon: 'search', position: 'left', action: 'view', color: 'prymary', row: 1, tooltip: 'View item', disabled: true, multiSel: false },
+        														 { caption:'Change', icon: 'edit', position: 'left', action: 'change', color: 'prymary', row: 1, tooltip: 'Change item', disabled: true, multiSel: false } ]"
+        								[iconButtons]="[ { icon: 'refresh', position: 'right', action: 'refresh', color: 'prymary', row: 0, tooltip: 'Refresh data', disabled: false, multiSel: null } ]"
+												method='Z_WRFC_GET_MENU'
+ 												table="ET_MENU_METHOD"> </app-data-table>
+      </div>
+    </mat-expansion-panel>
+
   </mat-accordion>
 </div>

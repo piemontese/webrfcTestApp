@@ -1,11 +1,12 @@
-import {Component, ViewChild, OnInit, Input} from '@angular/core';
-import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
-import {HttpClient} from '@angular/common/http';
+import { Component, ViewChild, OnInit, Input } from '@angular/core';
+import { DomSanitizer, SafeHtml, SafeUrl, SafeStyle } from '@angular/platform-browser';
+import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
+import { HttpClient } from '@angular/common/http';
 // import { Observable } from 'rxjs';
 
-import {DialogService} from '../../services/dialog.service';
-import {DataTableDetailService} from '../../services/data-table-detail.service';
-import {DataSourceService} from '../../services/data-source.service';
+import {DialogService} from '../../../services/dialog.service';
+import {DataTableDetailService} from '../../../services/data-table-detail.service';
+import {DataSourceService} from '../../../services/data-source.service';
 
 export interface Fields {
   name: string;
@@ -39,17 +40,22 @@ export interface IconButtons {
 }
 
 @Component({
-  selector: 'app-data-table',
-  templateUrl: './data-table.component.html',
-  styleUrls: ['./data-table.component.scss']
+  selector: 'app-base-data-table',
+  templateUrl: './base-data-table.component.html',
+  styleUrls: ['./base-data-table.component.scss']
 })
-export class DataTableComponent implements OnInit {
+export class BaseDataTableComponent implements OnInit {
   @Input() title = 'Sample table';
+  @Input() baseUrl = '';
+  @Input() jsonData = [];
+  @Input() type = 'POST';
+  @Input() contentType = 'application/json';
+  @Input() dataType = 'jsonp';
+  @Input() timeout = 60000; // sets timeout to 60 seconds
   @Input() filter = true;
   @Input() displayedColumns = [];
   @Input() displayedColumnsNames = [];
-  @Input() method = 'TH_USER_LIST';
-  @Input() table = 'USRLIST';
+  @Input() table = '';
   @Input() fields: Fields[] = [];
   @Input() buttons: Buttons[] = [];
   @Input() iconButtons: IconButtons[] = [];
@@ -58,17 +64,15 @@ export class DataTableComponent implements OnInit {
   dataSource: MatTableDataSource<any>;
   showFilter = true;
   data: any;
-  baseUrl = 'http://mnibm09.novellini.it:8066/sap/bc/webrfc';
-  _FUNCTION = 'Z_WRFC_INTERFACE';
   callback = 'JSONP_CALLBACK';
-  response: any;
+  response: any = [];
   progress = false;
   selectedItems: number[];
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(public dialogService: DialogService, public dataTableDetailService: DataTableDetailService, public dataSourceService: DataSourceService) {
+  constructor( protected http: HttpClient, public dialogService: DialogService, public dataTableDetailService: DataTableDetailService, public dataSourceService: DataSourceService ) {
     this.dataSource = new MatTableDataSource([]);
   }
 
@@ -140,7 +144,7 @@ export class DataTableComponent implements OnInit {
     }
   }
 
-  private changedCallback(result: any, fields: any[], caller: DataTableComponent) {
+  private changedCallback(result: any, fields: any[], caller: BaseDataTableComponent) {
     debugger;
     if (result === 'OK') {
       for (let i = 0; i < caller.dataSource.data.filter(item => item.selected === true).length; i++) {
@@ -174,51 +178,50 @@ export class DataTableComponent implements OnInit {
   }
 
   public getData()/*: Observable<any[]>*/ {
-    const jsonData = {
-      '_FUNCTION': this._FUNCTION,
-      'callback': this.callback,
-      'method': this.method,
-      'sap-client': '020',
-      'sap-language': 'EN',
-      'sap-user': 'novedev',
-      'sap-password': 'init1234'
-    };
-
+    debugger;
     for (let i = 0; i < this.fields.length; i++) {
       if (this.fields[i].value !== '') {
-        jsonData[this.fields[i].name.toUpperCase()] = this.fields[i].value;
+        this.jsonData[this.fields[i].name.toUpperCase()] = this.fields[i].value;
       }
     }
 
     const so = this;
     this.progress = true;
 
-		/*
-		let apiURL = `${this.apiRoot}?term=${term}&media=music&limit=20&callback=JSONP_CALLBACK`;
-		return this.http.get(apiURL) 
-				.map(res => { 
-					return res.json().results.map(item => { 
-						return new SearchItem( 
-								item.trackName,
-								item.artistName,
-								item.trackViewUrl,
-								item.artworkUrl30,
-								item.artistId
-						);
-					});
-				});
-		*/
+    this.http.get(this.baseUrl).subscribe(data => {
+      console.log(data);
+      so.response['results'] = data;
+      so.dataSource.data = so.response['results'];
+      so.progress = false;
+    });
+    return;
+
+    /*
+    let apiURL = `${this.apiRoot}?term=${term}&media=music&limit=20&callback=JSONP_CALLBACK`;
+    return this.http.get(apiURL)
+        .map(res => {
+          return res.json().results.map(item => {
+            return new SearchItem( 
+                item.trackName,
+                item.artistName,
+                item.trackViewUrl,
+                item.artworkUrl30,
+                item.artistId
+            );
+          });
+        });
+    */
 
     jQuery.ajax({
       url: this.baseUrl,
-      data: jsonData,
+      data: this.jsonData,
       async: false,
-      type: 'POST',
-      dataType: 'jsonp',
-      contentType: 'application/json',
+      type: this.type,
+      dataType: this.dataType,
+      contentType: this.contentType,
       crossDomain: true,
-      jsonpCallback: jsonData.callback,
-      timeout: 60000, // sets timeout to 60 seconds
+      jsonpCallback: this.jsonData['callback'],
+      timeout: this.timeout,
       success: function(data) {
         let i = 0;
         for (const item of so.displayedColumns) {
@@ -229,7 +232,10 @@ export class DataTableComponent implements OnInit {
         }
 
         so.response = data;
-        so.dataSource.data = so.response.results[so.table];
+        debugger;
+        if ( so.response.results ) {
+          so.dataSource.data = so.response.results[so.table];
+        }
 
         // decode URI
         for (let m = 0; m < so.dataSource.data.length; m++) {
@@ -328,5 +334,4 @@ export class DataTableComponent implements OnInit {
   }
 
 }
-
 

@@ -1,0 +1,95 @@
+.mat-header-row {
+	position: sticky;
+	top: 0;
+	background: white;
+	min-width: 1200px;
+}
+
+.mat-row {
+  background: white;
+  min-width: 1200px;
+}
+/* Structure */
+.example-container {
+	display: flex;
+	flex-direction: column;
+	min-width: 300px;
+}
+
+/*
+ * Styles to make the demo's cdk-table match the material design spec
+ * https://material.io/guidelines/components/data-tables.html
+ */
+.example-table {
+	flex: 1 1 auto;
+	overflow: auto;
+	max-height: 500px;
+}
+
+.example-header-row {
+	position: sticky;
+	top: 0;
+	display: flex;
+	border-top: 2px solid #ccc;
+	border-bottom: 2px solid #ccc;
+	align-items: center;
+	height: 40px;
+	padding: 0 8px;
+	background: white;
+}
+
+.example-row {
+	top: 32;
+	display: flex;
+	border-bottom: 1px solid #ccc;
+	align-items: center;
+	height: 32px;
+	padding: 0 8px;
+}
+
+.example-cell, .example-header-cell {
+	flex: 1;
+}
+
+.example-cell, .example-header-cell {
+	flex: 1;
+}
+
+.example-header-cell {
+	font-size: 13px;
+	font-weight: 500;
+	color: rgb(0, 0, 0);
+}
+
+.example-cell {
+	font-size: 13px;
+	color: rgba(0, 0, 0, 0.87);
+}
+
+.example-header {
+	min-height: 64px;
+	display: flex;
+	align-items: baseline;
+	padding: 8px 24px 0;
+	justify-content: space-between;
+}
+
+.mat-form-field {
+	font-size: 14px;
+	flex-grow: 1;
+	margin-right: 16px;
+}
+
+.mat-toolbar-row {
+	height: 60px;
+}
+
+mat-row:hover {
+  background-color: rgb(250,250,250);
+  cursor: pointer;
+}
+
+.selected-row {
+  background-color: rgb(240,240,240);
+}
+

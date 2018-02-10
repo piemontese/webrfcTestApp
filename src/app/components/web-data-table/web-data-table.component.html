@@ -1,11 +1,3 @@
-<div fxLayout="column" fxLayoutAlign="center center">
-  <mat-accordion>
-    <mat-expansion-panel class="mat-elevation-z8">
-      <mat-expansion-panel-header>
-        <mat-panel-title> User list </mat-panel-title>
-        <mat-panel-description> List of users from https://jsonplaceholder.typicode.com/users</mat-panel-description>
-      </mat-expansion-panel-header>
-      <div fxLayout="column" fxLayout.xs="column" fxLayoutAlign="center center">
         <app-base-data-table style="width: 90%; min-width: 600px;" 
  		        								 title="User list" 
 		        								 baseUrl="https://jsonplaceholder.typicode.com/users"
@@ -15,9 +7,3 @@
 		        								 [iconButtons]="[ { icon: 'refresh', position: 'right', action: 'refresh', color: 'prymary', row: 0, tooltip: 'Refresh data', disabled: false, multiSel: null } ]"
 		        								 [displayedColumns]="['name', 'email', 'phone', 'company']" 
 		        								 [displayedColumnsNames]="['Name', 'Email', 'Phone', 'Company']"> </app-base-data-table>
-      </div>
-    </mat-expansion-panel>
-    
-    </mat-accordion>
-</div>
-

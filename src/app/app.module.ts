@@ -36,6 +36,8 @@ import { DataSourceService } from './services/data-source.service';
 import { WebrfcPageComponent } from './components/webrfc-page/webrfc-page.component';
 import { DataTablesPageComponent } from './components/data-tables-page/data-tables-page.component';
 import { WebDataTablePageComponent } from './components/web-data-table-page/web-data-table-page.component';
+import { BaseDataTableComponent } from './components/commons/base-data-table/base-data-table.component';
+import { WebDataTableComponent } from './components/web-data-table/web-data-table.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +49,9 @@ import { WebDataTablePageComponent } from './components/web-data-table-page/web-
     DataTableDetailComponent,
     WebrfcPageComponent,
     DataTablesPageComponent,
-    WebDataTablePageComponent
+    WebDataTablePageComponent,
+    BaseDataTableComponent,
+    WebDataTableComponent
   ],
   imports: [
     BrowserModule,
