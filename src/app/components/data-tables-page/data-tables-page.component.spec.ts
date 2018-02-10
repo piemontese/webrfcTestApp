@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ParameterComponent } from './parameter.component';
+import { DataTablesPageComponent } from './data-tables-page.component';
 
-describe('ParameterComponent', () => {
-  let component: ParameterComponent;
-  let fixture: ComponentFixture<ParameterComponent>;
+describe('DataTablesPageComponent', () => {
+  let component: DataTablesPageComponent;
+  let fixture: ComponentFixture<DataTablesPageComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ParameterComponent ]
+      declarations: [ DataTablesPageComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ParameterComponent);
+    fixture = TestBed.createComponent(DataTablesPageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

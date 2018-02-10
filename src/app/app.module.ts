@@ -24,7 +24,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import 'jquery';
-import { ParameterComponent } from './components/parameter/parameter.component';
 import { DataTableComponent } from './components/data-table/data-table.component';
 import { DialogComponent } from './components/commons/dialog/dialog.component';
 
@@ -34,16 +33,21 @@ import { PositionPipe } from './pipes/position.pipe';
 import { RowPipe } from './pipes/row.pipe';
 import { DataTableDetailComponent } from './components/commons/data-table-detail/data-table-detail.component';
 import { DataSourceService } from './services/data-source.service';
+import { WebrfcPageComponent } from './components/webrfc-page/webrfc-page.component';
+import { DataTablesPageComponent } from './components/data-tables-page/data-tables-page.component';
+import { WebDataTablePageComponent } from './components/web-data-table-page/web-data-table-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ParameterComponent,
     DataTableComponent,
     DialogComponent,
     PositionPipe,
     RowPipe,
-    DataTableDetailComponent
+    DataTableDetailComponent,
+    WebrfcPageComponent,
+    DataTablesPageComponent,
+    WebDataTablePageComponent
   ],
   imports: [
     BrowserModule,

@@ -1,6 +1,4 @@
-import { Component } from '@angular/core';
-/*
-import { Component, Inject, Injectable } from '@angular/core';
+import { Component, OnInit, Inject, Injectable } from '@angular/core';
 import { HttpClient, JsonpClientBackend } from '@angular/common/http';
 import { HttpParams } from '@angular/common/http';
 import { HttpHeaders  } from '@angular/common/http';
@@ -13,7 +11,7 @@ import 'rxjs/add/operator/distinctUntilChanged';
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/do';
 
-import { DialogService } from './services/dialog.service';
+import { DialogService } from '../../services/dialog.service';
 
 interface Fields {
   parameter: string;
@@ -22,15 +20,13 @@ interface Fields {
 
 
 @Injectable()
-*/
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  selector: 'app-webrfc-page',
+  templateUrl: './webrfc-page.component.html',
+  styleUrls: ['./webrfc-page.component.scss']
 })
-export class AppComponent {
-  title = 'Webrfc Demo';
-	/*
+export class WebrfcPageComponent implements OnInit {
+	title = 'Dynamic sample';
   fields: Fields[] = [];
   form: FormGroup;
   baseUrl = 'http://mnibm09.novellini.it:8066/sap/bc/webrfc';
@@ -46,12 +42,9 @@ export class AppComponent {
   sapPassword = 'init1234';
   sapClient = '';
   sapLanguage = '';
-*/
-	
-  constructor( /*public dialogService: DialogService, private http: HttpClient, private jsonp: Jsonp*/ ) {
-  }
 
-	/*
+  constructor( public dialogService: DialogService, private http: HttpClient, private jsonp: Jsonp) { }
+
   addField() {
     this.fields.push({ parameter: '', value: '' });
   }
@@ -88,6 +81,16 @@ export class AppComponent {
     const headers = new HttpHeaders()
         .set('Authorization', 'novedev init1234');
     const webrfcUrl = `${this.baseUrl}?_FUNTION=${this.method}&callback${this.method}`;
+    /*
+   return this.jsonp.request(webrfcUrl)
+     .map(res => {
+        return res.json().results.map(item => {
+          return item;
+        });
+      });
+    }
+     * */
+
 //    return this.http.jsonp(webrfcUrl, 'callback');
 
     const jsonData = {
@@ -171,7 +174,17 @@ export class AppComponent {
             );
         }
     });
+    /*
+    .catch( function(e) {
+       debugger;
+       if ( e.statusText === 'timeout') {
+         alert('Native Promise: Failed from timeout');
+       }
+     });
+     * */
   }
-*/
+
+  ngOnInit() {
+  }
 
 }

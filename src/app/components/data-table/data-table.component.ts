@@ -1,5 +1,7 @@
-import {Component, ViewChild, OnInit, Input} from '@angular/core';
-import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
+import { Component, ViewChild, OnInit, Input } from '@angular/core';
+import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 import { DialogService } from '../../services/dialog.service';
 import { DataTableDetailService } from '../../services/data-table-detail.service';
@@ -171,7 +173,7 @@ export class DataTableComponent implements OnInit {
     this.enableDisableButtons();
   }
 
-  public getData() {
+	public getData()/*: Observable<any[]>*/ {
     const jsonData = {
       '_FUNCTION': this._FUNCTION,
       'callback': this.callback,
@@ -190,6 +192,23 @@ export class DataTableComponent implements OnInit {
 
     const so = this;
     this.progress = true;
+		
+		/*
+		let apiURL = `${this.apiRoot}?term=${term}&media=music&limit=20&callback=JSONP_CALLBACK`;
+		return this.http.get(apiURL) 
+				.map(res => { 
+					return res.json().results.map(item => { 
+						return new SearchItem( 
+								item.trackName,
+								item.artistName,
+								item.trackViewUrl,
+								item.artworkUrl30,
+								item.artistId
+						);
+					});
+				});
+		*/
+		
     jQuery.ajax({
       url: this.baseUrl,
       data: jsonData,
