@@ -188,13 +188,26 @@ export class BaseDataTableComponent implements OnInit {
     const so = this;
     this.progress = true;
 
-    this.http.get(this.baseUrl).subscribe(data => {
-      console.log(data);
-      so.response['results'] = data;
-      so.dataSource.data = so.response['results'];
-      so.progress = false;
-    });
-    return;
+		switch ( this.type ) {
+			case 'GET': {
+				this.http.get(this.baseUrl).subscribe(data => {
+					console.log(data);
+					so.response['results'] = data;
+					so.dataSource.data = so.response['results'];
+					so.progress = false;
+				});
+				break;
+			}	// case 'GET':
+			case 'PUT': {
+				let httpOptions: HttpOptions;
+				this.http.put(this.baseUrl, httpOptions).subscribe(data => {
+					console.log(data);
+					so.response['results'] = data;
+					so.dataSource.data = so.response['results'];
+					so.progress = false;
+				});
+				break;
+			} // case 'PUT':
 
     /*
     let apiURL = `${this.apiRoot}?term=${term}&media=music&limit=20&callback=JSONP_CALLBACK`;
@@ -212,84 +225,101 @@ export class BaseDataTableComponent implements OnInit {
         });
     */
 
-    jQuery.ajax({
-      url: this.baseUrl,
-      data: this.jsonData,
-      async: false,
-      type: this.type,
-      dataType: this.dataType,
-      contentType: this.contentType,
-      crossDomain: true,
-      jsonpCallback: this.jsonData['callback'],
-      timeout: this.timeout,
-      success: function(data) {
-        let i = 0;
-        for (const item of so.displayedColumns) {
-          if (!so.displayedColumnsNames[i] || so.displayedColumnsNames[i] === '') {
-            so.displayedColumnsNames[i] = item;
-          }
-          i++;
-        }
+			case 'JSONP': {
+				jQuery.ajax({
+					url: this.baseUrl,
+					data: this.jsonData,
+					async: false,
+					type: this.type,
+					dataType: this.dataType,
+					contentType: this.contentType,
+					crossDomain: true,
+					jsonpCallback: this.jsonData['callback'],
+					timeout: this.timeout,
+					success: function(data) {
+						let i = 0;
+						for (const item of so.displayedColumns) {
+							if (!so.displayedColumnsNames[i] || so.displayedColumnsNames[i] === '') {
+								so.displayedColumnsNames[i] = item;
+							}
+							i++;
+						}
 
-        so.response = data;
-        debugger;
-        if ( so.response.results ) {
-          so.dataSource.data = so.response.results[so.table];
-        }
+						so.response = data;
+						debugger;
+						if ( so.response.results ) {
+							so.dataSource.data = so.response.results[so.table];
+						}
 
-        // decode URI
-        for (let m = 0; m < so.dataSource.data.length; m++) {
-          const rec = so.dataSource.data[m];
-          for (const [key, value] of Object.entries(rec)) {
-            so.dataSource.data[m][key] = decodeURIComponent(value);
-          }
-        }
+						// decode URI
+						for (let m = 0; m < so.dataSource.data.length; m++) {
+							const rec = so.dataSource.data[m];
+							for (const [key, value] of Object.entries(rec)) {
+								so.dataSource.data[m][key] = decodeURIComponent(value);
+							}
+						}
 
-        if (so.displayedColumns.length === 0) {
-          i = 0;
-          debugger;
-          const rec = so.dataSource.data[0];
-          for (const [key, value] of Object.entries(rec)) {
-            so.displayedColumns[i] = key;
-            so.displayedColumnsNames[i] = key;
-            i++;
-          }
-          /*
-          for ( const item of rec ) {
-            so.displayedColumns[i] = item;
-            so.displayedColumnsNames[i] = item;
-            i++;
-          }
-          */
-        }
-        so.progress = false;
-      },
-      error: function(data, status, error) {
-        /*
-        so.response = [];
-        so.response['results'] = { 'USRLIST': [{'tid': '1', 'mandt': '', 'vbname': '', 'termv': '', 'hostaddr': ''}]  };
-        so.dataSource.data = so.response.results['USRLIST'];
-        */
-        so.progress = false;
-        so.dialogService.open(so.title,   // title
-          ['Server unavailable'],  // array of messages
-          'message',   // dialog type
-          'error',   // message type
-          [
-            {caption: 'Close', color: 'primary', close: true},
-            //                           { caption: "Cancel", color: "warn", close: true }
-          ]  // buttons
-        );
-      }
-    });
-    /*
-    .catch( function(e) {
-       debugger;
-       if ( e.statusText === 'timeout') {
-         alert('Native Promise: Failed from timeout');
-       }
-     });
-     * */
+						if (so.displayedColumns.length === 0) {
+							i = 0;
+							debugger;
+							const rec = so.dataSource.data[0];
+							for (const [key, value] of Object.entries(rec)) {
+								so.displayedColumns[i] = key;
+								so.displayedColumnsNames[i] = key;
+								i++;
+							}
+							/*
+							for ( const item of rec ) {
+								so.displayedColumns[i] = item;
+								so.displayedColumnsNames[i] = item;
+								i++;
+							}
+							*/
+						}
+						so.progress = false;
+					},
+					error: function(data, status, error) {
+						/*
+						so.response = [];
+						so.response['results'] = { 'USRLIST': [{'tid': '1', 'mandt': '', 'vbname': '', 'termv': '', 'hostaddr': ''}]  };
+						so.dataSource.data = so.response.results['USRLIST'];
+						*/
+						so.progress = false;
+						so.dialogService.open(so.title,   // title
+																	['Server unavailable'],  // array of messages
+																	'message',   // dialog type
+																	'error',   // message type
+																	[
+																		{caption: 'Close', color: 'primary', close: true},
+																		//                           { caption: "Cancel", color: "warn", close: true }
+																	]  // buttons
+																);
+					}
+				});
+				/*
+				.catch( function(e) {
+					 debugger;
+					 if ( e.statusText === 'timeout') {
+						 alert('Native Promise: Failed from timeout');
+					 }
+				 });
+				 * */
+				break;
+			}	// case 'JSONP' :
+			default: {
+				so.dialogService.open(so.title,   // title
+															['type ' + this.type + ' invalid.'],  // array of messages
+															'message',   // dialog type
+															'error',   // message type
+															[
+																{caption: 'Close', color: 'primary', close: true},
+																//                           { caption: "Cancel", color: "warn", close: true }
+															]  // buttons
+														);
+				so.progress = false;
+				break;
+  	}
+
   }
 
 
