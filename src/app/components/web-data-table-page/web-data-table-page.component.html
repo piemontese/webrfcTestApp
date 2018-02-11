@@ -9,16 +9,43 @@
         <app-base-data-table style="width: 90%; min-width: 600px;" 
  		        								 title="User list" 
 		        								 baseUrl="https://jsonplaceholder.typicode.com/users"
-		        								 dataType='json'        								
+		        								 dataType='json'
+		        								 type="GET"        								
 		        								 [buttons]="[ { caption:'View', icon: 'search', position: 'left', action: 'view', color: 'prymary', row: 1, tooltip: 'View item', disabled: true, multiSel: false },
 		        								  						{ caption:'Change', icon: 'edit', position: 'left', action: 'change', color: 'prymary', row: 1, tooltip: 'Change item', disabled: true, multiSel: false } ]"
 		        								 [iconButtons]="[ { icon: 'refresh', position: 'right', action: 'refresh', color: 'prymary', row: 0, tooltip: 'Refresh data', disabled: false, multiSel: null } ]"
-														 type="GET"
 		        								 [displayedColumns]="['name', 'email', 'phone', 'company']" 
 		        								 [displayedColumnsNames]="['Name', 'Email', 'Phone', 'Company']"> </app-base-data-table>
       </div>
     </mat-expansion-panel>
     
     </mat-accordion>
+
+  <mat-accordion>
+    <mat-expansion-panel class="mat-elevation-z8">
+      <mat-expansion-panel-header>
+        <mat-panel-title> Exchange rates </mat-panel-title>
+        <mat-panel-description> Exchange rates Banca d'Italia</mat-panel-description>
+      </mat-expansion-panel-header>
+      <div fxLayout="column" fxLayout.xs="column" fxLayoutAlign="center center">
+        <app-base-data-table style="width: 90%; min-width: 600px;" 
+ 		        								 title="Exchange rates" 
+		        								 baseUrl="GET https://tassidicambio.bancaditalia.it/terzevalute-wf-web/rest/v1.0/currencies"
+		        								 dataType='json'    
+		        								 type="GET"    								
+		        								 [fields]="[ { name: 'referenceDate', value:'', type: 'text', placeholder: 'Reference date' },
+		        													   { name: 'lang', value:'', type: 'text', placeholder: 'Language' },
+		        													   { name: 'baseCurrencyIsoCode', value:'', type: 'text', placeholder: 'Base currency ISO code' },
+		        													   { name: 'currencyIsoCode', value:'EUR', type: 'text', placeholder: 'Currency ISO code' }	]"
+		        								 [buttons]="[ { caption:'View', icon: 'search', position: 'left', action: 'view', color: 'prymary', row: 1, tooltip: 'View item', disabled: true, multiSel: false },
+		        								  						{ caption:'Change', icon: 'edit', position: 'left', action: 'change', color: 'prymary', row: 1, tooltip: 'Change item', disabled: true, multiSel: false } ]"
+		        								 [iconButtons]="[ { icon: 'refresh', position: 'right', action: 'refresh', color: 'prymary', row: 0, tooltip: 'Refresh data', disabled: false, multiSel: null } ]"
+		        								 [displayedColumns]="['name', 'email', 'phone', 'company']" 
+		        								 [displayedColumnsNames]="['Name', 'Email', 'Phone', 'Company']"> </app-base-data-table>
+      </div>
+    </mat-expansion-panel>
+    
+    </mat-accordion>
+
 </div>
 

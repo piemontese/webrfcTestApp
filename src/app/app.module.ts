@@ -16,6 +16,7 @@ import { MatListModule  } from '@angular/material';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 
 import 'hammerjs';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -73,13 +74,14 @@ import { WebDataTableComponent } from './components/web-data-table/web-data-tabl
     MatExpansionModule,
     MatGridListModule,
     MatProgressBarModule,
+    MatDatepickerModule,
     FlexLayoutModule,
     AppRoutingModule
   ],
   providers: [
     DialogService,
-		DataTableDetailService,
-		DataSourceService
+    DataTableDetailService,
+    DataSourceService
 //    JsonpClientBackend,
 //    { provide: JsonpCallbackContext, useFactory: jsonpCallbackContext },
 //    { provide: HTTP_INTERCEPTORS, useClass: JsonpInterceptor, multi: true },

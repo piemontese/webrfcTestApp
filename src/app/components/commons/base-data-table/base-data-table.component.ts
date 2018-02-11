@@ -1,7 +1,7 @@
-import { Component, ViewChild, OnInit, Input } from '@angular/core';
-import { DomSanitizer, SafeHtml, SafeUrl, SafeStyle } from '@angular/platform-browser';
-import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
-import { HttpClient } from '@angular/common/http';
+import {Component, ViewChild, OnInit, Input} from '@angular/core';
+import {DomSanitizer, SafeHtml, SafeUrl, SafeStyle} from '@angular/platform-browser';
+import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
+import {HttpClient} from '@angular/common/http';
 // import { Observable } from 'rxjs';
 
 import {DialogService} from '../../../services/dialog.service';
@@ -72,7 +72,7 @@ export class BaseDataTableComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor( protected http: HttpClient, public dialogService: DialogService, public dataTableDetailService: DataTableDetailService, public dataSourceService: DataSourceService ) {
+  constructor(protected http: HttpClient, public dialogService: DialogService, public dataTableDetailService: DataTableDetailService, public dataSourceService: DataSourceService) {
     this.dataSource = new MatTableDataSource([]);
   }
 
@@ -129,6 +129,7 @@ export class BaseDataTableComponent implements OnInit {
             }
           }
           this.dataTableDetailService.data = this.dataSource.data;
+          let caller = this;
           this.dataTableDetailService.open(this.title + ' change item',   // title
             'edit',                   // mode
             detailFields,
@@ -137,7 +138,7 @@ export class BaseDataTableComponent implements OnInit {
               {caption: 'OK', color: 'primary', close: true}
             ],  // buttons
             this.changedCallback,      // callback
-            this         // caller
+            caller         // caller
           );
         }
       }
@@ -188,86 +189,86 @@ export class BaseDataTableComponent implements OnInit {
     const so = this;
     this.progress = true;
 
-		switch ( this.type ) {
-			case 'GET': {
-				this.http.get(this.baseUrl).subscribe(data => {
-					console.log(data);
-					so.response['results'] = data;
-					so.dataSource.data = so.response['results'];
-					so.progress = false;
-				});
-				break;
-			}	// case 'GET':
-			case 'PUT': {
-				let httpOptions: HttpOptions;
-				this.http.put(this.baseUrl, httpOptions).subscribe(data => {
-					console.log(data);
-					so.response['results'] = data;
-					so.dataSource.data = so.response['results'];
-					so.progress = false;
-				});
-				break;
-			} // case 'PUT':
-
-    /*
-    let apiURL = `${this.apiRoot}?term=${term}&media=music&limit=20&callback=JSONP_CALLBACK`;
-    return this.http.get(apiURL)
-        .map(res => {
-          return res.json().results.map(item => {
-            return new SearchItem( 
-                item.trackName,
-                item.artistName,
-                item.trackViewUrl,
-                item.artworkUrl30,
-                item.artistId
-            );
-          });
+    switch (this.type.toLowerCase()) {
+      case 'get': {
+        this.http.get(this.baseUrl).subscribe(data => {
+          console.log(data);
+          so.response['results'] = data;
+          so.dataSource.data = so.response['results'];
+          so.progress = false;
         });
-    */
+        break;
+      }	// case 'GET':
+      case 'post': {
+        let httpOptions: HttpOptions;
+        this.http.post(this.baseUrl, httpOptions).subscribe(data => {
+          console.log(data);
+          so.response['results'] = data;
+          so.dataSource.data = so.response['results'];
+          so.progress = false;
+        });
+        break;
+      } // case 'PUT':
 
-			case 'JSONP': {
-				jQuery.ajax({
-					url: this.baseUrl,
-					data: this.jsonData,
-					async: false,
-					type: this.type,
-					dataType: this.dataType,
-					contentType: this.contentType,
-					crossDomain: true,
-					jsonpCallback: this.jsonData['callback'],
-					timeout: this.timeout,
-					success: function(data) {
-						let i = 0;
-						for (const item of so.displayedColumns) {
-							if (!so.displayedColumnsNames[i] || so.displayedColumnsNames[i] === '') {
-								so.displayedColumnsNames[i] = item;
-							}
-							i++;
-						}
+      /*
+      let apiURL = `${this.apiRoot}?term=${term}&media=music&limit=20&callback=JSONP_CALLBACK`;
+      return this.http.get(apiURL)
+          .map(res => {
+            return res.json().results.map(item => {
+              return new SearchItem( 
+                  item.trackName,
+                  item.artistName,
+                  item.trackViewUrl,
+                  item.artworkUrl30,
+                  item.artistId
+              );
+            });
+          });
+      */
 
-						so.response = data;
-						debugger;
-						if ( so.response.results ) {
-							so.dataSource.data = so.response.results[so.table];
-						}
+      case 'jsonp': {
+        jQuery.ajax({
+          url: this.baseUrl,
+          data: this.jsonData,
+          async: false,
+          type: this.type,
+          dataType: this.dataType,
+          contentType: this.contentType,
+          crossDomain: true,
+          jsonpCallback: this.jsonData['callback'],
+          timeout: this.timeout,
+          success: function(data) {
+            let i = 0;
+            for (const item of so.displayedColumns) {
+              if (!so.displayedColumnsNames[i] || so.displayedColumnsNames[i] === '') {
+                so.displayedColumnsNames[i] = item;
+              }
+              i++;
+            }
 
-						// decode URI
-						for (let m = 0; m < so.dataSource.data.length; m++) {
-							const rec = so.dataSource.data[m];
-							for (const [key, value] of Object.entries(rec)) {
-								so.dataSource.data[m][key] = decodeURIComponent(value);
-							}
-						}
+            so.response = data;
+            debugger;
+            if (so.response.results) {
+              so.dataSource.data = so.response.results[so.table];
+            }
 
-						if (so.displayedColumns.length === 0) {
-							i = 0;
-							debugger;
-							const rec = so.dataSource.data[0];
-							for (const [key, value] of Object.entries(rec)) {
-								so.displayedColumns[i] = key;
-								so.displayedColumnsNames[i] = key;
-								i++;
-							}
+            // decode URI
+            for (let m = 0; m < so.dataSource.data.length; m++) {
+              const rec = so.dataSource.data[m];
+              for (const [key, value] of Object.entries(rec)) {
+                so.dataSource.data[m][key] = decodeURIComponent(value);
+              }
+            }
+
+            if (so.displayedColumns.length === 0) {
+              i = 0;
+              debugger;
+              const rec = so.dataSource.data[0];
+              for (const [key, value] of Object.entries(rec)) {
+                so.displayedColumns[i] = key;
+                so.displayedColumnsNames[i] = key;
+                i++;
+              }
 							/*
 							for ( const item of rec ) {
 								so.displayedColumns[i] = item;
@@ -275,27 +276,27 @@ export class BaseDataTableComponent implements OnInit {
 								i++;
 							}
 							*/
-						}
-						so.progress = false;
-					},
-					error: function(data, status, error) {
+            }
+            so.progress = false;
+          },
+          error: function(data, status, error) {
 						/*
 						so.response = [];
 						so.response['results'] = { 'USRLIST': [{'tid': '1', 'mandt': '', 'vbname': '', 'termv': '', 'hostaddr': ''}]  };
 						so.dataSource.data = so.response.results['USRLIST'];
 						*/
-						so.progress = false;
-						so.dialogService.open(so.title,   // title
-																	['Server unavailable'],  // array of messages
-																	'message',   // dialog type
-																	'error',   // message type
-																	[
-																		{caption: 'Close', color: 'primary', close: true},
-																		//                           { caption: "Cancel", color: "warn", close: true }
-																	]  // buttons
-																);
-					}
-				});
+            so.progress = false;
+            so.dialogService.open(so.title,   // title
+              ['Server unavailable'],  // array of messages
+              'message',   // dialog type
+              'error',   // message type
+              [
+                {caption: 'Close', color: 'primary', close: true},
+                //                           { caption: "Cancel", color: "warn", close: true }
+              ]  // buttons
+            );
+          }
+        });
 				/*
 				.catch( function(e) {
 					 debugger;
@@ -304,23 +305,23 @@ export class BaseDataTableComponent implements OnInit {
 					 }
 				 });
 				 * */
-				break;
-			}	// case 'JSONP' :
-			default: {
-				so.dialogService.open(so.title,   // title
-															['type ' + this.type + ' invalid.'],  // array of messages
-															'message',   // dialog type
-															'error',   // message type
-															[
-																{caption: 'Close', color: 'primary', close: true},
-																//                           { caption: "Cancel", color: "warn", close: true }
-															]  // buttons
-														);
-				so.progress = false;
-				break;
-  	}
+        break;
+      }	// case 'JSONP' :
+      default: {
+        so.dialogService.open(so.title,   // title
+          ['type ' + this.type + ' invalid.'],  // array of messages
+          'message',   // dialog type
+          'error',   // message type
+          [
+            {caption: 'Close', color: 'primary', close: true},
+            //                           { caption: "Cancel", color: "warn", close: true }
+          ]  // buttons
+        );
+        so.progress = false;
+        break;
+      }
 
-  }
+    }
 
 
   protected refresh() {

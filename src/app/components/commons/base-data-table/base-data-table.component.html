@@ -83,11 +83,21 @@
 		<mat-toolbar-row *ngIf="fields.length > 0 || filter"> 
 			<div fxLayout="row" fxFlex fxLayoutAlign="left">
 				<mat-form-field *ngFor="let field of fields; let i=index;"> 
-					<input matInput
-				  			 [placeholder]="field.placeholder"
-								 [name]="field.name"
-								 [(ngModel)]="field.value"
-								 [type]="field.type"> 
+					<div *ngIf="type !== 'date'">
+						<input matInput
+					  			 [placeholder]="field.placeholder"
+									 [name]="field.name"
+									 [(ngModel)]="field.value"
+									 [type]="field.type"> 
+					</div>
+					<div *ngIf="type === 'date'">
+						<input matInput 
+									 [matDatepicker]="field.name" 
+						 			 [placeholder]="field.placeholder"
+		 							 [(ngModel)]="field.value"> 
+				  	<mat-datepicker-toggle matSuffix [for]="field.name"></mat-datepicker-toggle>
+				  	<mat-datepicker #picker></mat-datepicker>
+				  </div>
 			  </mat-form-field> 
 				
 			  <mat-form-field *ngIf="filter"> 
