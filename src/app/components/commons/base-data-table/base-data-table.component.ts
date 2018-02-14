@@ -137,8 +137,8 @@ export class BaseDataTableComponent implements OnInit {
               {caption: 'Cancel', color: 'warn', close: true},
               {caption: 'OK', color: 'primary', close: true}
             ],  // buttons
-            this.changedCallback,      // callback
-            caller         // caller
+//            this.changedCallback,      // callback
+//            caller         // caller
           );
         }
       }
@@ -199,6 +199,7 @@ export class BaseDataTableComponent implements OnInit {
         });
         break;
       }	// case 'GET':
+      /*
       case 'post': {
         let httpOptions: HttpOptions;
         this.http.post(this.baseUrl, httpOptions).subscribe(data => {
@@ -322,6 +323,7 @@ export class BaseDataTableComponent implements OnInit {
       }
 
     }
+  }
 
 
   protected refresh() {
