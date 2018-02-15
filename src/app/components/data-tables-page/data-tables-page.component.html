@@ -113,5 +113,32 @@
       </div>
     </mat-expansion-panel>
 
+    <mat-expansion-panel class="mat-elevation-z8">
+      <mat-expansion-panel-header>
+        <mat-panel-title>DB02 </mat-panel-title>
+        <mat-panel-description> Get the space history of all tablespaces</mat-panel-description>
+      </mat-expansion-panel-header>
+      <div fxLayout="column" fxLayout.xs="column" fxLayoutAlign="center center">
+        <app-data-table style="width: 90%; min-width: 600px;" 
+        								title="Tablespaces History" 
+        								[buttons]="[ { caption:'View', icon: 'search', position: 'left', action: 'view', color: 'prymary', row: 1, tooltip: 'View item', disabled: true, multiSel: false },
+        														 { caption:'Change', icon: 'edit', position: 'left', action: 'change', color: 'prymary', row: 1, tooltip: 'Change item', disabled: true, multiSel: false } ]"
+        								[iconButtons]="[ { icon: 'refresh', position: 'right', action: 'refresh', color: 'prymary', row: 0, tooltip: 'Refresh data', disabled: false, multiSel: null } ]"
+        								[fields]="[ { name: 'SELECT_DAYS_WEEKS_OR_MONTHS', value:'DAYS', type: 'text', placeholder: 'Period (DAYS, WEEKS or MONTHS)' } ]"
+												method='DB_ORA_TABLESPACE_HISTORY'
+ 												table="HIST1"> </app-data-table>
+      </div>
+      <div fxLayout="column" fxLayout.xs="column" fxLayoutAlign="center center">
+        <app-data-table style="width: 90%; min-width: 600px;" 
+        								title="Summary of Tablespace History" 
+        								[buttons]="[ { caption:'View', icon: 'search', position: 'left', action: 'view', color: 'prymary', row: 1, tooltip: 'View item', disabled: true, multiSel: false },
+        														 { caption:'Change', icon: 'edit', position: 'left', action: 'change', color: 'prymary', row: 1, tooltip: 'Change item', disabled: true, multiSel: false } ]"
+        								[iconButtons]="[ { icon: 'refresh', position: 'right', action: 'refresh', color: 'prymary', row: 0, tooltip: 'Refresh data', disabled: false, multiSel: null } ]"
+        								[fields]="[ { name: 'SELECT_DAYS_WEEKS_OR_MONTHS', value:'DAYS', type: 'text', placeholder: 'Period (DAYS, WEEKS or MONTHS)' } ]"
+												method='DB_ORA_TABLESPACE_HISTORY'
+ 												table="SUM_1"> </app-data-table>
+      </div>
+    </mat-expansion-panel>
+
   </mat-accordion>
 </div>
