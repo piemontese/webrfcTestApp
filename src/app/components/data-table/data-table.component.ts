@@ -186,7 +186,7 @@ export class DataTableComponent implements OnInit {
 
     for (let i = 0; i < this.fields.length; i++) {
       if (this.fields[i].value !== '') {
-        jsonData[this.fields[i].name.toUpperCase()] = this.fields[i].value;
+        jsonData[this.fields[i].name/*.toUpperCase()*/] = this.fields[i].value;
       }
     }
 
@@ -232,6 +232,18 @@ export class DataTableComponent implements OnInit {
         so.dataSource.data = so.response.results[so.table];
 
         // decode URI
+        for (let m = 0; m < so.response.dictionary.length; m++) {
+          const rec = so.response.dictionary[m];
+          for (const [key, value] of Object.entries(rec)) {
+            so.response.dictionary[m][key] = decodeURIComponent(value);
+          }
+        }
+
+
+        let dictionary = so.response.dictionary;
+        debugger;
+
+        // decode URI
         for (let m = 0; m < so.dataSource.data.length; m++) {
           const rec = so.dataSource.data[m];
           for (const [key, value] of Object.entries(rec)) {
@@ -239,22 +251,29 @@ export class DataTableComponent implements OnInit {
           }
         }
 
+        // if no specified displayed columns
         if (so.displayedColumns.length === 0) {
           i = 0;
-          debugger;
           const rec = so.dataSource.data[0];
           for (const [key, value] of Object.entries(rec)) {
             so.displayedColumns[i] = key;
             so.displayedColumnsNames[i] = key;
             i++;
           }
-          /*
-          for ( const item of rec ) {
-            so.displayedColumns[i] = item;
-            so.displayedColumnsNames[i] = item;
-            i++;
+        }
+        so.displayedColumnsNames = [];
+          debugger;
+        for ( let i = 0; i < so.response.dictionary.length; i++ ) {
+          const rec = so.response.dictionary[i];
+          for (const [key, value] of Object.entries(rec)) {
+            if ( key === 'small_descr' ) {
+              if ( value !== '' ) {
+                so.displayedColumnsNames[i] = value;
+              } else { 
+                so.displayedColumnsNames[i] = so.response.dictionary[i].name.replace('"', '').replace('"', '');
+              }
+            }
           }
-          */
         }
         so.progress = false;
       },
