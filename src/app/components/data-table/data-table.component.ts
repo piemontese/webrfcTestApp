@@ -262,18 +262,23 @@ export class DataTableComponent implements OnInit {
           }
         }
         so.displayedColumnsNames = [];
-          debugger;
-        for ( let i = 0; i < so.response.dictionary.length; i++ ) {
-          const rec = so.response.dictionary[i];
-          for (const [key, value] of Object.entries(rec)) {
-            if ( key === 'small_descr' ) {
-              if ( value !== '' ) {
-                so.displayedColumnsNames[i] = value;
-              } else { 
-                so.displayedColumnsNames[i] = so.response.dictionary[i].name.replace('"', '').replace('"', '');
+        debugger;
+        const rec = so.dataSource.data[0];
+          i = 0;
+        for (const [key, value] of Object.entries(rec)) {
+//          for (let i = 0; i < so.response.dictionary.length; i++) {
+            const rec2 = so.response.dictionary.filter(item => item.name === key)[0];
+            for (const [key2, value2] of Object.entries(rec2)) {
+              if (key2 === 'small_descr') {
+                if (value2 !== '') {
+                  so.displayedColumnsNames[i] = value2;
+                } else {
+                  so.displayedColumnsNames[i] = so.response.dictionary[i].name.replace('"', '').replace('"', '');
+                }
+                i++;
               }
             }
-          }
+//          }
         }
         so.progress = false;
       },
