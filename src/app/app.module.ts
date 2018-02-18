@@ -39,6 +39,7 @@ import { DataTablesPageComponent } from './components/data-tables-page/data-tabl
 import { WebDataTablePageComponent } from './components/web-data-table-page/web-data-table-page.component';
 import { BaseDataTableComponent } from './components/commons/base-data-table/base-data-table.component';
 import { WebDataTableComponent } from './components/web-data-table/web-data-table.component';
+import { WebrfcDataTableComponent } from './components/webrfc-data-table/webrfc-data-table.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { WebDataTableComponent } from './components/web-data-table/web-data-tabl
     DataTablesPageComponent,
     WebDataTablePageComponent,
     BaseDataTableComponent,
-    WebDataTableComponent
+    WebDataTableComponent,
+    WebrfcDataTableComponent
   ],
   imports: [
     BrowserModule,
