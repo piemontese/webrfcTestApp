@@ -42,5 +42,5 @@ testem.log
 Thumbs.db
 
 # documentation
-/documentation
-/doc
+#/documentation
+#/doc

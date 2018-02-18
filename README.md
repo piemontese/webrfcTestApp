@@ -29,3 +29,9 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 ## Github page
 
 [WebrfcApp](https://piemontese.github.io/webrfcTestApp/)
+
+## Create documentation
+
+In the app directory run:
+
+    compodoc -p tsconfig.json

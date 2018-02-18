@@ -39,6 +39,12 @@ export interface IconButtons {
   multiSel: boolean;
 }
 
+/**
+ * BaseDataTableComponent
+ * 
+ * @param {string} title  Title of component
+ * @param {string} baseUrl  Base url for http request
+ */
 @Component({
   selector: 'app-base-data-table',
   templateUrl: './base-data-table.component.html',
@@ -88,6 +94,9 @@ export class BaseDataTableComponent implements OnInit {
     }
   }
 
+/**
+ * View item
+ */
   protected view() {
     if (this.dataSource.data.filter(item => item.selected === true).length === 1) {
       for (let i = 0; i < this.dataSource.data.length; i++) {
