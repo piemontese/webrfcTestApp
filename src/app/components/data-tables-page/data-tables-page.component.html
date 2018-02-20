@@ -146,5 +146,23 @@
       </div>
     </mat-expansion-panel>
 
+    <mat-expansion-panel class="mat-elevation-z8">
+      <mat-expansion-panel-header>
+        <mat-panel-title> Table entries </mat-panel-title>
+        <mat-panel-description> Get table entries</mat-panel-description>
+      </mat-expansion-panel-header>
+      <div fxLayout="column" fxLayout.xs="column" fxLayoutAlign="center center">
+        <app-data-table style="width: 90%; min-width: 600px;" 
+        								title="Table entries" 
+        								[buttons]="[ { caption:'View', icon: 'search', position: 'left', action: 'view', color: 'prymary', row: 1, tooltip: 'View item', disabled: true, multiSel: false },
+        														 { caption:'Change', icon: 'edit', position: 'left', action: 'change', color: 'prymary', row: 1, tooltip: 'Change item', disabled: true, multiSel: false } ]"
+        								[iconButtons]="[ { icon: 'refresh', position: 'right', action: 'refresh', color: 'prymary', row: 0, tooltip: 'Refresh data', disabled: false, multiSel: null } ]"
+        								[fields]="[ { name: 'sap-language', value:'', type: 'text', placeholder: 'Language' },
+        													  { name: 'SQLTABLE', value:'', type: 'text', placeholder: 'Table' } ]"
+												_FUNCTION='Z_WRFC_TABLE'
+ 												table="fields[1].value"> </app-data-table>
+      </div>
+    </mat-expansion-panel>
+
   </mat-accordion>
 </div>

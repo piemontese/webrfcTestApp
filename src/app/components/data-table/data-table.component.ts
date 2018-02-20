@@ -48,8 +48,9 @@ export class DataTableComponent implements OnInit {
   @Input() filter = true;
   @Input() displayedColumns = [];
   @Input() displayedColumnsNames = [];
-  @Input() method = 'TH_USER_LIST';
-  @Input() table = 'USRLIST';
+  @Input() _FUNCTION = 'Z_WRFC_INTERFACE';
+  @Input() method = '';
+  @Input() table = '';
   @Input() fields: Fields[] = [];
   @Input() buttons: Buttons[] = [];
   @Input() iconButtons: IconButtons[] = [];
@@ -59,7 +60,6 @@ export class DataTableComponent implements OnInit {
   showFilter = true;
   data: any;
   baseUrl = 'http://mnibm09.novellini.it:8066/sap/bc/webrfc';
-  _FUNCTION = 'Z_WRFC_INTERFACE';
   callback = 'JSONP_CALLBACK';
   response: any;
   progress = false;
@@ -175,21 +175,29 @@ export class DataTableComponent implements OnInit {
 
   public getData()/*: Observable<any[]>*/ {
     const jsonData = {
-      '_FUNCTION': this._FUNCTION,
+      //      '_FUNCTION': this._FUNCTION,
       'callback': this.callback,
-      'method': this.method,
+      //      'method': this.method,
       'sap-client': '020',
       'sap-language': 'EN',
       'sap-user': 'novedev',
       'sap-password': 'init1234'
     };
 
+    if (this._FUNCTION !== '') {
+      jsonData['_FUNCTION'] = this._FUNCTION;
+    }
+
+    if (this.method !== '') {
+      jsonData['method'] = this.method;
+    }
+
     for (let i = 0; i < this.fields.length; i++) {
       if (this.fields[i].value !== '') {
         jsonData[this.fields[i].name/*.toUpperCase()*/] = this.fields[i].value;
       }
     }
-
+    debugger;
     const so = this;
     this.progress = true;
 
@@ -264,21 +272,21 @@ export class DataTableComponent implements OnInit {
         so.displayedColumnsNames = [];
         debugger;
         const rec = so.dataSource.data[0];
-          i = 0;
+        i = 0;
         for (const [key, value] of Object.entries(rec)) {
-//          for (let i = 0; i < so.response.dictionary.length; i++) {
-            const rec2 = so.response.dictionary.filter(item => item.name === key)[0];
-            for (const [key2, value2] of Object.entries(rec2)) {
-              if (key2 === 'small_descr') {
-                if (value2 !== '') {
-                  so.displayedColumnsNames[i] = value2;
-                } else {
-                  so.displayedColumnsNames[i] = so.response.dictionary[i].name.replace('"', '').replace('"', '');
-                }
-                i++;
+          //          for (let i = 0; i < so.response.dictionary.length; i++) {
+          const rec2 = so.response.dictionary.filter(item => item.name === key)[0];
+          for (const [key2, value2] of Object.entries(rec2)) {
+            if (key2 === 'small_descr') {
+              if (value2 !== '') {
+                so.displayedColumnsNames[i] = value2;
+              } else {
+                so.displayedColumnsNames[i] = so.response.dictionary[i].name.replace('"', '').replace('"', '');
               }
+              i++;
             }
-//          }
+          }
+          //          }
         }
         so.progress = false;
       },

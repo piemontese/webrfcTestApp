@@ -32,7 +32,7 @@ export class WebrfcPageComponent implements OnInit {
   baseUrl = 'http://mnibm09.novellini.it:8066/sap/bc/webrfc';
   _FUNCTION = 'Z_WRFC_INTERFACE';
   callback = 'JSONP_CALLBACK';
-  method: '';
+  method = '';
   response: any;
   functionBody = [];
   progress = false;
@@ -93,6 +93,7 @@ export class WebrfcPageComponent implements OnInit {
 
 //    return this.http.jsonp(webrfcUrl, 'callback');
 
+    debugger;
     const jsonData = {
           '_FUNCTION':  this._FUNCTION,
           'callback':   this.callback
