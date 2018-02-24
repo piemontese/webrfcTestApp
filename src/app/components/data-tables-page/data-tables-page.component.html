@@ -164,5 +164,23 @@
       </div>
     </mat-expansion-panel>
 
+    <mat-expansion-panel class="mat-elevation-z8">
+      <mat-expansion-panel-header>
+        <mat-panel-title> ST22 </mat-panel-title>
+        <mat-panel-description> List of dumps </mat-panel-description>
+      </mat-expansion-panel-header>
+      <div fxLayout="column" fxLayout.xs="column" fxLayoutAlign="center center">
+        <app-data-table style="width: 90%; min-width: 600px;" 
+        								[filter]="false"
+        								[buttons]="[ { caption:'View', icon: 'search', position: 'left', action: 'view', color: 'prymary', row: 1, tooltip: 'View item', disabled: true, multiSel: false } ]"
+        								[fields]="[ { name: 'sap-language', value:'', type: 'text', placeholder: 'Language' },
+        														{ name: 'IS_DATE', value:'', type: 'text', placeholder: 'Date' }	]"
+        								[iconButtons]="[ { icon: 'refresh', position: 'right', action: 'refresh', color: 'prymary', row: 0, tooltip: 'Refresh data', disabled: false, multiSel: null } ]"
+        								method='Z_WRFC_GET_DUMPS'
+ 												table="ET_DUMPS"
+ 												title="Dump list"></app-data-table>
+      </div>
+    </mat-expansion-panel>
+
   </mat-accordion>
 </div>
