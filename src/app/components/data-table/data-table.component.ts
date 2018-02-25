@@ -1,6 +1,7 @@
 import {Component, ViewChild, OnInit, Input} from '@angular/core';
 import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
 import {HttpClient} from '@angular/common/http';
+import {FormControl} from '@angular/forms';
 // import { Observable } from 'rxjs';
 
 import {DialogService} from '../../services/dialog.service';
@@ -12,7 +13,10 @@ export interface Fields {
   type: string;
   placeholder: string;
   value: string;
+  valueFrom: string;
+  valueTo: string;
   color: string;
+  range: string;
 }
 
 export interface Buttons {
@@ -64,6 +68,7 @@ export class DataTableComponent implements OnInit {
   response: any;
   progress = false;
   selectedItems: number[];
+  currentDate = new FormControl(new Date());
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -192,9 +197,46 @@ export class DataTableComponent implements OnInit {
       jsonData['method'] = this.method;
     }
 
+    debugger;
     for (let i = 0; i < this.fields.length; i++) {
       if (this.fields[i].value !== '') {
-        jsonData[this.fields[i].name/*.toUpperCase()*/] = this.fields[i].value;
+        if (this.fields[i].type === 'datePicker') {
+          const date = new Date(this.fields[i].value);
+          jsonData[this.fields[i].name] = date.getFullYear().toString() +
+            (date.getMonth() < 9 ? '0' + (date.getMonth() + 1).toString() : (date.getMonth() + 1).toString()) +
+            (date.getDate() < 10 ? '0' + date.getDate() : date.getDate()).toString();
+        } else {
+          jsonData[this.fields[i].name/*.toUpperCase()*/] = this.fields[i].value;
+        }
+      }
+      if ( this.fields[i].valueFrom !== '' || this.fields[i].valueFrom !== '' ) {
+        if (this.fields[i].type === 'datePicker') {
+          let dateFrom = null;
+          let dateTo = null;
+          if ( this.fields[i].valueFrom && this.fields[i].valueFrom !== '' ) {
+            const date = new Date(this.fields[i].valueFrom);
+            dateFrom = date.getFullYear().toString() +
+              (date.getMonth() < 9 ? '0' + (date.getMonth() + 1).toString() : (date.getMonth() + 1).toString()) +
+              (date.getDate() < 10 ? '0' + date.getDate() : date.getDate()).toString();
+          }
+          if (this.fields[i].valueTo && this.fields[i].valueTo !== '') {
+            const date = new Date(this.fields[i].valueTo);
+            dateTo = date.getFullYear().toString() +
+              (date.getMonth() < 9 ? '0' + (date.getMonth() + 1).toString() : (date.getMonth() + 1).toString()) +
+              (date.getDate() < 10 ? '0' + date.getDate() : date.getDate()).toString();
+          }
+          if (dateFrom && !dateTo) {
+            jsonData[this.fields[i].name] = '{ "SIGN":"I", "OPTION": "EQ", "LOW":"' + dateFrom + '", "HIGH":"00000000" }';
+          }
+          if (!dateFrom && dateTo) {
+            jsonData[this.fields[i].name] = '{ "SIGN":"I", "OPTION": "BT", "LOW":"00000000", "HIGH":"' + dateTo + '" }';
+          }
+          if (dateFrom && dateTo) {
+            jsonData[this.fields[i].name] = '{ "SIGN":"I", "OPTION": "BT", "LOW":"' + dateFrom + '", "HIGH":"' + dateTo + '" }';
+          }
+        } else {
+          jsonData[this.fields[i].name/*.toUpperCase()*/] = this.fields[i].value;
+        }
       }
     }
     debugger;
@@ -259,6 +301,7 @@ export class DataTableComponent implements OnInit {
           }
         }
 
+        if ( so.dataSource.data.length > 0 ) {
         // if no specified displayed columns
         if (so.displayedColumns.length === 0) {
           i = 0;
@@ -287,6 +330,7 @@ export class DataTableComponent implements OnInit {
             }
           }
           //          }
+        }
         }
         so.progress = false;
       },

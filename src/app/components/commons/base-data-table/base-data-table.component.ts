@@ -1,12 +1,13 @@
-import {Component, ViewChild, OnInit, Input} from '@angular/core';
-import {DomSanitizer, SafeHtml, SafeUrl, SafeStyle} from '@angular/platform-browser';
-import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
-import {HttpClient} from '@angular/common/http';
+import { Component, ViewChild, OnInit, Input } from '@angular/core';
+import { DomSanitizer, SafeHtml, SafeUrl, SafeStyle } from '@angular/platform-browser';
+import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
+import { HttpClient } from '@angular/common/http';
+import { FormControl } from '@angular/forms';
 // import { Observable } from 'rxjs';
 
-import {DialogService} from '../../../services/dialog.service';
-import {DataTableDetailService} from '../../../services/data-table-detail.service';
-import {DataSourceService} from '../../../services/data-source.service';
+import { DialogService } from '../../../services/dialog.service';
+import { DataTableDetailService } from '../../../services/data-table-detail.service';
+import { DataSourceService } from '../../../services/data-source.service';
 
 export interface Fields {
   name: string;
@@ -74,6 +75,7 @@ export class BaseDataTableComponent implements OnInit {
   response: any = [];
   progress = false;
   selectedItems: number[];
+  currentDate = new FormControl(new Date());
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -188,16 +190,23 @@ export class BaseDataTableComponent implements OnInit {
   }
 
   public getData()/*: Observable<any[]>*/ {
-    debugger;
     for (let i = 0; i < this.fields.length; i++) {
       if (this.fields[i].value !== '') {
-        this.jsonData[this.fields[i].name.toUpperCase()] = this.fields[i].value;
+        if ( this.fields[i].type === 'datePicker' ) {
+          const date = new Date(this.fields[i].value);
+          this.jsonData[this.fields[i].name] = date.getFullYear().toString() + 
+                        ( date.getMonth() < 9 ? '0' + (date.getMonth() + 1).toString() : (date.getMonth() + 1).toString() ) + 
+                        ( date.getDate() < 10 ? '0' + date.getDate() : date.getDate() ).toString();
+        } else {
+          this.jsonData[this.fields[i].name] = this.fields[i].value;
+        }
       }
     }
 
     const so = this;
     this.progress = true;
 
+    debugger;
     switch (this.type.toLowerCase()) {
       case 'get': {
         this.http.get(this.baseUrl).subscribe(data => {

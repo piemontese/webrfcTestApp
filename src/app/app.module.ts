@@ -17,6 +17,7 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material';
 
 import 'hammerjs';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -77,6 +78,7 @@ import { WebrfcDataTableComponent } from './components/webrfc-data-table/webrfc-
     MatGridListModule,
     MatProgressBarModule,
     MatDatepickerModule,
+    MatNativeDateModule,
     FlexLayoutModule,
     AppRoutingModule
   ],

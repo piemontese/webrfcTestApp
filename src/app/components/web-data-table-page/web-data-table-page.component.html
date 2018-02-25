@@ -19,9 +19,6 @@
       </div>
     </mat-expansion-panel>
     
-    </mat-accordion>
-
-  <mat-accordion>
     <mat-expansion-panel class="mat-elevation-z8">
       <mat-expansion-panel-header>
         <mat-panel-title> Exchange rates </mat-panel-title>
@@ -33,7 +30,7 @@
 		        								 baseUrl="GET https://tassidicambio.bancaditalia.it/terzevalute-wf-web/rest/v1.0/currencies"
 		        								 dataType='json'    
 		        								 type="GET"    								
-		        								 [fields]="[ { name: 'referenceDate', value:'', type: 'text', placeholder: 'Reference date' },
+		        								 [fields]="[ { name: 'referenceDate', value:'', type: 'datePicker', placeholder: 'Reference date' },
 		        													   { name: 'lang', value:'', type: 'text', placeholder: 'Language' },
 		        													   { name: 'baseCurrencyIsoCode', value:'', type: 'text', placeholder: 'Base currency ISO code' },
 		        													   { name: 'currencyIsoCode', value:'EUR', type: 'text', placeholder: 'Currency ISO code' }	]"
@@ -45,7 +42,7 @@
       </div>
     </mat-expansion-panel>
     
-    </mat-accordion>
+  </mat-accordion>
 
 </div>
 
