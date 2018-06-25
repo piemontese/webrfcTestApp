@@ -29,7 +29,8 @@ export class WebrfcPageComponent implements OnInit {
 	title = 'Dynamic sample';
   fields: Fields[] = [];
   form: FormGroup;
-  baseUrl = 'http://mnibm09.novellini.it:8066/sap/bc/webrfc';
+//  baseUrl = 'http://mnibm09.novellini.it:8066/sap/bc/webrfc';
+  baseUrl = 'http://127.0.0.1:8000/sap/bc/webrfc';
   _FUNCTION = 'Z_WRFC_INTERFACE';
   callback = 'JSONP_CALLBACK';
   method = '';
@@ -38,8 +39,10 @@ export class WebrfcPageComponent implements OnInit {
   progress = false;
   timer = new Observable;
   authentication = true;  // pass user and password to basic http authentication
-  sapUser = 'novedev';
-  sapPassword = 'init1234';
+//  sapUser = 'novedev';
+//  sapPassword = 'init1234';
+  sapUser = 'developer';
+  sapPassword = 'Ostrakon1!';
   sapClient = '';
   sapLanguage = '';
 

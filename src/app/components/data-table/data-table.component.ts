@@ -63,7 +63,8 @@ export class DataTableComponent implements OnInit {
   dataSource: MatTableDataSource<any>;
   showFilter = true;
   data: any;
-  baseUrl = 'http://mnibm09.novellini.it:8066/sap/bc/webrfc';
+//  baseUrl = 'http://mnibm09.novellini.it:8066/sap/bc/webrfc';
+  baseUrl = 'http://127.0.0.1:8000/sap/bc/webrfc';
   callback = 'JSONP_CALLBACK';
   response: any;
   progress = false;
@@ -183,10 +184,10 @@ export class DataTableComponent implements OnInit {
       //      '_FUNCTION': this._FUNCTION,
       'callback': this.callback,
       //      'method': this.method,
-      'sap-client': '020',
+      'sap-client': '001',
       'sap-language': 'EN',
-      'sap-user': 'novedev',
-      'sap-password': 'init1234'
+      'sap-user': 'developer',
+      'sap-password': 'Ostrakon1!'
     };
 
     if (this._FUNCTION !== '') {

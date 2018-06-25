@@ -81,7 +81,7 @@
 			</div>
 		</mat-toolbar-row> 
 		<mat-toolbar-row *ngIf="fields.length > 0 || filter"> 
-			<div fxLayout="row" fxFlex fxLayoutAlign="left">
+			<div fxLayout="row" fxFlex fxLayoutAlign="left" fxLayoutGap="10px">
 				<mat-form-field *ngFor="let field of fields; let i=index;"> 
 					<div *ngIf="(field.type !== 'datePicker')">
 						<input matInput
@@ -100,16 +100,15 @@
 				  	<mat-datepicker #picker></mat-datepicker>
 				  </div>
 					<div *ngIf="field.type === 'datePicker' && field.range === 'true'">
-						<div fxLayout="row" fxLayoutAlign="left" fxLayoutGap="5px">
+						<div fxLayout="row" fxLayoutGap="10px">
 							<input matInput 
-							       [formControl]="currentDate"
 										 (mouseup)="pickerFrom.open()"
 										 [matDatepicker]="pickerFrom" 
 							 			 [placeholder]="field.placeholder"
 		 							 	 [(ngModel)]="field.valueFrom"> 
 					  	<mat-datepicker #pickerFrom></mat-datepicker>
 							<input matInput 
-							       [formControl]="currentDate"
+										 fxFlex="40%"
 										 (mouseup)="pickerTo.open()"
 										 [matDatepicker]="pickerTo" 
 							 			 [placeholder]="field.placeholder"
