@@ -279,8 +279,28 @@ export class DataTableComponent implements OnInit {
           i++;
         }
 
+        
+        debugger;
         so.response = data;
-        so.dataSource.data = so.response.results[so.table];
+        
+        if ( so.response.results[so.table] ) {
+          so.dataSource.data = so.response.results[so.table];
+        } else {
+          if ( so.response.errors.length > 0 ) {
+            so.dialogService.open(so.title,   // title
+              [ so.response.errors[0].msg ],  // array of messages
+              'message',   // dialog type
+              'error',   // message type
+              [
+                {caption: 'Close', color: 'primary', close: true},
+                //                           { caption: "Cancel", color: "warn", close: true }
+              ]  // buttons
+            );
+            so.progress = false;
+            return;
+          }
+        }
+        
 
         // decode URI
         for (let m = 0; m < so.response.dictionary.length; m++) {
@@ -303,35 +323,48 @@ export class DataTableComponent implements OnInit {
         }
 
         if ( so.dataSource.data.length > 0 ) {
-        // if no specified displayed columns
-        if (so.displayedColumns.length === 0) {
-          i = 0;
-          const rec = so.dataSource.data[0];
-          for (const [key, value] of Object.entries(rec)) {
-            so.displayedColumns[i] = key;
-            so.displayedColumnsNames[i] = key;
-            i++;
-          }
-        }
-        so.displayedColumnsNames = [];
-        debugger;
-        const rec = so.dataSource.data[0];
-        i = 0;
-        for (const [key, value] of Object.entries(rec)) {
-          //          for (let i = 0; i < so.response.dictionary.length; i++) {
-          const rec2 = so.response.dictionary.filter(item => item.name === key)[0];
-          for (const [key2, value2] of Object.entries(rec2)) {
-            if (key2 === 'small_descr') {
-              if (value2 !== '') {
-                so.displayedColumnsNames[i] = value2;
-              } else {
-                so.displayedColumnsNames[i] = so.response.dictionary[i].name.replace('"', '').replace('"', '');
-              }
+          // if no specified displayed columns is set by code
+          if (so.displayedColumnsNames.length === 0) {
+            i = 0;
+            const rec = so.dataSource.data[0];
+            for (const [key, value] of Object.entries(rec)) {
+              so.displayedColumns[i] = key;
+              so.displayedColumnsNames[i] = key;
               i++;
             }
           }
-          //          }
-        }
+          /*
+          so.displayedColumnsNames = [];
+          debugger;
+          const rec = so.dataSource.data[0];
+          i = 0;
+          // build mat-table rows
+          if (so.displayedColumnsNames.length === 0) {
+            for (const [key, value] of Object.entries(rec)) {
+              const rec2 = so.response.dictionary.filter(item => item.name === key)[0];
+              for (const [key2, value2] of Object.entries(rec2)) {
+                if (key2 === 'small_descr') {
+                  // check if the extracted columns is in dysplayed columns array"
+                  if ( so.displayedColumns.filter(item => item === key)[0] ) {
+                    // put value in correct column
+                    for (let j = 0; j < so.displayedColumns.length; j++ ) {
+                      if ( so.displayedColumns[j] === key ) {
+                        i = j;
+                        break;
+                      }
+                    }
+                    if (value2 !== '') {
+                      so.displayedColumnsNames[i] = value2;
+                    } else {
+                      so.displayedColumnsNames[i] = so.response.dictionary[i].name.replace('"', '').replace('"', '');
+                    }
+                    i++;
+                  }
+                }
+              }
+            }
+          }
+        */
         }
         so.progress = false;
       },
