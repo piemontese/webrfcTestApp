@@ -7,6 +7,7 @@ import {FormControl} from '@angular/forms';
 import {DialogService} from '../../services/dialog.service';
 import {DataTableDetailService} from '../../services/data-table-detail.service';
 import {DataSourceService} from '../../services/data-source.service';
+import { DateAdapter } from '@angular/material';
 
 export interface Fields {
   name: string;
@@ -74,8 +75,12 @@ export class DataTableComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(public dialogService: DialogService, public dataTableDetailService: DataTableDetailService, public dataSourceService: DataSourceService) {
+  constructor(public dialogService: DialogService, 
+              public dataTableDetailService: DataTableDetailService, 
+              public dataSourceService: DataSourceService,
+              private dateAdapter: DateAdapter<Date>) {
     this.dataSource = new MatTableDataSource([]);
+    this.dateAdapter.setLocale('it-IT');
   }
 
   protected buttonClick(button: Buttons) {
