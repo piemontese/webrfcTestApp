@@ -18,6 +18,11 @@
         <app-data-table style="width: 90%; min-width: 600px;" 
         								title="User list" 
         								method='TH_USER_LIST'
+        								methodType = 'F'
+        								webrfcLog = 'true'
+        								webrfcLogin = 'true'
+        								webrfcUser = 'user1'
+        								webrfcPassword = 'Ostrakon1!'
  												table="USRLIST"
         								[fields]="[ { name: 'sap-language', value:'', type: 'text', placeholder: 'Language', range: '' }	]"
  												[buttons]="[ { caption:'View', icon: 'search', position: 'left', action: 'view', color: 'prymary', row: 1, tooltip: 'View item', disabled: true, multiSel: false },
@@ -160,7 +165,7 @@
         								[fields]="[ { name: 'sap-language', value:'', type: 'text', placeholder: 'Language', range: '' },
         													  { name: 'SQLTABLE', value:'', type: 'text', placeholder: 'Table', range: '' } ]"
 												_FUNCTION='Z_WRFC_TABLE'
- 												table=""> </app-data-table>
+ 												refreshColumns='true'> </app-data-table>
       </div>
     </mat-expansion-panel>
 

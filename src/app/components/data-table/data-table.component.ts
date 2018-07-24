@@ -53,8 +53,14 @@ export class DataTableComponent implements OnInit {
   @Input() filter = true;
   @Input() displayedColumns = [];
   @Input() displayedColumnsNames = [];
+  @Input() refreshColumns = 'false';
   @Input() _FUNCTION = 'Z_WRFC_INTERFACE';
   @Input() method = '';
+  @Input() methodType = '';
+  @Input() webrfcLog = '';
+  @Input() webrfcLogin = '';
+  @Input() webrfcUser = '';
+  @Input() webrfcPassword = '';
   @Input() table = '';
   @Input() fields: Fields[] = [];
   @Input() buttons: Buttons[] = [];
@@ -203,6 +209,26 @@ export class DataTableComponent implements OnInit {
       jsonData['method'] = this.method;
     }
 
+    if (this.methodType !== '') {
+      jsonData['method_type'] = this.methodType;
+    }
+
+    if (this.webrfcLog !== '') {
+      jsonData['webrfc_log'] = this.webrfcLog;
+    }
+
+    if (this.webrfcLogin !== '') {
+      jsonData['webrfc_login'] = this.webrfcLogin;
+    }
+
+    if (this.webrfcUser !== '') {
+      jsonData['webrfc_user'] = this.webrfcUser;
+    }
+
+    if (this.webrfcPassword !== '') {
+      jsonData['webrfc_password'] = btoa( this.webrfcPassword );
+    }
+
     debugger;
     for (let i = 0; i < this.fields.length; i++) {
       if (this.fields[i].value !== '') {
@@ -242,6 +268,10 @@ export class DataTableComponent implements OnInit {
           }
         } else {
           jsonData[this.fields[i].name/*.toUpperCase()*/] = this.fields[i].value;
+          if ( this.fields[i].name.toLocaleLowerCase() === 'sqltable' ) {
+            debugger;
+            this.table =  this.fields[i].value;
+          }
         }
       }
     }
@@ -265,6 +295,11 @@ export class DataTableComponent implements OnInit {
 				});
 		*/
 
+    if ( so.refreshColumns === 'true' ) {
+      so.displayedColumns = [];
+      so.displayedColumnsNames = [];
+    }
+
     jQuery.ajax({
       url: this.baseUrl,
       data: jsonData,
@@ -284,10 +319,10 @@ export class DataTableComponent implements OnInit {
           i++;
         }
 
-        
+
         debugger;
         so.response = data;
-        
+
         if ( so.response.results[so.table] ) {
           so.dataSource.data = so.response.results[so.table];
         } else {
@@ -305,7 +340,7 @@ export class DataTableComponent implements OnInit {
             return;
           }
         }
-        
+
 
         // decode URI
         for (let m = 0; m < so.response.dictionary.length; m++) {
@@ -316,7 +351,7 @@ export class DataTableComponent implements OnInit {
         }
 
 
-        let dictionary = so.response.dictionary;
+        const dictionary = so.response.dictionary;
         debugger;
 
         // decode URI
@@ -334,7 +369,12 @@ export class DataTableComponent implements OnInit {
             const rec = so.dataSource.data[0];
             for (const [key, value] of Object.entries(rec)) {
               so.displayedColumns[i] = key;
-              so.displayedColumnsNames[i] = key;
+              debugger;
+              if ( !so.response.dictionary.filter(item => item.name === key)[0] ) {
+                so.displayedColumnsNames[i] = key;
+              } else  {
+                so.displayedColumnsNames[i] = so.response.dictionary.filter(item => item.name === key)[0].smallDescr;
+              }
               i++;
             }
           }
@@ -349,7 +389,7 @@ export class DataTableComponent implements OnInit {
               const rec2 = so.response.dictionary.filter(item => item.name === key)[0];
               for (const [key2, value2] of Object.entries(rec2)) {
                 if (key2 === 'small_descr') {
-                  // check if the extracted columns is in dysplayed columns array"
+                  // check if the extracted columns is in dyplayed columns array"
                   if ( so.displayedColumns.filter(item => item === key)[0] ) {
                     // put value in correct column
                     for (let j = 0; j < so.displayedColumns.length; j++ ) {
