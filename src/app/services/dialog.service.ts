@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/Rx';
+//import { Observable } from 'rxjs/Rx';
+import { Observable } from "rxjs";
 import { MatDialogRef, MatDialog, MatDialogConfig } from '@angular/material';
 import { DialogComponent } from '../components/commons/dialog/dialog.component';
 import { Router } from '@angular/router';

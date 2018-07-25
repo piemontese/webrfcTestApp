@@ -275,7 +275,8 @@ export class BaseDataTableComponent implements OnInit {
             for (let m = 0; m < so.dataSource.data.length; m++) {
               const rec = so.dataSource.data[m];
               for (const [key, value] of Object.entries(rec)) {
-                so.dataSource.data[m][key] = decodeURIComponent(value);
+                let val: any = value;
+                so.dataSource.data[m][key] = decodeURIComponent(val);
               }
             }
 

@@ -346,7 +346,8 @@ export class DataTableComponent implements OnInit {
         for (let m = 0; m < so.response.dictionary.length; m++) {
           const rec = so.response.dictionary[m];
           for (const [key, value] of Object.entries(rec)) {
-            so.response.dictionary[m][key] = decodeURIComponent(value);
+            let val: any = value;
+            so.response.dictionary[m][key] = decodeURIComponent(val);
           }
         }
 
@@ -358,7 +359,8 @@ export class DataTableComponent implements OnInit {
         for (let m = 0; m < so.dataSource.data.length; m++) {
           const rec = so.dataSource.data[m];
           for (const [key, value] of Object.entries(rec)) {
-            so.dataSource.data[m][key] = decodeURIComponent(value);
+            let val: any = value;
+            so.dataSource.data[m][key] = decodeURIComponent(val);
           }
         }
 
