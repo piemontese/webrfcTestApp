@@ -130,7 +130,7 @@
                                 id="xs-classes-links"
                             >
                                 <li class="link">
-                                    <a href="../classes/AppPage.html" >AppPage</a>
+                                    <a href="../classes/Fields.html" >Fields</a>
                                 </li>
                         </ul>
                     </li>
@@ -187,9 +187,6 @@
                                 </li>
                                 <li class="link">
                                     <a href="../interfaces/Buttons.html" >Buttons</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../interfaces/Fields.html" >Fields</a>
                                 </li>
                                 <li class="link">
                                     <a href="../interfaces/Fields.html" >Fields</a>
@@ -378,7 +375,7 @@
                                        id="classes-links"
                    >
                                        <li class="link">
-                                           <a href="../classes/AppPage.html" >AppPage</a>
+                                           <a href="../classes/Fields.html" >Fields</a>
                                        </li>
                                </ul>
                            </li>
@@ -435,9 +432,6 @@
                                        </li>
                                        <li class="link">
                                            <a href="../interfaces/Buttons.html" >Buttons</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../interfaces/Fields.html" >Fields</a>
                                        </li>
                                        <li class="link">
                                            <a href="../interfaces/Fields.html" >Fields</a>
@@ -607,13 +601,13 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                <a href="#_FUNCTION">_FUNCTION</a>
-                            </li>
-                            <li>
                                 <a href="#baseUrl">baseUrl</a>
                             </li>
                             <li>
                                 <a href="#callback">callback</a>
+                            </li>
+                            <li>
+                                <a href="#currentDate">currentDate</a>
                             </li>
                             <li>
                                 <a href="#data">data</a>
@@ -632,6 +626,9 @@
                             <li>
                                     <span class="modifier">Public</span>
                                 <a href="#dialogService">dialogService</a>
+                            </li>
+                            <li>
+                                <a href="#fieldsRows">fieldsRows</a>
                             </li>
                             <li>
                                 <a href="#paginator">paginator</a>
@@ -728,6 +725,12 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
+                                <a href="#_FUNCTION">_FUNCTION</a>
+                            </li>
+                            <li>
+                                <a href="#abapClass">abapClass</a>
+                            </li>
+                            <li>
                                 <a href="#buttons">buttons</a>
                             </li>
                             <li>
@@ -749,13 +752,34 @@
                                 <a href="#method">method</a>
                             </li>
                             <li>
+                                <a href="#methodType">methodType</a>
+                            </li>
+                            <li>
                                 <a href="#multiSelection">multiSelection</a>
+                            </li>
+                            <li>
+                                <a href="#noRefreshColumns">noRefreshColumns</a>
+                            </li>
+                            <li>
+                                <a href="#refreshColumns">refreshColumns</a>
                             </li>
                             <li>
                                 <a href="#table">table</a>
                             </li>
                             <li>
                                 <a href="#title">title</a>
+                            </li>
+                            <li>
+                                <a href="#webrfcLog">webrfcLog</a>
+                            </li>
+                            <li>
+                                <a href="#webrfcLogin">webrfcLogin</a>
+                            </li>
+                            <li>
+                                <a href="#webrfcPassword">webrfcPassword</a>
+                            </li>
+                            <li>
+                                <a href="#webrfcUser">webrfcUser</a>
                             </li>
                         </ul>
                     </td>
@@ -770,12 +794,12 @@
                 <tbody>
                     <tr>
                         <td class="col-md-4">
-                            <code>constructor(dialogService: <a href="../injectables/DialogService.html">DialogService</a>, dataTableDetailService: <a href="../injectables/DataTableDetailService.html">DataTableDetailService</a>, dataSourceService: <a href="../injectables/DataSourceService.html">DataSourceService</a>)</code>
+                            <code>constructor(dialogService: <a href="../injectables/DialogService.html">DialogService</a>, dataTableDetailService: <a href="../injectables/DataTableDetailService.html">DataTableDetailService</a>, dataSourceService: <a href="../injectables/DataSourceService.html">DataSourceService</a>, dateAdapter: DateAdapter<Date>, sanitizer: <a href="https://angular.io/api/platform-browser/DomSanitizer" target="_blank">DomSanitizer</a>)</code>
                         </td>
                     </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="69" class="link-to-prism">src/app/components/data-table/data-table.component.ts:69</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="103" class="link-to-prism">src/app/components/data-table/data-table.component.ts:103</a></div>
                                 </td>
                             </tr>
     
@@ -820,6 +844,24 @@
                                                       </td>
                                                       <td></td>
                                                     </tr>
+                                                    <tr>
+                                                      <td>dateAdapter</td>
+                                                      <td>
+                                                                <code>DateAdapter&lt;Date&gt;</code>
+                                                      </td>
+                                                      <td>
+                                                      </td>
+                                                      <td></td>
+                                                    </tr>
+                                                    <tr>
+                                                      <td>sanitizer</td>
+                                                      <td>
+                                                                <code><a href="https://angular.io/api/platform-browser/DomSanitizer" target="_blank" >DomSanitizer</a></code>
+                                                      </td>
+                                                      <td>
+                                                      </td>
+                                                      <td></td>
+                                                    </tr>
                                             </tbody>
                                         </table>
                                 </div>
@@ -831,6 +873,46 @@
 
     <section>
         <h3 id="inputs">Inputs</h3>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-2">
+                            <a name="_FUNCTION"></a>
+                            <code>_FUNCTION</code>
+                        </td>
+                        <td class="col-md-10">
+                            <p>
+                              <em>Default value: </em><code>&#x27;Z_PMT_WRFC_INTERFACE&#x27;</code>
+                            </p>
+                        </td>
+                    </tr>
+                            <tr>
+                                <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="76" class="link-to-prism">src/app/components/data-table/data-table.component.ts:76</a></div>
+                                </td>
+                            </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-2">
+                            <a name="abapClass"></a>
+                            <code>abapClass</code>
+                        </td>
+                        <td class="col-md-10">
+                            <p>
+                              <em>Default value: </em><code>&#x27;&#x27;</code>
+                            </p>
+                        </td>
+                    </tr>
+                            <tr>
+                                <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="77" class="link-to-prism">src/app/components/data-table/data-table.component.ts:77</a></div>
+                                </td>
+                            </tr>
+                </tbody>
+            </table>
             <table class="table table-sm table-bordered">
                 <tbody>
                     <tr>
@@ -850,7 +932,7 @@
                     </tr>
                             <tr>
                                 <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="54" class="link-to-prism">src/app/components/data-table/data-table.component.ts:54</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="86" class="link-to-prism">src/app/components/data-table/data-table.component.ts:86</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -870,7 +952,7 @@
                     </tr>
                             <tr>
                                 <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="49" class="link-to-prism">src/app/components/data-table/data-table.component.ts:49</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="72" class="link-to-prism">src/app/components/data-table/data-table.component.ts:72</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -890,7 +972,7 @@
                     </tr>
                             <tr>
                                 <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="50" class="link-to-prism">src/app/components/data-table/data-table.component.ts:50</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="73" class="link-to-prism">src/app/components/data-table/data-table.component.ts:73</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -914,7 +996,7 @@
                     </tr>
                             <tr>
                                 <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="53" class="link-to-prism">src/app/components/data-table/data-table.component.ts:53</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="85" class="link-to-prism">src/app/components/data-table/data-table.component.ts:85</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -934,7 +1016,7 @@
                     </tr>
                             <tr>
                                 <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="48" class="link-to-prism">src/app/components/data-table/data-table.component.ts:48</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="71" class="link-to-prism">src/app/components/data-table/data-table.component.ts:71</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -958,7 +1040,7 @@
                     </tr>
                             <tr>
                                 <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="55" class="link-to-prism">src/app/components/data-table/data-table.component.ts:55</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="87" class="link-to-prism">src/app/components/data-table/data-table.component.ts:87</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -972,13 +1054,33 @@
                         </td>
                         <td class="col-md-10">
                             <p>
-                              <em>Default value: </em><code>&#x27;TH_USER_LIST&#x27;</code>
+                              <em>Default value: </em><code>&#x27;&#x27;</code>
                             </p>
                         </td>
                     </tr>
                             <tr>
                                 <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="51" class="link-to-prism">src/app/components/data-table/data-table.component.ts:51</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="78" class="link-to-prism">src/app/components/data-table/data-table.component.ts:78</a></div>
+                                </td>
+                            </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-2">
+                            <a name="methodType"></a>
+                            <code>methodType</code>
+                        </td>
+                        <td class="col-md-10">
+                            <p>
+                              <em>Default value: </em><code>&#x27;&#x27;</code>
+                            </p>
+                        </td>
+                    </tr>
+                            <tr>
+                                <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="79" class="link-to-prism">src/app/components/data-table/data-table.component.ts:79</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -998,7 +1100,47 @@
                     </tr>
                             <tr>
                                 <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="56" class="link-to-prism">src/app/components/data-table/data-table.component.ts:56</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="88" class="link-to-prism">src/app/components/data-table/data-table.component.ts:88</a></div>
+                                </td>
+                            </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-2">
+                            <a name="noRefreshColumns"></a>
+                            <code>noRefreshColumns</code>
+                        </td>
+                        <td class="col-md-10">
+                            <p>
+                              <em>Default value: </em><code>&#x27;false&#x27;</code>
+                            </p>
+                        </td>
+                    </tr>
+                            <tr>
+                                <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="74" class="link-to-prism">src/app/components/data-table/data-table.component.ts:74</a></div>
+                                </td>
+                            </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-2">
+                            <a name="refreshColumns"></a>
+                            <code>refreshColumns</code>
+                        </td>
+                        <td class="col-md-10">
+                            <p>
+                              <em>Default value: </em><code>&#x27;false&#x27;</code>
+                            </p>
+                        </td>
+                    </tr>
+                            <tr>
+                                <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="75" class="link-to-prism">src/app/components/data-table/data-table.component.ts:75</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -1012,13 +1154,13 @@
                         </td>
                         <td class="col-md-10">
                             <p>
-                              <em>Default value: </em><code>&#x27;USRLIST&#x27;</code>
+                              <em>Default value: </em><code>&#x27;&#x27;</code>
                             </p>
                         </td>
                     </tr>
                             <tr>
                                 <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="52" class="link-to-prism">src/app/components/data-table/data-table.component.ts:52</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="84" class="link-to-prism">src/app/components/data-table/data-table.component.ts:84</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -1038,7 +1180,87 @@
                     </tr>
                             <tr>
                                 <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">src/app/components/data-table/data-table.component.ts:47</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="70" class="link-to-prism">src/app/components/data-table/data-table.component.ts:70</a></div>
+                                </td>
+                            </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-2">
+                            <a name="webrfcLog"></a>
+                            <code>webrfcLog</code>
+                        </td>
+                        <td class="col-md-10">
+                            <p>
+                              <em>Default value: </em><code>&#x27;&#x27;</code>
+                            </p>
+                        </td>
+                    </tr>
+                            <tr>
+                                <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="80" class="link-to-prism">src/app/components/data-table/data-table.component.ts:80</a></div>
+                                </td>
+                            </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-2">
+                            <a name="webrfcLogin"></a>
+                            <code>webrfcLogin</code>
+                        </td>
+                        <td class="col-md-10">
+                            <p>
+                              <em>Default value: </em><code>&#x27;&#x27;</code>
+                            </p>
+                        </td>
+                    </tr>
+                            <tr>
+                                <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="81" class="link-to-prism">src/app/components/data-table/data-table.component.ts:81</a></div>
+                                </td>
+                            </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-2">
+                            <a name="webrfcPassword"></a>
+                            <code>webrfcPassword</code>
+                        </td>
+                        <td class="col-md-10">
+                            <p>
+                              <em>Default value: </em><code>&#x27;&#x27;</code>
+                            </p>
+                        </td>
+                    </tr>
+                            <tr>
+                                <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="83" class="link-to-prism">src/app/components/data-table/data-table.component.ts:83</a></div>
+                                </td>
+                            </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-2">
+                            <a name="webrfcUser"></a>
+                            <code>webrfcUser</code>
+                        </td>
+                        <td class="col-md-10">
+                            <p>
+                              <em>Default value: </em><code>&#x27;&#x27;</code>
+                            </p>
+                        </td>
+                    </tr>
+                            <tr>
+                                <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="82" class="link-to-prism">src/app/components/data-table/data-table.component.ts:82</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -1077,7 +1299,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="322" class="link-to-prism">src/app/components/data-table/data-table.component.ts:322</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="583" class="link-to-prism">src/app/components/data-table/data-table.component.ts:583</a></div>
                                 </td>
                             </tr>
     
@@ -1145,7 +1367,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="75" class="link-to-prism">src/app/components/data-table/data-table.component.ts:75</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="114" class="link-to-prism">src/app/components/data-table/data-table.component.ts:114</a></div>
                                 </td>
                             </tr>
     
@@ -1213,7 +1435,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="112" class="link-to-prism">src/app/components/data-table/data-table.component.ts:112</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="153" class="link-to-prism">src/app/components/data-table/data-table.component.ts:153</a></div>
                                 </td>
                             </tr>
     
@@ -1252,7 +1474,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="143" class="link-to-prism">src/app/components/data-table/data-table.component.ts:143</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="184" class="link-to-prism">src/app/components/data-table/data-table.component.ts:184</a></div>
                                 </td>
                             </tr>
     
@@ -1338,7 +1560,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="328" class="link-to-prism">src/app/components/data-table/data-table.component.ts:328</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="589" class="link-to-prism">src/app/components/data-table/data-table.component.ts:589</a></div>
                                 </td>
                             </tr>
     
@@ -1377,7 +1599,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="176" class="link-to-prism">src/app/components/data-table/data-table.component.ts:176</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="217" class="link-to-prism">src/app/components/data-table/data-table.component.ts:217</a></div>
                                 </td>
                             </tr>
     
@@ -1416,7 +1638,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="81" class="link-to-prism">src/app/components/data-table/data-table.component.ts:81</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="121" class="link-to-prism">src/app/components/data-table/data-table.component.ts:121</a></div>
                                 </td>
                             </tr>
     
@@ -1482,7 +1704,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="349" class="link-to-prism">src/app/components/data-table/data-table.component.ts:349</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="621" class="link-to-prism">src/app/components/data-table/data-table.component.ts:621</a></div>
                                 </td>
                             </tr>
     
@@ -1522,7 +1744,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="342" class="link-to-prism">src/app/components/data-table/data-table.component.ts:342</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="602" class="link-to-prism">src/app/components/data-table/data-table.component.ts:602</a></div>
                                 </td>
                             </tr>
     
@@ -1561,7 +1783,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="314" class="link-to-prism">src/app/components/data-table/data-table.component.ts:314</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="572" class="link-to-prism">src/app/components/data-table/data-table.component.ts:572</a></div>
                                 </td>
                             </tr>
     
@@ -1600,7 +1822,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="169" class="link-to-prism">src/app/components/data-table/data-table.component.ts:169</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="210" class="link-to-prism">src/app/components/data-table/data-table.component.ts:210</a></div>
                                 </td>
                             </tr>
     
@@ -1639,7 +1861,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="156" class="link-to-prism">src/app/components/data-table/data-table.component.ts:156</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="197" class="link-to-prism">src/app/components/data-table/data-table.component.ts:197</a></div>
                                 </td>
                             </tr>
     
@@ -1707,7 +1929,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="318" class="link-to-prism">src/app/components/data-table/data-table.component.ts:318</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="579" class="link-to-prism">src/app/components/data-table/data-table.component.ts:579</a></div>
                                 </td>
                             </tr>
     
@@ -1746,7 +1968,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="87" class="link-to-prism">src/app/components/data-table/data-table.component.ts:87</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="128" class="link-to-prism">src/app/components/data-table/data-table.component.ts:128</a></div>
                                 </td>
                             </tr>
     
@@ -1772,39 +1994,6 @@
                 <tbody>
                     <tr>
                         <td class="col-md-4">
-                            <a name="_FUNCTION"></a>
-                            <span class="name">
-                                <b>
-                                _FUNCTION
-                                </b>
-                                <a href="#_FUNCTION"><span class="fa fa-link"></span></a>
-                            </span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <code>_FUNCTION:     <code></code>
-    </code>
-                        </td>
-                    </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                <i>Default value : </i><code>&#x27;Z_WRFC_INTERFACE&#x27;</code>
-                            </td>
-                        </tr>
-                            <tr>
-                                <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="62" class="link-to-prism">src/app/components/data-table/data-table.component.ts:62</a></div>
-                                </td>
-                            </tr>
-    
-    
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
                             <a name="baseUrl"></a>
                             <span class="name">
                                 <b>
@@ -1822,12 +2011,12 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                <i>Default value : </i><code>&#x27;http://mnibm09.novellini.it:8066/sap/bc/webrfc&#x27;</code>
+                                <i>Default value : </i><code>&#x27;http://127.0.0.1:8000/sap/bc/webrfc&#x27;</code>
                             </td>
                         </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="61" class="link-to-prism">src/app/components/data-table/data-table.component.ts:61</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="94" class="link-to-prism">src/app/components/data-table/data-table.component.ts:94</a></div>
                                 </td>
                             </tr>
     
@@ -1860,7 +2049,40 @@
                         </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="63" class="link-to-prism">src/app/components/data-table/data-table.component.ts:63</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="95" class="link-to-prism">src/app/components/data-table/data-table.component.ts:95</a></div>
+                                </td>
+                            </tr>
+    
+    
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <a name="currentDate"></a>
+                            <span class="name">
+                                <b>
+                                currentDate
+                                </b>
+                                <a href="#currentDate"><span class="fa fa-link"></span></a>
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <code>currentDate:     <code></code>
+    </code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <i>Default value : </i><code>new FormControl(new Date())</code>
+                            </td>
+                        </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="99" class="link-to-prism">src/app/components/data-table/data-table.component.ts:99</a></div>
                                 </td>
                             </tr>
     
@@ -1894,7 +2116,7 @@
                         </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="60" class="link-to-prism">src/app/components/data-table/data-table.component.ts:60</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="92" class="link-to-prism">src/app/components/data-table/data-table.component.ts:92</a></div>
                                 </td>
                             </tr>
     
@@ -1928,7 +2150,7 @@
                         </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="58" class="link-to-prism">src/app/components/data-table/data-table.component.ts:58</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="90" class="link-to-prism">src/app/components/data-table/data-table.component.ts:90</a></div>
                                 </td>
                             </tr>
     
@@ -1963,7 +2185,7 @@
                         </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="71" class="link-to-prism">src/app/components/data-table/data-table.component.ts:71</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="107" class="link-to-prism">src/app/components/data-table/data-table.component.ts:107</a></div>
                                 </td>
                             </tr>
     
@@ -1998,7 +2220,7 @@
                         </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="71" class="link-to-prism">src/app/components/data-table/data-table.component.ts:71</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="106" class="link-to-prism">src/app/components/data-table/data-table.component.ts:106</a></div>
                                 </td>
                             </tr>
     
@@ -2033,7 +2255,40 @@
                         </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="71" class="link-to-prism">src/app/components/data-table/data-table.component.ts:71</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="105" class="link-to-prism">src/app/components/data-table/data-table.component.ts:105</a></div>
+                                </td>
+                            </tr>
+    
+    
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <a name="fieldsRows"></a>
+                            <span class="name">
+                                <b>
+                                fieldsRows
+                                </b>
+                                <a href="#fieldsRows"><span class="fa fa-link"></span></a>
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <code>fieldsRows:     <code></code>
+    </code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <i>Default value : </i><code>[]</code>
+                            </td>
+                        </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="100" class="link-to-prism">src/app/components/data-table/data-table.component.ts:100</a></div>
                                 </td>
                             </tr>
     
@@ -2072,7 +2327,7 @@
                         </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="68" class="link-to-prism">src/app/components/data-table/data-table.component.ts:68</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="102" class="link-to-prism">src/app/components/data-table/data-table.component.ts:102</a></div>
                                 </td>
                             </tr>
     
@@ -2105,7 +2360,7 @@
                         </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="65" class="link-to-prism">src/app/components/data-table/data-table.component.ts:65</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="97" class="link-to-prism">src/app/components/data-table/data-table.component.ts:97</a></div>
                                 </td>
                             </tr>
     
@@ -2139,7 +2394,7 @@
                         </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="64" class="link-to-prism">src/app/components/data-table/data-table.component.ts:64</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="96" class="link-to-prism">src/app/components/data-table/data-table.component.ts:96</a></div>
                                 </td>
                             </tr>
     
@@ -2173,7 +2428,7 @@
                         </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="66" class="link-to-prism">src/app/components/data-table/data-table.component.ts:66</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="98" class="link-to-prism">src/app/components/data-table/data-table.component.ts:98</a></div>
                                 </td>
                             </tr>
     
@@ -2206,7 +2461,7 @@
                         </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="59" class="link-to-prism">src/app/components/data-table/data-table.component.ts:59</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="91" class="link-to-prism">src/app/components/data-table/data-table.component.ts:91</a></div>
                                 </td>
                             </tr>
     
@@ -2245,7 +2500,7 @@
                         </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="69" class="link-to-prism">src/app/components/data-table/data-table.component.ts:69</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="103" class="link-to-prism">src/app/components/data-table/data-table.component.ts:103</a></div>
                                 </td>
                             </tr>
     
@@ -2258,21 +2513,44 @@
 
 
     <div class="tab-pane fade tab-source-code" id="c-source">
-        <pre class="line-numbers"><code class="language-typescript">import {Component, ViewChild, OnInit, Input} from &#x27;@angular/core&#x27;;
-import {MatPaginator, MatSort, MatTableDataSource} from &#x27;@angular/material&#x27;;
-import {HttpClient} from &#x27;@angular/common/http&#x27;;
+        <pre class="line-numbers"><code class="language-typescript">import { Component, ViewChild, OnInit, Input } from &#x27;@angular/core&#x27;;
+import { BrowserModule, DomSanitizer} from &#x27;@angular/platform-browser&#x27;;
+import { MatPaginator, MatSort, MatTableDataSource } from &#x27;@angular/material&#x27;;
+import { HttpClient } from &#x27;@angular/common/http&#x27;;
+import { FormControl } from &#x27;@angular/forms&#x27;;
 // import { Observable } from &#x27;rxjs&#x27;;
 
 import {DialogService} from &#x27;../../services/dialog.service&#x27;;
 import {DataTableDetailService} from &#x27;../../services/data-table-detail.service&#x27;;
 import {DataSourceService} from &#x27;../../services/data-source.service&#x27;;
+import { DateAdapter } from &#x27;@angular/material&#x27;;
 
+/*
 export interface Fields {
   name: string;
   type: string;
   placeholder: string;
   value: string;
+  valueFrom: string;
+  valueTo: string;
   color: string;
+  range: string;
+  isTable: string;
+}
+*/
+export class Fields {
+  name &#x3D; &#x27;&#x27;;
+  type &#x3D; &#x27;&#x27;;
+  placeholder &#x3D; &#x27;&#x27;;
+  value &#x3D; &#x27;&#x27;;
+  nameFrom &#x3D; &#x27;&#x27;;
+  nameTo &#x3D; &#x27;&#x27;;
+  valueFrom &#x3D; &#x27;&#x27;;
+  valueTo &#x3D; &#x27;&#x27;;
+  color &#x3D; &#x27;&#x27;;
+  range &#x3D; &#x27;false&#x27;;
+  isTable &#x3D; &#x27;false&#x27;;
+  row &#x3D; &#x27;0&#x27;;
 }
 
 export interface Buttons {
@@ -2308,8 +2586,17 @@ export class DataTableComponent implements OnInit {
   @Input() filter &#x3D; true;
   @Input() displayedColumns &#x3D; [];
   @Input() displayedColumnsNames &#x3D; [];
-  @Input() method &#x3D; &#x27;TH_USER_LIST&#x27;;
-  @Input() table &#x3D; &#x27;USRLIST&#x27;;
+  @Input() noRefreshColumns &#x3D; &#x27;false&#x27;;
+  @Input() refreshColumns &#x3D; &#x27;false&#x27;;
+  @Input() _FUNCTION &#x3D; &#x27;Z_PMT_WRFC_INTERFACE&#x27;;
+  @Input() abapClass &#x3D; &#x27;&#x27;;
+  @Input() method &#x3D; &#x27;&#x27;;
+  @Input() methodType &#x3D; &#x27;&#x27;;
+  @Input() webrfcLog &#x3D; &#x27;&#x27;;
+  @Input() webrfcLogin &#x3D; &#x27;&#x27;;
+  @Input() webrfcUser &#x3D; &#x27;&#x27;;
+  @Input() webrfcPassword &#x3D; &#x27;&#x27;;
+  @Input() table &#x3D; &#x27;&#x27;;
   @Input() fields: Fields[] &#x3D; [];
   @Input() buttons: Buttons[] &#x3D; [];
   @Input() iconButtons: IconButtons[] &#x3D; [];
@@ -2318,28 +2605,37 @@ export class DataTableComponent implements OnInit {
   dataSource: MatTableDataSource&lt;any&gt;;
   showFilter &#x3D; true;
   data: any;
-  baseUrl &#x3D; &#x27;http://mnibm09.novellini.it:8066/sap/bc/webrfc&#x27;;
-  _FUNCTION &#x3D; &#x27;Z_WRFC_INTERFACE&#x27;;
+//  baseUrl &#x3D; &#x27;http://mnibm09.novellini.it:8066/sap/bc/webrfc&#x27;;
+  baseUrl &#x3D; &#x27;http://127.0.0.1:8000/sap/bc/webrfc&#x27;;
   callback &#x3D; &#x27;JSONP_CALLBACK&#x27;;
   response: any;
   progress &#x3D; false;
   selectedItems: number[];
+  currentDate &#x3D; new FormControl(new Date());
+  fieldsRows &#x3D; [];
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(public dialogService: DialogService, public dataTableDetailService: DataTableDetailService, public dataSourceService: DataSourceService) {
+  constructor(public dialogService: DialogService,
+              public dataTableDetailService: DataTableDetailService,
+              public dataSourceService: DataSourceService,
+              private dateAdapter: DateAdapter&lt;Date&gt;,
+              private sanitizer: DomSanitizer ) {
     this.dataSource &#x3D; new MatTableDataSource([]);
+    this.dateAdapter.setLocale(&#x27;it-IT&#x27;);
   }
 
   protected buttonClick(button: Buttons) {
     if (button.action !&#x3D;&#x3D; &#x27;&#x27;) {
+      // tslint:disable-next-line:no-eval
       eval(&#x27;this.&#x27; + button.action + &#x27;()&#x27;);
     }
   }
 
   protected iconBbuttonClick(iconButton: IconButtons) {
     if (iconButton.action !&#x3D;&#x3D; &#x27;&#x27;) {
+      // tslint:disable-next-line:no-eval
       eval(&#x27;this.&#x27; + iconButton.action + &#x27;()&#x27;);
     }
   }
@@ -2435,30 +2731,201 @@ export class DataTableComponent implements OnInit {
 
   public getData()/*: Observable&lt;any[]&gt;*/ {
     const jsonData &#x3D; {
-      &#x27;_FUNCTION&#x27;: this._FUNCTION,
+      //      &#x27;_FUNCTION&#x27;: this._FUNCTION,
       &#x27;callback&#x27;: this.callback,
-      &#x27;method&#x27;: this.method,
-      &#x27;sap-client&#x27;: &#x27;020&#x27;,
+      //      &#x27;method&#x27;: this.method,
+      &#x27;sap-client&#x27;: &#x27;001&#x27;,
       &#x27;sap-language&#x27;: &#x27;EN&#x27;,
-      &#x27;sap-user&#x27;: &#x27;novedev&#x27;,
-      &#x27;sap-password&#x27;: &#x27;init1234&#x27;
+      &#x27;sap-user&#x27;: &#x27;developer&#x27;,
+      &#x27;sap-password&#x27;: &#x27;Ostrakon1!&#x27;
     };
 
-    for (let i &#x3D; 0; i &lt; this.fields.length; i++) {
-      if (this.fields[i].value !&#x3D;&#x3D; &#x27;&#x27;) {
-        jsonData[this.fields[i].name/*.toUpperCase()*/] &#x3D; this.fields[i].value;
-      }
+    if (this._FUNCTION !&#x3D;&#x3D; &#x27;&#x27;) {
+      jsonData[&#x27;_FUNCTION&#x27;] &#x3D; this._FUNCTION;
     }
 
+    if (this.abapClass !&#x3D;&#x3D; &#x27;&#x27;) {
+      jsonData[&#x27;class&#x27;] &#x3D; this.abapClass;
+    }
+
+    if (this.method !&#x3D;&#x3D; &#x27;&#x27;) {
+      jsonData[&#x27;method&#x27;] &#x3D; this.method;
+    }
+
+    if (this.methodType !&#x3D;&#x3D; &#x27;&#x27;) {
+      jsonData[&#x27;method_type&#x27;] &#x3D; this.methodType;
+    }
+
+    if (this.webrfcLog !&#x3D;&#x3D; &#x27;&#x27;) {
+      jsonData[&#x27;webrfc_log&#x27;] &#x3D; this.webrfcLog;
+    }
+
+    if (this.webrfcLogin !&#x3D;&#x3D; &#x27;&#x27;) {
+      jsonData[&#x27;webrfc_login&#x27;] &#x3D; this.webrfcLogin;
+    }
+
+    if (this.webrfcUser !&#x3D;&#x3D; &#x27;&#x27;) {
+      jsonData[&#x27;webrfc_user&#x27;] &#x3D; this.webrfcUser;
+    }
+
+    if (this.webrfcPassword !&#x3D;&#x3D; &#x27;&#x27;) {
+      jsonData[&#x27;webrfc_password&#x27;] &#x3D; btoa( this.webrfcPassword );
+    }
+
+ //   let inputData &#x3D; [];
+    debugger;
+    for (let i &#x3D; 0; i &lt; this.fields.length; i++) {
+      let structure &#x3D; [];
+      if (this.fields[i].value !&#x3D;&#x3D; &#x27;&#x27; || this.fields[i].valueFrom || this.fields[i].valueTo ) {
+        structure &#x3D; this.fields[i].name.split(&#x27;:&#x27;);
+        if ( structure[1] ) {
+          this.fields[i].name &#x3D; structure[0];
+        }
+      }
+      if (this.fields[i].value !&#x3D;&#x3D; &#x27;&#x27;) {
+        if (this.fields[i].type &#x3D;&#x3D;&#x3D; &#x27;datePicker&#x27;) {
+          const date &#x3D; new Date(this.fields[i].value);
+          jsonData[this.fields[i].name] &#x3D; date.getFullYear().toString() +
+            (date.getMonth() &lt; 9 ? &#x27;0&#x27; + (date.getMonth() + 1).toString() : (date.getMonth() + 1).toString()) +
+            (date.getDate() &lt; 10 ? &#x27;0&#x27; + date.getDate() : date.getDate()).toString();
+        } else {
+          jsonData[this.fields[i].name/*.toUpperCase()*/] &#x3D; this.fields[i].value;
+        }
+      }
+      if ( this.fields[i].valueFrom || this.fields[i].valueFrom ) {
+        if (this.fields[i].type &#x3D;&#x3D;&#x3D; &#x27;datePicker&#x27;) {
+          let dateFrom &#x3D; null;
+          let dateTo &#x3D; null;
+          if ( this.fields[i].valueFrom &amp;&amp; this.fields[i].valueFrom !&#x3D;&#x3D; &#x27;&#x27; ) {
+            const date &#x3D; new Date(this.fields[i].valueFrom);
+            dateFrom &#x3D; date.getFullYear().toString() +
+              (date.getMonth() &lt; 9 ? &#x27;0&#x27; + (date.getMonth() + 1).toString() : (date.getMonth() + 1).toString()) +
+              (date.getDate() &lt; 10 ? &#x27;0&#x27; + date.getDate() : date.getDate()).toString();
+          }
+          if (this.fields[i].valueTo &amp;&amp; this.fields[i].valueTo !&#x3D;&#x3D; &#x27;&#x27;) {
+            const date &#x3D; new Date(this.fields[i].valueTo);
+            dateTo &#x3D; date.getFullYear().toString() +
+              (date.getMonth() &lt; 9 ? &#x27;0&#x27; + (date.getMonth() + 1).toString() : (date.getMonth() + 1).toString()) +
+              (date.getDate() &lt; 10 ? &#x27;0&#x27; + date.getDate() : date.getDate()).toString();
+          }
+          let jsonDataValue &#x3D; &#x27;&#x27;;
+          if (dateFrom &amp;&amp; !dateTo) {
+            jsonDataValue &#x3D;  &#x27;{&quot;SIGN&quot;:&quot;I&quot;,&quot;OPTION&quot;:&quot;EQ&quot;,&quot;LOW&quot;:&quot;&#x27; + dateFrom + &#x27;&quot;,&quot;HIGH&quot;:&quot;00000000&quot;}&#x27;;
+          }
+          if (!dateFrom &amp;&amp; dateTo) {
+            jsonDataValue &#x3D; &#x27;{&quot;SIGN&quot;:&quot;I&quot;,&quot;OPTION&quot;:&quot;BT&quot;,&quot;LOW&quot;:&quot;00000000&quot;,&quot;HIGH&quot;:&quot;&#x27; + dateTo + &#x27;&quot;}&#x27;;
+          }
+          if (dateFrom &amp;&amp; dateTo) {
+            jsonDataValue &#x3D; &#x27;{&quot;SIGN&quot;:&quot;I&quot;,&quot;OPTION&quot;:&quot;BT&quot;,&quot;LOW&quot;:&quot;&#x27; + dateFrom + &#x27;&quot;,&quot;HIGH&quot;:&quot;&#x27; + dateTo + &#x27;&quot;}&#x27;;
+          }
+          if ( dateFrom || dateTo ) {
+            if ( this.fields[i].isTable &#x3D;&#x3D;&#x3D; &#x27;true&#x27; ) {
+              jsonDataValue &#x3D; &#x27;[&#x27; + jsonDataValue + &#x27;]&#x27;;
+            }
+            debugger;
+            for ( let ii &#x3D; 1; ii &lt; structure.length; ii++ ) {
+              if ( !jsonData[structure[0]] /*|| jsonData[this.fields[ii].name].indexOf(structure[0]) &lt;&#x3D; 0*/ ) {
+                jsonData[this.fields[i].name] &#x3D; &#x27;{&#x27; + structure[ii] + &#x27;:&#x27; + jsonDataValue + &#x27;}&#x27;;
+              } else if ( !jsonData[structure[ii]] ) {
+                const length &#x3D; jsonData[structure[0]].length;
+                const oldValue &#x3D; jsonData[structure[0]];
+                // tslint:disable-next-line:max-line-length
+             //   jsonData[structure[0]] &#x3D; oldValue.substring(0, length - 1) + &#x27;,&#x27; +  structure[ii] + &#x27;:&#x27; + jsonDataValue + oldValue.substring(length - 1);
+                const key &#x3D; structure[0] + &#x27;|&#x27; + i.toString();
+                jsonData[key] &#x3D; &#x27;{&#x27; + structure[ii] + &#x27;:&#x27; + jsonDataValue + &#x27;}&#x27;;
+              }
+            }
+          }
+          for ( let ii &#x3D; 1; ii &lt; structure.length; ii++ ) {
+            this.fields[i].name +&#x3D; &#x27;:&#x27; + structure[ii];
+          }
+        } else if ( this.fields[i].type &#x3D;&#x3D;&#x3D; &#x27;timePicker&#x27; ) {
+          let jsonDataValue &#x3D; &#x27;&#x27;;
+          if (this.fields[i].valueFrom &amp;&amp; !this.fields[i].valueTo) {
+//            jsonDataValue &#x3D;  &#x27;{&quot;SIGN&quot;:&quot;I&quot;,&quot;OPTION&quot;:&quot;EQ&quot;,&quot;LOW&quot;:&quot;&#x27; + this.fields[i].valueFrom.replace(&#x27;:&#x27;, &#x27;&#x27;) + &#x27;&quot;,&quot;HIGH&quot;:&quot;&quot;}&#x27;;
+            jsonDataValue &#x3D;  &#x27;{&quot;SIGN&quot;:&quot;I&quot;,&quot;OPTION&quot;:&quot;EQ&quot;,&quot;LOW&quot;:&quot;&#x27; + this.fields[i].valueFrom.replace(/:/g, &#x27;&#x27;) + &#x27;&quot;,&quot;HIGH&quot;:&quot;000000&quot;}&#x27;;
+          }
+          if (!this.fields[i].valueFrom &amp;&amp; this.fields[i].valueTo) {
+            jsonDataValue &#x3D; &#x27;{&quot;SIGN&quot;:&quot;I&quot;,&quot;OPTION&quot;:&quot;BT&quot;,&quot;LOW&quot;:&quot;&quot;,&quot;HIGH&quot;:&quot;&#x27; + this.fields[i].valueTo.replace(/:/g, &#x27;&#x27;) + &#x27;&quot;}&#x27;;
+          }
+          if (this.fields[i].valueFrom &amp;&amp; this.fields[i].valueTo) {
+            // tslint:disable-next-line:max-line-length
+            jsonDataValue &#x3D; &#x27;{&quot;SIGN&quot;:&quot;I&quot;,&quot;OPTION&quot;:&quot;BT&quot;,&quot;LOW&quot;:&quot;&#x27; + this.fields[i].valueFrom.replace(/:/g, &#x27;&#x27;) + &#x27;&quot;,&quot;HIGH&quot;:&quot;000000&#x27; + this.fields[i].valueTo.replace(/:/g, &#x27;&#x27;) + &#x27;&quot;}&#x27;;
+          }
+          if ( this.fields[i].valueFrom || this.fields[i].valueTo ) {
+            if ( this.fields[i].isTable &#x3D;&#x3D;&#x3D; &#x27;true&#x27; ) {
+              jsonDataValue &#x3D; &#x27;[&#x27; + jsonDataValue + &#x27;]&#x27;;
+            }
+            debugger;
+            for ( let ii &#x3D; 1; ii &lt; structure.length; ii++ ) {
+              if ( !jsonData[structure[0]] /*|| jsonData[this.fields[ii].name].indexOf(structure[0]) &lt;&#x3D; 0*/ ) {
+                jsonData[this.fields[i].name] &#x3D; &#x27;{&#x27; + structure[ii] + &#x27;:&#x27; + jsonDataValue + &#x27;}&#x27;;
+              } else if ( !jsonData[structure[ii]] ) {
+                const length &#x3D; jsonData[structure[0]].length;
+                const oldValue &#x3D; jsonData[structure[0]];
+                // tslint:disable-next-line:max-line-length
+//                jsonData[structure[0]] &#x3D; oldValue.substring(0, length - 1) + &#x27;,&#x27; +  structure[ii] + &#x27;:&#x27; + jsonDataValue + oldValue.substring(length - 1);
+                const key &#x3D; structure[0] + &#x27;|&#x27; + i.toString();
+                jsonData[key] &#x3D; &#x27;{&#x27; + structure[ii] + &#x27;:&#x27; + jsonDataValue + &#x27;}&#x27;;
+              }
+            }
+          }
+          for ( let ii &#x3D; 1; ii &lt; structure.length; ii++ ) {
+            this.fields[i].name +&#x3D; &#x27;:&#x27; + structure[ii];
+          }
+        } else {
+          debugger;
+          let jsonDataValue &#x3D; &#x27;&#x27;;
+          if (this.fields[i].valueFrom &amp;&amp; !this.fields[i].valueTo) {
+            if ( this.fields[i].valueFrom.indexOf(&#x27;*&#x27;) &gt; 0 ) {
+              jsonDataValue &#x3D;  &#x27;{&quot;SIGN&quot;:&quot;I&quot;,&quot;OPTION&quot;:&quot;CP&quot;,&quot;LOW&quot;:&quot;&#x27; + this.fields[i].valueFrom + &#x27;&quot;,&quot;HIGH&quot;:&quot;&quot;}&#x27;;
+            } else {
+              jsonDataValue &#x3D;  &#x27;{&quot;SIGN&quot;:&quot;I&quot;,&quot;OPTION&quot;:&quot;EQ&quot;,&quot;LOW&quot;:&quot;&#x27; + this.fields[i].valueFrom + &#x27;&quot;,&quot;HIGH&quot;:&quot;&quot;}&#x27;;
+            }
+          }
+          if (!this.fields[i].valueFrom &amp;&amp; this.fields[i].valueTo) {
+            jsonDataValue &#x3D; &#x27;{&quot;SIGN&quot;:&quot;I&quot;,&quot;OPTION&quot;:&quot;BT&quot;,&quot;LOW&quot;:&quot;&quot;,&quot;HIGH&quot;:&quot;&#x27; + this.fields[i].valueTo + &#x27;&quot;}&#x27;;
+          }
+          if (this.fields[i].valueFrom &amp;&amp; this.fields[i].valueTo) {
+            jsonDataValue &#x3D; &#x27;{&quot;SIGN&quot;:&quot;I&quot;,&quot;OPTION&quot;:&quot;BT&quot;,&quot;LOW&quot;:&quot;&#x27; + this.fields[i].valueFrom + &#x27;&quot;,&quot;HIGH&quot;:&quot;&#x27; + this.fields[i].valueTo + &#x27;&quot;}&#x27;;
+          }
+          if ( this.fields[i].valueFrom || this.fields[i].valueTo ) {
+            if ( this.fields[i].isTable &#x3D;&#x3D;&#x3D; &#x27;true&#x27; ) {
+              jsonDataValue &#x3D; &#x27;[&#x27; + jsonDataValue + &#x27;]&#x27;;
+            }
+            debugger;
+            for ( let ii &#x3D; 1; ii &lt; structure.length; ii++ ) {
+              if ( !jsonData[structure[0]] /*|| jsonData[this.fields[ii].name].indexOf(structure[0]) &lt;&#x3D; 0*/ ) {
+                jsonData[this.fields[i].name] &#x3D; &#x27;{&#x27; + structure[ii] + &#x27;:&#x27; + jsonDataValue + &#x27;}&#x27;;
+              } else if ( !jsonData[structure[ii]] ) {
+                const length &#x3D; jsonData[structure[0]].length;
+                const oldValue &#x3D; jsonData[structure[0]];
+                // tslint:disable-next-line:max-line-length
+//                jsonData[structure[0]] &#x3D; oldValue.substring(0, length - 1) + &#x27;,&#x27; +  structure[ii] + &#x27;:&#x27; + jsonDataValue + oldValue.substring(length - 1);
+                const key &#x3D; structure[0] + &#x27;|&#x27; + i.toString();
+                jsonData[key] &#x3D; &#x27;{&#x27; + structure[ii] + &#x27;:&#x27; + jsonDataValue + &#x27;}&#x27;;
+              }
+            }
+          }
+          for ( let ii &#x3D; 1; ii &lt; structure.length; ii++ ) {
+            this.fields[i].name +&#x3D; &#x27;:&#x27; + structure[ii];
+          }
+          if ( this.fields[i].name.toLocaleLowerCase() &#x3D;&#x3D;&#x3D; &#x27;sqltable&#x27; ) {
+            this.table &#x3D;  this.fields[i].value;
+          }
+        }
+      }
+    }
+    debugger;
     const so &#x3D; this;
     this.progress &#x3D; true;
 
-		/*
+        /*
 		let apiURL &#x3D; &#x60;${this.apiRoot}?term&#x3D;${term}&amp;media&#x3D;music&amp;limit&#x3D;20&amp;callback&#x3D;JSONP_CALLBACK&#x60;;
-		return this.http.get(apiURL) 
-				.map(res &#x3D;&gt; { 
-					return res.json().results.map(item &#x3D;&gt; { 
-						return new SearchItem( 
+		return this.http.get(apiURL)
+				.map(res &#x3D;&gt; {
+					return res.json().results.map(item &#x3D;&gt; {
+						return new SearchItem(
 								item.trackName,
 								item.artistName,
 								item.trackViewUrl,
@@ -2468,6 +2935,11 @@ export class DataTableComponent implements OnInit {
 					});
 				});
 		*/
+
+    if ( so.refreshColumns &#x3D;&#x3D;&#x3D; &#x27;true&#x27; ) {
+      so.displayedColumns &#x3D; [];
+      so.displayedColumnsNames &#x3D; [];
+    }
 
     jQuery.ajax({
       url: this.baseUrl,
@@ -2488,57 +2960,98 @@ export class DataTableComponent implements OnInit {
           i++;
         }
 
+
+        debugger;
         so.response &#x3D; data;
-        so.dataSource.data &#x3D; so.response.results[so.table];
+
+        if ( so.response.results[so.table] ) {
+          so.dataSource.data &#x3D; so.response.results[so.table];
+        } else {
+          if ( so.response.errors.length &gt; 0 ) {
+            so.dialogService.open(so.title,   // title
+              [ so.response.errors[0].msg ],  // array of messages
+              &#x27;message&#x27;,   // dialog type
+              &#x27;error&#x27;,   // message type
+              [
+                {caption: &#x27;Close&#x27;, color: &#x27;primary&#x27;, close: true},
+                //                           { caption: &quot;Cancel&quot;, color: &quot;warn&quot;, close: true }
+              ]  // buttons
+            );
+            so.progress &#x3D; false;
+            return;
+          }
+        }
+
 
         // decode URI
         for (let m &#x3D; 0; m &lt; so.response.dictionary.length; m++) {
           const rec &#x3D; so.response.dictionary[m];
           for (const [key, value] of Object.entries(rec)) {
-            so.response.dictionary[m][key] &#x3D; decodeURIComponent(value);
+            let val: any &#x3D; value;
+            so.response.dictionary[m][key] &#x3D; decodeURIComponent(val);
           }
         }
 
 
-        let dictionary &#x3D; so.response.dictionary;
+        const dictionary &#x3D; so.response.dictionary;
         debugger;
 
         // decode URI
         for (let m &#x3D; 0; m &lt; so.dataSource.data.length; m++) {
           const rec &#x3D; so.dataSource.data[m];
           for (const [key, value] of Object.entries(rec)) {
-            so.dataSource.data[m][key] &#x3D; decodeURIComponent(value);
+            const val: any &#x3D; value;
+            so.dataSource.data[m][key] &#x3D; decodeURIComponent(val);
           }
         }
 
-        // if no specified displayed columns
-        if (so.displayedColumns.length &#x3D;&#x3D;&#x3D; 0) {
-          i &#x3D; 0;
-          const rec &#x3D; so.dataSource.data[0];
-          for (const [key, value] of Object.entries(rec)) {
-            so.displayedColumns[i] &#x3D; key;
-            so.displayedColumnsNames[i] &#x3D; key;
-            i++;
+        if ( so.dataSource.data.length &gt; 0 ) {
+          // if no specified displayed columns is set by code
+          if (so.displayedColumnsNames.length &#x3D;&#x3D;&#x3D; 0) {
+            i &#x3D; 0;
+            const rec &#x3D; so.dataSource.data[0];
+            for (const [key, value] of Object.entries(rec)) {
+              so.displayedColumns[i] &#x3D; key;
+              if ( !so.response.dictionary.filter(item &#x3D;&gt; item.name &#x3D;&#x3D;&#x3D; key)[0] ) {
+                so.displayedColumnsNames[i] &#x3D; key;
+              } else  {
+                so.displayedColumnsNames[i] &#x3D; so.response.dictionary.filter(item &#x3D;&gt; item.name &#x3D;&#x3D;&#x3D; key)[0].smallDescr;
+              }
+              i++;
+            }
           }
-        }
-        so.displayedColumnsNames &#x3D; [];
-        debugger;
-        const rec &#x3D; so.dataSource.data[0];
+          /*
+          so.displayedColumnsNames &#x3D; [];
+          debugger;
+          const rec &#x3D; so.dataSource.data[0];
           i &#x3D; 0;
-        for (const [key, value] of Object.entries(rec)) {
-//          for (let i &#x3D; 0; i &lt; so.response.dictionary.length; i++) {
-            const rec2 &#x3D; so.response.dictionary.filter(item &#x3D;&gt; item.name &#x3D;&#x3D;&#x3D; key)[0];
-            for (const [key2, value2] of Object.entries(rec2)) {
-              if (key2 &#x3D;&#x3D;&#x3D; &#x27;small_descr&#x27;) {
-                if (value2 !&#x3D;&#x3D; &#x27;&#x27;) {
-                  so.displayedColumnsNames[i] &#x3D; value2;
-                } else {
-                  so.displayedColumnsNames[i] &#x3D; so.response.dictionary[i].name.replace(&#x27;&quot;&#x27;, &#x27;&#x27;).replace(&#x27;&quot;&#x27;, &#x27;&#x27;);
+          // build mat-table rows
+          if (so.displayedColumnsNames.length &#x3D;&#x3D;&#x3D; 0) {
+            for (const [key, value] of Object.entries(rec)) {
+              const rec2 &#x3D; so.response.dictionary.filter(item &#x3D;&gt; item.name &#x3D;&#x3D;&#x3D; key)[0];
+              for (const [key2, value2] of Object.entries(rec2)) {
+                if (key2 &#x3D;&#x3D;&#x3D; &#x27;small_descr&#x27;) {
+                  // check if the extracted columns is in dyplayed columns array&quot;
+                  if ( so.displayedColumns.filter(item &#x3D;&gt; item &#x3D;&#x3D;&#x3D; key)[0] ) {
+                    // put value in correct column
+                    for (let j &#x3D; 0; j &lt; so.displayedColumns.length; j++ ) {
+                      if ( so.displayedColumns[j] &#x3D;&#x3D;&#x3D; key ) {
+                        i &#x3D; j;
+                        break;
+                      }
+                    }
+                    if (value2 !&#x3D;&#x3D; &#x27;&#x27;) {
+                      so.displayedColumnsNames[i] &#x3D; value2;
+                    } else {
+                      so.displayedColumnsNames[i] &#x3D; so.response.dictionary[i].name.replace(&#x27;&quot;&#x27;, &#x27;&#x27;).replace(&#x27;&quot;&#x27;, &#x27;&#x27;);
+                    }
+                    i++;
+                  }
                 }
-                i++;
               }
             }
-//          }
+          }
+        */
         }
         so.progress &#x3D; false;
       },
@@ -2572,6 +3085,9 @@ export class DataTableComponent implements OnInit {
 
 
   protected refresh() {
+    if ( this.noRefreshColumns &#x3D;&#x3D;&#x3D; &#x27;false&#x27; ) {
+      this.refreshColumns &#x3D; &#x27;true&#x27;;
+    }
     this.getData();
   }
 
@@ -2586,7 +3102,6 @@ export class DataTableComponent implements OnInit {
   }
 
   private enableDisableButtons() {
-    debugger;
     if (this.dataSource.data.filter(item &#x3D;&gt; item.selected &#x3D;&#x3D;&#x3D; true).length &#x3D;&#x3D;&#x3D; 1) {
       for (let m &#x3D; 0; m &lt; this.buttons.filter(item &#x3D;&gt; item.multiSel &#x3D;&#x3D;&#x3D; false).length; m++) {
         //        this.buttons[m].disabled &#x3D; !this.buttons[m].disabled;   // !row.selected;
@@ -2600,6 +3115,18 @@ export class DataTableComponent implements OnInit {
   }
 
   ngOnInit() {
+    if ( this.fields[0] ) {
+      this.fieldsRows.push(this.fields[0].row/*row*/);
+      for ( let i &#x3D; 1; i &lt; this.fields.length; i++ ) {
+        if ( !this.fields[i].row ) {
+          this.fields[i].row &#x3D; &#x27;0&#x27;;
+        }
+        if ( this.fields[i].row !&#x3D;&#x3D; this.fields[i - 1].row ) {
+          this.fieldsRows.push(this.fields[i].row/*row*/);
+        }
+      }
+      this.fieldsRows.sort( );
+    }
   }
 
   /**
@@ -2609,7 +3136,7 @@ export class DataTableComponent implements OnInit {
   ngAfterViewInit() {
     this.dataSource.paginator &#x3D; this.paginator;
     this.dataSource.sort &#x3D; this.sort;
-  }
+ }
 
 }
 
@@ -2624,59 +3151,59 @@ export class DataTableComponent implements OnInit {
 			{{title}}
 			&lt;div fxLayout&#x3D;&quot;row&quot; fxFlex fxLayoutAlign&#x3D;&quot;end&quot;&gt;
 				&lt;button mat-icon-button *ngIf&#x3D;&quot;multiSelection&quot;
-																(click)&#x3D;&quot;selectAll()&quot;
-													 			matTooltip&#x3D;&quot;Select/deselect all&quot;
-																color&#x3D;&quot;primar&quot;&gt;
+										(click)&#x3D;&quot;selectAll()&quot;
+										matTooltip&#x3D;&quot;Select/deselect all&quot;
+										color&#x3D;&quot;primar&quot;&gt;
 					&lt;mat-icon color&#x3D;&quot;primary&quot;&gt;select_all&lt;/mat-icon&gt;
 				&lt;/button&gt;
 				&lt;button mat-button *ngFor&#x3D;&quot;let button of buttons | position: &#x27;right&#x27; | row: 0&quot;
-													 (click)&#x3D;&quot;buttonClick(button)&quot;
-													 [matTooltip]&#x3D;&quot;button.tooltip&quot;
-													 [disabled]&#x3D;&quot;button.disabled&quot;
-													 color&#x3D;&quot;primary&quot;&gt;
+								    (click)&#x3D;&quot;buttonClick(button)&quot;
+									[matTooltip]&#x3D;&quot;button.tooltip&quot;
+									[disabled]&#x3D;&quot;button.disabled&quot;
+									color&#x3D;&quot;primary&quot;&gt;
 					&lt;mat-icon [color]&#x3D;&quot;button.disabled ? &#x27;&#x27; : &#x27;primary&#x27;&quot;&gt;{{button.icon}}&lt;/mat-icon&gt;
 					{{button.caption}}
 				&lt;/button&gt;
 				&lt;button mat-icon-button *ngFor&#x3D;&quot;let iconButton of iconButtons | position: &#x27;right&#x27; | row: 0&quot;
-															  (click)&#x3D;&quot;iconBbuttonClick(iconButton)&quot;
-													 			[matTooltip]&#x3D;&quot;iconButton.tooltip&quot;
-		  												  [disabled]&#x3D;&quot;iconButton.disabled&quot;
-																color&#x3D;&quot;primary&quot;&gt;
+									    (click)&#x3D;&quot;iconBbuttonClick(iconButton)&quot;
+										[matTooltip]&#x3D;&quot;iconButton.tooltip&quot;
+		  						    	[disabled]&#x3D;&quot;iconButton.disabled&quot;
+										color&#x3D;&quot;primary&quot;&gt;
 					&lt;mat-icon [color]&#x3D;&quot;iconButton.disabled ? &#x27;&#x27; : &#x27;primary&#x27;&quot;&gt;{{iconButton.icon}}&lt;/mat-icon&gt;
 				&lt;/button&gt;
 			&lt;/div&gt;
 		&lt;/mat-toolbar-row&gt; 
 		&lt;mat-toolbar-row *ngIf&#x3D;&quot;(buttons | row: 1).length &gt; 0 || (iconButtons | row: 1).length &gt; 0&quot;&gt;
 			&lt;button mat-button *ngFor&#x3D;&quot;let button of buttons | position: &#x27;left&#x27; | row: 1&quot;
-												 (click)&#x3D;&quot;buttonClick(button)&quot;
-												 [matTooltip]&#x3D;&quot;button.tooltip&quot;
-												 [disabled]&#x3D;&quot;button.disabled&quot;
-												 color&#x3D;&quot;primary&quot;&gt;
+							   (click)&#x3D;&quot;buttonClick(button)&quot;
+							   [matTooltip]&#x3D;&quot;button.tooltip&quot;
+							   [disabled]&#x3D;&quot;button.disabled&quot;
+							   color&#x3D;&quot;primary&quot;&gt;
 				&lt;mat-icon [color]&#x3D;&quot;button.disabled ? &#x27;&#x27; : &#x27;primary&#x27;&quot;&gt;{{button.icon}}&lt;/mat-icon&gt;
 				{{button.caption}}
 			&lt;/button&gt;
 			&lt;button mat-icon-button *ngFor&#x3D;&quot;let iconButton of iconButtons | position: &#x27;left&#x27; | row: 1&quot;
-														  (click)&#x3D;&quot;iconBbuttonClick(iconButton)&quot;
-													 		[matTooltip]&#x3D;&quot;iconButton.tooltip&quot;
-														  [disabled]&#x3D;&quot;iconButton.disabled&quot;
-															color&#x3D;&quot;primary&quot;&gt;
+									(click)&#x3D;&quot;iconBbuttonClick(iconButton)&quot;
+									[matTooltip]&#x3D;&quot;iconButton.tooltip&quot;
+									[disabled]&#x3D;&quot;iconButton.disabled&quot;
+									color&#x3D;&quot;primary&quot;&gt;
 				&lt;mat-icon [color]&#x3D;&quot;iconButton.disabled ? &#x27;&#x27; : &#x27;primary&#x27;&quot;&gt;{{iconButton.icon}}&lt;/mat-icon&gt;
 			&lt;/button&gt;
 		
 			&lt;div fxLayout&#x3D;&quot;row&quot; fxFlex fxLayoutAlign&#x3D;&quot;center&quot;&gt;
 				&lt;button mat-button *ngFor&#x3D;&quot;let button of buttons | position: &#x27;center&#x27; | row: 1&quot;
-													 (click)&#x3D;&quot;buttonClick(button)&quot;
-													 [matTooltip]&#x3D;&quot;button.tooltip&quot;
-													 [disabled]&#x3D;&quot;button.disabled&quot;
-													 color&#x3D;&quot;primary&quot;&gt;
+									(click)&#x3D;&quot;buttonClick(button)&quot;
+									[matTooltip]&#x3D;&quot;button.tooltip&quot;
+									[disabled]&#x3D;&quot;button.disabled&quot;
+									color&#x3D;&quot;primary&quot;&gt;
 					&lt;mat-icon [color]&#x3D;&quot;button.disabled ? &#x27;&#x27; : &#x27;primary&#x27;&quot;&gt;{{button.icon}}&lt;/mat-icon&gt;
 					{{button.caption}}
 				&lt;/button&gt;
 				&lt;button mat-icon-button *ngFor&#x3D;&quot;let iconButton of iconButtons | position: &#x27;center&#x27; | row: 1&quot;
-															  (click)&#x3D;&quot;iconBbuttonClick(iconButton)&quot;
-													 			[matTooltip]&#x3D;&quot;iconButton.tooltip&quot;
-															  [disabled]&#x3D;&quot;iconButton.disabled&quot;
-																color&#x3D;&quot;primary&quot;&gt;
+										(click)&#x3D;&quot;iconBbuttonClick(iconButton)&quot;
+										[matTooltip]&#x3D;&quot;iconButton.tooltip&quot;
+										[disabled]&#x3D;&quot;iconButton.disabled&quot;
+										color&#x3D;&quot;primary&quot;&gt;
 					&lt;mat-icon [color]&#x3D;&quot;iconButton.disabled ? &#x27;&#x27; : &#x27;primary&#x27;&quot;&gt;{{iconButton.icon}}&lt;/mat-icon&gt;
 				&lt;/button&gt;
 			&lt;/div&gt;
@@ -2684,64 +3211,134 @@ export class DataTableComponent implements OnInit {
 			&lt;div fxLayout&#x3D;&quot;row&quot; fxFlex fxLayoutAlign&#x3D;&quot;end&quot;&gt;
 				
 				&lt;button mat-button *ngFor&#x3D;&quot;let button of buttons | position: &#x27;right&#x27; | row: 1&quot;
-													 (click)&#x3D;&quot;buttonClick(button)&quot;
-													 [matTooltip]&#x3D;&quot;button.tooltip&quot;
-													 [disabled]&#x3D;&quot;button.disabled&quot;
-													 color&#x3D;&quot;primary&quot;&gt;
+									(click)&#x3D;&quot;buttonClick(button)&quot;
+									[matTooltip]&#x3D;&quot;button.tooltip&quot;
+									[disabled]&#x3D;&quot;button.disabled&quot;
+									color&#x3D;&quot;primary&quot;&gt;
 					&lt;mat-icon [color]&#x3D;&quot;button.disabled ? &#x27;&#x27; : &#x27;primary&#x27;&quot;&gt;{{button.icon}}&lt;/mat-icon&gt;
 					{{button.caption}}
 				&lt;/button&gt;
 				&lt;button mat-icon-button *ngFor&#x3D;&quot;let iconButton of iconButtons | position: &#x27;right&#x27; | row: 1&quot;
-															  (click)&#x3D;&quot;iconBbuttonClick(iconButton)&quot;
-													 			[matTooltip]&#x3D;&quot;iconButton.tooltip&quot;
-															  [disabled]&#x3D;&quot;iconButton.disabled&quot;
-																color&#x3D;&quot;primary&quot;&gt;
+										(click)&#x3D;&quot;iconBbuttonClick(iconButton)&quot;
+										[matTooltip]&#x3D;&quot;iconButton.tooltip&quot;
+										[disabled]&#x3D;&quot;iconButton.disabled&quot;
+										color&#x3D;&quot;primary&quot;&gt;
 					&lt;mat-icon [color]&#x3D;&quot;iconButton.disabled ? &#x27;&#x27; : &#x27;primary&#x27;&quot;&gt;{{iconButton.icon}}&lt;/mat-icon&gt;
 				&lt;/button&gt;
 			&lt;/div&gt;
 		&lt;/mat-toolbar-row&gt; 
-		&lt;mat-toolbar-row *ngIf&#x3D;&quot;fields.length &gt; 0 || filter&quot;&gt; 
-			&lt;div fxLayout&#x3D;&quot;row&quot; fxFlex fxLayoutAlign&#x3D;&quot;left&quot;&gt;
-				&lt;mat-form-field *ngFor&#x3D;&quot;let field of fields; let i&#x3D;index;&quot;&gt; 
-					&lt;input matInput
-				  			 [placeholder]&#x3D;&quot;field.placeholder&quot;
-								 [name]&#x3D;&quot;field.name&quot;
-								 [(ngModel)]&#x3D;&quot;field.value&quot;
-								 [type]&#x3D;&quot;field.type&quot;&gt; 
-			  &lt;/mat-form-field&gt; 
+&lt;!--		&lt;mat-toolbar-row *ngIf&#x3D;&quot;fields.length &gt; 0 || filter&quot;&gt; --&gt;
+&lt;!--			&lt;div fxLayout&#x3D;&quot;row wrap&quot; fxFlex&#x3D;&quot;90&quot; fxLayoutAlign&#x3D;&quot;start stretch&quot; fxLayoutGap&#x3D;&quot;10px&quot;&gt;   --&gt;
+		&lt;mat-toolbar-row *ngFor&#x3D;&quot;let fieldRow of fieldsRows&quot;&gt;
+			&lt;div *ngFor&#x3D;&quot;let field of fields; let i&#x3D;index;&quot;&gt; 
+			&lt;!--&lt;mat-form-field *ngFor&#x3D;&quot;let field of fields; let i&#x3D;index;&quot;&gt;--&gt; 
+				&lt;!--
+				&lt;div *ngIf&#x3D;&quot;field.type !&#x3D;&#x3D; &#x27;datePicker&#x27; &amp;&amp; ( field.range !&#x3D;&#x3D; &#x27;true&#x27; || field.range &#x3D;&#x3D;&#x3D; &#x27;true&#x27; )&quot;&gt;
+					&lt;input matInput	[placeholder]&#x3D;&quot;field.placeholder&quot;
+									[name]&#x3D;&quot;field.name&quot;
+									[(ngModel)]&#x3D;&quot;field.value&quot;
+									[type]&#x3D;&quot;field.type&quot;&gt; 
+				&lt;/div&gt;
+				--&gt;
 				
-			  &lt;mat-form-field *ngIf&#x3D;&quot;filter&quot;&gt; 
-				  &lt;input matInput (keyup)&#x3D;&quot;applyFilter($event.target.value)&quot;
-								 placeholder&#x3D;&quot;Filter&quot;&gt; 
-				&lt;/mat-form-field&gt; 
-			&lt;/div&gt;
-		&lt;/mat-toolbar-row&gt; 
+				&lt;div *ngIf&#x3D;&quot;field.type !&#x3D;&#x3D; &#x27;datePicker&#x27; &amp;&amp; field.range !&#x3D;&#x3D; &#x27;true&#x27; &amp;&amp; field.row &#x3D;&#x3D;&#x3D; fieldRow&quot; &gt;
+					&lt;mat-form-field&gt;
+						&lt;input matInput	[placeholder]&#x3D;&quot;field.placeholder&quot;
+										[name]&#x3D;&quot;field.name&quot;
+										[(ngModel)]&#x3D;&quot;field.value&quot;
+										[type]&#x3D;&quot;field.type&quot;&gt; 
+				   &lt;/mat-form-field&gt;
+				&lt;/div&gt;
+				&lt;div *ngIf&#x3D;&quot;field.type !&#x3D;&#x3D; &#x27;datePicker&#x27; &amp;&amp; field.range &#x3D;&#x3D;&#x3D; &#x27;true&#x27; &amp;&amp; field.row &#x3D;&#x3D;&#x3D; fieldRow&quot;&gt;
+					&lt;mat-form-field&gt;
+						&lt;input matInput [placeholder]&#x3D;&quot;field.placeholder + &#x27; From&#x27;&quot;
+										[name]&#x3D;&quot;field.name + &#x27;From&#x27;&quot;
+										[(ngModel)]&#x3D;&quot;field.valueFrom&quot;
+										[type]&#x3D;&quot;field.type&quot;&gt; 
+					&lt;/mat-form-field&gt;
+					&lt;mat-form-field&gt;
+						&lt;input matInput fxFlex&#x3D;&quot;40%&quot;
+										[placeholder]&#x3D;&quot;field.placeholder + &#x27; To&#x27;&quot;
+										[name]&#x3D;&quot;field.name + &#x27;To&#x27;&quot;
+										[(ngModel)]&#x3D;&quot;field.valueTo&quot;
+										[type]&#x3D;&quot;field.type&quot;&gt; 
+					&lt;/mat-form-field&gt;
+				&lt;/div&gt;
+					
+				&lt;div *ngIf&#x3D;&quot;field.type &#x3D;&#x3D;&#x3D; &#x27;datePicker&#x27; &amp;&amp; field.range &#x3D;&#x3D;&#x3D; &#x27;false&#x27; &amp;&amp; field.row &#x3D;&#x3D;&#x3D; fieldRow&quot; &gt;
+					&lt;mat-form-field&gt;
+						&lt;input matInput [formControl]&#x3D;&quot;currentDate&quot;
+										(mouseup)&#x3D;&quot;picker.open()&quot;
+										[matDatepicker]&#x3D;&quot;picker&quot; 
+						 				[placeholder]&#x3D;&quot;field.placeholder&quot;
+										[(ngModel)]&#x3D;&quot;field.value&quot;&gt; 
+						&lt;mat-datepicker #picker&gt;&lt;/mat-datepicker&gt;
+					&lt;/mat-form-field&gt;
+			  	&lt;/div&gt;
+				&lt;div *ngIf&#x3D;&quot;field.type &#x3D;&#x3D;&#x3D; &#x27;datePicker&#x27; &amp;&amp; field.range &#x3D;&#x3D;&#x3D; &#x27;true&#x27; &amp;&amp; field.row &#x3D;&#x3D;&#x3D; fieldRow&quot;&gt;
+					&lt;mat-form-field&gt;
+						&lt;input matInput (mouseup)&#x3D;&quot;pickerFrom.open()&quot;
+										[matDatepicker]&#x3D;&quot;pickerFrom&quot; 
+					 					[placeholder]&#x3D;&quot;field.placeholder + &#x27; From&#x27;&quot;
+	 									[(ngModel)]&#x3D;&quot;field.valueFrom&quot;&gt; 
+						&lt;mat-datepicker #pickerFrom&gt;&lt;/mat-datepicker&gt;
+					&lt;/mat-form-field&gt;
+					&lt;mat-form-field&gt;
+						&lt;input matInput fxFlex&#x3D;&quot;40%&quot;
+										(mouseup)&#x3D;&quot;pickerTo.open()&quot;
+										[matDatepicker]&#x3D;&quot;pickerTo&quot; 
+					 					[placeholder]&#x3D;&quot;field.placeholder + &#x27; To&#x27;&quot;
+	 									[(ngModel)]&#x3D;&quot;field.valueTo&quot;&gt; 
+			  			&lt;mat-datepicker #pickerTo&gt;&lt;/mat-datepicker&gt;
+					&lt;/mat-form-field&gt;
+			  	&lt;/div&gt;
+				&lt;!--&lt;/mat-form-field&gt;--&gt; 
+			&lt;/div&gt;  
+
+			&lt;!--
+			&lt;mat-form-field *ngIf&#x3D;&quot;filter&quot;&gt; 
+			  	&lt;input matInput (keyup)&#x3D;&quot;applyFilter($event.target.value)&quot;
+							 	placeholder&#x3D;&quot;Filter&quot;&gt; 
+			&lt;/mat-form-field&gt;
+			--&gt;
+
+		&lt;/mat-toolbar-row&gt;
+	&lt;!--	&lt;/mat-toolbar-row&gt;  --&gt;
+
+		&lt;mat-toolbar-row *ngIf&#x3D;&quot;filter&quot;&gt;
+			&lt;mat-form-field&gt; 
+			  	&lt;input matInput (keyup)&#x3D;&quot;applyFilter($event.target.value)&quot;
+							 	placeholder&#x3D;&quot;Filter&quot;&gt; 
+			&lt;/mat-form-field&gt;
+		&lt;/mat-toolbar-row&gt;
+
 	&lt;/mat-toolbar&gt;
 
 	&lt;mat-progress-bar	mode&#x3D;&quot;indeterminate&quot; *ngIf&#x3D;&quot;progress&quot;&gt;&lt;/mat-progress-bar&gt; 
 	
 	&lt;mat-table #table [dataSource]&#x3D;&quot;dataSource&quot; matSort
-						class&#x3D;&quot;example-table&quot;&gt;
+					  class&#x3D;&quot;example-table&quot;&gt;
 		&lt;ng-container *ngFor&#x3D;&quot;let col of displayedColumns; let i&#x3D;index;&quot;
-									matColumnDef&#x3D;{{col}}&gt; 
+					  matColumnDef&#x3D;&quot;{{col}}&quot;&gt; 
 			&lt;mat-header-cell *matHeaderCellDef mat-sort-header class&#x3D;&quot;example-header-cell&quot;&gt;
 				{{displayedColumnsNames[i]}}
 			&lt;/mat-header-cell&gt;
 			&lt;mat-cell *matCellDef&#x3D;&quot;let row&quot;
-								class&#x3D;&quot;example-cell&quot; [style.color]&#x3D;&quot;row[col]&quot;&gt; {{row[col]}}&lt;/mat-cell&gt;
+					  class&#x3D;&quot;example-cell&quot; [style.color]&#x3D;&quot;row[col]&quot;&gt; {{row[col]}}&lt;/mat-cell&gt;
 		&lt;/ng-container&gt; &lt;!-- ID Column --&gt; 
 		&lt;mat-header-row *matHeaderRowDef&#x3D;&quot;displayedColumns&quot;
-										class&#x3D;&quot;example-header-row&quot;&gt;
+						class&#x3D;&quot;example-header-row&quot;&gt;
 		&lt;/mat-header-row&gt; 
 		&lt;mat-row *matRowDef&#x3D;&quot;let row; columns: displayedColumns;&quot; 
-						 class&#x3D;&quot;example-row&quot;
-						 [ngClass]&#x3D;&quot;{&#x27;selected-row&#x27;: row.selected&#x3D;&#x3D;&#x3D;true}&quot;
-						 (click)&#x3D;&quot;selectItem(row)&quot;&gt;&lt;/mat-row&gt;
+				 class&#x3D;&quot;example-row&quot;
+				 [ngClass]&#x3D;&quot;{&#x27;selected-row&#x27;: row.selected&#x3D;&#x3D;&#x3D;true}&quot;
+				 (click)&#x3D;&quot;selectItem(row)&quot;&gt;&lt;/mat-row&gt;
 	&lt;/mat-table&gt;
 
-	&lt;mat-paginator #paginator [length]&#x3D;&quot;dataSource.data.length&quot;
-		[pageIndex]&#x3D;&quot;0&quot; [pageSize]&#x3D;&quot;25&quot;
-		[pageSizeOptions]&#x3D;&quot;[5, 10, 25, 50, 100]&quot;&gt; &lt;/mat-paginator&gt;
+	&lt;mat-paginator #paginator 
+				   [length]&#x3D;&quot;dataSource.data.length&quot;
+				   [pageIndex]&#x3D;&quot;0&quot; [pageSize]&#x3D;&quot;25&quot;
+				   [pageSizeOptions]&#x3D;&quot;[5, 10, 25, 50, 100]&quot;&gt; &lt;/mat-paginator&gt;
 
 &lt;/div&gt;
 </code></pre>
@@ -2770,7 +3367,7 @@ export class DataTableComponent implements OnInit {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div class="example-container mat-elevation-z8">	<mat-toolbar> 		<mat-toolbar-row>			{{title}}			<div fxLayout="row" fxFlex fxLayoutAlign="end">				<button mat-icon-button *ngIf="multiSelection"																(click)="selectAll()"													 			matTooltip="Select/deselect all"																color="primar">					<mat-icon color="primary">select_all</mat-icon>				</button>				<button mat-button *ngFor="let button of buttons | position: \'right\' | row: 0"													 (click)="buttonClick(button)"													 [matTooltip]="button.tooltip"													 [disabled]="button.disabled"													 color="primary">					<mat-icon [color]="button.disabled ? \'\' : \'primary\'">{{button.icon}}</mat-icon>					{{button.caption}}				</button>				<button mat-icon-button *ngFor="let iconButton of iconButtons | position: \'right\' | row: 0"															  (click)="iconBbuttonClick(iconButton)"													 			[matTooltip]="iconButton.tooltip"		  												  [disabled]="iconButton.disabled"																color="primary">					<mat-icon [color]="iconButton.disabled ? \'\' : \'primary\'">{{iconButton.icon}}</mat-icon>				</button>			</div>		</mat-toolbar-row> 		<mat-toolbar-row *ngIf="(buttons | row: 1).length > 0 || (iconButtons | row: 1).length > 0">			<button mat-button *ngFor="let button of buttons | position: \'left\' | row: 1"												 (click)="buttonClick(button)"												 [matTooltip]="button.tooltip"												 [disabled]="button.disabled"												 color="primary">				<mat-icon [color]="button.disabled ? \'\' : \'primary\'">{{button.icon}}</mat-icon>				{{button.caption}}			</button>			<button mat-icon-button *ngFor="let iconButton of iconButtons | position: \'left\' | row: 1"														  (click)="iconBbuttonClick(iconButton)"													 		[matTooltip]="iconButton.tooltip"														  [disabled]="iconButton.disabled"															color="primary">				<mat-icon [color]="iconButton.disabled ? \'\' : \'primary\'">{{iconButton.icon}}</mat-icon>			</button>					<div fxLayout="row" fxFlex fxLayoutAlign="center">				<button mat-button *ngFor="let button of buttons | position: \'center\' | row: 1"													 (click)="buttonClick(button)"													 [matTooltip]="button.tooltip"													 [disabled]="button.disabled"													 color="primary">					<mat-icon [color]="button.disabled ? \'\' : \'primary\'">{{button.icon}}</mat-icon>					{{button.caption}}				</button>				<button mat-icon-button *ngFor="let iconButton of iconButtons | position: \'center\' | row: 1"															  (click)="iconBbuttonClick(iconButton)"													 			[matTooltip]="iconButton.tooltip"															  [disabled]="iconButton.disabled"																color="primary">					<mat-icon [color]="iconButton.disabled ? \'\' : \'primary\'">{{iconButton.icon}}</mat-icon>				</button>			</div>						<div fxLayout="row" fxFlex fxLayoutAlign="end">								<button mat-button *ngFor="let button of buttons | position: \'right\' | row: 1"													 (click)="buttonClick(button)"													 [matTooltip]="button.tooltip"													 [disabled]="button.disabled"													 color="primary">					<mat-icon [color]="button.disabled ? \'\' : \'primary\'">{{button.icon}}</mat-icon>					{{button.caption}}				</button>				<button mat-icon-button *ngFor="let iconButton of iconButtons | position: \'right\' | row: 1"															  (click)="iconBbuttonClick(iconButton)"													 			[matTooltip]="iconButton.tooltip"															  [disabled]="iconButton.disabled"																color="primary">					<mat-icon [color]="iconButton.disabled ? \'\' : \'primary\'">{{iconButton.icon}}</mat-icon>				</button>			</div>		</mat-toolbar-row> 		<mat-toolbar-row *ngIf="fields.length > 0 || filter"> 			<div fxLayout="row" fxFlex fxLayoutAlign="left">				<mat-form-field *ngFor="let field of fields; let i=index;"> 					<input matInput				  			 [placeholder]="field.placeholder"								 [name]="field.name"								 [(ngModel)]="field.value"								 [type]="field.type"> 			  </mat-form-field> 							  <mat-form-field *ngIf="filter"> 				  <input matInput (keyup)="applyFilter($event.target.value)"								 placeholder="Filter"> 				</mat-form-field> 			</div>		</mat-toolbar-row> 	</mat-toolbar>	<mat-progress-bar	mode="indeterminate" *ngIf="progress"></mat-progress-bar> 		<mat-table #table [dataSource]="dataSource" matSort						class="example-table">		<ng-container *ngFor="let col of displayedColumns; let i=index;"									matColumnDef={{col}}> 			<mat-header-cell *matHeaderCellDef mat-sort-header class="example-header-cell">				{{displayedColumnsNames[i]}}			</mat-header-cell>			<mat-cell *matCellDef="let row"								class="example-cell" [style.color]="row[col]"> {{row[col]}}</mat-cell>		</ng-container> <!-- ID Column --> 		<mat-header-row *matHeaderRowDef="displayedColumns"										class="example-header-row">		</mat-header-row> 		<mat-row *matRowDef="let row; columns: displayedColumns;" 						 class="example-row"						 [ngClass]="{\'selected-row\': row.selected===true}"						 (click)="selectItem(row)"></mat-row>	</mat-table>	<mat-paginator #paginator [length]="dataSource.data.length"		[pageIndex]="0" [pageSize]="25"		[pageSizeOptions]="[5, 10, 25, 50, 100]"> </mat-paginator></div></div>'
+        var COMPONENT_TEMPLATE = '<div><div class="example-container mat-elevation-z8">	<mat-toolbar> 		<mat-toolbar-row>			{{title}}			<div fxLayout="row" fxFlex fxLayoutAlign="end">				<button mat-icon-button *ngIf="multiSelection"										(click)="selectAll()"										matTooltip="Select/deselect all"										color="primar">					<mat-icon color="primary">select_all</mat-icon>				</button>				<button mat-button *ngFor="let button of buttons | position: \'right\' | row: 0"								    (click)="buttonClick(button)"									[matTooltip]="button.tooltip"									[disabled]="button.disabled"									color="primary">					<mat-icon [color]="button.disabled ? \'\' : \'primary\'">{{button.icon}}</mat-icon>					{{button.caption}}				</button>				<button mat-icon-button *ngFor="let iconButton of iconButtons | position: \'right\' | row: 0"									    (click)="iconBbuttonClick(iconButton)"										[matTooltip]="iconButton.tooltip"		  						    	[disabled]="iconButton.disabled"										color="primary">					<mat-icon [color]="iconButton.disabled ? \'\' : \'primary\'">{{iconButton.icon}}</mat-icon>				</button>			</div>		</mat-toolbar-row> 		<mat-toolbar-row *ngIf="(buttons | row: 1).length > 0 || (iconButtons | row: 1).length > 0">			<button mat-button *ngFor="let button of buttons | position: \'left\' | row: 1"							   (click)="buttonClick(button)"							   [matTooltip]="button.tooltip"							   [disabled]="button.disabled"							   color="primary">				<mat-icon [color]="button.disabled ? \'\' : \'primary\'">{{button.icon}}</mat-icon>				{{button.caption}}			</button>			<button mat-icon-button *ngFor="let iconButton of iconButtons | position: \'left\' | row: 1"									(click)="iconBbuttonClick(iconButton)"									[matTooltip]="iconButton.tooltip"									[disabled]="iconButton.disabled"									color="primary">				<mat-icon [color]="iconButton.disabled ? \'\' : \'primary\'">{{iconButton.icon}}</mat-icon>			</button>					<div fxLayout="row" fxFlex fxLayoutAlign="center">				<button mat-button *ngFor="let button of buttons | position: \'center\' | row: 1"									(click)="buttonClick(button)"									[matTooltip]="button.tooltip"									[disabled]="button.disabled"									color="primary">					<mat-icon [color]="button.disabled ? \'\' : \'primary\'">{{button.icon}}</mat-icon>					{{button.caption}}				</button>				<button mat-icon-button *ngFor="let iconButton of iconButtons | position: \'center\' | row: 1"										(click)="iconBbuttonClick(iconButton)"										[matTooltip]="iconButton.tooltip"										[disabled]="iconButton.disabled"										color="primary">					<mat-icon [color]="iconButton.disabled ? \'\' : \'primary\'">{{iconButton.icon}}</mat-icon>				</button>			</div>						<div fxLayout="row" fxFlex fxLayoutAlign="end">								<button mat-button *ngFor="let button of buttons | position: \'right\' | row: 1"									(click)="buttonClick(button)"									[matTooltip]="button.tooltip"									[disabled]="button.disabled"									color="primary">					<mat-icon [color]="button.disabled ? \'\' : \'primary\'">{{button.icon}}</mat-icon>					{{button.caption}}				</button>				<button mat-icon-button *ngFor="let iconButton of iconButtons | position: \'right\' | row: 1"										(click)="iconBbuttonClick(iconButton)"										[matTooltip]="iconButton.tooltip"										[disabled]="iconButton.disabled"										color="primary">					<mat-icon [color]="iconButton.disabled ? \'\' : \'primary\'">{{iconButton.icon}}</mat-icon>				</button>			</div>		</mat-toolbar-row> <!--		<mat-toolbar-row *ngIf="fields.length > 0 || filter"> --><!--			<div fxLayout="row wrap" fxFlex="90" fxLayoutAlign="start stretch" fxLayoutGap="10px">   -->		<mat-toolbar-row *ngFor="let fieldRow of fieldsRows">			<div *ngFor="let field of fields; let i=index;"> 			<!--<mat-form-field *ngFor="let field of fields; let i=index;">--> 				<!--				<div *ngIf="field.type !== \'datePicker\' && ( field.range !== \'true\' || field.range === \'true\' )">					<input matInput	[placeholder]="field.placeholder"									[name]="field.name"									[(ngModel)]="field.value"									[type]="field.type"> 				</div>				-->								<div *ngIf="field.type !== \'datePicker\' && field.range !== \'true\' && field.row === fieldRow" >					<mat-form-field>						<input matInput	[placeholder]="field.placeholder"										[name]="field.name"										[(ngModel)]="field.value"										[type]="field.type"> 				   </mat-form-field>				</div>				<div *ngIf="field.type !== \'datePicker\' && field.range === \'true\' && field.row === fieldRow">					<mat-form-field>						<input matInput [placeholder]="field.placeholder + \' From\'"										[name]="field.name + \'From\'"										[(ngModel)]="field.valueFrom"										[type]="field.type"> 					</mat-form-field>					<mat-form-field>						<input matInput fxFlex="40%"										[placeholder]="field.placeholder + \' To\'"										[name]="field.name + \'To\'"										[(ngModel)]="field.valueTo"										[type]="field.type"> 					</mat-form-field>				</div>									<div *ngIf="field.type === \'datePicker\' && field.range === \'false\' && field.row === fieldRow" >					<mat-form-field>						<input matInput [formControl]="currentDate"										(mouseup)="picker.open()"										[matDatepicker]="picker" 						 				[placeholder]="field.placeholder"										[(ngModel)]="field.value"> 						<mat-datepicker #picker></mat-datepicker>					</mat-form-field>			  	</div>				<div *ngIf="field.type === \'datePicker\' && field.range === \'true\' && field.row === fieldRow">					<mat-form-field>						<input matInput (mouseup)="pickerFrom.open()"										[matDatepicker]="pickerFrom" 					 					[placeholder]="field.placeholder + \' From\'"	 									[(ngModel)]="field.valueFrom"> 						<mat-datepicker #pickerFrom></mat-datepicker>					</mat-form-field>					<mat-form-field>						<input matInput fxFlex="40%"										(mouseup)="pickerTo.open()"										[matDatepicker]="pickerTo" 					 					[placeholder]="field.placeholder + \' To\'"	 									[(ngModel)]="field.valueTo"> 			  			<mat-datepicker #pickerTo></mat-datepicker>					</mat-form-field>			  	</div>				<!--</mat-form-field>--> 			</div>  			<!--			<mat-form-field *ngIf="filter"> 			  	<input matInput (keyup)="applyFilter($event.target.value)"							 	placeholder="Filter"> 			</mat-form-field>			-->		</mat-toolbar-row>	<!--	</mat-toolbar-row>  -->		<mat-toolbar-row *ngIf="filter">			<mat-form-field> 			  	<input matInput (keyup)="applyFilter($event.target.value)"							 	placeholder="Filter"> 			</mat-form-field>		</mat-toolbar-row>	</mat-toolbar>	<mat-progress-bar	mode="indeterminate" *ngIf="progress"></mat-progress-bar> 		<mat-table #table [dataSource]="dataSource" matSort					  class="example-table">		<ng-container *ngFor="let col of displayedColumns; let i=index;"					  matColumnDef="{{col}}"> 			<mat-header-cell *matHeaderCellDef mat-sort-header class="example-header-cell">				{{displayedColumnsNames[i]}}			</mat-header-cell>			<mat-cell *matCellDef="let row"					  class="example-cell" [style.color]="row[col]"> {{row[col]}}</mat-cell>		</ng-container> <!-- ID Column --> 		<mat-header-row *matHeaderRowDef="displayedColumns"						class="example-header-row">		</mat-header-row> 		<mat-row *matRowDef="let row; columns: displayedColumns;" 				 class="example-row"				 [ngClass]="{\'selected-row\': row.selected===true}"				 (click)="selectItem(row)"></mat-row>	</mat-table>	<mat-paginator #paginator 				   [length]="dataSource.data.length"				   [pageIndex]="0" [pageSize]="25"				   [pageSizeOptions]="[5, 10, 25, 50, 100]"> </mat-paginator></div></div>'
     var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'BaseDataTableComponent', 'selector': 'app-base-data-table'},{'name': 'DataTableComponent', 'selector': 'app-data-table'},{'name': 'DataTableDetailComponent', 'selector': 'app-data-table-detail'},{'name': 'DataTablesPageComponent', 'selector': 'app-data-tables-page'},{'name': 'DialogComponent', 'selector': 'app-dialog'},{'name': 'WebDataTableComponent', 'selector': 'app-web-data-table'},{'name': 'WebDataTablePageComponent', 'selector': 'app-web-data-table-page'},{'name': 'WebrfcDataTableComponent', 'selector': 'app-webrfc-data-table'},{'name': 'WebrfcPageComponent', 'selector': 'app-webrfc-page'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'DataTableComponent'};

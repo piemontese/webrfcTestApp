@@ -130,7 +130,7 @@
                                 id="xs-classes-links"
                             >
                                 <li class="link">
-                                    <a href="../classes/AppPage.html" >AppPage</a>
+                                    <a href="../classes/Fields.html" >Fields</a>
                                 </li>
                         </ul>
                     </li>
@@ -187,9 +187,6 @@
                                 </li>
                                 <li class="link">
                                     <a href="../interfaces/Buttons.html" >Buttons</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../interfaces/Fields.html" >Fields</a>
                                 </li>
                                 <li class="link">
                                     <a href="../interfaces/Fields.html" >Fields</a>
@@ -378,7 +375,7 @@
                                        id="classes-links"
                    >
                                        <li class="link">
-                                           <a href="../classes/AppPage.html" >AppPage</a>
+                                           <a href="../classes/Fields.html" >Fields</a>
                                        </li>
                                </ul>
                            </li>
@@ -435,9 +432,6 @@
                                        </li>
                                        <li class="link">
                                            <a href="../interfaces/Buttons.html" >Buttons</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../interfaces/Fields.html" >Fields</a>
                                        </li>
                                        <li class="link">
                                            <a href="../interfaces/Fields.html" >Fields</a>
@@ -1185,7 +1179,9 @@ export class DataTableDetailComponent implements OnInit {
   								 rowHeight&#x3D;&quot;1.5:1&quot;
   								 *ngFor&#x3D;&quot;let field of fields&quot;&gt;
 			&lt;mat-grid-tile [colspan]&#x3D;2 class&#x3D;&quot;align-end&quot;&gt;{{field.key}}&lt;/mat-grid-tile&gt;
-		  &lt;mat-grid-tile [colspan]&#x3D;5 class&#x3D;&quot;align-start&quot; *ngIf&#x3D;&quot;mode&#x3D;&#x3D;&#x3D;&#x27;view&#x27;&quot;&gt;{{field.value}}&lt;/mat-grid-tile&gt;
+		  &lt;mat-grid-tile [colspan]&#x3D;5 class&#x3D;&quot;align-start&quot; *ngIf&#x3D;&quot;mode&#x3D;&#x3D;&#x3D;&#x27;view&#x27;&quot;&gt;
+		  	{{field.value}}
+		  &lt;/mat-grid-tile&gt;
 		  &lt;mat-grid-tile [colspan]&#x3D;5 class&#x3D;&quot;align-start&quot; *ngIf&#x3D;&quot;mode&#x3D;&#x3D;&#x3D;&#x27;edit&#x27;&quot;&gt;
 				&lt;mat-form-field&gt; 
 					&lt;input matInput
@@ -1230,7 +1226,7 @@ export class DataTableDetailComponent implements OnInit {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div class="dialog-title" color="primary" style="margin-top: -10px; min-width: 400px; max-width: 800px;"> 	{{title}}</div><mat-dialog-content>  <div class="dialog-content">  <!--    <div fxLayout="row" fxLayoutAlign="start center"				 								*ngFor="let field of fields;">			{{field.key}}  {{field.value}}    </div>  	<mat-list>  	  <mat-list-item	*ngFor="let field of fields">  	  	{{field.key}}  {{field.value}}  	  </mat-list-item>  	</mat-list>    -->  	<mat-grid-list cols="7"   								 rowHeight="1.5:1"  								 *ngFor="let field of fields">			<mat-grid-tile [colspan]=2 class="align-end">{{field.key}}</mat-grid-tile>		  <mat-grid-tile [colspan]=5 class="align-start" *ngIf="mode===\'view\'">{{field.value}}</mat-grid-tile>		  <mat-grid-tile [colspan]=5 class="align-start" *ngIf="mode===\'edit\'">				<mat-form-field> 					<input matInput								 [name]="field.key"								 [(ngModel)]="field.value"> 			  </mat-form-field> 		  </mat-grid-tile>			<mat-divider></mat-divider>  	</mat-grid-list>		<mat-divider></mat-divider>  </div></mat-dialog-content><div class="dialog-actions">  <div fxLayout="row" fxLayoutAlign="end end">    <button type="button" mat-raised-button *ngFor="let button of buttons" [color]="button.color" style="padding-left: 20px;" (click)="onClick(button.caption)" [mat-dialog-close]>{{button.caption}}</button>  </div></div></div>'
+        var COMPONENT_TEMPLATE = '<div><div class="dialog-title" color="primary" style="margin-top: -10px; min-width: 400px; max-width: 800px;"> 	{{title}}</div><mat-dialog-content>  <div class="dialog-content">  <!--    <div fxLayout="row" fxLayoutAlign="start center"				 								*ngFor="let field of fields;">			{{field.key}}  {{field.value}}    </div>  	<mat-list>  	  <mat-list-item	*ngFor="let field of fields">  	  	{{field.key}}  {{field.value}}  	  </mat-list-item>  	</mat-list>    -->  	<mat-grid-list cols="7"   								 rowHeight="1.5:1"  								 *ngFor="let field of fields">			<mat-grid-tile [colspan]=2 class="align-end">{{field.key}}</mat-grid-tile>		  <mat-grid-tile [colspan]=5 class="align-start" *ngIf="mode===\'view\'">		  	{{field.value}}		  </mat-grid-tile>		  <mat-grid-tile [colspan]=5 class="align-start" *ngIf="mode===\'edit\'">				<mat-form-field> 					<input matInput								 [name]="field.key"								 [(ngModel)]="field.value"> 			  </mat-form-field> 		  </mat-grid-tile>			<mat-divider></mat-divider>  	</mat-grid-list>		<mat-divider></mat-divider>  </div></mat-dialog-content><div class="dialog-actions">  <div fxLayout="row" fxLayoutAlign="end end">    <button type="button" mat-raised-button *ngFor="let button of buttons" [color]="button.color" style="padding-left: 20px;" (click)="onClick(button.caption)" [mat-dialog-close]>{{button.caption}}</button>  </div></div></div>'
     var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'BaseDataTableComponent', 'selector': 'app-base-data-table'},{'name': 'DataTableComponent', 'selector': 'app-data-table'},{'name': 'DataTableDetailComponent', 'selector': 'app-data-table-detail'},{'name': 'DataTablesPageComponent', 'selector': 'app-data-tables-page'},{'name': 'DialogComponent', 'selector': 'app-dialog'},{'name': 'WebDataTableComponent', 'selector': 'app-web-data-table'},{'name': 'WebDataTablePageComponent', 'selector': 'app-web-data-table-page'},{'name': 'WebrfcDataTableComponent', 'selector': 'app-webrfc-data-table'},{'name': 'WebrfcPageComponent', 'selector': 'app-webrfc-page'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'DataTableDetailComponent'};

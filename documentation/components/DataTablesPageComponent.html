@@ -130,7 +130,7 @@
                                 id="xs-classes-links"
                             >
                                 <li class="link">
-                                    <a href="../classes/AppPage.html" >AppPage</a>
+                                    <a href="../classes/Fields.html" >Fields</a>
                                 </li>
                         </ul>
                     </li>
@@ -187,9 +187,6 @@
                                 </li>
                                 <li class="link">
                                     <a href="../interfaces/Buttons.html" >Buttons</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../interfaces/Fields.html" >Fields</a>
                                 </li>
                                 <li class="link">
                                     <a href="../interfaces/Fields.html" >Fields</a>
@@ -378,7 +375,7 @@
                                        id="classes-links"
                    >
                                        <li class="link">
-                                           <a href="../classes/AppPage.html" >AppPage</a>
+                                           <a href="../classes/Fields.html" >Fields</a>
                                        </li>
                                </ul>
                            </li>
@@ -435,9 +432,6 @@
                                        </li>
                                        <li class="link">
                                            <a href="../interfaces/Buttons.html" >Buttons</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../interfaces/Fields.html" >Fields</a>
                                        </li>
                                        <li class="link">
                                            <a href="../interfaces/Fields.html" >Fields</a>
@@ -749,9 +743,9 @@
   styleUrls: [&#x27;./data-tables-page.component.scss&#x27;]
 })
 export class DataTablesPageComponent implements OnInit {
-	title &#x3D; &#x27;Data table samples&#x27;;
+  title &#x3D; &#x27;Data table samples&#x27;;
 
-	constructor() {}
+  constructor() {}
 
   ngOnInit() {}
 
@@ -770,145 +764,210 @@ export class DataTablesPageComponent implements OnInit {
 --&gt;
 
 &lt;div fxLayout&#x3D;&quot;column&quot; fxLayoutAlign&#x3D;&quot;center center&quot;&gt;
-  &lt;mat-accordion&gt;
-    &lt;mat-expansion-panel class&#x3D;&quot;mat-elevation-z8&quot;&gt;
-      &lt;mat-expansion-panel-header&gt;
-        &lt;mat-panel-title&gt; User list &lt;/mat-panel-title&gt;
-        &lt;mat-panel-description&gt; List of logged users&lt;/mat-panel-description&gt;
-      &lt;/mat-expansion-panel-header&gt;
-      &lt;div fxLayout&#x3D;&quot;column&quot; fxLayout.xs&#x3D;&quot;column&quot; fxLayoutAlign&#x3D;&quot;center center&quot;&gt;
-        &lt;app-data-table style&#x3D;&quot;width: 90%; min-width: 600px;&quot; 
-        								title&#x3D;&quot;User list&quot; 
-        								method&#x3D;&#x27;TH_USER_LIST&#x27;
- 												table&#x3D;&quot;USRLIST&quot;
-        								[fields]&#x3D;&quot;[ { name: &#x27;sap-language&#x27;, value:&#x27;&#x27;, type: &#x27;text&#x27;, placeholder: &#x27;Language&#x27; }	]&quot;
- 												[buttons]&#x3D;&quot;[ { caption:&#x27;View&#x27;, icon: &#x27;search&#x27;, position: &#x27;left&#x27;, action: &#x27;view&#x27;, color: &#x27;prymary&#x27;, row: 1, tooltip: &#x27;View item&#x27;, disabled: true, multiSel: false },
-        														 { caption:&#x27;Change&#x27;, icon: &#x27;edit&#x27;, position: &#x27;left&#x27;, action: &#x27;change&#x27;, color: &#x27;prymary&#x27;, row: 1, tooltip: &#x27;Change item&#x27;, disabled: true, multiSel: false } ]&quot;
-        								[iconButtons]&#x3D;&quot;[ { icon: &#x27;refresh&#x27;, position: &#x27;right&#x27;, action: &#x27;refresh&#x27;, color: &#x27;prymary&#x27;, row: 0, tooltip: &#x27;Refresh data&#x27;, disabled: false, multiSel: null } ]&quot;
-        								[displayedColumns]&#x3D;&quot;[&#x27;tid&#x27;, &#x27;mandt&#x27;, &#x27;bname&#x27;, &#x27;term&#x27;, &#x27;hostaddr&#x27;, &#x27;guiversion&#x27;]&quot; 
-        								[displayedColumnsNames]&#x3D;&quot;[&#x27;TID&#x27;, &#x27;Client&#x27;, &#x27;User&#x27;, &#x27;Terminal&#x27;, &#x27;IP address&#x27;, &#x27;GUI version&#x27;]&quot;&gt; &lt;/app-data-table&gt;
-      &lt;/div&gt;
-    &lt;/mat-expansion-panel&gt;
+  	&lt;mat-accordion&gt;
+    	&lt;mat-expansion-panel class&#x3D;&quot;mat-elevation-z8&quot;&gt;
+      		&lt;mat-expansion-panel-header&gt;
+        		&lt;mat-panel-title&gt; User list &lt;/mat-panel-title&gt;
+        		&lt;mat-panel-description&gt; List of logged users&lt;/mat-panel-description&gt;
+      		&lt;/mat-expansion-panel-header&gt;
+      		&lt;div fxLayout&#x3D;&quot;column&quot; fxLayout.xs&#x3D;&quot;column&quot; fxLayoutAlign&#x3D;&quot;center center&quot;&gt;
+				&lt;app-data-table style&#x3D;&quot;width: 90%; min-width: 600px;&quot; 
+								title&#x3D;&quot;User list&quot; 
+								method&#x3D;&quot;TH_USER_LIST&quot;
+								methodType &#x3D; &quot;F&quot;
+								webrfcLog &#x3D; &quot;true&quot;
+								webrfcLogin &#x3D; &quot;true&quot;
+								webrfcUser &#x3D; &quot;user1&quot;
+								webrfcPassword &#x3D; &quot;Ostrakon1!&quot;
+								noRefreshColumns &#x3D; &quot;true&quot;
+								table&#x3D;&quot;USRLIST&quot;
+								[fields]&#x3D;&quot;[ { name: &#x27;sap-language&#x27;, value:&#x27;&#x27;, type: &#x27;text&#x27;, placeholder: &#x27;Language&#x27; }	]&quot;
+								[buttons]&#x3D;&quot;[ { caption:&#x27;View&#x27;, icon: &#x27;search&#x27;, position: &#x27;left&#x27;, action: &#x27;view&#x27;, color: &#x27;prymary&#x27;, row: 1, tooltip: &#x27;View item&#x27;, disabled: true, multiSel: false },
+											 { caption:&#x27;Change&#x27;, icon: &#x27;edit&#x27;, position: &#x27;left&#x27;, action: &#x27;change&#x27;, color: &#x27;prymary&#x27;, row: 1, tooltip: &#x27;Change item&#x27;, disabled: true, multiSel: false } ]&quot;
+								[iconButtons]&#x3D;&quot;[ { icon: &#x27;refresh&#x27;, position: &#x27;right&#x27;, action: &#x27;refresh&#x27;, color: &#x27;prymary&#x27;, row: 0, tooltip: &#x27;Refresh data&#x27;, disabled: false, multiSel: null } ]&quot;
+								[displayedColumns]&#x3D;&quot;[&#x27;tid&#x27;, &#x27;mandt&#x27;, &#x27;bname&#x27;, &#x27;term&#x27;, &#x27;hostaddr&#x27;, &#x27;guiversion&#x27;, &#x27;zeit&#x27;]&quot; 
+								[displayedColumnsNames]&#x3D;&quot;[&#x27;TID&#x27;, &#x27;Client&#x27;, &#x27;User&#x27;, &#x27;Terminal&#x27;, &#x27;IP address&#x27;, &#x27;GUI version&#x27;, &#x27;Time&#x27;]&quot;&gt; &lt;/app-data-table&gt;
+			&lt;/div&gt;
+    	&lt;/mat-expansion-panel&gt;
     
-    &lt;mat-expansion-panel class&#x3D;&quot;mat-elevation-z8&quot;&gt;
-      &lt;mat-expansion-panel-header&gt;
-        &lt;mat-panel-title&gt; User list &lt;/mat-panel-title&gt;
-        &lt;mat-panel-description&gt; List of logged users (all columns) &lt;/mat-panel-description&gt;
-      &lt;/mat-expansion-panel-header&gt;
-      &lt;div fxLayout&#x3D;&quot;column&quot; fxLayout.xs&#x3D;&quot;column&quot; fxLayoutAlign&#x3D;&quot;center center&quot;&gt;
-        &lt;app-data-table style&#x3D;&quot;width: 90%; min-width: 600px;&quot; 
-        								[filter]&#x3D;&quot;false&quot;
-        								[buttons]&#x3D;&quot;[ { caption:&#x27;View&#x27;, icon: &#x27;search&#x27;, position: &#x27;left&#x27;, action: &#x27;view&#x27;, color: &#x27;prymary&#x27;, row: 1, tooltip: &#x27;View item&#x27;, disabled: true, multiSel: false } ]&quot;
-        								[fields]&#x3D;&quot;[ { name: &#x27;sap-language&#x27;, value:&#x27;&#x27;, type: &#x27;text&#x27;, placeholder: &#x27;Language&#x27; }	]&quot;
-        								[iconButtons]&#x3D;&quot;[ { icon: &#x27;refresh&#x27;, position: &#x27;right&#x27;, action: &#x27;refresh&#x27;, color: &#x27;prymary&#x27;, row: 0, tooltip: &#x27;Refresh data&#x27;, disabled: false, multiSel: null } ]&quot;
-        								method&#x3D;&#x27;TH_USER_LIST&#x27;
- 												table&#x3D;&quot;USRLIST&quot;
- 												title&#x3D;&quot;User list&quot;&gt;&lt;/app-data-table&gt;
-      &lt;/div&gt;
-    &lt;/mat-expansion-panel&gt;
+    	&lt;mat-expansion-panel class&#x3D;&quot;mat-elevation-z8&quot;&gt;
+      		&lt;mat-expansion-panel-header&gt;
+        		&lt;mat-panel-title&gt; User list &lt;/mat-panel-title&gt;
+        		&lt;mat-panel-description&gt; List of logged users (all columns) &lt;/mat-panel-description&gt;
+      		&lt;/mat-expansion-panel-header&gt;
+      		&lt;div fxLayout&#x3D;&quot;column&quot; fxLayout.xs&#x3D;&quot;column&quot; fxLayoutAlign&#x3D;&quot;center center&quot;&gt;
+        		&lt;app-data-table style&#x3D;&quot;width: 90%; min-width: 600px;&quot; 
+        						[filter]&#x3D;&quot;false&quot;
+        						[buttons]&#x3D;&quot;[ { caption:&#x27;View&#x27;, icon: &#x27;search&#x27;, position: &#x27;left&#x27;, action: &#x27;view&#x27;, color: &#x27;prymary&#x27;, row: 1, tooltip: &#x27;View item&#x27;, disabled: true, multiSel: false } ]&quot;
+        						[fields]&#x3D;&quot;[ { name: &#x27;sap-language&#x27;, value:&#x27;&#x27;, type: &#x27;text&#x27;, placeholder: &#x27;Language&#x27; }	]&quot;
+        						[iconButtons]&#x3D;&quot;[ { icon: &#x27;refresh&#x27;, position: &#x27;right&#x27;, action: &#x27;refresh&#x27;, color: &#x27;prymary&#x27;, row: 0, tooltip: &#x27;Refresh data&#x27;, disabled: false, multiSel: null } ]&quot;
+        						method&#x3D;&quot;TH_USER_LIST&quot;
+ 								table&#x3D;&quot;USRLIST&quot;
+ 								title&#x3D;&quot;User list&quot;&gt;&lt;/app-data-table&gt;
+      		&lt;/div&gt;
+    	&lt;/mat-expansion-panel&gt;
 
-    &lt;mat-expansion-panel class&#x3D;&quot;mat-elevation-z8&quot;&gt;
-      &lt;mat-expansion-panel-header&gt;
-        &lt;mat-panel-title&gt; Material requirement list &lt;/mat-panel-title&gt;
-        &lt;mat-panel-description&gt; Material requirement list (MD04) &lt;/mat-panel-description&gt;
-      &lt;/mat-expansion-panel-header&gt;
-      &lt;div fxLayout&#x3D;&quot;column&quot; fxLayout.xs&#x3D;&quot;column&quot; fxLayoutAlign&#x3D;&quot;center center&quot;&gt;
-        &lt;app-data-table style&#x3D;&quot;width: 90%; min-width: 600px;&quot; 
-        								[displayedColumns]&#x3D;&quot;[&#x27;avail_date&#x27;, &#x27;mrp_elemnt&#x27;, &#x27;mrp_element_ind&#x27;, &#x27;available&#x27;, &#x27;rec_reqd_qty&#x27;]&quot; 
-        								[displayedColumnsNames]&#x3D;&quot;[&#x27;Available date&#x27;, &#x27;MRP element&#x27;, &#x27;MRP element ind.&#x27;, &#x27;Available&#x27;, &#x27;Available quantity&#x27;]&quot; 
-        								[fields]&#x3D;&quot;[ { name: &#x27;sap-language&#x27;, value:&#x27;&#x27;, type: &#x27;text&#x27;, placeholder: &#x27;Language&#x27; },
-        														{ name: &#x27;plant&#x27;, value:&#x27;&#x27;, type: &#x27;text&#x27;, placeholder: &#x27;Plant&#x27; },
-        													  { name: &#x27;material&#x27;, value:&#x27;&#x27;, type: &#x27;text&#x27;, placeholder: &#x27;Material&#x27; }	]&quot;
-        								[buttons]&#x3D;&quot;[ { caption:&#x27;View&#x27;, icon: &#x27;search&#x27;, position: &#x27;left&#x27;, action: &#x27;&#x27;, color: &#x27;prymary&#x27;, row: 1, tooltip: &#x27;View item&#x27;, disabled: true, multiSel: false } ]&quot;
-        								[iconButtons]&#x3D;&quot;[ { icon: &#x27;refresh&#x27;, position: &#x27;right&#x27;, action: &#x27;refresh&#x27;, color: &#x27;prymary&#x27;, row: 0, tooltip: &#x27;Refresh data&#x27;, disabled: false, multiSel: null } ]&quot;
-        								title&#x3D;&quot;Material requirement list&quot; 
-        								method&#x3D;&quot;BAPI_MATERIAL_STOCK_REQ_LIST&quot; 
-        								table&#x3D;&quot;MRP_IND_LINES&quot;&gt;&lt;/app-data-table&gt;
-      &lt;/div&gt;
-    &lt;/mat-expansion-panel&gt;
+    	&lt;mat-expansion-panel class&#x3D;&quot;mat-elevation-z8&quot;&gt;
+      		&lt;mat-expansion-panel-header&gt;
+        		&lt;mat-panel-title&gt; Material requirement list &lt;/mat-panel-title&gt;
+        		&lt;mat-panel-description&gt; Material requirement list (MD04) &lt;/mat-panel-description&gt;
+      		&lt;/mat-expansion-panel-header&gt;
+      		&lt;div fxLayout&#x3D;&quot;column&quot; fxLayout.xs&#x3D;&quot;column&quot; fxLayoutAlign&#x3D;&quot;center center&quot;&gt;
+        		&lt;app-data-table style&#x3D;&quot;width: 90%; min-width: 600px;&quot; 
+        						[displayedColumns]&#x3D;&quot;[&#x27;avail_date&#x27;, &#x27;mrp_elemnt&#x27;, &#x27;mrp_element_ind&#x27;, &#x27;available&#x27;, &#x27;rec_reqd_qty&#x27;]&quot; 
+        						[displayedColumnsNames]&#x3D;&quot;[&#x27;Available date&#x27;, &#x27;MRP element&#x27;, &#x27;MRP element ind.&#x27;, &#x27;Available&#x27;, &#x27;Available quantity&#x27;]&quot; 
+        						[fields]&#x3D;&quot;[ { name: &#x27;sap-language&#x27;, value:&#x27;&#x27;, type: &#x27;text&#x27;, placeholder: &#x27;Language&#x27; },
+        									{ name: &#x27;plant&#x27;, value:&#x27;&#x27;, type: &#x27;text&#x27;, placeholder: &#x27;Plant&#x27; },
+        								  	{ name: &#x27;material&#x27;, value:&#x27;&#x27;, type: &#x27;text&#x27;, placeholder: &#x27;Material&#x27; }	]&quot;
+        						[buttons]&#x3D;&quot;[ { caption:&#x27;View&#x27;, icon: &#x27;search&#x27;, position: &#x27;left&#x27;, action: &#x27;&#x27;, color: &#x27;prymary&#x27;, row: 1, tooltip: &#x27;View item&#x27;, disabled: true, multiSel: false } ]&quot;
+        						[iconButtons]&#x3D;&quot;[ { icon: &#x27;refresh&#x27;, position: &#x27;right&#x27;, action: &#x27;refresh&#x27;, color: &#x27;prymary&#x27;, row: 0, tooltip: &#x27;Refresh data&#x27;, disabled: false, multiSel: null } ]&quot;
+        						title&#x3D;&quot;Material requirement list&quot; 
+        						method&#x3D;&quot;BAPI_MATERIAL_STOCK_REQ_LIST&quot; 
+        						table&#x3D;&quot;MRP_IND_LINES&quot;&gt;&lt;/app-data-table&gt;
+      		&lt;/div&gt;
+    	&lt;/mat-expansion-panel&gt;
 
-    &lt;mat-expansion-panel class&#x3D;&quot;mat-elevation-z8&quot;&gt;
-      &lt;mat-expansion-panel-header&gt;
-        &lt;mat-panel-title&gt; Plant list &lt;/mat-panel-title&gt;
-        &lt;mat-panel-description&gt; List of all plants&lt;/mat-panel-description&gt;
-      &lt;/mat-expansion-panel-header&gt;
-      &lt;div fxLayout&#x3D;&quot;column&quot; fxLayout.xs&#x3D;&quot;column&quot; fxLayoutAlign&#x3D;&quot;center center&quot;&gt;
-        &lt;app-data-table style&#x3D;&quot;width: 90%; min-width: 600px;&quot; 
-        								title&#x3D;&quot;Plant list&quot; 
-        								[fields]&#x3D;&quot;[ { name: &#x27;sap-language&#x27;, value:&#x27;&#x27;, type: &#x27;text&#x27;, placeholder: &#x27;Language&#x27; }	]&quot;
-        								[buttons]&#x3D;&quot;[ { caption:&#x27;View&#x27;, icon: &#x27;search&#x27;, position: &#x27;left&#x27;, action: &#x27;view&#x27;, color: &#x27;prymary&#x27;, row: 1, tooltip: &#x27;View item&#x27;, disabled: true, multiSel: false },
-        														 { caption:&#x27;Change&#x27;, icon: &#x27;edit&#x27;, position: &#x27;left&#x27;, action: &#x27;change&#x27;, color: &#x27;prymary&#x27;, row: 1, tooltip: &#x27;Change item&#x27;, disabled: true, multiSel: false } ]&quot;
-        								[iconButtons]&#x3D;&quot;[ { icon: &#x27;refresh&#x27;, position: &#x27;right&#x27;, action: &#x27;refresh&#x27;, color: &#x27;prymary&#x27;, row: 0, tooltip: &#x27;Refresh data&#x27;, disabled: false, multiSel: null } ]&quot;
-        								[displayedColumns]&#x3D;&quot;[&#x27;mandt&#x27;, &#x27;werks&#x27;, &#x27;name1&#x27;, &#x27;ort01&#x27;, &#x27;pstlz&#x27;, &#x27;stras&#x27;, &#x27;land1&#x27;]&quot; 
-        								[displayedColumnsNames]&#x3D;&quot;[&#x27;Client&#x27;, &#x27;Plant&#x27;, &#x27;Name&#x27;, &#x27;City&#x27;, &#x27;Post code&#x27;, &#x27;Street&#x27;, &#x27;Country&#x27;]&quot;
-												multiSelection&#x3D;&quot;true&quot;
-												method&#x3D;&#x27;MSR20_MD_PLANT_GETLIST&#x27;
- 												table&#x3D;&quot;POT_PLANT&quot;&gt; &lt;/app-data-table&gt;
-      &lt;/div&gt;
-    &lt;/mat-expansion-panel&gt;
+    	&lt;mat-expansion-panel class&#x3D;&quot;mat-elevation-z8&quot;&gt;
+      		&lt;mat-expansion-panel-header&gt;
+        		&lt;mat-panel-title&gt; Plant list &lt;/mat-panel-title&gt;
+        		&lt;mat-panel-description&gt; List of all plants&lt;/mat-panel-description&gt;
+      		&lt;/mat-expansion-panel-header&gt;
+      		&lt;div fxLayout&#x3D;&quot;column&quot; fxLayout.xs&#x3D;&quot;column&quot; fxLayoutAlign&#x3D;&quot;center center&quot;&gt;
+        		&lt;app-data-table style&#x3D;&quot;width: 90%; min-width: 600px;&quot; 
+        						title&#x3D;&quot;Plant list&quot; 
+        						[fields]&#x3D;&quot;[ { name: &#x27;sap-language&#x27;, value:&#x27;&#x27;, type: &#x27;text&#x27;, placeholder: &#x27;Language&#x27; }	]&quot;
+        						[buttons]&#x3D;&quot;[ { caption:&#x27;View&#x27;, icon: &#x27;search&#x27;, position: &#x27;left&#x27;, action: &#x27;view&#x27;, color: &#x27;prymary&#x27;, row: 1, tooltip: &#x27;View item&#x27;, disabled: true, multiSel: false },
+        									 { caption:&#x27;Change&#x27;, icon: &#x27;edit&#x27;, position: &#x27;left&#x27;, action: &#x27;change&#x27;, color: &#x27;prymary&#x27;, row: 1, tooltip: &#x27;Change item&#x27;, disabled: true, multiSel: false } ]&quot;
+ 		       					[iconButtons]&#x3D;&quot;[ { icon: &#x27;refresh&#x27;, position: &#x27;right&#x27;, action: &#x27;refresh&#x27;, color: &#x27;prymary&#x27;, row: 0, tooltip: &#x27;Refresh data&#x27;, disabled: false, multiSel: null } ]&quot;
+        						[displayedColumns]&#x3D;&quot;[&#x27;mandt&#x27;, &#x27;werks&#x27;, &#x27;name1&#x27;, &#x27;ort01&#x27;, &#x27;pstlz&#x27;, &#x27;stras&#x27;, &#x27;land1&#x27;]&quot; 
+        						[displayedColumnsNames]&#x3D;&quot;[&#x27;Client&#x27;, &#x27;Plant&#x27;, &#x27;Name&#x27;, &#x27;City&#x27;, &#x27;Post code&#x27;, &#x27;Street&#x27;, &#x27;Country&#x27;]&quot;
+								multiSelection&#x3D;&quot;true&quot;
+								method&#x3D;&quot;MSR20_MD_PLANT_GETLIST&quot;
+ 								table&#x3D;&quot;POT_PLANT&quot;&gt; &lt;/app-data-table&gt;
+      		&lt;/div&gt;
+    	&lt;/mat-expansion-panel&gt;
 
-    &lt;mat-expansion-panel class&#x3D;&quot;mat-elevation-z8&quot;&gt;
-      &lt;mat-expansion-panel-header&gt;
-        &lt;mat-panel-title&gt;Menu actions &lt;/mat-panel-title&gt;
-        &lt;mat-panel-description&gt; List of menu actions&lt;/mat-panel-description&gt;
-      &lt;/mat-expansion-panel-header&gt;
-      &lt;div fxLayout&#x3D;&quot;column&quot; fxLayout.xs&#x3D;&quot;column&quot; fxLayoutAlign&#x3D;&quot;center center&quot;&gt;
-        &lt;app-data-table style&#x3D;&quot;width: 90%; min-width: 600px;&quot; 
-        								title&#x3D;&quot;Menu actions&quot; 
-        								[buttons]&#x3D;&quot;[ { caption:&#x27;View&#x27;, icon: &#x27;search&#x27;, position: &#x27;left&#x27;, action: &#x27;view&#x27;, color: &#x27;prymary&#x27;, row: 1, tooltip: &#x27;View item&#x27;, disabled: true, multiSel: false },
-        														 { caption:&#x27;Change&#x27;, icon: &#x27;edit&#x27;, position: &#x27;left&#x27;, action: &#x27;change&#x27;, color: &#x27;prymary&#x27;, row: 1, tooltip: &#x27;Change item&#x27;, disabled: true, multiSel: false } ]&quot;
-        								[iconButtons]&#x3D;&quot;[ { icon: &#x27;refresh&#x27;, position: &#x27;right&#x27;, action: &#x27;refresh&#x27;, color: &#x27;prymary&#x27;, row: 0, tooltip: &#x27;Refresh data&#x27;, disabled: false, multiSel: null } ]&quot;
-												method&#x3D;&#x27;Z_WRFC_GET_MENU&#x27;
- 												table&#x3D;&quot;ET_MENU_ACTION&quot;&gt; &lt;/app-data-table&gt;
-      &lt;/div&gt;
-    &lt;/mat-expansion-panel&gt;
+    	&lt;mat-expansion-panel class&#x3D;&quot;mat-elevation-z8&quot;&gt;
+      		&lt;mat-expansion-panel-header&gt;
+        		&lt;mat-panel-title&gt;Menu actions &lt;/mat-panel-title&gt;
+        		&lt;mat-panel-description&gt; List of menu actions&lt;/mat-panel-description&gt;
+      		&lt;/mat-expansion-panel-header&gt;
+      		&lt;div fxLayout&#x3D;&quot;column&quot; fxLayout.xs&#x3D;&quot;column&quot; fxLayoutAlign&#x3D;&quot;center center&quot;&gt;
+        		&lt;app-data-table style&#x3D;&quot;width: 90%; min-width: 600px;&quot; 
+        						title&#x3D;&quot;Menu actions&quot; 
+        						[buttons]&#x3D;&quot;[ { caption:&#x27;View&#x27;, icon: &#x27;search&#x27;, position: &#x27;left&#x27;, action: &#x27;view&#x27;, color: &#x27;prymary&#x27;, row: 1, tooltip: &#x27;View item&#x27;, disabled: true, multiSel: false },
+        									 { caption:&#x27;Change&#x27;, icon: &#x27;edit&#x27;, position: &#x27;left&#x27;, action: &#x27;change&#x27;, color: &#x27;prymary&#x27;, row: 1, tooltip: &#x27;Change item&#x27;, disabled: true, multiSel: false } ]&quot;
+        						[iconButtons]&#x3D;&quot;[ { icon: &#x27;refresh&#x27;, position: &#x27;right&#x27;, action: &#x27;refresh&#x27;, color: &#x27;prymary&#x27;, row: 0, tooltip: &#x27;Refresh data&#x27;, disabled: false, multiSel: null } ]&quot;
+								method&#x3D;&quot;Z_PMT_WRFC_GET_MENU&quot;
+ 								table&#x3D;&quot;ET_MENU_ACTION&quot;&gt; &lt;/app-data-table&gt;
+      		&lt;/div&gt;
+    	&lt;/mat-expansion-panel&gt;
 
-    &lt;mat-expansion-panel class&#x3D;&quot;mat-elevation-z8&quot;&gt;
-      &lt;mat-expansion-panel-header&gt;
-        &lt;mat-panel-title&gt;Menu methodss &lt;/mat-panel-title&gt;
-        &lt;mat-panel-description&gt; List of menu methods&lt;/mat-panel-description&gt;
-      &lt;/mat-expansion-panel-header&gt;
-      &lt;div fxLayout&#x3D;&quot;column&quot; fxLayout.xs&#x3D;&quot;column&quot; fxLayoutAlign&#x3D;&quot;center center&quot;&gt;
-        &lt;app-data-table style&#x3D;&quot;width: 90%; min-width: 600px;&quot; 
-        								title&#x3D;&quot;Menu methods&quot; 
-        								[buttons]&#x3D;&quot;[ { caption:&#x27;View&#x27;, icon: &#x27;search&#x27;, position: &#x27;left&#x27;, action: &#x27;view&#x27;, color: &#x27;prymary&#x27;, row: 1, tooltip: &#x27;View item&#x27;, disabled: true, multiSel: false },
-        														 { caption:&#x27;Change&#x27;, icon: &#x27;edit&#x27;, position: &#x27;left&#x27;, action: &#x27;change&#x27;, color: &#x27;prymary&#x27;, row: 1, tooltip: &#x27;Change item&#x27;, disabled: true, multiSel: false } ]&quot;
-        								[iconButtons]&#x3D;&quot;[ { icon: &#x27;refresh&#x27;, position: &#x27;right&#x27;, action: &#x27;refresh&#x27;, color: &#x27;prymary&#x27;, row: 0, tooltip: &#x27;Refresh data&#x27;, disabled: false, multiSel: null } ]&quot;
-												method&#x3D;&#x27;Z_WRFC_GET_MENU&#x27;
- 												table&#x3D;&quot;ET_MENU_METHOD&quot;&gt; &lt;/app-data-table&gt;
-      &lt;/div&gt;
-    &lt;/mat-expansion-panel&gt;
+    	&lt;mat-expansion-panel class&#x3D;&quot;mat-elevation-z8&quot;&gt;
+      		&lt;mat-expansion-panel-header&gt;
+        		&lt;mat-panel-title&gt;Menu methodss &lt;/mat-panel-title&gt;
+        		&lt;mat-panel-description&gt; List of menu methods&lt;/mat-panel-description&gt;
+      		&lt;/mat-expansion-panel-header&gt;
+      		&lt;div fxLayout&#x3D;&quot;column&quot; fxLayout.xs&#x3D;&quot;column&quot; fxLayoutAlign&#x3D;&quot;center center&quot;&gt;
+        		&lt;app-data-table style&#x3D;&quot;width: 90%; min-width: 600px;&quot; 
+        						title&#x3D;&quot;Menu methods&quot; 
+        						[buttons]&#x3D;&quot;[ { caption:&#x27;View&#x27;, icon: &#x27;search&#x27;, position: &#x27;left&#x27;, action: &#x27;view&#x27;, color: &#x27;prymary&#x27;, row: 1, tooltip: &#x27;View item&#x27;, disabled: true, multiSel: false },
+        									 { caption:&#x27;Change&#x27;, icon: &#x27;edit&#x27;, position: &#x27;left&#x27;, action: &#x27;change&#x27;, color: &#x27;prymary&#x27;, row: 1, tooltip: &#x27;Change item&#x27;, disabled: true, multiSel: false } ]&quot;
+        						[iconButtons]&#x3D;&quot;[ { icon: &#x27;refresh&#x27;, position: &#x27;right&#x27;, action: &#x27;refresh&#x27;, color: &#x27;prymary&#x27;, row: 0, tooltip: &#x27;Refresh data&#x27;, disabled: false, multiSel: null } ]&quot;
+								method&#x3D;&quot;Z_PMT_WRFC_GET_MENU&quot;
+ 								table&#x3D;&quot;ET_MENU_METHOD&quot;&gt; &lt;/app-data-table&gt;
+      		&lt;/div&gt;
+    	&lt;/mat-expansion-panel&gt;
 
-    &lt;mat-expansion-panel class&#x3D;&quot;mat-elevation-z8&quot;&gt;
-      &lt;mat-expansion-panel-header&gt;
-        &lt;mat-panel-title&gt;DB02 &lt;/mat-panel-title&gt;
-        &lt;mat-panel-description&gt; Get the space history of all tablespaces&lt;/mat-panel-description&gt;
-      &lt;/mat-expansion-panel-header&gt;
-      &lt;div fxLayout&#x3D;&quot;column&quot; fxLayout.xs&#x3D;&quot;column&quot; fxLayoutAlign&#x3D;&quot;center center&quot;&gt;
-        &lt;app-data-table style&#x3D;&quot;width: 90%; min-width: 600px;&quot; 
-        								title&#x3D;&quot;Tablespaces History&quot; 
-        								[buttons]&#x3D;&quot;[ { caption:&#x27;View&#x27;, icon: &#x27;search&#x27;, position: &#x27;left&#x27;, action: &#x27;view&#x27;, color: &#x27;prymary&#x27;, row: 1, tooltip: &#x27;View item&#x27;, disabled: true, multiSel: false },
-        														 { caption:&#x27;Change&#x27;, icon: &#x27;edit&#x27;, position: &#x27;left&#x27;, action: &#x27;change&#x27;, color: &#x27;prymary&#x27;, row: 1, tooltip: &#x27;Change item&#x27;, disabled: true, multiSel: false } ]&quot;
-        								[iconButtons]&#x3D;&quot;[ { icon: &#x27;refresh&#x27;, position: &#x27;right&#x27;, action: &#x27;refresh&#x27;, color: &#x27;prymary&#x27;, row: 0, tooltip: &#x27;Refresh data&#x27;, disabled: false, multiSel: null } ]&quot;
-        								[fields]&#x3D;&quot;[ { name: &#x27;sap-language&#x27;, value:&#x27;&#x27;, type: &#x27;text&#x27;, placeholder: &#x27;Language&#x27; },
-        													  { name: &#x27;SELECT_DAYS_WEEKS_OR_MONTHS&#x27;, value:&#x27;DAYS&#x27;, type: &#x27;text&#x27;, placeholder: &#x27;Period (DAYS, WEEKS or MONTHS)&#x27; } ]&quot;
-												method&#x3D;&#x27;DB_ORA_TABLESPACE_HISTORY&#x27;
- 												table&#x3D;&quot;HIST1&quot;&gt; &lt;/app-data-table&gt;
-      &lt;/div&gt;
-      &lt;div fxLayout&#x3D;&quot;column&quot; fxLayout.xs&#x3D;&quot;column&quot; fxLayoutAlign&#x3D;&quot;center center&quot;&gt;
-        &lt;app-data-table style&#x3D;&quot;width: 90%; min-width: 600px;&quot; 
-        								title&#x3D;&quot;Summary of Tablespace History&quot; 
-        								[buttons]&#x3D;&quot;[ { caption:&#x27;View&#x27;, icon: &#x27;search&#x27;, position: &#x27;left&#x27;, action: &#x27;view&#x27;, color: &#x27;prymary&#x27;, row: 1, tooltip: &#x27;View item&#x27;, disabled: true, multiSel: false },
-        														 { caption:&#x27;Change&#x27;, icon: &#x27;edit&#x27;, position: &#x27;left&#x27;, action: &#x27;change&#x27;, color: &#x27;prymary&#x27;, row: 1, tooltip: &#x27;Change item&#x27;, disabled: true, multiSel: false } ]&quot;
-        								[iconButtons]&#x3D;&quot;[ { icon: &#x27;refresh&#x27;, position: &#x27;right&#x27;, action: &#x27;refresh&#x27;, color: &#x27;prymary&#x27;, row: 0, tooltip: &#x27;Refresh data&#x27;, disabled: false, multiSel: null } ]&quot;
-        								[fields]&#x3D;&quot;[ { name: &#x27;sap-language&#x27;, value:&#x27;&#x27;, type: &#x27;text&#x27;, placeholder: &#x27;Language&#x27; },
-        														{ name: &#x27;SELECT_DAYS_WEEKS_OR_MONTHS&#x27;, value:&#x27;DAYS&#x27;, type: &#x27;text&#x27;, placeholder: &#x27;Period (DAYS, WEEKS or MONTHS)&#x27; } ]&quot;
-												method&#x3D;&#x27;DB_ORA_TABLESPACE_HISTORY&#x27;
- 												table&#x3D;&quot;SUM_1&quot;&gt; &lt;/app-data-table&gt;
-      &lt;/div&gt;
-    &lt;/mat-expansion-panel&gt;
+    	&lt;mat-expansion-panel class&#x3D;&quot;mat-elevation-z8&quot;&gt;
+      		&lt;mat-expansion-panel-header&gt;
+        		&lt;mat-panel-title&gt;DB02 &lt;/mat-panel-title&gt;
+        		&lt;mat-panel-description&gt; Get the space history of all tablespaces&lt;/mat-panel-description&gt;
+      		&lt;/mat-expansion-panel-header&gt;
+      		&lt;div fxLayout&#x3D;&quot;column&quot; fxLayout.xs&#x3D;&quot;column&quot; fxLayoutAlign&#x3D;&quot;center center&quot;&gt;
+        		&lt;app-data-table style&#x3D;&quot;width: 90%; min-width: 600px;&quot; 
+        						title&#x3D;&quot;Tablespaces History&quot; 
+        						[buttons]&#x3D;&quot;[ { caption:&#x27;View&#x27;, icon: &#x27;search&#x27;, position: &#x27;left&#x27;, action: &#x27;view&#x27;, color: &#x27;prymary&#x27;, row: 1, tooltip: &#x27;View item&#x27;, disabled: true, multiSel: false },
+        									 { caption:&#x27;Change&#x27;, icon: &#x27;edit&#x27;, position: &#x27;left&#x27;, action: &#x27;change&#x27;, color: &#x27;prymary&#x27;, row: 1, tooltip: &#x27;Change item&#x27;, disabled: true, multiSel: false } ]&quot;
+        						[iconButtons]&#x3D;&quot;[ { icon: &#x27;refresh&#x27;, position: &#x27;right&#x27;, action: &#x27;refresh&#x27;, color: &#x27;prymary&#x27;, row: 0, tooltip: &#x27;Refresh data&#x27;, disabled: false, multiSel: null } ]&quot;
+        						[fields]&#x3D;&quot;[ { name: &#x27;sap-language&#x27;, value:&#x27;&#x27;, type: &#x27;text&#x27;, placeholder: &#x27;Language&#x27;, row: &#x27;0&#x27; },
+        									{ name: &#x27;SELECT_DAYS_WEEKS_OR_MONTHS&#x27;, value:&#x27;DAYS&#x27;, type: &#x27;text&#x27;, placeholder: &#x27;Period (DAYS, WEEKS or MONTHS)&#x27;, row: &#x27;0&#x27; } ]&quot;
+								method&#x3D;&quot;DB_ORA_TABLESPACE_HISTORY&quot;
+ 								table&#x3D;&quot;HIST1&quot;&gt; &lt;/app-data-table&gt;
+      		&lt;/div&gt;
+      		&lt;div fxLayout&#x3D;&quot;column&quot; fxLayout.xs&#x3D;&quot;column&quot; fxLayoutAlign&#x3D;&quot;center center&quot;&gt;
+        		&lt;app-data-table style&#x3D;&quot;width: 90%; min-width: 600px;&quot; 
+        						title&#x3D;&quot;Summary of Tablespace History&quot; 
+        						[buttons]&#x3D;&quot;[ { caption:&#x27;View&#x27;, icon: &#x27;search&#x27;, position: &#x27;left&#x27;, action: &#x27;view&#x27;, color: &#x27;prymary&#x27;, row: 1, tooltip: &#x27;View item&#x27;, disabled: true, multiSel: false },
+        									 { caption:&#x27;Change&#x27;, icon: &#x27;edit&#x27;, position: &#x27;left&#x27;, action: &#x27;change&#x27;, color: &#x27;prymary&#x27;, row: 1, tooltip: &#x27;Change item&#x27;, disabled: true, multiSel: false } ]&quot;
+        						[iconButtons]&#x3D;&quot;[ { icon: &#x27;refresh&#x27;, position: &#x27;right&#x27;, action: &#x27;refresh&#x27;, color: &#x27;prymary&#x27;, row: 0, tooltip: &#x27;Refresh data&#x27;, disabled: false, multiSel: null } ]&quot;
+        						[fields]&#x3D;&quot;[ { name: &#x27;sap-language&#x27;, value:&#x27;&#x27;, type: &#x27;text&#x27;, placeholder: &#x27;Language&#x27;, row: &#x27;0&#x27; },
+        									{ name: &#x27;SELECT_DAYS_WEEKS_OR_MONTHS&#x27;, value:&#x27;DAYS&#x27;, type: &#x27;text&#x27;, placeholder: &#x27;Period (DAYS, WEEKS or MONTHS)&#x27;, row: &#x27;0&#x27; } ]&quot;
+								method&#x3D;&quot;DB_ORA_TABLESPACE_HISTORY&quot;
+ 								table&#x3D;&quot;SUM_1&quot;&gt; &lt;/app-data-table&gt;
+      		&lt;/div&gt;
+    	&lt;/mat-expansion-panel&gt;
 
-  &lt;/mat-accordion&gt;
+    	&lt;mat-expansion-panel class&#x3D;&quot;mat-elevation-z8&quot;&gt;
+      		&lt;mat-expansion-panel-header&gt;
+        		&lt;mat-panel-title&gt; Table entries &lt;/mat-panel-title&gt;
+        		&lt;mat-panel-description&gt; Get table entries&lt;/mat-panel-description&gt;
+      		&lt;/mat-expansion-panel-header&gt;
+      		&lt;div fxLayout&#x3D;&quot;column&quot; fxLayout.xs&#x3D;&quot;column&quot; fxLayoutAlign&#x3D;&quot;center center&quot;&gt;
+        		&lt;app-data-table style&#x3D;&quot;width: 90%; min-width: 600px;&quot; 
+        						title&#x3D;&quot;Table entries&quot;
+        						[buttons]&#x3D;&quot;[ { caption:&#x27;View&#x27;, icon: &#x27;search&#x27;, position: &#x27;left&#x27;, action: &#x27;view&#x27;, color: &#x27;prymary&#x27;, row: 1, tooltip: &#x27;View item&#x27;, disabled: true, multiSel: false },
+        									 { caption:&#x27;Change&#x27;, icon: &#x27;edit&#x27;, position: &#x27;left&#x27;, action: &#x27;change&#x27;, color: &#x27;prymary&#x27;, row: 1, tooltip: &#x27;Change item&#x27;, disabled: true, multiSel: false } ]&quot;
+        						[iconButtons]&#x3D;&quot;[ { icon: &#x27;refresh&#x27;, position: &#x27;right&#x27;, action: &#x27;refresh&#x27;, color: &#x27;prymary&#x27;, row: 0, tooltip: &#x27;Refresh data&#x27;, disabled: false, multiSel: null } ]&quot;
+        						[fields]&#x3D;&quot;[ { name: &#x27;sap-language&#x27;, value:&#x27;&#x27;, type: &#x27;text&#x27;, placeholder: &#x27;Language&#x27;, row: &#x27;0&#x27; },
+        									{ name: &#x27;SQLTABLE&#x27;, value:&#x27;&#x27;, type: &#x27;text&#x27;, placeholder: &#x27;Table&#x27;, row: &#x27;0&#x27; } ]&quot;
+								_FUNCTION&#x3D;&quot;Z_PMT_WRFC_TABLE&quot;
+ 								refreshColumns&#x3D;&quot;true&quot;&gt; &lt;/app-data-table&gt;
+      		&lt;/div&gt;
+    	&lt;/mat-expansion-panel&gt;
+
+    	&lt;mat-expansion-panel class&#x3D;&quot;mat-elevation-z8&quot;&gt;
+      		&lt;mat-expansion-panel-header&gt;
+        		&lt;mat-panel-title&gt; ST22 &lt;/mat-panel-title&gt;
+        		&lt;mat-panel-description&gt; List of dumps using function module &lt;/mat-panel-description&gt;
+      		&lt;/mat-expansion-panel-header&gt;
+      		&lt;div fxLayout&#x3D;&quot;column&quot; fxLayout.xs&#x3D;&quot;column&quot; fxLayoutAlign&#x3D;&quot;center center&quot;&gt;
+        		&lt;app-data-table style&#x3D;&quot;width: 90%; min-width: 600px;&quot; 
+        						[filter]&#x3D;&quot;true&quot;
+        						[buttons]&#x3D;&quot;[ { caption:&#x27;View&#x27;, icon: &#x27;search&#x27;, position: &#x27;left&#x27;, action: &#x27;view&#x27;, color: &#x27;prymary&#x27;, row: 1, tooltip: &#x27;View item&#x27;, disabled: true, multiSel: false } ]&quot;
+        						[fields]&#x3D;&quot;[ { name: &#x27;sap-language&#x27;, value:&#x27;&#x27;, type: &#x27;text&#x27;, placeholder: &#x27;Language&#x27;, row: &#x27;0&#x27; },
+        									{ name: &#x27;IS_DATE&#x27;, value:&#x27;&#x27;, type: &#x27;datePicker&#x27;, placeholder: &#x27;Date&#x27;, range: &#x27;true&#x27;, row: &#x27;0&#x27; }	]&quot;
+        						[iconButtons]&#x3D;&quot;[ { icon: &#x27;refresh&#x27;, position: &#x27;right&#x27;, action: &#x27;refresh&#x27;, color: &#x27;prymary&#x27;, row: 0, tooltip: &#x27;Refresh data&#x27;, disabled: false, multiSel: null } ]&quot;
+								multiSelection&#x3D;&quot;true&quot;
+        						method&#x3D;&quot;Z_PMT_WRFC_GET_DUMPS&quot;
+ 								table&#x3D;&quot;ET_DUMPS&quot;
+ 								title&#x3D;&quot;Dump list&quot;&gt;&lt;/app-data-table&gt;
+      		&lt;/div&gt;
+    	&lt;/mat-expansion-panel&gt;
+
+    	&lt;mat-expansion-panel class&#x3D;&quot;mat-elevation-z8&quot;&gt;
+      		&lt;mat-expansion-panel-header&gt;
+        		&lt;mat-panel-title&gt; ST22 &lt;/mat-panel-title&gt;
+        		&lt;mat-panel-description&gt; List of dumps using class &lt;/mat-panel-description&gt;
+      		&lt;/mat-expansion-panel-header&gt;
+      		&lt;div fxLayout&#x3D;&quot;column&quot; fxLayout.xs&#x3D;&quot;column&quot; fxLayoutAlign&#x3D;&quot;center center&quot;&gt;
+        		&lt;app-data-table style&#x3D;&quot;width: 90%; min-width: 600px;&quot; 
+        						[filter]&#x3D;&quot;true&quot;
+        						[buttons]&#x3D;&quot;[ { caption:&#x27;View&#x27;, icon: &#x27;search&#x27;, position: &#x27;left&#x27;, action: &#x27;view&#x27;, color: &#x27;prymary&#x27;, row: 1, tooltip: &#x27;View item&#x27;, disabled: true, multiSel: false } ]&quot;
+        						[fields]&#x3D;&quot;[ { name: &#x27;sap-language&#x27;, value:&#x27;&#x27;, type: &#x27;text&#x27;, placeholder: &#x27;Language&#x27;, row: &#x27;0&#x27;  },
+        									{ name: &#x27;IS_SEL:S_DATE&#x27;, value:&#x27;&#x27;, type: &#x27;datePicker&#x27;, placeholder: &#x27;Date&#x27;, range: &#x27;true&#x27;, isTable: &#x27;true&#x27;, row: &#x27;0&#x27;  },
+        									{ name: &#x27;IS_SEL:S_TIME&#x27;, value:&#x27;&#x27;, type: &#x27;timePicker&#x27;, placeholder: &#x27;Time&#x27;, range: &#x27;true&#x27;, isTable: &#x27;true&#x27;, row: &#x27;0&#x27; },
+        									{ name: &#x27;IS_SEL:S_USER&#x27;, value:&#x27;&#x27;, type: &#x27;text&#x27;, placeholder: &#x27;User&#x27;, range: &#x27;true&#x27;, isTable: &#x27;true&#x27;, row: &#x27;1&#x27; } ]&quot;
+        						[iconButtons]&#x3D;&quot;[ { icon: &#x27;refresh&#x27;, position: &#x27;right&#x27;, action: &#x27;refresh&#x27;, color: &#x27;prymary&#x27;, row: 0, tooltip: &#x27;Refresh data&#x27;, disabled: false, multiSel: null } ]&quot;
+								multiSelection&#x3D;&quot;true&quot;
+        						abapClass&#x3D;&quot;ZCL_PMT_BC_GET_DUMPS&quot;
+        						method&#x3D;&quot;GET_DUMPS&quot;
+ 								table&#x3D;&quot;RT_DUMPS&quot;
+ 								title&#x3D;&quot;Dump list&quot;&gt;&lt;/app-data-table&gt;
+      		&lt;/div&gt;
+    	&lt;/mat-expansion-panel&gt;
+
+  	&lt;/mat-accordion&gt;
 &lt;/div&gt;
 </code></pre>
     </div>
@@ -936,7 +995,7 @@ export class DataTablesPageComponent implements OnInit {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><!--<br/><div fxLayout="column" 		 fxLayoutAlign="center center"		 style="font-family: Roboto; font-size: 20px; font-weight: 500;">  {{title}}</div>--><div fxLayout="column" fxLayoutAlign="center center">  <mat-accordion>    <mat-expansion-panel class="mat-elevation-z8">      <mat-expansion-panel-header>        <mat-panel-title> User list </mat-panel-title>        <mat-panel-description> List of logged users</mat-panel-description>      </mat-expansion-panel-header>      <div fxLayout="column" fxLayout.xs="column" fxLayoutAlign="center center">        <app-data-table style="width: 90%; min-width: 600px;"         								title="User list"         								method=\'TH_USER_LIST\' 												table="USRLIST"        								[fields]="[ { name: \'sap-language\', value:\'\', type: \'text\', placeholder: \'Language\' }	]" 												[buttons]="[ { caption:\'View\', icon: \'search\', position: \'left\', action: \'view\', color: \'prymary\', row: 1, tooltip: \'View item\', disabled: true, multiSel: false },        														 { caption:\'Change\', icon: \'edit\', position: \'left\', action: \'change\', color: \'prymary\', row: 1, tooltip: \'Change item\', disabled: true, multiSel: false } ]"        								[iconButtons]="[ { icon: \'refresh\', position: \'right\', action: \'refresh\', color: \'prymary\', row: 0, tooltip: \'Refresh data\', disabled: false, multiSel: null } ]"        								[displayedColumns]="[\'tid\', \'mandt\', \'bname\', \'term\', \'hostaddr\', \'guiversion\']"         								[displayedColumnsNames]="[\'TID\', \'Client\', \'User\', \'Terminal\', \'IP address\', \'GUI version\']"> </app-data-table>      </div>    </mat-expansion-panel>        <mat-expansion-panel class="mat-elevation-z8">      <mat-expansion-panel-header>        <mat-panel-title> User list </mat-panel-title>        <mat-panel-description> List of logged users (all columns) </mat-panel-description>      </mat-expansion-panel-header>      <div fxLayout="column" fxLayout.xs="column" fxLayoutAlign="center center">        <app-data-table style="width: 90%; min-width: 600px;"         								[filter]="false"        								[buttons]="[ { caption:\'View\', icon: \'search\', position: \'left\', action: \'view\', color: \'prymary\', row: 1, tooltip: \'View item\', disabled: true, multiSel: false } ]"        								[fields]="[ { name: \'sap-language\', value:\'\', type: \'text\', placeholder: \'Language\' }	]"        								[iconButtons]="[ { icon: \'refresh\', position: \'right\', action: \'refresh\', color: \'prymary\', row: 0, tooltip: \'Refresh data\', disabled: false, multiSel: null } ]"        								method=\'TH_USER_LIST\' 												table="USRLIST" 												title="User list"></app-data-table>      </div>    </mat-expansion-panel>    <mat-expansion-panel class="mat-elevation-z8">      <mat-expansion-panel-header>        <mat-panel-title> Material requirement list </mat-panel-title>        <mat-panel-description> Material requirement list (MD04) </mat-panel-description>      </mat-expansion-panel-header>      <div fxLayout="column" fxLayout.xs="column" fxLayoutAlign="center center">        <app-data-table style="width: 90%; min-width: 600px;"         								[displayedColumns]="[\'avail_date\', \'mrp_elemnt\', \'mrp_element_ind\', \'available\', \'rec_reqd_qty\']"         								[displayedColumnsNames]="[\'Available date\', \'MRP element\', \'MRP element ind.\', \'Available\', \'Available quantity\']"         								[fields]="[ { name: \'sap-language\', value:\'\', type: \'text\', placeholder: \'Language\' },        														{ name: \'plant\', value:\'\', type: \'text\', placeholder: \'Plant\' },        													  { name: \'material\', value:\'\', type: \'text\', placeholder: \'Material\' }	]"        								[buttons]="[ { caption:\'View\', icon: \'search\', position: \'left\', action: \'\', color: \'prymary\', row: 1, tooltip: \'View item\', disabled: true, multiSel: false } ]"        								[iconButtons]="[ { icon: \'refresh\', position: \'right\', action: \'refresh\', color: \'prymary\', row: 0, tooltip: \'Refresh data\', disabled: false, multiSel: null } ]"        								title="Material requirement list"         								method="BAPI_MATERIAL_STOCK_REQ_LIST"         								table="MRP_IND_LINES"></app-data-table>      </div>    </mat-expansion-panel>    <mat-expansion-panel class="mat-elevation-z8">      <mat-expansion-panel-header>        <mat-panel-title> Plant list </mat-panel-title>        <mat-panel-description> List of all plants</mat-panel-description>      </mat-expansion-panel-header>      <div fxLayout="column" fxLayout.xs="column" fxLayoutAlign="center center">        <app-data-table style="width: 90%; min-width: 600px;"         								title="Plant list"         								[fields]="[ { name: \'sap-language\', value:\'\', type: \'text\', placeholder: \'Language\' }	]"        								[buttons]="[ { caption:\'View\', icon: \'search\', position: \'left\', action: \'view\', color: \'prymary\', row: 1, tooltip: \'View item\', disabled: true, multiSel: false },        														 { caption:\'Change\', icon: \'edit\', position: \'left\', action: \'change\', color: \'prymary\', row: 1, tooltip: \'Change item\', disabled: true, multiSel: false } ]"        								[iconButtons]="[ { icon: \'refresh\', position: \'right\', action: \'refresh\', color: \'prymary\', row: 0, tooltip: \'Refresh data\', disabled: false, multiSel: null } ]"        								[displayedColumns]="[\'mandt\', \'werks\', \'name1\', \'ort01\', \'pstlz\', \'stras\', \'land1\']"         								[displayedColumnsNames]="[\'Client\', \'Plant\', \'Name\', \'City\', \'Post code\', \'Street\', \'Country\']"												multiSelection="true"												method=\'MSR20_MD_PLANT_GETLIST\' 												table="POT_PLANT"> </app-data-table>      </div>    </mat-expansion-panel>    <mat-expansion-panel class="mat-elevation-z8">      <mat-expansion-panel-header>        <mat-panel-title>Menu actions </mat-panel-title>        <mat-panel-description> List of menu actions</mat-panel-description>      </mat-expansion-panel-header>      <div fxLayout="column" fxLayout.xs="column" fxLayoutAlign="center center">        <app-data-table style="width: 90%; min-width: 600px;"         								title="Menu actions"         								[buttons]="[ { caption:\'View\', icon: \'search\', position: \'left\', action: \'view\', color: \'prymary\', row: 1, tooltip: \'View item\', disabled: true, multiSel: false },        														 { caption:\'Change\', icon: \'edit\', position: \'left\', action: \'change\', color: \'prymary\', row: 1, tooltip: \'Change item\', disabled: true, multiSel: false } ]"        								[iconButtons]="[ { icon: \'refresh\', position: \'right\', action: \'refresh\', color: \'prymary\', row: 0, tooltip: \'Refresh data\', disabled: false, multiSel: null } ]"												method=\'Z_WRFC_GET_MENU\' 												table="ET_MENU_ACTION"> </app-data-table>      </div>    </mat-expansion-panel>    <mat-expansion-panel class="mat-elevation-z8">      <mat-expansion-panel-header>        <mat-panel-title>Menu methodss </mat-panel-title>        <mat-panel-description> List of menu methods</mat-panel-description>      </mat-expansion-panel-header>      <div fxLayout="column" fxLayout.xs="column" fxLayoutAlign="center center">        <app-data-table style="width: 90%; min-width: 600px;"         								title="Menu methods"         								[buttons]="[ { caption:\'View\', icon: \'search\', position: \'left\', action: \'view\', color: \'prymary\', row: 1, tooltip: \'View item\', disabled: true, multiSel: false },        														 { caption:\'Change\', icon: \'edit\', position: \'left\', action: \'change\', color: \'prymary\', row: 1, tooltip: \'Change item\', disabled: true, multiSel: false } ]"        								[iconButtons]="[ { icon: \'refresh\', position: \'right\', action: \'refresh\', color: \'prymary\', row: 0, tooltip: \'Refresh data\', disabled: false, multiSel: null } ]"												method=\'Z_WRFC_GET_MENU\' 												table="ET_MENU_METHOD"> </app-data-table>      </div>    </mat-expansion-panel>    <mat-expansion-panel class="mat-elevation-z8">      <mat-expansion-panel-header>        <mat-panel-title>DB02 </mat-panel-title>        <mat-panel-description> Get the space history of all tablespaces</mat-panel-description>      </mat-expansion-panel-header>      <div fxLayout="column" fxLayout.xs="column" fxLayoutAlign="center center">        <app-data-table style="width: 90%; min-width: 600px;"         								title="Tablespaces History"         								[buttons]="[ { caption:\'View\', icon: \'search\', position: \'left\', action: \'view\', color: \'prymary\', row: 1, tooltip: \'View item\', disabled: true, multiSel: false },        														 { caption:\'Change\', icon: \'edit\', position: \'left\', action: \'change\', color: \'prymary\', row: 1, tooltip: \'Change item\', disabled: true, multiSel: false } ]"        								[iconButtons]="[ { icon: \'refresh\', position: \'right\', action: \'refresh\', color: \'prymary\', row: 0, tooltip: \'Refresh data\', disabled: false, multiSel: null } ]"        								[fields]="[ { name: \'sap-language\', value:\'\', type: \'text\', placeholder: \'Language\' },        													  { name: \'SELECT_DAYS_WEEKS_OR_MONTHS\', value:\'DAYS\', type: \'text\', placeholder: \'Period (DAYS, WEEKS or MONTHS)\' } ]"												method=\'DB_ORA_TABLESPACE_HISTORY\' 												table="HIST1"> </app-data-table>      </div>      <div fxLayout="column" fxLayout.xs="column" fxLayoutAlign="center center">        <app-data-table style="width: 90%; min-width: 600px;"         								title="Summary of Tablespace History"         								[buttons]="[ { caption:\'View\', icon: \'search\', position: \'left\', action: \'view\', color: \'prymary\', row: 1, tooltip: \'View item\', disabled: true, multiSel: false },        														 { caption:\'Change\', icon: \'edit\', position: \'left\', action: \'change\', color: \'prymary\', row: 1, tooltip: \'Change item\', disabled: true, multiSel: false } ]"        								[iconButtons]="[ { icon: \'refresh\', position: \'right\', action: \'refresh\', color: \'prymary\', row: 0, tooltip: \'Refresh data\', disabled: false, multiSel: null } ]"        								[fields]="[ { name: \'sap-language\', value:\'\', type: \'text\', placeholder: \'Language\' },        														{ name: \'SELECT_DAYS_WEEKS_OR_MONTHS\', value:\'DAYS\', type: \'text\', placeholder: \'Period (DAYS, WEEKS or MONTHS)\' } ]"												method=\'DB_ORA_TABLESPACE_HISTORY\' 												table="SUM_1"> </app-data-table>      </div>    </mat-expansion-panel>  </mat-accordion></div></div>'
+        var COMPONENT_TEMPLATE = '<div><!--<br/><div fxLayout="column" 		 fxLayoutAlign="center center"		 style="font-family: Roboto; font-size: 20px; font-weight: 500;">  {{title}}</div>--><div fxLayout="column" fxLayoutAlign="center center">  	<mat-accordion>    	<mat-expansion-panel class="mat-elevation-z8">      		<mat-expansion-panel-header>        		<mat-panel-title> User list </mat-panel-title>        		<mat-panel-description> List of logged users</mat-panel-description>      		</mat-expansion-panel-header>      		<div fxLayout="column" fxLayout.xs="column" fxLayoutAlign="center center">				<app-data-table style="width: 90%; min-width: 600px;" 								title="User list" 								method="TH_USER_LIST"								methodType = "F"								webrfcLog = "true"								webrfcLogin = "true"								webrfcUser = "user1"								webrfcPassword = "Ostrakon1!"								noRefreshColumns = "true"								table="USRLIST"								[fields]="[ { name: \'sap-language\', value:\'\', type: \'text\', placeholder: \'Language\' }	]"								[buttons]="[ { caption:\'View\', icon: \'search\', position: \'left\', action: \'view\', color: \'prymary\', row: 1, tooltip: \'View item\', disabled: true, multiSel: false },											 { caption:\'Change\', icon: \'edit\', position: \'left\', action: \'change\', color: \'prymary\', row: 1, tooltip: \'Change item\', disabled: true, multiSel: false } ]"								[iconButtons]="[ { icon: \'refresh\', position: \'right\', action: \'refresh\', color: \'prymary\', row: 0, tooltip: \'Refresh data\', disabled: false, multiSel: null } ]"								[displayedColumns]="[\'tid\', \'mandt\', \'bname\', \'term\', \'hostaddr\', \'guiversion\', \'zeit\']" 								[displayedColumnsNames]="[\'TID\', \'Client\', \'User\', \'Terminal\', \'IP address\', \'GUI version\', \'Time\']"> </app-data-table>			</div>    	</mat-expansion-panel>        	<mat-expansion-panel class="mat-elevation-z8">      		<mat-expansion-panel-header>        		<mat-panel-title> User list </mat-panel-title>        		<mat-panel-description> List of logged users (all columns) </mat-panel-description>      		</mat-expansion-panel-header>      		<div fxLayout="column" fxLayout.xs="column" fxLayoutAlign="center center">        		<app-data-table style="width: 90%; min-width: 600px;"         						[filter]="false"        						[buttons]="[ { caption:\'View\', icon: \'search\', position: \'left\', action: \'view\', color: \'prymary\', row: 1, tooltip: \'View item\', disabled: true, multiSel: false } ]"        						[fields]="[ { name: \'sap-language\', value:\'\', type: \'text\', placeholder: \'Language\' }	]"        						[iconButtons]="[ { icon: \'refresh\', position: \'right\', action: \'refresh\', color: \'prymary\', row: 0, tooltip: \'Refresh data\', disabled: false, multiSel: null } ]"        						method="TH_USER_LIST" 								table="USRLIST" 								title="User list"></app-data-table>      		</div>    	</mat-expansion-panel>    	<mat-expansion-panel class="mat-elevation-z8">      		<mat-expansion-panel-header>        		<mat-panel-title> Material requirement list </mat-panel-title>        		<mat-panel-description> Material requirement list (MD04) </mat-panel-description>      		</mat-expansion-panel-header>      		<div fxLayout="column" fxLayout.xs="column" fxLayoutAlign="center center">        		<app-data-table style="width: 90%; min-width: 600px;"         						[displayedColumns]="[\'avail_date\', \'mrp_elemnt\', \'mrp_element_ind\', \'available\', \'rec_reqd_qty\']"         						[displayedColumnsNames]="[\'Available date\', \'MRP element\', \'MRP element ind.\', \'Available\', \'Available quantity\']"         						[fields]="[ { name: \'sap-language\', value:\'\', type: \'text\', placeholder: \'Language\' },        									{ name: \'plant\', value:\'\', type: \'text\', placeholder: \'Plant\' },        								  	{ name: \'material\', value:\'\', type: \'text\', placeholder: \'Material\' }	]"        						[buttons]="[ { caption:\'View\', icon: \'search\', position: \'left\', action: \'\', color: \'prymary\', row: 1, tooltip: \'View item\', disabled: true, multiSel: false } ]"        						[iconButtons]="[ { icon: \'refresh\', position: \'right\', action: \'refresh\', color: \'prymary\', row: 0, tooltip: \'Refresh data\', disabled: false, multiSel: null } ]"        						title="Material requirement list"         						method="BAPI_MATERIAL_STOCK_REQ_LIST"         						table="MRP_IND_LINES"></app-data-table>      		</div>    	</mat-expansion-panel>    	<mat-expansion-panel class="mat-elevation-z8">      		<mat-expansion-panel-header>        		<mat-panel-title> Plant list </mat-panel-title>        		<mat-panel-description> List of all plants</mat-panel-description>      		</mat-expansion-panel-header>      		<div fxLayout="column" fxLayout.xs="column" fxLayoutAlign="center center">        		<app-data-table style="width: 90%; min-width: 600px;"         						title="Plant list"         						[fields]="[ { name: \'sap-language\', value:\'\', type: \'text\', placeholder: \'Language\' }	]"        						[buttons]="[ { caption:\'View\', icon: \'search\', position: \'left\', action: \'view\', color: \'prymary\', row: 1, tooltip: \'View item\', disabled: true, multiSel: false },        									 { caption:\'Change\', icon: \'edit\', position: \'left\', action: \'change\', color: \'prymary\', row: 1, tooltip: \'Change item\', disabled: true, multiSel: false } ]" 		       					[iconButtons]="[ { icon: \'refresh\', position: \'right\', action: \'refresh\', color: \'prymary\', row: 0, tooltip: \'Refresh data\', disabled: false, multiSel: null } ]"        						[displayedColumns]="[\'mandt\', \'werks\', \'name1\', \'ort01\', \'pstlz\', \'stras\', \'land1\']"         						[displayedColumnsNames]="[\'Client\', \'Plant\', \'Name\', \'City\', \'Post code\', \'Street\', \'Country\']"								multiSelection="true"								method="MSR20_MD_PLANT_GETLIST" 								table="POT_PLANT"> </app-data-table>      		</div>    	</mat-expansion-panel>    	<mat-expansion-panel class="mat-elevation-z8">      		<mat-expansion-panel-header>        		<mat-panel-title>Menu actions </mat-panel-title>        		<mat-panel-description> List of menu actions</mat-panel-description>      		</mat-expansion-panel-header>      		<div fxLayout="column" fxLayout.xs="column" fxLayoutAlign="center center">        		<app-data-table style="width: 90%; min-width: 600px;"         						title="Menu actions"         						[buttons]="[ { caption:\'View\', icon: \'search\', position: \'left\', action: \'view\', color: \'prymary\', row: 1, tooltip: \'View item\', disabled: true, multiSel: false },        									 { caption:\'Change\', icon: \'edit\', position: \'left\', action: \'change\', color: \'prymary\', row: 1, tooltip: \'Change item\', disabled: true, multiSel: false } ]"        						[iconButtons]="[ { icon: \'refresh\', position: \'right\', action: \'refresh\', color: \'prymary\', row: 0, tooltip: \'Refresh data\', disabled: false, multiSel: null } ]"								method="Z_PMT_WRFC_GET_MENU" 								table="ET_MENU_ACTION"> </app-data-table>      		</div>    	</mat-expansion-panel>    	<mat-expansion-panel class="mat-elevation-z8">      		<mat-expansion-panel-header>        		<mat-panel-title>Menu methodss </mat-panel-title>        		<mat-panel-description> List of menu methods</mat-panel-description>      		</mat-expansion-panel-header>      		<div fxLayout="column" fxLayout.xs="column" fxLayoutAlign="center center">        		<app-data-table style="width: 90%; min-width: 600px;"         						title="Menu methods"         						[buttons]="[ { caption:\'View\', icon: \'search\', position: \'left\', action: \'view\', color: \'prymary\', row: 1, tooltip: \'View item\', disabled: true, multiSel: false },        									 { caption:\'Change\', icon: \'edit\', position: \'left\', action: \'change\', color: \'prymary\', row: 1, tooltip: \'Change item\', disabled: true, multiSel: false } ]"        						[iconButtons]="[ { icon: \'refresh\', position: \'right\', action: \'refresh\', color: \'prymary\', row: 0, tooltip: \'Refresh data\', disabled: false, multiSel: null } ]"								method="Z_PMT_WRFC_GET_MENU" 								table="ET_MENU_METHOD"> </app-data-table>      		</div>    	</mat-expansion-panel>    	<mat-expansion-panel class="mat-elevation-z8">      		<mat-expansion-panel-header>        		<mat-panel-title>DB02 </mat-panel-title>        		<mat-panel-description> Get the space history of all tablespaces</mat-panel-description>      		</mat-expansion-panel-header>      		<div fxLayout="column" fxLayout.xs="column" fxLayoutAlign="center center">        		<app-data-table style="width: 90%; min-width: 600px;"         						title="Tablespaces History"         						[buttons]="[ { caption:\'View\', icon: \'search\', position: \'left\', action: \'view\', color: \'prymary\', row: 1, tooltip: \'View item\', disabled: true, multiSel: false },        									 { caption:\'Change\', icon: \'edit\', position: \'left\', action: \'change\', color: \'prymary\', row: 1, tooltip: \'Change item\', disabled: true, multiSel: false } ]"        						[iconButtons]="[ { icon: \'refresh\', position: \'right\', action: \'refresh\', color: \'prymary\', row: 0, tooltip: \'Refresh data\', disabled: false, multiSel: null } ]"        						[fields]="[ { name: \'sap-language\', value:\'\', type: \'text\', placeholder: \'Language\', row: \'0\' },        									{ name: \'SELECT_DAYS_WEEKS_OR_MONTHS\', value:\'DAYS\', type: \'text\', placeholder: \'Period (DAYS, WEEKS or MONTHS)\', row: \'0\' } ]"								method="DB_ORA_TABLESPACE_HISTORY" 								table="HIST1"> </app-data-table>      		</div>      		<div fxLayout="column" fxLayout.xs="column" fxLayoutAlign="center center">        		<app-data-table style="width: 90%; min-width: 600px;"         						title="Summary of Tablespace History"         						[buttons]="[ { caption:\'View\', icon: \'search\', position: \'left\', action: \'view\', color: \'prymary\', row: 1, tooltip: \'View item\', disabled: true, multiSel: false },        									 { caption:\'Change\', icon: \'edit\', position: \'left\', action: \'change\', color: \'prymary\', row: 1, tooltip: \'Change item\', disabled: true, multiSel: false } ]"        						[iconButtons]="[ { icon: \'refresh\', position: \'right\', action: \'refresh\', color: \'prymary\', row: 0, tooltip: \'Refresh data\', disabled: false, multiSel: null } ]"        						[fields]="[ { name: \'sap-language\', value:\'\', type: \'text\', placeholder: \'Language\', row: \'0\' },        									{ name: \'SELECT_DAYS_WEEKS_OR_MONTHS\', value:\'DAYS\', type: \'text\', placeholder: \'Period (DAYS, WEEKS or MONTHS)\', row: \'0\' } ]"								method="DB_ORA_TABLESPACE_HISTORY" 								table="SUM_1"> </app-data-table>      		</div>    	</mat-expansion-panel>    	<mat-expansion-panel class="mat-elevation-z8">      		<mat-expansion-panel-header>        		<mat-panel-title> Table entries </mat-panel-title>        		<mat-panel-description> Get table entries</mat-panel-description>      		</mat-expansion-panel-header>      		<div fxLayout="column" fxLayout.xs="column" fxLayoutAlign="center center">        		<app-data-table style="width: 90%; min-width: 600px;"         						title="Table entries"        						[buttons]="[ { caption:\'View\', icon: \'search\', position: \'left\', action: \'view\', color: \'prymary\', row: 1, tooltip: \'View item\', disabled: true, multiSel: false },        									 { caption:\'Change\', icon: \'edit\', position: \'left\', action: \'change\', color: \'prymary\', row: 1, tooltip: \'Change item\', disabled: true, multiSel: false } ]"        						[iconButtons]="[ { icon: \'refresh\', position: \'right\', action: \'refresh\', color: \'prymary\', row: 0, tooltip: \'Refresh data\', disabled: false, multiSel: null } ]"        						[fields]="[ { name: \'sap-language\', value:\'\', type: \'text\', placeholder: \'Language\', row: \'0\' },        									{ name: \'SQLTABLE\', value:\'\', type: \'text\', placeholder: \'Table\', row: \'0\' } ]"								_FUNCTION="Z_PMT_WRFC_TABLE" 								refreshColumns="true"> </app-data-table>      		</div>    	</mat-expansion-panel>    	<mat-expansion-panel class="mat-elevation-z8">      		<mat-expansion-panel-header>        		<mat-panel-title> ST22 </mat-panel-title>        		<mat-panel-description> List of dumps using function module </mat-panel-description>      		</mat-expansion-panel-header>      		<div fxLayout="column" fxLayout.xs="column" fxLayoutAlign="center center">        		<app-data-table style="width: 90%; min-width: 600px;"         						[filter]="true"        						[buttons]="[ { caption:\'View\', icon: \'search\', position: \'left\', action: \'view\', color: \'prymary\', row: 1, tooltip: \'View item\', disabled: true, multiSel: false } ]"        						[fields]="[ { name: \'sap-language\', value:\'\', type: \'text\', placeholder: \'Language\', row: \'0\' },        									{ name: \'IS_DATE\', value:\'\', type: \'datePicker\', placeholder: \'Date\', range: \'true\', row: \'0\' }	]"        						[iconButtons]="[ { icon: \'refresh\', position: \'right\', action: \'refresh\', color: \'prymary\', row: 0, tooltip: \'Refresh data\', disabled: false, multiSel: null } ]"								multiSelection="true"        						method="Z_PMT_WRFC_GET_DUMPS" 								table="ET_DUMPS" 								title="Dump list"></app-data-table>      		</div>    	</mat-expansion-panel>    	<mat-expansion-panel class="mat-elevation-z8">      		<mat-expansion-panel-header>        		<mat-panel-title> ST22 </mat-panel-title>        		<mat-panel-description> List of dumps using class </mat-panel-description>      		</mat-expansion-panel-header>      		<div fxLayout="column" fxLayout.xs="column" fxLayoutAlign="center center">        		<app-data-table style="width: 90%; min-width: 600px;"         						[filter]="true"        						[buttons]="[ { caption:\'View\', icon: \'search\', position: \'left\', action: \'view\', color: \'prymary\', row: 1, tooltip: \'View item\', disabled: true, multiSel: false } ]"        						[fields]="[ { name: \'sap-language\', value:\'\', type: \'text\', placeholder: \'Language\', row: \'0\'  },        									{ name: \'IS_SEL:S_DATE\', value:\'\', type: \'datePicker\', placeholder: \'Date\', range: \'true\', isTable: \'true\', row: \'0\'  },        									{ name: \'IS_SEL:S_TIME\', value:\'\', type: \'timePicker\', placeholder: \'Time\', range: \'true\', isTable: \'true\', row: \'0\' },        									{ name: \'IS_SEL:S_USER\', value:\'\', type: \'text\', placeholder: \'User\', range: \'true\', isTable: \'true\', row: \'1\' } ]"        						[iconButtons]="[ { icon: \'refresh\', position: \'right\', action: \'refresh\', color: \'prymary\', row: 0, tooltip: \'Refresh data\', disabled: false, multiSel: null } ]"								multiSelection="true"        						abapClass="ZCL_PMT_BC_GET_DUMPS"        						method="GET_DUMPS" 								table="RT_DUMPS" 								title="Dump list"></app-data-table>      		</div>    	</mat-expansion-panel>  	</mat-accordion></div></div>'
     var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'BaseDataTableComponent', 'selector': 'app-base-data-table'},{'name': 'DataTableComponent', 'selector': 'app-data-table'},{'name': 'DataTableDetailComponent', 'selector': 'app-data-table-detail'},{'name': 'DataTablesPageComponent', 'selector': 'app-data-tables-page'},{'name': 'DialogComponent', 'selector': 'app-dialog'},{'name': 'WebDataTableComponent', 'selector': 'app-web-data-table'},{'name': 'WebDataTablePageComponent', 'selector': 'app-web-data-table-page'},{'name': 'WebrfcDataTableComponent', 'selector': 'app-webrfc-data-table'},{'name': 'WebrfcPageComponent', 'selector': 'app-webrfc-page'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'DataTablesPageComponent'};

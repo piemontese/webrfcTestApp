@@ -17,10 +17,16 @@
 											name="_FUNCTION" 
 											[(ngModel)]="_FUNCTION" 
 											placeholder="Function">
-            <mat-option value="Z_WRFC_INTERFACE">Call function</mat-option>
-            <mat-option value="Z_WRFC_FUNCTION_INTERFACE">Get function interface</mat-option>
-            <mat-option value="Z_WRFC_TABLE">Get table entries</mat-option></mat-select>
+            <mat-option value="Z_PMT_WRFC_INTERFACE">Call function</mat-option>
+            <mat-option value="Z_PMT_WRFC_FUNCTION_INTERFACE">Get function interface</mat-option>
+            <mat-option value="Z_PMT_WRFC_TABLE">Get table entries</mat-option></mat-select>
         </mat-form-field>
+      </div>
+      <div fxLayout="row">
+        <mat-form-field fxFlex="30">
+          <input matInput placeholder="Class" 
+								 name="abapClass" 
+								 [(ngModel)]="abapClass"></mat-form-field>
       </div>
       <div fxLayout="row">
         <mat-form-field fxFlex="30">

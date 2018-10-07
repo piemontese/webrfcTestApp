@@ -31,8 +31,12 @@ export class WebrfcPageComponent implements OnInit {
   form: FormGroup;
 //  baseUrl = 'http://mnibm09.novellini.it:8066/sap/bc/webrfc';
   baseUrl = 'http://127.0.0.1:8000/sap/bc/webrfc';
-  _FUNCTION = 'Z_WRFC_INTERFACE';
+  /**
+   * Webrfc called function
+   */
+  _FUNCTION = 'Z_PMT_WRFC_INTERFACE';
   callback = 'JSONP_CALLBACK';
+  abapClass = '';
   method = '';
   response: any;
   functionBody = [];
@@ -66,6 +70,7 @@ export class WebrfcPageComponent implements OnInit {
   }
 
   clearFields() {
+    this.abapClass = '';
     this.method = '';
     this.response = null;
     for ( let i = 0; i < this.fields.length; i++ ) {
@@ -109,6 +114,10 @@ export class WebrfcPageComponent implements OnInit {
     if ( this.authentication ) {
       jsonData['sap-user'] = this.sapUser;
       jsonData['sap-password'] = this.sapPassword;
+    }
+
+    if ( this.abapClass !== '' ) {
+      jsonData['class'] = this.abapClass;
     }
 
     if ( this.method !== '' ) {

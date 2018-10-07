@@ -8,184 +8,208 @@
 -->
 
 <div fxLayout="column" fxLayoutAlign="center center">
-  <mat-accordion>
-    <mat-expansion-panel class="mat-elevation-z8">
-      <mat-expansion-panel-header>
-        <mat-panel-title> User list </mat-panel-title>
-        <mat-panel-description> List of logged users</mat-panel-description>
-      </mat-expansion-panel-header>
-      <div fxLayout="column" fxLayout.xs="column" fxLayoutAlign="center center">
-        <app-data-table style="width: 90%; min-width: 600px;" 
-        								title="User list" 
-        								method='TH_USER_LIST'
-        								methodType = 'F'
-        								webrfcLog = 'true'
-        								webrfcLogin = 'true'
-        								webrfcUser = 'user1'
-        								webrfcPassword = 'Ostrakon1!'
- 												table="USRLIST"
-        								[fields]="[ { name: 'sap-language', value:'', type: 'text', placeholder: 'Language', range: '' }	]"
- 												[buttons]="[ { caption:'View', icon: 'search', position: 'left', action: 'view', color: 'prymary', row: 1, tooltip: 'View item', disabled: true, multiSel: false },
-        														 { caption:'Change', icon: 'edit', position: 'left', action: 'change', color: 'prymary', row: 1, tooltip: 'Change item', disabled: true, multiSel: false } ]"
-        								[iconButtons]="[ { icon: 'refresh', position: 'right', action: 'refresh', color: 'prymary', row: 0, tooltip: 'Refresh data', disabled: false, multiSel: null } ]"
-        								[displayedColumns]="['tid', 'mandt', 'bname', 'term', 'hostaddr', 'guiversion', 'zeit']" 
-        								[displayedColumnsNames]="['TID', 'Client', 'User', 'Terminal', 'IP address', 'GUI version', 'Time']"> </app-data-table>
-      </div>
-    </mat-expansion-panel>
+  	<mat-accordion>
+    	<mat-expansion-panel class="mat-elevation-z8">
+      		<mat-expansion-panel-header>
+        		<mat-panel-title> User list </mat-panel-title>
+        		<mat-panel-description> List of logged users</mat-panel-description>
+      		</mat-expansion-panel-header>
+      		<div fxLayout="column" fxLayout.xs="column" fxLayoutAlign="center center">
+				<app-data-table style="width: 90%; min-width: 600px;" 
+								title="User list" 
+								method="TH_USER_LIST"
+								methodType = "F"
+								webrfcLog = "true"
+								webrfcLogin = "true"
+								webrfcUser = "user1"
+								webrfcPassword = "Ostrakon1!"
+								noRefreshColumns = "true"
+								table="USRLIST"
+								[fields]="[ { name: 'sap-language', value:'', type: 'text', placeholder: 'Language' }	]"
+								[buttons]="[ { caption:'View', icon: 'search', position: 'left', action: 'view', color: 'prymary', row: 1, tooltip: 'View item', disabled: true, multiSel: false },
+											 { caption:'Change', icon: 'edit', position: 'left', action: 'change', color: 'prymary', row: 1, tooltip: 'Change item', disabled: true, multiSel: false } ]"
+								[iconButtons]="[ { icon: 'refresh', position: 'right', action: 'refresh', color: 'prymary', row: 0, tooltip: 'Refresh data', disabled: false, multiSel: null } ]"
+								[displayedColumns]="['tid', 'mandt', 'bname', 'term', 'hostaddr', 'guiversion', 'zeit']" 
+								[displayedColumnsNames]="['TID', 'Client', 'User', 'Terminal', 'IP address', 'GUI version', 'Time']"> </app-data-table>
+			</div>
+    	</mat-expansion-panel>
     
-    <mat-expansion-panel class="mat-elevation-z8">
-      <mat-expansion-panel-header>
-        <mat-panel-title> User list </mat-panel-title>
-        <mat-panel-description> List of logged users (all columns) </mat-panel-description>
-      </mat-expansion-panel-header>
-      <div fxLayout="column" fxLayout.xs="column" fxLayoutAlign="center center">
-        <app-data-table style="width: 90%; min-width: 600px;" 
-        								[filter]="false"
-        								[buttons]="[ { caption:'View', icon: 'search', position: 'left', action: 'view', color: 'prymary', row: 1, tooltip: 'View item', disabled: true, multiSel: false } ]"
-        								[fields]="[ { name: 'sap-language', value:'', type: 'text', placeholder: 'Language', range: '' }	]"
-        								[iconButtons]="[ { icon: 'refresh', position: 'right', action: 'refresh', color: 'prymary', row: 0, tooltip: 'Refresh data', disabled: false, multiSel: null } ]"
-        								method='TH_USER_LIST'
- 												table="USRLIST"
- 												title="User list"></app-data-table>
-      </div>
-    </mat-expansion-panel>
+    	<mat-expansion-panel class="mat-elevation-z8">
+      		<mat-expansion-panel-header>
+        		<mat-panel-title> User list </mat-panel-title>
+        		<mat-panel-description> List of logged users (all columns) </mat-panel-description>
+      		</mat-expansion-panel-header>
+      		<div fxLayout="column" fxLayout.xs="column" fxLayoutAlign="center center">
+        		<app-data-table style="width: 90%; min-width: 600px;" 
+        						[filter]="false"
+        						[buttons]="[ { caption:'View', icon: 'search', position: 'left', action: 'view', color: 'prymary', row: 1, tooltip: 'View item', disabled: true, multiSel: false } ]"
+        						[fields]="[ { name: 'sap-language', value:'', type: 'text', placeholder: 'Language' }	]"
+        						[iconButtons]="[ { icon: 'refresh', position: 'right', action: 'refresh', color: 'prymary', row: 0, tooltip: 'Refresh data', disabled: false, multiSel: null } ]"
+        						method="TH_USER_LIST"
+ 								table="USRLIST"
+ 								title="User list"></app-data-table>
+      		</div>
+    	</mat-expansion-panel>
 
-    <mat-expansion-panel class="mat-elevation-z8">
-      <mat-expansion-panel-header>
-        <mat-panel-title> Material requirement list </mat-panel-title>
-        <mat-panel-description> Material requirement list (MD04) </mat-panel-description>
-      </mat-expansion-panel-header>
-      <div fxLayout="column" fxLayout.xs="column" fxLayoutAlign="center center">
-        <app-data-table style="width: 90%; min-width: 600px;" 
-        								[displayedColumns]="['avail_date', 'mrp_elemnt', 'mrp_element_ind', 'available', 'rec_reqd_qty']" 
-        								[displayedColumnsNames]="['Available date', 'MRP element', 'MRP element ind.', 'Available', 'Available quantity']" 
-        								[fields]="[ { name: 'sap-language', value:'', type: 'text', placeholder: 'Language', range: '' },
-        														{ name: 'plant', value:'', type: 'text', placeholder: 'Plant', range: '' },
-        													  { name: 'material', value:'', type: 'text', placeholder: 'Material' }	]"
-        								[buttons]="[ { caption:'View', icon: 'search', position: 'left', action: '', color: 'prymary', row: 1, tooltip: 'View item', disabled: true, multiSel: false } ]"
-        								[iconButtons]="[ { icon: 'refresh', position: 'right', action: 'refresh', color: 'prymary', row: 0, tooltip: 'Refresh data', disabled: false, multiSel: null } ]"
-        								title="Material requirement list" 
-        								method="BAPI_MATERIAL_STOCK_REQ_LIST" 
-        								table="MRP_IND_LINES"></app-data-table>
-      </div>
-    </mat-expansion-panel>
+    	<mat-expansion-panel class="mat-elevation-z8">
+      		<mat-expansion-panel-header>
+        		<mat-panel-title> Material requirement list </mat-panel-title>
+        		<mat-panel-description> Material requirement list (MD04) </mat-panel-description>
+      		</mat-expansion-panel-header>
+      		<div fxLayout="column" fxLayout.xs="column" fxLayoutAlign="center center">
+        		<app-data-table style="width: 90%; min-width: 600px;" 
+        						[displayedColumns]="['avail_date', 'mrp_elemnt', 'mrp_element_ind', 'available', 'rec_reqd_qty']" 
+        						[displayedColumnsNames]="['Available date', 'MRP element', 'MRP element ind.', 'Available', 'Available quantity']" 
+        						[fields]="[ { name: 'sap-language', value:'', type: 'text', placeholder: 'Language' },
+        									{ name: 'plant', value:'', type: 'text', placeholder: 'Plant' },
+        								  	{ name: 'material', value:'', type: 'text', placeholder: 'Material' }	]"
+        						[buttons]="[ { caption:'View', icon: 'search', position: 'left', action: '', color: 'prymary', row: 1, tooltip: 'View item', disabled: true, multiSel: false } ]"
+        						[iconButtons]="[ { icon: 'refresh', position: 'right', action: 'refresh', color: 'prymary', row: 0, tooltip: 'Refresh data', disabled: false, multiSel: null } ]"
+        						title="Material requirement list" 
+        						method="BAPI_MATERIAL_STOCK_REQ_LIST" 
+        						table="MRP_IND_LINES"></app-data-table>
+      		</div>
+    	</mat-expansion-panel>
 
-    <mat-expansion-panel class="mat-elevation-z8">
-      <mat-expansion-panel-header>
-        <mat-panel-title> Plant list </mat-panel-title>
-        <mat-panel-description> List of all plants</mat-panel-description>
-      </mat-expansion-panel-header>
-      <div fxLayout="column" fxLayout.xs="column" fxLayoutAlign="center center">
-        <app-data-table style="width: 90%; min-width: 600px;" 
-        								title="Plant list" 
-        								[fields]="[ { name: 'sap-language', value:'', type: 'text', placeholder: 'Language', range: '' }	]"
-        								[buttons]="[ { caption:'View', icon: 'search', position: 'left', action: 'view', color: 'prymary', row: 1, tooltip: 'View item', disabled: true, multiSel: false },
-        														 { caption:'Change', icon: 'edit', position: 'left', action: 'change', color: 'prymary', row: 1, tooltip: 'Change item', disabled: true, multiSel: false } ]"
-        								[iconButtons]="[ { icon: 'refresh', position: 'right', action: 'refresh', color: 'prymary', row: 0, tooltip: 'Refresh data', disabled: false, multiSel: null } ]"
-        								[displayedColumns]="['mandt', 'werks', 'name1', 'ort01', 'pstlz', 'stras', 'land1']" 
-        								[displayedColumnsNames]="['Client', 'Plant', 'Name', 'City', 'Post code', 'Street', 'Country']"
-												multiSelection="true"
-												method='MSR20_MD_PLANT_GETLIST'
- 												table="POT_PLANT"> </app-data-table>
-      </div>
-    </mat-expansion-panel>
+    	<mat-expansion-panel class="mat-elevation-z8">
+      		<mat-expansion-panel-header>
+        		<mat-panel-title> Plant list </mat-panel-title>
+        		<mat-panel-description> List of all plants</mat-panel-description>
+      		</mat-expansion-panel-header>
+      		<div fxLayout="column" fxLayout.xs="column" fxLayoutAlign="center center">
+        		<app-data-table style="width: 90%; min-width: 600px;" 
+        						title="Plant list" 
+        						[fields]="[ { name: 'sap-language', value:'', type: 'text', placeholder: 'Language' }	]"
+        						[buttons]="[ { caption:'View', icon: 'search', position: 'left', action: 'view', color: 'prymary', row: 1, tooltip: 'View item', disabled: true, multiSel: false },
+        									 { caption:'Change', icon: 'edit', position: 'left', action: 'change', color: 'prymary', row: 1, tooltip: 'Change item', disabled: true, multiSel: false } ]"
+ 		       					[iconButtons]="[ { icon: 'refresh', position: 'right', action: 'refresh', color: 'prymary', row: 0, tooltip: 'Refresh data', disabled: false, multiSel: null } ]"
+        						[displayedColumns]="['mandt', 'werks', 'name1', 'ort01', 'pstlz', 'stras', 'land1']" 
+        						[displayedColumnsNames]="['Client', 'Plant', 'Name', 'City', 'Post code', 'Street', 'Country']"
+								multiSelection="true"
+								method="MSR20_MD_PLANT_GETLIST"
+ 								table="POT_PLANT"> </app-data-table>
+      		</div>
+    	</mat-expansion-panel>
 
-    <mat-expansion-panel class="mat-elevation-z8">
-      <mat-expansion-panel-header>
-        <mat-panel-title>Menu actions </mat-panel-title>
-        <mat-panel-description> List of menu actions</mat-panel-description>
-      </mat-expansion-panel-header>
-      <div fxLayout="column" fxLayout.xs="column" fxLayoutAlign="center center">
-        <app-data-table style="width: 90%; min-width: 600px;" 
-        								title="Menu actions" 
-        								[buttons]="[ { caption:'View', icon: 'search', position: 'left', action: 'view', color: 'prymary', row: 1, tooltip: 'View item', disabled: true, multiSel: false },
-        														 { caption:'Change', icon: 'edit', position: 'left', action: 'change', color: 'prymary', row: 1, tooltip: 'Change item', disabled: true, multiSel: false } ]"
-        								[iconButtons]="[ { icon: 'refresh', position: 'right', action: 'refresh', color: 'prymary', row: 0, tooltip: 'Refresh data', disabled: false, multiSel: null } ]"
-												method='Z_WRFC_GET_MENU'
- 												table="ET_MENU_ACTION"> </app-data-table>
-      </div>
-    </mat-expansion-panel>
+    	<mat-expansion-panel class="mat-elevation-z8">
+      		<mat-expansion-panel-header>
+        		<mat-panel-title>Menu actions </mat-panel-title>
+        		<mat-panel-description> List of menu actions</mat-panel-description>
+      		</mat-expansion-panel-header>
+      		<div fxLayout="column" fxLayout.xs="column" fxLayoutAlign="center center">
+        		<app-data-table style="width: 90%; min-width: 600px;" 
+        						title="Menu actions" 
+        						[buttons]="[ { caption:'View', icon: 'search', position: 'left', action: 'view', color: 'prymary', row: 1, tooltip: 'View item', disabled: true, multiSel: false },
+        									 { caption:'Change', icon: 'edit', position: 'left', action: 'change', color: 'prymary', row: 1, tooltip: 'Change item', disabled: true, multiSel: false } ]"
+        						[iconButtons]="[ { icon: 'refresh', position: 'right', action: 'refresh', color: 'prymary', row: 0, tooltip: 'Refresh data', disabled: false, multiSel: null } ]"
+								method="Z_PMT_WRFC_GET_MENU"
+ 								table="ET_MENU_ACTION"> </app-data-table>
+      		</div>
+    	</mat-expansion-panel>
 
-    <mat-expansion-panel class="mat-elevation-z8">
-      <mat-expansion-panel-header>
-        <mat-panel-title>Menu methodss </mat-panel-title>
-        <mat-panel-description> List of menu methods</mat-panel-description>
-      </mat-expansion-panel-header>
-      <div fxLayout="column" fxLayout.xs="column" fxLayoutAlign="center center">
-        <app-data-table style="width: 90%; min-width: 600px;" 
-        								title="Menu methods" 
-        								[buttons]="[ { caption:'View', icon: 'search', position: 'left', action: 'view', color: 'prymary', row: 1, tooltip: 'View item', disabled: true, multiSel: false },
-        														 { caption:'Change', icon: 'edit', position: 'left', action: 'change', color: 'prymary', row: 1, tooltip: 'Change item', disabled: true, multiSel: false } ]"
-        								[iconButtons]="[ { icon: 'refresh', position: 'right', action: 'refresh', color: 'prymary', row: 0, tooltip: 'Refresh data', disabled: false, multiSel: null } ]"
-												method='Z_WRFC_GET_MENU'
- 												table="ET_MENU_METHOD"> </app-data-table>
-      </div>
-    </mat-expansion-panel>
+    	<mat-expansion-panel class="mat-elevation-z8">
+      		<mat-expansion-panel-header>
+        		<mat-panel-title>Menu methodss </mat-panel-title>
+        		<mat-panel-description> List of menu methods</mat-panel-description>
+      		</mat-expansion-panel-header>
+      		<div fxLayout="column" fxLayout.xs="column" fxLayoutAlign="center center">
+        		<app-data-table style="width: 90%; min-width: 600px;" 
+        						title="Menu methods" 
+        						[buttons]="[ { caption:'View', icon: 'search', position: 'left', action: 'view', color: 'prymary', row: 1, tooltip: 'View item', disabled: true, multiSel: false },
+        									 { caption:'Change', icon: 'edit', position: 'left', action: 'change', color: 'prymary', row: 1, tooltip: 'Change item', disabled: true, multiSel: false } ]"
+        						[iconButtons]="[ { icon: 'refresh', position: 'right', action: 'refresh', color: 'prymary', row: 0, tooltip: 'Refresh data', disabled: false, multiSel: null } ]"
+								method="Z_PMT_WRFC_GET_MENU"
+ 								table="ET_MENU_METHOD"> </app-data-table>
+      		</div>
+    	</mat-expansion-panel>
 
-    <mat-expansion-panel class="mat-elevation-z8">
-      <mat-expansion-panel-header>
-        <mat-panel-title>DB02 </mat-panel-title>
-        <mat-panel-description> Get the space history of all tablespaces</mat-panel-description>
-      </mat-expansion-panel-header>
-      <div fxLayout="column" fxLayout.xs="column" fxLayoutAlign="center center">
-        <app-data-table style="width: 90%; min-width: 600px;" 
-        								title="Tablespaces History" 
-        								[buttons]="[ { caption:'View', icon: 'search', position: 'left', action: 'view', color: 'prymary', row: 1, tooltip: 'View item', disabled: true, multiSel: false },
-        														 { caption:'Change', icon: 'edit', position: 'left', action: 'change', color: 'prymary', row: 1, tooltip: 'Change item', disabled: true, multiSel: false } ]"
-        								[iconButtons]="[ { icon: 'refresh', position: 'right', action: 'refresh', color: 'prymary', row: 0, tooltip: 'Refresh data', disabled: false, multiSel: null } ]"
-        								[fields]="[ { name: 'sap-language', value:'', type: 'text', placeholder: 'Language', range: '' },
-        													  { name: 'SELECT_DAYS_WEEKS_OR_MONTHS', value:'DAYS', type: 'text', placeholder: 'Period (DAYS, WEEKS or MONTHS)', range: '' } ]"
-												method='DB_ORA_TABLESPACE_HISTORY'
- 												table="HIST1"> </app-data-table>
-      </div>
-      <div fxLayout="column" fxLayout.xs="column" fxLayoutAlign="center center">
-        <app-data-table style="width: 90%; min-width: 600px;" 
-        								title="Summary of Tablespace History" 
-        								[buttons]="[ { caption:'View', icon: 'search', position: 'left', action: 'view', color: 'prymary', row: 1, tooltip: 'View item', disabled: true, multiSel: false },
-        														 { caption:'Change', icon: 'edit', position: 'left', action: 'change', color: 'prymary', row: 1, tooltip: 'Change item', disabled: true, multiSel: false } ]"
-        								[iconButtons]="[ { icon: 'refresh', position: 'right', action: 'refresh', color: 'prymary', row: 0, tooltip: 'Refresh data', disabled: false, multiSel: null } ]"
-        								[fields]="[ { name: 'sap-language', value:'', type: 'text', placeholder: 'Language', range: '' },
-        														{ name: 'SELECT_DAYS_WEEKS_OR_MONTHS', value:'DAYS', type: 'text', placeholder: 'Period (DAYS, WEEKS or MONTHS)', range: '' } ]"
-												method='DB_ORA_TABLESPACE_HISTORY'
- 												table="SUM_1"> </app-data-table>
-      </div>
-    </mat-expansion-panel>
+    	<mat-expansion-panel class="mat-elevation-z8">
+      		<mat-expansion-panel-header>
+        		<mat-panel-title>DB02 </mat-panel-title>
+        		<mat-panel-description> Get the space history of all tablespaces</mat-panel-description>
+      		</mat-expansion-panel-header>
+      		<div fxLayout="column" fxLayout.xs="column" fxLayoutAlign="center center">
+        		<app-data-table style="width: 90%; min-width: 600px;" 
+        						title="Tablespaces History" 
+        						[buttons]="[ { caption:'View', icon: 'search', position: 'left', action: 'view', color: 'prymary', row: 1, tooltip: 'View item', disabled: true, multiSel: false },
+        									 { caption:'Change', icon: 'edit', position: 'left', action: 'change', color: 'prymary', row: 1, tooltip: 'Change item', disabled: true, multiSel: false } ]"
+        						[iconButtons]="[ { icon: 'refresh', position: 'right', action: 'refresh', color: 'prymary', row: 0, tooltip: 'Refresh data', disabled: false, multiSel: null } ]"
+        						[fields]="[ { name: 'sap-language', value:'', type: 'text', placeholder: 'Language', row: '0' },
+        									{ name: 'SELECT_DAYS_WEEKS_OR_MONTHS', value:'DAYS', type: 'text', placeholder: 'Period (DAYS, WEEKS or MONTHS)', row: '0' } ]"
+								method="DB_ORA_TABLESPACE_HISTORY"
+ 								table="HIST1"> </app-data-table>
+      		</div>
+      		<div fxLayout="column" fxLayout.xs="column" fxLayoutAlign="center center">
+        		<app-data-table style="width: 90%; min-width: 600px;" 
+        						title="Summary of Tablespace History" 
+        						[buttons]="[ { caption:'View', icon: 'search', position: 'left', action: 'view', color: 'prymary', row: 1, tooltip: 'View item', disabled: true, multiSel: false },
+        									 { caption:'Change', icon: 'edit', position: 'left', action: 'change', color: 'prymary', row: 1, tooltip: 'Change item', disabled: true, multiSel: false } ]"
+        						[iconButtons]="[ { icon: 'refresh', position: 'right', action: 'refresh', color: 'prymary', row: 0, tooltip: 'Refresh data', disabled: false, multiSel: null } ]"
+        						[fields]="[ { name: 'sap-language', value:'', type: 'text', placeholder: 'Language', row: '0' },
+        									{ name: 'SELECT_DAYS_WEEKS_OR_MONTHS', value:'DAYS', type: 'text', placeholder: 'Period (DAYS, WEEKS or MONTHS)', row: '0' } ]"
+								method="DB_ORA_TABLESPACE_HISTORY"
+ 								table="SUM_1"> </app-data-table>
+      		</div>
+    	</mat-expansion-panel>
 
-    <mat-expansion-panel class="mat-elevation-z8">
-      <mat-expansion-panel-header>
-        <mat-panel-title> Table entries </mat-panel-title>
-        <mat-panel-description> Get table entries</mat-panel-description>
-      </mat-expansion-panel-header>
-      <div fxLayout="column" fxLayout.xs="column" fxLayoutAlign="center center">
-        <app-data-table style="width: 90%; min-width: 600px;" 
-        								title="Table entries"
-        								[buttons]="[ { caption:'View', icon: 'search', position: 'left', action: 'view', color: 'prymary', row: 1, tooltip: 'View item', disabled: true, multiSel: false },
-        														 { caption:'Change', icon: 'edit', position: 'left', action: 'change', color: 'prymary', row: 1, tooltip: 'Change item', disabled: true, multiSel: false } ]"
-        								[iconButtons]="[ { icon: 'refresh', position: 'right', action: 'refresh', color: 'prymary', row: 0, tooltip: 'Refresh data', disabled: false, multiSel: null } ]"
-        								[fields]="[ { name: 'sap-language', value:'', type: 'text', placeholder: 'Language', range: '' },
-        													  { name: 'SQLTABLE', value:'', type: 'text', placeholder: 'Table', range: '' } ]"
-												_FUNCTION='Z_WRFC_TABLE'
- 												refreshColumns='true'> </app-data-table>
-      </div>
-    </mat-expansion-panel>
+    	<mat-expansion-panel class="mat-elevation-z8">
+      		<mat-expansion-panel-header>
+        		<mat-panel-title> Table entries </mat-panel-title>
+        		<mat-panel-description> Get table entries</mat-panel-description>
+      		</mat-expansion-panel-header>
+      		<div fxLayout="column" fxLayout.xs="column" fxLayoutAlign="center center">
+        		<app-data-table style="width: 90%; min-width: 600px;" 
+        						title="Table entries"
+        						[buttons]="[ { caption:'View', icon: 'search', position: 'left', action: 'view', color: 'prymary', row: 1, tooltip: 'View item', disabled: true, multiSel: false },
+        									 { caption:'Change', icon: 'edit', position: 'left', action: 'change', color: 'prymary', row: 1, tooltip: 'Change item', disabled: true, multiSel: false } ]"
+        						[iconButtons]="[ { icon: 'refresh', position: 'right', action: 'refresh', color: 'prymary', row: 0, tooltip: 'Refresh data', disabled: false, multiSel: null } ]"
+        						[fields]="[ { name: 'sap-language', value:'', type: 'text', placeholder: 'Language', row: '0' },
+        									{ name: 'SQLTABLE', value:'', type: 'text', placeholder: 'Table', row: '0' } ]"
+								_FUNCTION="Z_PMT_WRFC_TABLE"
+ 								refreshColumns="true"> </app-data-table>
+      		</div>
+    	</mat-expansion-panel>
 
-    <mat-expansion-panel class="mat-elevation-z8">
-      <mat-expansion-panel-header>
-        <mat-panel-title> ST22 </mat-panel-title>
-        <mat-panel-description> List of dumps </mat-panel-description>
-      </mat-expansion-panel-header>
-      <div fxLayout="column" fxLayout.xs="column" fxLayoutAlign="center center">
-        <app-data-table style="width: 90%; min-width: 600px;" 
-        								[filter]="true"
-        								[buttons]="[ { caption:'View', icon: 'search', position: 'left', action: 'view', color: 'prymary', row: 1, tooltip: 'View item', disabled: true, multiSel: false } ]"
-        								[fields]="[ { name: 'sap-language', value:'', type: 'text', placeholder: 'Language', range: '' },
-        														{ name: 'IS_DATE', value:'', type: 'datePicker', placeholder: 'Date', range: 'true' }	]"
-        								[iconButtons]="[ { icon: 'refresh', position: 'right', action: 'refresh', color: 'prymary', row: 0, tooltip: 'Refresh data', disabled: false, multiSel: null } ]"
-        								method='Z_WRFC_GET_DUMPS'
- 												table="ET_DUMPS"
- 												title="Dump list"></app-data-table>
-      </div>
-    </mat-expansion-panel>
+    	<mat-expansion-panel class="mat-elevation-z8">
+      		<mat-expansion-panel-header>
+        		<mat-panel-title> ST22 </mat-panel-title>
+        		<mat-panel-description> List of dumps using function module </mat-panel-description>
+      		</mat-expansion-panel-header>
+      		<div fxLayout="column" fxLayout.xs="column" fxLayoutAlign="center center">
+        		<app-data-table style="width: 90%; min-width: 600px;" 
+        						[filter]="true"
+        						[buttons]="[ { caption:'View', icon: 'search', position: 'left', action: 'view', color: 'prymary', row: 1, tooltip: 'View item', disabled: true, multiSel: false } ]"
+        						[fields]="[ { name: 'sap-language', value:'', type: 'text', placeholder: 'Language', row: '0' },
+        									{ name: 'IS_DATE', value:'', type: 'datePicker', placeholder: 'Date', range: 'true', row: '0' }	]"
+        						[iconButtons]="[ { icon: 'refresh', position: 'right', action: 'refresh', color: 'prymary', row: 0, tooltip: 'Refresh data', disabled: false, multiSel: null } ]"
+								multiSelection="true"
+        						method="Z_PMT_WRFC_GET_DUMPS"
+ 								table="ET_DUMPS"
+ 								title="Dump list"></app-data-table>
+      		</div>
+    	</mat-expansion-panel>
 
-  </mat-accordion>
+    	<mat-expansion-panel class="mat-elevation-z8">
+      		<mat-expansion-panel-header>
+        		<mat-panel-title> ST22 </mat-panel-title>
+        		<mat-panel-description> List of dumps using class </mat-panel-description>
+      		</mat-expansion-panel-header>
+      		<div fxLayout="column" fxLayout.xs="column" fxLayoutAlign="center center">
+        		<app-data-table style="width: 90%; min-width: 600px;" 
+        						[filter]="true"
+        						[buttons]="[ { caption:'View', icon: 'search', position: 'left', action: 'view', color: 'prymary', row: 1, tooltip: 'View item', disabled: true, multiSel: false } ]"
+        						[fields]="[ { name: 'sap-language', value:'', type: 'text', placeholder: 'Language', row: '0'  },
+        									{ name: 'IS_SEL:S_DATE', value:'', type: 'datePicker', placeholder: 'Date', range: 'true', isTable: 'true', row: '0'  },
+        									{ name: 'IS_SEL:S_TIME', value:'', type: 'timePicker', placeholder: 'Time', range: 'true', isTable: 'true', row: '0' },
+        									{ name: 'IS_SEL:S_USER', value:'', type: 'text', placeholder: 'User', range: 'true', isTable: 'true', row: '1' } ]"
+        						[iconButtons]="[ { icon: 'refresh', position: 'right', action: 'refresh', color: 'prymary', row: 0, tooltip: 'Refresh data', disabled: false, multiSel: null } ]"
+								multiSelection="true"
+        						abapClass="ZCL_PMT_BC_GET_DUMPS"
+        						method="GET_DUMPS"
+ 								table="RT_DUMPS"
+ 								title="Dump list"></app-data-table>
+      		</div>
+    	</mat-expansion-panel>
+
+  	</mat-accordion>
 </div>

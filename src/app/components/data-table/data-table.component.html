@@ -4,59 +4,59 @@
 			{{title}}
 			<div fxLayout="row" fxFlex fxLayoutAlign="end">
 				<button mat-icon-button *ngIf="multiSelection"
-																(click)="selectAll()"
-													 			matTooltip="Select/deselect all"
-																color="primar">
+										(click)="selectAll()"
+										matTooltip="Select/deselect all"
+										color="primar">
 					<mat-icon color="primary">select_all</mat-icon>
 				</button>
 				<button mat-button *ngFor="let button of buttons | position: 'right' | row: 0"
-													 (click)="buttonClick(button)"
-													 [matTooltip]="button.tooltip"
-													 [disabled]="button.disabled"
-													 color="primary">
+								    (click)="buttonClick(button)"
+									[matTooltip]="button.tooltip"
+									[disabled]="button.disabled"
+									color="primary">
 					<mat-icon [color]="button.disabled ? '' : 'primary'">{{button.icon}}</mat-icon>
 					{{button.caption}}
 				</button>
 				<button mat-icon-button *ngFor="let iconButton of iconButtons | position: 'right' | row: 0"
-															  (click)="iconBbuttonClick(iconButton)"
-													 			[matTooltip]="iconButton.tooltip"
-		  												  [disabled]="iconButton.disabled"
-																color="primary">
+									    (click)="iconBbuttonClick(iconButton)"
+										[matTooltip]="iconButton.tooltip"
+		  						    	[disabled]="iconButton.disabled"
+										color="primary">
 					<mat-icon [color]="iconButton.disabled ? '' : 'primary'">{{iconButton.icon}}</mat-icon>
 				</button>
 			</div>
 		</mat-toolbar-row> 
 		<mat-toolbar-row *ngIf="(buttons | row: 1).length > 0 || (iconButtons | row: 1).length > 0">
 			<button mat-button *ngFor="let button of buttons | position: 'left' | row: 1"
-												 (click)="buttonClick(button)"
-												 [matTooltip]="button.tooltip"
-												 [disabled]="button.disabled"
-												 color="primary">
+							   (click)="buttonClick(button)"
+							   [matTooltip]="button.tooltip"
+							   [disabled]="button.disabled"
+							   color="primary">
 				<mat-icon [color]="button.disabled ? '' : 'primary'">{{button.icon}}</mat-icon>
 				{{button.caption}}
 			</button>
 			<button mat-icon-button *ngFor="let iconButton of iconButtons | position: 'left' | row: 1"
-														  (click)="iconBbuttonClick(iconButton)"
-													 		[matTooltip]="iconButton.tooltip"
-														  [disabled]="iconButton.disabled"
-															color="primary">
+									(click)="iconBbuttonClick(iconButton)"
+									[matTooltip]="iconButton.tooltip"
+									[disabled]="iconButton.disabled"
+									color="primary">
 				<mat-icon [color]="iconButton.disabled ? '' : 'primary'">{{iconButton.icon}}</mat-icon>
 			</button>
 		
 			<div fxLayout="row" fxFlex fxLayoutAlign="center">
 				<button mat-button *ngFor="let button of buttons | position: 'center' | row: 1"
-													 (click)="buttonClick(button)"
-													 [matTooltip]="button.tooltip"
-													 [disabled]="button.disabled"
-													 color="primary">
+									(click)="buttonClick(button)"
+									[matTooltip]="button.tooltip"
+									[disabled]="button.disabled"
+									color="primary">
 					<mat-icon [color]="button.disabled ? '' : 'primary'">{{button.icon}}</mat-icon>
 					{{button.caption}}
 				</button>
 				<button mat-icon-button *ngFor="let iconButton of iconButtons | position: 'center' | row: 1"
-															  (click)="iconBbuttonClick(iconButton)"
-													 			[matTooltip]="iconButton.tooltip"
-															  [disabled]="iconButton.disabled"
-																color="primary">
+										(click)="iconBbuttonClick(iconButton)"
+										[matTooltip]="iconButton.tooltip"
+										[disabled]="iconButton.disabled"
+										color="primary">
 					<mat-icon [color]="iconButton.disabled ? '' : 'primary'">{{iconButton.icon}}</mat-icon>
 				</button>
 			</div>
@@ -64,91 +64,133 @@
 			<div fxLayout="row" fxFlex fxLayoutAlign="end">
 				
 				<button mat-button *ngFor="let button of buttons | position: 'right' | row: 1"
-													 (click)="buttonClick(button)"
-													 [matTooltip]="button.tooltip"
-													 [disabled]="button.disabled"
-													 color="primary">
+									(click)="buttonClick(button)"
+									[matTooltip]="button.tooltip"
+									[disabled]="button.disabled"
+									color="primary">
 					<mat-icon [color]="button.disabled ? '' : 'primary'">{{button.icon}}</mat-icon>
 					{{button.caption}}
 				</button>
 				<button mat-icon-button *ngFor="let iconButton of iconButtons | position: 'right' | row: 1"
-															  (click)="iconBbuttonClick(iconButton)"
-													 			[matTooltip]="iconButton.tooltip"
-															  [disabled]="iconButton.disabled"
-																color="primary">
+										(click)="iconBbuttonClick(iconButton)"
+										[matTooltip]="iconButton.tooltip"
+										[disabled]="iconButton.disabled"
+										color="primary">
 					<mat-icon [color]="iconButton.disabled ? '' : 'primary'">{{iconButton.icon}}</mat-icon>
 				</button>
 			</div>
 		</mat-toolbar-row> 
-		<mat-toolbar-row *ngIf="fields.length > 0 || filter"> 
-			<div fxLayout="row" fxFlex fxLayoutAlign="left" fxLayoutGap="10px">
-				<mat-form-field *ngFor="let field of fields; let i=index;"> 
-					<div *ngIf="(field.type !== 'datePicker')">
-						<input matInput
-					  			 [placeholder]="field.placeholder"
-									 [name]="field.name"
-									 [(ngModel)]="field.value"
-									 [type]="field.type"> 
-					</div>
-					<div *ngIf="field.type === 'datePicker' && field.range === ''" >
-						<input matInput 
-						       [formControl]="currentDate"
-									 (mouseup)="picker.open()"
-									 [matDatepicker]="picker" 
-						 			 [placeholder]="field.placeholder"
-		 							 [(ngModel)]="field.value"> 
-				  	<mat-datepicker #picker></mat-datepicker>
-				  </div>
-					<div *ngIf="field.type === 'datePicker' && field.range === 'true'">
-						<div fxLayout="row" fxLayoutGap="10px">
-							<input matInput 
-										 (mouseup)="pickerFrom.open()"
-										 [matDatepicker]="pickerFrom" 
-							 			 [placeholder]="field.placeholder"
-		 							 	 [(ngModel)]="field.valueFrom"> 
-					  	<mat-datepicker #pickerFrom></mat-datepicker>
-							<input matInput 
-										 fxFlex="40%"
-										 (mouseup)="pickerTo.open()"
-										 [matDatepicker]="pickerTo" 
-							 			 [placeholder]="field.placeholder"
-		 							 	 [(ngModel)]="field.valueTo"> 
-					  	<mat-datepicker #pickerTo></mat-datepicker>
-					  </div>
-				  </div>
-			  </mat-form-field> 
+<!--		<mat-toolbar-row *ngIf="fields.length > 0 || filter"> -->
+<!--			<div fxLayout="row wrap" fxFlex="90" fxLayoutAlign="start stretch" fxLayoutGap="10px">   -->
+		<mat-toolbar-row *ngFor="let fieldRow of fieldsRows">
+			<div *ngFor="let field of fields; let i=index;"> 
+			<!--<mat-form-field *ngFor="let field of fields; let i=index;">--> 
+				<!--
+				<div *ngIf="field.type !== 'datePicker' && ( field.range !== 'true' || field.range === 'true' )">
+					<input matInput	[placeholder]="field.placeholder"
+									[name]="field.name"
+									[(ngModel)]="field.value"
+									[type]="field.type"> 
+				</div>
+				-->
 				
-			  <mat-form-field *ngIf="filter"> 
-				  <input matInput (keyup)="applyFilter($event.target.value)"
-								 placeholder="Filter"> 
-				</mat-form-field> 
-			</div>
-		</mat-toolbar-row> 
+				<div *ngIf="field.type !== 'datePicker' && field.range !== 'true' && field.row === fieldRow" >
+					<mat-form-field>
+						<input matInput	[placeholder]="field.placeholder"
+										[name]="field.name"
+										[(ngModel)]="field.value"
+										[type]="field.type"> 
+				   </mat-form-field>
+				</div>
+				<div *ngIf="field.type !== 'datePicker' && field.range === 'true' && field.row === fieldRow">
+					<mat-form-field>
+						<input matInput [placeholder]="field.placeholder + ' From'"
+										[name]="field.name + 'From'"
+										[(ngModel)]="field.valueFrom"
+										[type]="field.type"> 
+					</mat-form-field>
+					<mat-form-field>
+						<input matInput fxFlex="40%"
+										[placeholder]="field.placeholder + ' To'"
+										[name]="field.name + 'To'"
+										[(ngModel)]="field.valueTo"
+										[type]="field.type"> 
+					</mat-form-field>
+				</div>
+					
+				<div *ngIf="field.type === 'datePicker' && field.range === 'false' && field.row === fieldRow" >
+					<mat-form-field>
+						<input matInput [formControl]="currentDate"
+										(mouseup)="picker.open()"
+										[matDatepicker]="picker" 
+						 				[placeholder]="field.placeholder"
+										[(ngModel)]="field.value"> 
+						<mat-datepicker #picker></mat-datepicker>
+					</mat-form-field>
+			  	</div>
+				<div *ngIf="field.type === 'datePicker' && field.range === 'true' && field.row === fieldRow">
+					<mat-form-field>
+						<input matInput (mouseup)="pickerFrom.open()"
+										[matDatepicker]="pickerFrom" 
+					 					[placeholder]="field.placeholder + ' From'"
+	 									[(ngModel)]="field.valueFrom"> 
+						<mat-datepicker #pickerFrom></mat-datepicker>
+					</mat-form-field>
+					<mat-form-field>
+						<input matInput fxFlex="40%"
+										(mouseup)="pickerTo.open()"
+										[matDatepicker]="pickerTo" 
+					 					[placeholder]="field.placeholder + ' To'"
+	 									[(ngModel)]="field.valueTo"> 
+			  			<mat-datepicker #pickerTo></mat-datepicker>
+					</mat-form-field>
+			  	</div>
+				<!--</mat-form-field>--> 
+			</div>  
+
+			<!--
+			<mat-form-field *ngIf="filter"> 
+			  	<input matInput (keyup)="applyFilter($event.target.value)"
+							 	placeholder="Filter"> 
+			</mat-form-field>
+			-->
+
+		</mat-toolbar-row>
+	<!--	</mat-toolbar-row>  -->
+
+		<mat-toolbar-row *ngIf="filter">
+			<mat-form-field> 
+			  	<input matInput (keyup)="applyFilter($event.target.value)"
+							 	placeholder="Filter"> 
+			</mat-form-field>
+		</mat-toolbar-row>
+
 	</mat-toolbar>
 
 	<mat-progress-bar	mode="indeterminate" *ngIf="progress"></mat-progress-bar> 
 	
 	<mat-table #table [dataSource]="dataSource" matSort
-						class="example-table">
+					  class="example-table">
 		<ng-container *ngFor="let col of displayedColumns; let i=index;"
-									matColumnDef={{col}}> 
+					  matColumnDef="{{col}}"> 
 			<mat-header-cell *matHeaderCellDef mat-sort-header class="example-header-cell">
 				{{displayedColumnsNames[i]}}
 			</mat-header-cell>
 			<mat-cell *matCellDef="let row"
-								class="example-cell" [style.color]="row[col]"> {{row[col]}}</mat-cell>
+					  class="example-cell" [style.color]="row[col]"> {{row[col]}}</mat-cell>
 		</ng-container> <!-- ID Column --> 
 		<mat-header-row *matHeaderRowDef="displayedColumns"
-										class="example-header-row">
+						class="example-header-row">
 		</mat-header-row> 
 		<mat-row *matRowDef="let row; columns: displayedColumns;" 
-						 class="example-row"
-						 [ngClass]="{'selected-row': row.selected===true}"
-						 (click)="selectItem(row)"></mat-row>
+				 class="example-row"
+				 [ngClass]="{'selected-row': row.selected===true}"
+				 (click)="selectItem(row)"></mat-row>
 	</mat-table>
 
-	<mat-paginator #paginator [length]="dataSource.data.length"
-		[pageIndex]="0" [pageSize]="25"
-		[pageSizeOptions]="[5, 10, 25, 50, 100]"> </mat-paginator>
+	<mat-paginator #paginator 
+				   [length]="dataSource.data.length"
+				   [pageIndex]="0" [pageSize]="25"
+				   [pageSizeOptions]="[5, 10, 25, 50, 100]"> </mat-paginator>
 
 </div>

@@ -1,7 +1,8 @@
-import {Component, ViewChild, OnInit, Input} from '@angular/core';
-import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
-import {HttpClient} from '@angular/common/http';
-import {FormControl} from '@angular/forms';
+import { Component, ViewChild, OnInit, Input } from '@angular/core';
+import { BrowserModule, DomSanitizer} from '@angular/platform-browser';
+import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
+import { HttpClient } from '@angular/common/http';
+import { FormControl } from '@angular/forms';
 // import { Observable } from 'rxjs';
 
 import {DialogService} from '../../services/dialog.service';
@@ -9,6 +10,7 @@ import {DataTableDetailService} from '../../services/data-table-detail.service';
 import {DataSourceService} from '../../services/data-source.service';
 import { DateAdapter } from '@angular/material';
 
+/*
 export interface Fields {
   name: string;
   type: string;
@@ -18,6 +20,22 @@ export interface Fields {
   valueTo: string;
   color: string;
   range: string;
+  isTable: string;
+}
+*/
+export class Fields {
+  name = '';
+  type = '';
+  placeholder = '';
+  value = '';
+  nameFrom = '';
+  nameTo = '';
+  valueFrom = '';
+  valueTo = '';
+  color = '';
+  range = 'false';
+  isTable = 'false';
+  row = '0';
 }
 
 export interface Buttons {
@@ -53,8 +71,10 @@ export class DataTableComponent implements OnInit {
   @Input() filter = true;
   @Input() displayedColumns = [];
   @Input() displayedColumnsNames = [];
+  @Input() noRefreshColumns = 'false';
   @Input() refreshColumns = 'false';
-  @Input() _FUNCTION = 'Z_WRFC_INTERFACE';
+  @Input() _FUNCTION = 'Z_PMT_WRFC_INTERFACE';
+  @Input() abapClass = '';
   @Input() method = '';
   @Input() methodType = '';
   @Input() webrfcLog = '';
@@ -77,26 +97,30 @@ export class DataTableComponent implements OnInit {
   progress = false;
   selectedItems: number[];
   currentDate = new FormControl(new Date());
+  fieldsRows = [];
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(public dialogService: DialogService, 
-              public dataTableDetailService: DataTableDetailService, 
+  constructor(public dialogService: DialogService,
+              public dataTableDetailService: DataTableDetailService,
               public dataSourceService: DataSourceService,
-              private dateAdapter: DateAdapter<Date>) {
+              private dateAdapter: DateAdapter<Date>,
+              private sanitizer: DomSanitizer ) {
     this.dataSource = new MatTableDataSource([]);
     this.dateAdapter.setLocale('it-IT');
   }
 
   protected buttonClick(button: Buttons) {
     if (button.action !== '') {
+      // tslint:disable-next-line:no-eval
       eval('this.' + button.action + '()');
     }
   }
 
   protected iconBbuttonClick(iconButton: IconButtons) {
     if (iconButton.action !== '') {
+      // tslint:disable-next-line:no-eval
       eval('this.' + iconButton.action + '()');
     }
   }
@@ -205,6 +229,10 @@ export class DataTableComponent implements OnInit {
       jsonData['_FUNCTION'] = this._FUNCTION;
     }
 
+    if (this.abapClass !== '') {
+      jsonData['class'] = this.abapClass;
+    }
+
     if (this.method !== '') {
       jsonData['method'] = this.method;
     }
@@ -229,8 +257,16 @@ export class DataTableComponent implements OnInit {
       jsonData['webrfc_password'] = btoa( this.webrfcPassword );
     }
 
+ //   let inputData = [];
     debugger;
     for (let i = 0; i < this.fields.length; i++) {
+      let structure = [];
+      if (this.fields[i].value !== '' || this.fields[i].valueFrom || this.fields[i].valueTo ) {
+        structure = this.fields[i].name.split(':');
+        if ( structure[1] ) {
+          this.fields[i].name = structure[0];
+        }
+      }
       if (this.fields[i].value !== '') {
         if (this.fields[i].type === 'datePicker') {
           const date = new Date(this.fields[i].value);
@@ -241,7 +277,7 @@ export class DataTableComponent implements OnInit {
           jsonData[this.fields[i].name/*.toUpperCase()*/] = this.fields[i].value;
         }
       }
-      if ( this.fields[i].valueFrom !== '' || this.fields[i].valueFrom !== '' ) {
+      if ( this.fields[i].valueFrom || this.fields[i].valueFrom ) {
         if (this.fields[i].type === 'datePicker') {
           let dateFrom = null;
           let dateTo = null;
@@ -257,19 +293,109 @@ export class DataTableComponent implements OnInit {
               (date.getMonth() < 9 ? '0' + (date.getMonth() + 1).toString() : (date.getMonth() + 1).toString()) +
               (date.getDate() < 10 ? '0' + date.getDate() : date.getDate()).toString();
           }
+          let jsonDataValue = '';
           if (dateFrom && !dateTo) {
-            jsonData[this.fields[i].name] = '{ "SIGN":"I", "OPTION": "EQ", "LOW":"' + dateFrom + '", "HIGH":"00000000" }';
+            jsonDataValue =  '{"SIGN":"I","OPTION":"EQ","LOW":"' + dateFrom + '","HIGH":"00000000"}';
           }
           if (!dateFrom && dateTo) {
-            jsonData[this.fields[i].name] = '{ "SIGN":"I", "OPTION": "BT", "LOW":"00000000", "HIGH":"' + dateTo + '" }';
+            jsonDataValue = '{"SIGN":"I","OPTION":"BT","LOW":"00000000","HIGH":"' + dateTo + '"}';
           }
           if (dateFrom && dateTo) {
-            jsonData[this.fields[i].name] = '{ "SIGN":"I", "OPTION": "BT", "LOW":"' + dateFrom + '", "HIGH":"' + dateTo + '" }';
+            jsonDataValue = '{"SIGN":"I","OPTION":"BT","LOW":"' + dateFrom + '","HIGH":"' + dateTo + '"}';
+          }
+          if ( dateFrom || dateTo ) {
+            if ( this.fields[i].isTable === 'true' ) {
+              jsonDataValue = '[' + jsonDataValue + ']';
+            }
+            debugger;
+            for ( let ii = 1; ii < structure.length; ii++ ) {
+              if ( !jsonData[structure[0]] /*|| jsonData[this.fields[ii].name].indexOf(structure[0]) <= 0*/ ) {
+                jsonData[this.fields[i].name] = '{' + structure[ii] + ':' + jsonDataValue + '}';
+              } else if ( !jsonData[structure[ii]] ) {
+                const length = jsonData[structure[0]].length;
+                const oldValue = jsonData[structure[0]];
+                // tslint:disable-next-line:max-line-length
+             //   jsonData[structure[0]] = oldValue.substring(0, length - 1) + ',' +  structure[ii] + ':' + jsonDataValue + oldValue.substring(length - 1);
+                const key = structure[0] + '|' + i.toString();
+                jsonData[key] = '{' + structure[ii] + ':' + jsonDataValue + '}';
+              }
+            }
+          }
+          for ( let ii = 1; ii < structure.length; ii++ ) {
+            this.fields[i].name += ':' + structure[ii];
+          }
+        } else if ( this.fields[i].type === 'timePicker' ) {
+          let jsonDataValue = '';
+          if (this.fields[i].valueFrom && !this.fields[i].valueTo) {
+//            jsonDataValue =  '{"SIGN":"I","OPTION":"EQ","LOW":"' + this.fields[i].valueFrom.replace(':', '') + '","HIGH":""}';
+            jsonDataValue =  '{"SIGN":"I","OPTION":"EQ","LOW":"' + this.fields[i].valueFrom.replace(/:/g, '') + '","HIGH":"000000"}';
+          }
+          if (!this.fields[i].valueFrom && this.fields[i].valueTo) {
+            jsonDataValue = '{"SIGN":"I","OPTION":"BT","LOW":"","HIGH":"' + this.fields[i].valueTo.replace(/:/g, '') + '"}';
+          }
+          if (this.fields[i].valueFrom && this.fields[i].valueTo) {
+            // tslint:disable-next-line:max-line-length
+            jsonDataValue = '{"SIGN":"I","OPTION":"BT","LOW":"' + this.fields[i].valueFrom.replace(/:/g, '') + '","HIGH":"000000' + this.fields[i].valueTo.replace(/:/g, '') + '"}';
+          }
+          if ( this.fields[i].valueFrom || this.fields[i].valueTo ) {
+            if ( this.fields[i].isTable === 'true' ) {
+              jsonDataValue = '[' + jsonDataValue + ']';
+            }
+            debugger;
+            for ( let ii = 1; ii < structure.length; ii++ ) {
+              if ( !jsonData[structure[0]] /*|| jsonData[this.fields[ii].name].indexOf(structure[0]) <= 0*/ ) {
+                jsonData[this.fields[i].name] = '{' + structure[ii] + ':' + jsonDataValue + '}';
+              } else if ( !jsonData[structure[ii]] ) {
+                const length = jsonData[structure[0]].length;
+                const oldValue = jsonData[structure[0]];
+                // tslint:disable-next-line:max-line-length
+//                jsonData[structure[0]] = oldValue.substring(0, length - 1) + ',' +  structure[ii] + ':' + jsonDataValue + oldValue.substring(length - 1);
+                const key = structure[0] + '|' + i.toString();
+                jsonData[key] = '{' + structure[ii] + ':' + jsonDataValue + '}';
+              }
+            }
+          }
+          for ( let ii = 1; ii < structure.length; ii++ ) {
+            this.fields[i].name += ':' + structure[ii];
           }
         } else {
-          jsonData[this.fields[i].name/*.toUpperCase()*/] = this.fields[i].value;
-          if ( this.fields[i].name.toLocaleLowerCase() === 'sqltable' ) {
+          debugger;
+          let jsonDataValue = '';
+          if (this.fields[i].valueFrom && !this.fields[i].valueTo) {
+            if ( this.fields[i].valueFrom.indexOf('*') > 0 ) {
+              jsonDataValue =  '{"SIGN":"I","OPTION":"CP","LOW":"' + this.fields[i].valueFrom + '","HIGH":""}';
+            } else {
+              jsonDataValue =  '{"SIGN":"I","OPTION":"EQ","LOW":"' + this.fields[i].valueFrom + '","HIGH":""}';
+            }
+          }
+          if (!this.fields[i].valueFrom && this.fields[i].valueTo) {
+            jsonDataValue = '{"SIGN":"I","OPTION":"BT","LOW":"","HIGH":"' + this.fields[i].valueTo + '"}';
+          }
+          if (this.fields[i].valueFrom && this.fields[i].valueTo) {
+            jsonDataValue = '{"SIGN":"I","OPTION":"BT","LOW":"' + this.fields[i].valueFrom + '","HIGH":"' + this.fields[i].valueTo + '"}';
+          }
+          if ( this.fields[i].valueFrom || this.fields[i].valueTo ) {
+            if ( this.fields[i].isTable === 'true' ) {
+              jsonDataValue = '[' + jsonDataValue + ']';
+            }
             debugger;
+            for ( let ii = 1; ii < structure.length; ii++ ) {
+              if ( !jsonData[structure[0]] /*|| jsonData[this.fields[ii].name].indexOf(structure[0]) <= 0*/ ) {
+                jsonData[this.fields[i].name] = '{' + structure[ii] + ':' + jsonDataValue + '}';
+              } else if ( !jsonData[structure[ii]] ) {
+                const length = jsonData[structure[0]].length;
+                const oldValue = jsonData[structure[0]];
+                // tslint:disable-next-line:max-line-length
+//                jsonData[structure[0]] = oldValue.substring(0, length - 1) + ',' +  structure[ii] + ':' + jsonDataValue + oldValue.substring(length - 1);
+                const key = structure[0] + '|' + i.toString();
+                jsonData[key] = '{' + structure[ii] + ':' + jsonDataValue + '}';
+              }
+            }
+          }
+          for ( let ii = 1; ii < structure.length; ii++ ) {
+            this.fields[i].name += ':' + structure[ii];
+          }
+          if ( this.fields[i].name.toLocaleLowerCase() === 'sqltable' ) {
             this.table =  this.fields[i].value;
           }
         }
@@ -279,12 +405,12 @@ export class DataTableComponent implements OnInit {
     const so = this;
     this.progress = true;
 
-		/*
+        /*
 		let apiURL = `${this.apiRoot}?term=${term}&media=music&limit=20&callback=JSONP_CALLBACK`;
-		return this.http.get(apiURL) 
-				.map(res => { 
-					return res.json().results.map(item => { 
-						return new SearchItem( 
+		return this.http.get(apiURL)
+				.map(res => {
+					return res.json().results.map(item => {
+						return new SearchItem(
 								item.trackName,
 								item.artistName,
 								item.trackViewUrl,
@@ -359,7 +485,7 @@ export class DataTableComponent implements OnInit {
         for (let m = 0; m < so.dataSource.data.length; m++) {
           const rec = so.dataSource.data[m];
           for (const [key, value] of Object.entries(rec)) {
-            let val: any = value;
+            const val: any = value;
             so.dataSource.data[m][key] = decodeURIComponent(val);
           }
         }
@@ -371,7 +497,6 @@ export class DataTableComponent implements OnInit {
             const rec = so.dataSource.data[0];
             for (const [key, value] of Object.entries(rec)) {
               so.displayedColumns[i] = key;
-              debugger;
               if ( !so.response.dictionary.filter(item => item.name === key)[0] ) {
                 so.displayedColumnsNames[i] = key;
               } else  {
@@ -445,6 +570,9 @@ export class DataTableComponent implements OnInit {
 
 
   protected refresh() {
+    if ( this.noRefreshColumns === 'false' ) {
+      this.refreshColumns = 'true';
+    }
     this.getData();
   }
 
@@ -459,7 +587,6 @@ export class DataTableComponent implements OnInit {
   }
 
   private enableDisableButtons() {
-    debugger;
     if (this.dataSource.data.filter(item => item.selected === true).length === 1) {
       for (let m = 0; m < this.buttons.filter(item => item.multiSel === false).length; m++) {
         //        this.buttons[m].disabled = !this.buttons[m].disabled;   // !row.selected;
@@ -473,6 +600,18 @@ export class DataTableComponent implements OnInit {
   }
 
   ngOnInit() {
+    if ( this.fields[0] ) {
+      this.fieldsRows.push(this.fields[0].row/*row*/);
+      for ( let i = 1; i < this.fields.length; i++ ) {
+        if ( !this.fields[i].row ) {
+          this.fields[i].row = '0';
+        }
+        if ( this.fields[i].row !== this.fields[i - 1].row ) {
+          this.fieldsRows.push(this.fields[i].row/*row*/);
+        }
+      }
+      this.fieldsRows.sort( );
+    }
   }
 
   /**
@@ -482,7 +621,7 @@ export class DataTableComponent implements OnInit {
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
-  }
+ }
 
 }
 

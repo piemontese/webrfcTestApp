@@ -130,7 +130,7 @@
                                 id="xs-classes-links"
                             >
                                 <li class="link">
-                                    <a href="../classes/AppPage.html" >AppPage</a>
+                                    <a href="../classes/Fields.html" >Fields</a>
                                 </li>
                         </ul>
                     </li>
@@ -187,9 +187,6 @@
                                 </li>
                                 <li class="link">
                                     <a href="../interfaces/Buttons.html" >Buttons</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../interfaces/Fields.html" >Fields</a>
                                 </li>
                                 <li class="link">
                                     <a href="../interfaces/Fields.html" >Fields</a>
@@ -378,7 +375,7 @@
                                        id="classes-links"
                    >
                                        <li class="link">
-                                           <a href="../classes/AppPage.html" >AppPage</a>
+                                           <a href="../classes/Fields.html" >Fields</a>
                                        </li>
                                </ul>
                            </li>
@@ -435,9 +432,6 @@
                                        </li>
                                        <li class="link">
                                            <a href="../interfaces/Buttons.html" >Buttons</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../interfaces/Fields.html" >Fields</a>
                                        </li>
                                        <li class="link">
                                            <a href="../interfaces/Fields.html" >Fields</a>
@@ -932,9 +926,6 @@ export class WebDataTablePageComponent extends BaseDataTableComponent implements
       &lt;/div&gt;
     &lt;/mat-expansion-panel&gt;
     
-    &lt;/mat-accordion&gt;
-
-  &lt;mat-accordion&gt;
     &lt;mat-expansion-panel class&#x3D;&quot;mat-elevation-z8&quot;&gt;
       &lt;mat-expansion-panel-header&gt;
         &lt;mat-panel-title&gt; Exchange rates &lt;/mat-panel-title&gt;
@@ -946,7 +937,7 @@ export class WebDataTablePageComponent extends BaseDataTableComponent implements
 		        								 baseUrl&#x3D;&quot;GET https://tassidicambio.bancaditalia.it/terzevalute-wf-web/rest/v1.0/currencies&quot;
 		        								 dataType&#x3D;&#x27;json&#x27;    
 		        								 type&#x3D;&quot;GET&quot;    								
-		        								 [fields]&#x3D;&quot;[ { name: &#x27;referenceDate&#x27;, value:&#x27;&#x27;, type: &#x27;text&#x27;, placeholder: &#x27;Reference date&#x27; },
+		        								 [fields]&#x3D;&quot;[ { name: &#x27;referenceDate&#x27;, value:&#x27;&#x27;, type: &#x27;datePicker&#x27;, placeholder: &#x27;Reference date&#x27; },
 		        													   { name: &#x27;lang&#x27;, value:&#x27;&#x27;, type: &#x27;text&#x27;, placeholder: &#x27;Language&#x27; },
 		        													   { name: &#x27;baseCurrencyIsoCode&#x27;, value:&#x27;&#x27;, type: &#x27;text&#x27;, placeholder: &#x27;Base currency ISO code&#x27; },
 		        													   { name: &#x27;currencyIsoCode&#x27;, value:&#x27;EUR&#x27;, type: &#x27;text&#x27;, placeholder: &#x27;Currency ISO code&#x27; }	]&quot;
@@ -958,7 +949,7 @@ export class WebDataTablePageComponent extends BaseDataTableComponent implements
       &lt;/div&gt;
     &lt;/mat-expansion-panel&gt;
     
-    &lt;/mat-accordion&gt;
+  &lt;/mat-accordion&gt;
 
 &lt;/div&gt;
 
@@ -988,7 +979,7 @@ export class WebDataTablePageComponent extends BaseDataTableComponent implements
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div fxLayout="column" fxLayoutAlign="center center">  <mat-accordion>    <mat-expansion-panel class="mat-elevation-z8">      <mat-expansion-panel-header>        <mat-panel-title> User list </mat-panel-title>        <mat-panel-description> List of users from https://jsonplaceholder.typicode.com/users</mat-panel-description>      </mat-expansion-panel-header>      <div fxLayout="column" fxLayout.xs="column" fxLayoutAlign="center center">        <app-base-data-table style="width: 90%; min-width: 600px;"  		        								 title="User list" 		        								 baseUrl="https://jsonplaceholder.typicode.com/users"		        								 dataType=\'json\'		        								 type="GET"        										        								 [buttons]="[ { caption:\'View\', icon: \'search\', position: \'left\', action: \'view\', color: \'prymary\', row: 1, tooltip: \'View item\', disabled: true, multiSel: false },		        								  						{ caption:\'Change\', icon: \'edit\', position: \'left\', action: \'change\', color: \'prymary\', row: 1, tooltip: \'Change item\', disabled: true, multiSel: false } ]"		        								 [iconButtons]="[ { icon: \'refresh\', position: \'right\', action: \'refresh\', color: \'prymary\', row: 0, tooltip: \'Refresh data\', disabled: false, multiSel: null } ]"		        								 [displayedColumns]="[\'name\', \'email\', \'phone\', \'company\']" 		        								 [displayedColumnsNames]="[\'Name\', \'Email\', \'Phone\', \'Company\']"> </app-base-data-table>      </div>    </mat-expansion-panel>        </mat-accordion>  <mat-accordion>    <mat-expansion-panel class="mat-elevation-z8">      <mat-expansion-panel-header>        <mat-panel-title> Exchange rates </mat-panel-title>        <mat-panel-description> Exchange rates Banca d\'Italia</mat-panel-description>      </mat-expansion-panel-header>      <div fxLayout="column" fxLayout.xs="column" fxLayoutAlign="center center">        <app-base-data-table style="width: 90%; min-width: 600px;"  		        								 title="Exchange rates" 		        								 baseUrl="GET https://tassidicambio.bancaditalia.it/terzevalute-wf-web/rest/v1.0/currencies"		        								 dataType=\'json\'    		        								 type="GET"    										        								 [fields]="[ { name: \'referenceDate\', value:\'\', type: \'text\', placeholder: \'Reference date\' },		        													   { name: \'lang\', value:\'\', type: \'text\', placeholder: \'Language\' },		        													   { name: \'baseCurrencyIsoCode\', value:\'\', type: \'text\', placeholder: \'Base currency ISO code\' },		        													   { name: \'currencyIsoCode\', value:\'EUR\', type: \'text\', placeholder: \'Currency ISO code\' }	]"		        								 [buttons]="[ { caption:\'View\', icon: \'search\', position: \'left\', action: \'view\', color: \'prymary\', row: 1, tooltip: \'View item\', disabled: true, multiSel: false },		        								  						{ caption:\'Change\', icon: \'edit\', position: \'left\', action: \'change\', color: \'prymary\', row: 1, tooltip: \'Change item\', disabled: true, multiSel: false } ]"		        								 [iconButtons]="[ { icon: \'refresh\', position: \'right\', action: \'refresh\', color: \'prymary\', row: 0, tooltip: \'Refresh data\', disabled: false, multiSel: null } ]"		        								 [displayedColumns]="[\'name\', \'email\', \'phone\', \'company\']" 		        								 [displayedColumnsNames]="[\'Name\', \'Email\', \'Phone\', \'Company\']"> </app-base-data-table>      </div>    </mat-expansion-panel>        </mat-accordion></div></div>'
+        var COMPONENT_TEMPLATE = '<div><div fxLayout="column" fxLayoutAlign="center center">  <mat-accordion>    <mat-expansion-panel class="mat-elevation-z8">      <mat-expansion-panel-header>        <mat-panel-title> User list </mat-panel-title>        <mat-panel-description> List of users from https://jsonplaceholder.typicode.com/users</mat-panel-description>      </mat-expansion-panel-header>      <div fxLayout="column" fxLayout.xs="column" fxLayoutAlign="center center">        <app-base-data-table style="width: 90%; min-width: 600px;"  		        								 title="User list" 		        								 baseUrl="https://jsonplaceholder.typicode.com/users"		        								 dataType=\'json\'		        								 type="GET"        										        								 [buttons]="[ { caption:\'View\', icon: \'search\', position: \'left\', action: \'view\', color: \'prymary\', row: 1, tooltip: \'View item\', disabled: true, multiSel: false },		        								  						{ caption:\'Change\', icon: \'edit\', position: \'left\', action: \'change\', color: \'prymary\', row: 1, tooltip: \'Change item\', disabled: true, multiSel: false } ]"		        								 [iconButtons]="[ { icon: \'refresh\', position: \'right\', action: \'refresh\', color: \'prymary\', row: 0, tooltip: \'Refresh data\', disabled: false, multiSel: null } ]"		        								 [displayedColumns]="[\'name\', \'email\', \'phone\', \'company\']" 		        								 [displayedColumnsNames]="[\'Name\', \'Email\', \'Phone\', \'Company\']"> </app-base-data-table>      </div>    </mat-expansion-panel>        <mat-expansion-panel class="mat-elevation-z8">      <mat-expansion-panel-header>        <mat-panel-title> Exchange rates </mat-panel-title>        <mat-panel-description> Exchange rates Banca d\'Italia</mat-panel-description>      </mat-expansion-panel-header>      <div fxLayout="column" fxLayout.xs="column" fxLayoutAlign="center center">        <app-base-data-table style="width: 90%; min-width: 600px;"  		        								 title="Exchange rates" 		        								 baseUrl="GET https://tassidicambio.bancaditalia.it/terzevalute-wf-web/rest/v1.0/currencies"		        								 dataType=\'json\'    		        								 type="GET"    										        								 [fields]="[ { name: \'referenceDate\', value:\'\', type: \'datePicker\', placeholder: \'Reference date\' },		        													   { name: \'lang\', value:\'\', type: \'text\', placeholder: \'Language\' },		        													   { name: \'baseCurrencyIsoCode\', value:\'\', type: \'text\', placeholder: \'Base currency ISO code\' },		        													   { name: \'currencyIsoCode\', value:\'EUR\', type: \'text\', placeholder: \'Currency ISO code\' }	]"		        								 [buttons]="[ { caption:\'View\', icon: \'search\', position: \'left\', action: \'view\', color: \'prymary\', row: 1, tooltip: \'View item\', disabled: true, multiSel: false },		        								  						{ caption:\'Change\', icon: \'edit\', position: \'left\', action: \'change\', color: \'prymary\', row: 1, tooltip: \'Change item\', disabled: true, multiSel: false } ]"		        								 [iconButtons]="[ { icon: \'refresh\', position: \'right\', action: \'refresh\', color: \'prymary\', row: 0, tooltip: \'Refresh data\', disabled: false, multiSel: null } ]"		        								 [displayedColumns]="[\'name\', \'email\', \'phone\', \'company\']" 		        								 [displayedColumnsNames]="[\'Name\', \'Email\', \'Phone\', \'Company\']"> </app-base-data-table>      </div>    </mat-expansion-panel>      </mat-accordion></div></div>'
     var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'BaseDataTableComponent', 'selector': 'app-base-data-table'},{'name': 'DataTableComponent', 'selector': 'app-data-table'},{'name': 'DataTableDetailComponent', 'selector': 'app-data-table-detail'},{'name': 'DataTablesPageComponent', 'selector': 'app-data-tables-page'},{'name': 'DialogComponent', 'selector': 'app-dialog'},{'name': 'WebDataTableComponent', 'selector': 'app-web-data-table'},{'name': 'WebDataTablePageComponent', 'selector': 'app-web-data-table-page'},{'name': 'WebrfcDataTableComponent', 'selector': 'app-webrfc-data-table'},{'name': 'WebrfcPageComponent', 'selector': 'app-webrfc-page'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'WebDataTablePageComponent'};

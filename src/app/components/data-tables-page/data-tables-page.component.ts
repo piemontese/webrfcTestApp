@@ -6,9 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./data-tables-page.component.scss']
 })
 export class DataTablesPageComponent implements OnInit {
-	title = 'Data table samples';
+  title = 'Data table samples';
 
-	constructor() {}
+  constructor() {}
 
   ngOnInit() {}
 
