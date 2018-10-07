@@ -30,6 +30,10 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 [WebrfcApp](https://piemontese.github.io/webrfcTestApp/)
 
+### Create github-page
+
+   ng build --prod --base-href "https://<user-name>.github.io/<repo>/" 
+
 ## Create documentation with compodoc
 
 In the app directory run:
