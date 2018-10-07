@@ -26,23 +26,34 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
 
-## Github page
-
-[WebrfcApp](https://piemontese.github.io/webrfcTestApp/)
-
-### Create github-page
-
-```
-ng build --prod --base-href "https://<user-name>.github.io/<repo>/"
-ngh
-``` 
-
 ## Create documentation with compodoc
 
 In the app directory run:
 
     compodoc -p tsconfig.app.json
 
-[webrfcTestApp documentation](https://piemontese.github.io/webrfcTestApp/documentation)
-
 [compodoc page](https://compodoc.app/).
+
+### Create github-page
+
+#### Create documentation
+In the app directory run:
+
+```
+ ng build --prod --base-href "https://<user-name>.github.io/<repo>/"
+ ngh --dir=documentation
+``` 
+
+#### Create documentation
+In the app directory run:
+
+```
+ ng build --prod --base-href "https://<user-name>.github.io/<repo>/"
+ ngh --dir=dist
+``` 
+
+## Github page
+
+[App](https://piemontese.github.io/webrfcTestApp/)
+
+[Documentation](https://piemontese.github.io/webrfcTestApp/documentation)
