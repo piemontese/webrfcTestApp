@@ -32,12 +32,17 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ### Create github-page
 
-   ng build --prod --base-href "https://<user-name>.github.io/<repo>/" 
+   
+ng build --prod --base-href "https://<user-name>.github.io/<repo>/"
+ngh
+    
 
 ## Create documentation with compodoc
 
 In the app directory run:
 
     compodoc -p tsconfig.app.json
+
+[webrfcTestApp documentation](https://piemontese.github.io/webrfcTestApp/documentation)
 
 [compodoc page](https://compodoc.app/).
