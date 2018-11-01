@@ -16,6 +16,7 @@
       		</mat-expansion-panel-header>
       		<div fxLayout="column" fxLayout.xs="column" fxLayoutAlign="center center">
 				<app-data-table style="width: 90%; min-width: 600px;" 
+								color="primary"
 								title="User list" 
 								method="TH_USER_LIST"
 								methodType = "F"
@@ -25,7 +26,7 @@
 								webrfcPassword = "Ostrakon1!"
 								noRefreshColumns = "true"
 								table="USRLIST"
-								[fields]="[ { name: 'sap-language', value:'', type: 'text', placeholder: 'Language' }	]"
+								[fields]="[ { name: 'sap-language', value:'EN', type: 'select', placeholder: 'Language' }	]"
 								[buttons]="[ { caption:'View', icon: 'search', position: 'left', action: 'view', color: 'prymary', row: 1, tooltip: 'View item', disabled: true, multiSel: false },
 											 { caption:'Change', icon: 'edit', position: 'left', action: 'change', color: 'prymary', row: 1, tooltip: 'Change item', disabled: true, multiSel: false } ]"
 								[iconButtons]="[ { icon: 'refresh', position: 'right', action: 'refresh', color: 'prymary', row: 0, tooltip: 'Refresh data', disabled: false, multiSel: null } ]"
@@ -43,7 +44,7 @@
         		<app-data-table style="width: 90%; min-width: 600px;" 
         						[filter]="false"
         						[buttons]="[ { caption:'View', icon: 'search', position: 'left', action: 'view', color: 'prymary', row: 1, tooltip: 'View item', disabled: true, multiSel: false } ]"
-        						[fields]="[ { name: 'sap-language', value:'', type: 'text', placeholder: 'Language' }	]"
+        						[fields]="[ { name: 'sap-language', value:'EN', type: 'select', placeholder: 'Language' }	]"
         						[iconButtons]="[ { icon: 'refresh', position: 'right', action: 'refresh', color: 'prymary', row: 0, tooltip: 'Refresh data', disabled: false, multiSel: null } ]"
         						method="TH_USER_LIST"
  								table="USRLIST"
@@ -60,7 +61,7 @@
         		<app-data-table style="width: 90%; min-width: 600px;" 
         						[displayedColumns]="['avail_date', 'mrp_elemnt', 'mrp_element_ind', 'available', 'rec_reqd_qty']" 
         						[displayedColumnsNames]="['Available date', 'MRP element', 'MRP element ind.', 'Available', 'Available quantity']" 
-        						[fields]="[ { name: 'sap-language', value:'', type: 'text', placeholder: 'Language' },
+        						[fields]="[ { name: 'sap-language', value:'EN', type: 'select', placeholder: 'Language' },
         									{ name: 'plant', value:'', type: 'text', placeholder: 'Plant' },
         								  	{ name: 'material', value:'', type: 'text', placeholder: 'Material' }	]"
         						[buttons]="[ { caption:'View', icon: 'search', position: 'left', action: '', color: 'prymary', row: 1, tooltip: 'View item', disabled: true, multiSel: false } ]"
@@ -79,7 +80,7 @@
       		<div fxLayout="column" fxLayout.xs="column" fxLayoutAlign="center center">
         		<app-data-table style="width: 90%; min-width: 600px;" 
         						title="Plant list" 
-        						[fields]="[ { name: 'sap-language', value:'', type: 'text', placeholder: 'Language' }	]"
+        						[fields]="[ { name: 'sap-language', value:'EN', type: 'select', placeholder: 'Language' }	]"
         						[buttons]="[ { caption:'View', icon: 'search', position: 'left', action: 'view', color: 'prymary', row: 1, tooltip: 'View item', disabled: true, multiSel: false },
         									 { caption:'Change', icon: 'edit', position: 'left', action: 'change', color: 'prymary', row: 1, tooltip: 'Change item', disabled: true, multiSel: false } ]"
  		       					[iconButtons]="[ { icon: 'refresh', position: 'right', action: 'refresh', color: 'prymary', row: 0, tooltip: 'Refresh data', disabled: false, multiSel: null } ]"
@@ -134,7 +135,7 @@
         						[buttons]="[ { caption:'View', icon: 'search', position: 'left', action: 'view', color: 'prymary', row: 1, tooltip: 'View item', disabled: true, multiSel: false },
         									 { caption:'Change', icon: 'edit', position: 'left', action: 'change', color: 'prymary', row: 1, tooltip: 'Change item', disabled: true, multiSel: false } ]"
         						[iconButtons]="[ { icon: 'refresh', position: 'right', action: 'refresh', color: 'prymary', row: 0, tooltip: 'Refresh data', disabled: false, multiSel: null } ]"
-        						[fields]="[ { name: 'sap-language', value:'', type: 'text', placeholder: 'Language', row: '0' },
+        						[fields]="[ { name: 'sap-language', value:'EN', type: 'select', placeholder: 'Language', row: '0' },
         									{ name: 'SELECT_DAYS_WEEKS_OR_MONTHS', value:'DAYS', type: 'text', placeholder: 'Period (DAYS, WEEKS or MONTHS)', row: '0' } ]"
 								method="DB_ORA_TABLESPACE_HISTORY"
  								table="HIST1"> </app-data-table>
@@ -145,7 +146,7 @@
         						[buttons]="[ { caption:'View', icon: 'search', position: 'left', action: 'view', color: 'prymary', row: 1, tooltip: 'View item', disabled: true, multiSel: false },
         									 { caption:'Change', icon: 'edit', position: 'left', action: 'change', color: 'prymary', row: 1, tooltip: 'Change item', disabled: true, multiSel: false } ]"
         						[iconButtons]="[ { icon: 'refresh', position: 'right', action: 'refresh', color: 'prymary', row: 0, tooltip: 'Refresh data', disabled: false, multiSel: null } ]"
-        						[fields]="[ { name: 'sap-language', value:'', type: 'text', placeholder: 'Language', row: '0' },
+        						[fields]="[ { name: 'sap-language', value:'EN', type: 'select', placeholder: 'Language', row: '0' },
         									{ name: 'SELECT_DAYS_WEEKS_OR_MONTHS', value:'DAYS', type: 'text', placeholder: 'Period (DAYS, WEEKS or MONTHS)', row: '0' } ]"
 								method="DB_ORA_TABLESPACE_HISTORY"
  								table="SUM_1"> </app-data-table>
@@ -163,7 +164,7 @@
         						[buttons]="[ { caption:'View', icon: 'search', position: 'left', action: 'view', color: 'prymary', row: 1, tooltip: 'View item', disabled: true, multiSel: false },
         									 { caption:'Change', icon: 'edit', position: 'left', action: 'change', color: 'prymary', row: 1, tooltip: 'Change item', disabled: true, multiSel: false } ]"
         						[iconButtons]="[ { icon: 'refresh', position: 'right', action: 'refresh', color: 'prymary', row: 0, tooltip: 'Refresh data', disabled: false, multiSel: null } ]"
-        						[fields]="[ { name: 'sap-language', value:'', type: 'text', placeholder: 'Language', row: '0' },
+        						[fields]="[ { name: 'sap-language', value:'EN', type: 'select', placeholder: 'Language', row: '0' },
         									{ name: 'SQLTABLE', value:'', type: 'text', placeholder: 'Table', row: '0' } ]"
 								_FUNCTION="Z_PMT_WRFC_TABLE"
  								refreshColumns="true"> </app-data-table>
@@ -179,7 +180,7 @@
         		<app-data-table style="width: 90%; min-width: 600px;" 
         						[filter]="true"
         						[buttons]="[ { caption:'View', icon: 'search', position: 'left', action: 'view', color: 'prymary', row: 1, tooltip: 'View item', disabled: true, multiSel: false } ]"
-        						[fields]="[ { name: 'sap-language', value:'', type: 'text', placeholder: 'Language', row: '0' },
+        						[fields]="[ { name: 'sap-language', value:'EN', type: 'select', placeholder: 'Language', row: '0' },
         									{ name: 'IS_DATE', value:'', type: 'datePicker', placeholder: 'Date', range: 'true', row: '0' }	]"
         						[iconButtons]="[ { icon: 'refresh', position: 'right', action: 'refresh', color: 'prymary', row: 0, tooltip: 'Refresh data', disabled: false, multiSel: null } ]"
 								multiSelection="true"
@@ -195,10 +196,11 @@
         		<mat-panel-description> List of dumps using class </mat-panel-description>
       		</mat-expansion-panel-header>
       		<div fxLayout="column" fxLayout.xs="column" fxLayoutAlign="center center">
-        		<app-data-table style="width: 90%; min-width: 600px;" 
+				<app-data-table style="width: 90%; min-width: 600px;" 
+								color="accent"
         						[filter]="true"
         						[buttons]="[ { caption:'View', icon: 'search', position: 'left', action: 'view', color: 'prymary', row: 1, tooltip: 'View item', disabled: true, multiSel: false } ]"
-        						[fields]="[ { name: 'sap-language', value:'', type: 'text', placeholder: 'Language', row: '0'  },
+        						[fields]="[ { name: 'sap-language', value:'EN', type: 'select', placeholder: 'Language', row: '0'  },
         									{ name: 'IS_SEL:S_DATE', value:'', type: 'datePicker', placeholder: 'Date', range: 'true', isTable: 'true', row: '0'  },
         									{ name: 'IS_SEL:S_TIME', value:'', type: 'timePicker', placeholder: 'Time', range: 'true', isTable: 'true', row: '0' },
         									{ name: 'IS_SEL:S_USER', value:'', type: 'text', placeholder: 'User', range: 'true', isTable: 'true', row: '1' } ]"

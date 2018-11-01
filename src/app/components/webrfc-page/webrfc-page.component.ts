@@ -11,7 +11,8 @@ import 'rxjs/add/operator/distinctUntilChanged';
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/do';
 
-import { DialogService } from '../../services/dialog.service';
+// import { DialogService } from '../../services/dialog.service';
+import { PmtDialogService } from 'pmt-dialog';
 
 interface Fields {
   parameter: string;
@@ -48,9 +49,9 @@ export class WebrfcPageComponent implements OnInit {
   sapUser = 'developer';
   sapPassword = 'Ostrakon1!';
   sapClient = '';
-  sapLanguage = '';
+  sapLanguage = 'EN';
 
-  constructor( public dialogService: DialogService, private http: HttpClient, private jsonp: Jsonp) { }
+  constructor( public dialogService: PmtDialogService, private http: HttpClient, private jsonp: Jsonp) { }
 
   addField() {
     this.fields.push({ parameter: '', value: '' });

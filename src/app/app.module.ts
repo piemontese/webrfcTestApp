@@ -27,9 +27,9 @@ import { AppComponent } from './app.component';
 
 import 'jquery';
 import { DataTableComponent } from './components/data-table/data-table.component';
-import { DialogComponent } from './components/commons/dialog/dialog.component';
+// import { DialogComponent } from './components/commons/dialog/dialog.component';
 
-import { DialogService } from './services/dialog.service';
+// import { DialogService } from './services/dialog.service';
 import { DataTableDetailService } from './services/data-table-detail.service';
 import { PositionPipe } from './pipes/position.pipe';
 import { RowPipe } from './pipes/row.pipe';
@@ -42,11 +42,13 @@ import { BaseDataTableComponent } from './components/commons/base-data-table/bas
 import { WebDataTableComponent } from './components/web-data-table/web-data-table.component';
 import { WebrfcDataTableComponent } from './components/webrfc-data-table/webrfc-data-table.component';
 
+import { PmtDialogModule } from 'pmt-dialog';
+
 @NgModule({
   declarations: [
     AppComponent,
     DataTableComponent,
-    DialogComponent,
+//    DialogComponent,
     PositionPipe,
     RowPipe,
     DataTableDetailComponent,
@@ -80,10 +82,11 @@ import { WebrfcDataTableComponent } from './components/webrfc-data-table/webrfc-
     MatDatepickerModule,
     MatNativeDateModule,
     FlexLayoutModule,
-    AppRoutingModule
+    AppRoutingModule,
+    PmtDialogModule
   ],
   providers: [
-    DialogService,
+ //   DialogService,
     DataTableDetailService,
     DataSourceService
 //    JsonpClientBackend,
@@ -91,8 +94,8 @@ import { WebrfcDataTableComponent } from './components/webrfc-data-table/webrfc-
 //    { provide: HTTP_INTERCEPTORS, useClass: JsonpInterceptor, multi: true },
   ],
   entryComponents: [
-    DialogComponent,
-    DataTableDetailComponent,
+ //   DialogComponent,
+    DataTableDetailComponent
   ],
   bootstrap: [AppComponent]
 })

@@ -14,9 +14,9 @@
       <div fxLayout="row">
         <mat-form-field fxFlex="30">
           <mat-select [(value)]="_FUNCTION" 
-											name="_FUNCTION" 
-											[(ngModel)]="_FUNCTION" 
-											placeholder="Function">
+					  name="_FUNCTION" 
+					  [(ngModel)]="_FUNCTION" 
+					  placeholder="Function">
             <mat-option value="Z_PMT_WRFC_INTERFACE">Call function</mat-option>
             <mat-option value="Z_PMT_WRFC_FUNCTION_INTERFACE">Get function interface</mat-option>
             <mat-option value="Z_PMT_WRFC_TABLE">Get table entries</mat-option></mat-select>
@@ -25,14 +25,14 @@
       <div fxLayout="row">
         <mat-form-field fxFlex="30">
           <input matInput placeholder="Class" 
-								 name="abapClass" 
-								 [(ngModel)]="abapClass"></mat-form-field>
+						  name="abapClass" 
+						  [(ngModel)]="abapClass"></mat-form-field>
       </div>
       <div fxLayout="row">
         <mat-form-field fxFlex="30">
           <input matInput placeholder="Method" 
-								 name="method" 
-								 [(ngModel)]="method"></mat-form-field>
+						  name="method" 
+						  [(ngModel)]="method"></mat-form-field>
       </div>
       <div fxLayout="row">
         <mat-form-field fxFlex="30">
@@ -40,7 +40,15 @@
       </div>
       <div fxLayout="row">
         <mat-form-field fxFlex="30">
-          <input matInput placeholder="Language" name="sapLanguage" [(ngModel)]="sapLanguage"> </mat-form-field>
+          <!--<input matInput placeholder="Language" name="sapLanguage" [(ngModel)]="sapLanguage"> </mat-form-field>-->
+            <mat-select [(value)]="sapLanguage" 
+                        name="sapLanguage" 
+                        [(ngModel)]="sapLanguage" 
+                        placeholder="Language">
+          <mat-option value="DE">German</mat-option>
+          <mat-option value="EN">English</mat-option>
+          <mat-option value="IT">Italian</mat-option></mat-select>
+        </mat-form-field>
       </div>
       <div *ngFor="let field of fields; index as i;" fxLayout="row" fxLayoutGap="20px">
         <mat-form-field fxFlex="30%">

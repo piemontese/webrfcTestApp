@@ -5,10 +5,12 @@ import { HttpClient } from '@angular/common/http';
 import { FormControl } from '@angular/forms';
 // import { Observable } from 'rxjs';
 
-import {DialogService} from '../../services/dialog.service';
-import {DataTableDetailService} from '../../services/data-table-detail.service';
-import {DataSourceService} from '../../services/data-source.service';
+// import { DialogService } from '../../services/dialog.service';
+import { DataTableDetailService } from '../../services/data-table-detail.service';
+import { DataSourceService } from '../../services/data-source.service';
 import { DateAdapter } from '@angular/material';
+
+import { PmtDialogService } from 'pmt-dialog';
 
 /*
 export interface Fields {
@@ -21,6 +23,7 @@ export interface Fields {
   color: string;
   range: string;
   isTable: string;
+  bind: string;
 }
 */
 export class Fields {
@@ -36,6 +39,7 @@ export class Fields {
   range = 'false';
   isTable = 'false';
   row = '0';
+  bind = '';  // method to get data
 }
 
 export interface Buttons {
@@ -68,6 +72,7 @@ export interface IconButtons {
 })
 export class DataTableComponent implements OnInit {
   @Input() title = 'Sample table';
+  @Input() color = '';
   @Input() filter = true;
   @Input() displayedColumns = [];
   @Input() displayedColumnsNames = [];
@@ -86,12 +91,17 @@ export class DataTableComponent implements OnInit {
   @Input() buttons: Buttons[] = [];
   @Input() iconButtons: IconButtons[] = [];
   @Input() multiSelection = false;
+  @Input() baseUrl = 'http://127.0.0.1:8000/sap/bc/webrfc';
+  // @Input() sapUser = 'developer';
+  // @Input() sapPassword = 'Ostrakon1!';
+  // @Input() sapClient = '';
+  // @Input() sapLanguage = 'EN';
 
   dataSource: MatTableDataSource<any>;
   showFilter = true;
   data: any;
 //  baseUrl = 'http://mnibm09.novellini.it:8066/sap/bc/webrfc';
-  baseUrl = 'http://127.0.0.1:8000/sap/bc/webrfc';
+// baseUrl = 'http://127.0.0.1:8000/sap/bc/webrfc';
   callback = 'JSONP_CALLBACK';
   response: any;
   progress = false;
@@ -102,7 +112,7 @@ export class DataTableComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(public dialogService: DialogService,
+  constructor(public dialogService: PmtDialogService,
               public dataTableDetailService: DataTableDetailService,
               public dataSourceService: DataSourceService,
               private dateAdapter: DateAdapter<Date>,
@@ -244,7 +254,11 @@ export class DataTableComponent implements OnInit {
     if (this.webrfcLog !== '') {
       jsonData['webrfc_log'] = this.webrfcLog;
     }
-
+    /*
+    if (this.sapLanguage !== '') {
+      jsonData['sap-language'] = this.sapLanguage;
+    }
+    */
     if (this.webrfcLogin !== '') {
       jsonData['webrfc_login'] = this.webrfcLogin;
     }
@@ -275,6 +289,9 @@ export class DataTableComponent implements OnInit {
             (date.getDate() < 10 ? '0' + date.getDate() : date.getDate()).toString();
         } else {
           jsonData[this.fields[i].name/*.toUpperCase()*/] = this.fields[i].value;
+          if ( this.fields[i].name.toLocaleLowerCase() === 'sqltable' ) {
+            this.table =  this.fields[i].value;
+          }
         }
       }
       if ( this.fields[i].valueFrom || this.fields[i].valueFrom ) {
@@ -395,12 +412,9 @@ export class DataTableComponent implements OnInit {
           for ( let ii = 1; ii < structure.length; ii++ ) {
             this.fields[i].name += ':' + structure[ii];
           }
-          if ( this.fields[i].name.toLocaleLowerCase() === 'sqltable' ) {
-            this.table =  this.fields[i].value;
-          }
         }
       }
-    }
+    }   // for (let i = 0; i < this.fields.length; i++) {
     debugger;
     const so = this;
     this.progress = true;

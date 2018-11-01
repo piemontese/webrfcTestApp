@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-//import { Observable } from 'rxjs/Rx';
+// import { Observable } from 'rxjs/Rx';
 import { Observable } from "rxjs";
 import { MatDialogRef, MatDialog, MatDialogConfig } from '@angular/material';
 import { DataTableDetailComponent } from '../components/commons/data-table-detail/data-table-detail.component';
@@ -13,7 +13,7 @@ interface Button {
 @Injectable()
 export class DataTableDetailService {
   dialogRef: MatDialogRef<DataTableDetailComponent>;
-	data: any[];
+  data: any[];
 
  constructor( private dialog: MatDialog ) { }
 
