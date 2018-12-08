@@ -9,6 +9,7 @@ import { JsonpModule } from '@angular/http';
 import { CdkTableModule } from '@angular/cdk/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
+// tslint:disable-next-line:max-line-length
 import { MatButtonModule, MatToolbarModule, MatIconModule, MatCardModule, MatInputModule, MatFormFieldModule, MatSelectModule, MatTableModule  } from '@angular/material';
 import { MatTooltipModule  } from '@angular/material';
 import { MatDialogModule  } from '@angular/material';
@@ -27,9 +28,7 @@ import { AppComponent } from './app.component';
 
 import 'jquery';
 import { DataTableComponent } from './components/data-table/data-table.component';
-// import { DialogComponent } from './components/commons/dialog/dialog.component';
 
-// import { DialogService } from './services/dialog.service';
 import { DataTableDetailService } from './services/data-table-detail.service';
 import { PositionPipe } from './pipes/position.pipe';
 import { RowPipe } from './pipes/row.pipe';
@@ -48,7 +47,6 @@ import { PmtDialogModule } from 'pmt-dialog';
   declarations: [
     AppComponent,
     DataTableComponent,
-//    DialogComponent,
     PositionPipe,
     RowPipe,
     DataTableDetailComponent,
@@ -86,7 +84,6 @@ import { PmtDialogModule } from 'pmt-dialog';
     PmtDialogModule
   ],
   providers: [
- //   DialogService,
     DataTableDetailService,
     DataSourceService
 //    JsonpClientBackend,
@@ -94,7 +91,6 @@ import { PmtDialogModule } from 'pmt-dialog';
 //    { provide: HTTP_INTERCEPTORS, useClass: JsonpInterceptor, multi: true },
   ],
   entryComponents: [
- //   DialogComponent,
     DataTableDetailComponent
   ],
   bootstrap: [AppComponent]

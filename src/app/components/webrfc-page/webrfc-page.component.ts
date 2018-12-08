@@ -11,14 +11,12 @@ import 'rxjs/add/operator/distinctUntilChanged';
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/do';
 
-// import { DialogService } from '../../services/dialog.service';
 import { PmtDialogService } from 'pmt-dialog';
 
 interface Fields {
   parameter: string;
   value: string;
 }
-
 
 @Injectable()
 @Component({
@@ -27,7 +25,7 @@ interface Fields {
   styleUrls: ['./webrfc-page.component.scss']
 })
 export class WebrfcPageComponent implements OnInit {
-	title = 'Dynamic sample';
+  title = 'Dynamic sample';
   fields: Fields[] = [];
   form: FormGroup;
 //  baseUrl = 'http://mnibm09.novellini.it:8066/sap/bc/webrfc';

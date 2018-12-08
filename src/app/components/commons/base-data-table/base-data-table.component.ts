@@ -5,7 +5,6 @@ import { HttpClient } from '@angular/common/http';
 import { FormControl } from '@angular/forms';
 // import { Observable } from 'rxjs';
 
-// import { DialogService } from '../../../services/dialog.service';
 import { PmtDialogService } from 'pmt-dialog';
 import { DataTableDetailService } from '../../../services/data-table-detail.service';
 import { DataSourceService } from '../../../services/data-source.service';
@@ -81,6 +80,7 @@ export class BaseDataTableComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
+  // tslint:disable-next-line:max-line-length
   constructor(protected http: HttpClient, public dialogService: PmtDialogService, public dataTableDetailService: DataTableDetailService, public dataSourceService: DataSourceService) {
     this.dataSource = new MatTableDataSource([]);
   }
