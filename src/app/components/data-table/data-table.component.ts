@@ -90,7 +90,7 @@ export class DataTableComponent implements OnInit {
   @Input() buttons: Buttons[] = [];
   @Input() iconButtons: IconButtons[] = [];
   @Input() multiSelection = false;
-  @Input() baseUrl = 'http://127.0.0.1:8000/sap/bc/webrfc';
+  @Input() baseUrl = 'http://127.0.0.1:8001/sap/bc/webrfc';
   // @Input() sapUser = 'developer';
   // @Input() sapPassword = 'Ostrakon1!';
   // @Input() sapClient = '';
@@ -100,7 +100,7 @@ export class DataTableComponent implements OnInit {
   showFilter = true;
   data: any;
 //  baseUrl = 'http://mnibm09.novellini.it:8066/sap/bc/webrfc';
-// baseUrl = 'http://127.0.0.1:8000/sap/bc/webrfc';
+// baseUrl = 'http://127.0.0.1:8001/sap/bc/webrfc';
   callback = 'JSONP_CALLBACK';
   response: any;
   progress = false;
