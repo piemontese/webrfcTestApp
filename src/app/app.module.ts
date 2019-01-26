@@ -42,6 +42,7 @@ import { WebDataTableComponent } from './components/web-data-table/web-data-tabl
 import { WebrfcDataTableComponent } from './components/webrfc-data-table/webrfc-data-table.component';
 
 import { PmtDialogModule } from 'pmt-dialog';
+import { PmtDataTableModule } from 'pmt-data-table';
 
 @NgModule({
   declarations: [
@@ -81,7 +82,8 @@ import { PmtDialogModule } from 'pmt-dialog';
     MatNativeDateModule,
     FlexLayoutModule,
     AppRoutingModule,
-    PmtDialogModule
+    PmtDialogModule,
+    PmtDataTableModule
   ],
   providers: [
     DataTableDetailService,
