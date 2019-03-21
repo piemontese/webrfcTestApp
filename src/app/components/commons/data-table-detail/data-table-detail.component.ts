@@ -32,6 +32,7 @@ export class DataTableDetailComponent implements OnInit {
   ngOnInit() {
   }
 
+  // tslint:disable-next-line:use-life-cycle-interface
   ngOnDestroy() {
     if ( this.callback ) {
       this.callback(this.response, this.fields, this.caller);

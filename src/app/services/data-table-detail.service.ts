@@ -43,7 +43,7 @@ export class DataTableDetailService {
 
 //    return dialogRef.afterClosed();
 
-    this.dialogRef.afterClosed().subscribe(result => {
+    this.dialogRef.afterClosed().subscribe(_result => {
       /*
       this.response = this.dialogRef.componentInstance.response;
       if ( routeTo !== '' ) {

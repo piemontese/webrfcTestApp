@@ -1,5 +1,5 @@
 import { Component, ViewChild, OnInit, Input } from '@angular/core';
-import { BrowserModule, DomSanitizer} from '@angular/platform-browser';
+import { DomSanitizer} from '@angular/platform-browser';
 import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
 import { HttpClient } from '@angular/common/http';
 import { FormControl } from '@angular/forms';

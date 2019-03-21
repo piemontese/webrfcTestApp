@@ -9,7 +9,7 @@
         <lib-pmt-base-data-table style="width: 100%; min-width: 600px;" 
  		        								 title="User list" 
 		        								 baseUrl="https://jsonplaceholder.typicode.com/users"
-		        								 dataType='json'
+		        								 dataType="json"
 		        								 type="GET"        								
 		        								 [buttons]="[ { caption:'View', icon: 'search', position: 'left', action: 'view', color: 'prymary', row: 1, tooltip: 'View item', disabled: true, multiSel: false },
 		        								  						{ caption:'Change', icon: 'edit', position: 'left', action: 'change', color: 'prymary', row: 1, tooltip: 'Change item', disabled: true, multiSel: false } ]"
@@ -28,7 +28,7 @@
         <lib-pmt-base-data-table style="width: 100%; min-width: 600px;" 
  		        								 title="Exchange rates" 
 		        								 baseUrl="GET https://tassidicambio.bancaditalia.it/terzevalute-wf-web/rest/v1.0/currencies"
-		        								 dataType='json'    
+		        								 dataType="json"    
 		        								 type="GET"    								
 		        								 [fields]="[ { name: 'referenceDate', value:'', type: 'datePicker', placeholder: 'Reference date' },
 		        													   { name: 'lang', value:'', type: 'text', placeholder: 'Language' },

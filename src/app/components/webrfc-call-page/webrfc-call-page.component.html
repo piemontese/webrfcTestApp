@@ -1,0 +1,153 @@
+<div fxLayout="column" fxLayoutAlign="center center">
+  <mat-card class="mat-elevation-z8">
+    <mat-card-title>Dynamic call</mat-card-title>
+    <mat-card-content>
+      <div fxLayout="row">
+        <mat-form-field fxFlex="30">
+          <mat-select [(value)]="_FUNCTION" 
+					  name="_FUNCTION" 
+					  [(ngModel)]="_FUNCTION" 
+					  placeholder="Object">
+            <mat-option value="Z_PMT_WRFC_INTERFACE" (click)="object='function'">Function</mat-option>
+            <mat-option value="Z_PMT_WRFC_INTERFACE" (click)="object='class'">Class</mat-option>
+            <mat-option value="Z_PMT_WRFC_FUNCTION_INTERFACE">Get function interface</mat-option>
+            <mat-option value="Z_PMT_WRFC_TABLE">Get table entries</mat-option></mat-select>
+        </mat-form-field>
+      </div>
+      <div fxLayout="row" *ngIf="object === 'class'">
+        <mat-form-field fxFlex="30">
+          <input matInput placeholder="Name" 
+						  name="abapClass" 
+						  [(ngModel)]="abapClass"></mat-form-field>
+      </div>
+      <div fxLayout="row" *ngIf="object === 'function'">
+        <mat-form-field fxFlex="30">
+          <input matInput placeholder="Name" 
+						  name="method" 
+						  [(ngModel)]="method"></mat-form-field>
+      </div>
+      <div fxLayout="row" *ngIf="object === 'class'">
+        <mat-form-field fxFlex="30">
+          <input matInput placeholder="Method" 
+						  name="method" 
+						  [(ngModel)]="method"></mat-form-field>
+      </div>
+      <div fxLayout="row">
+        <mat-form-field fxFlex="30">
+          <input matInput placeholder="Client" name="sapClient" [(ngModel)]="sapClient"> </mat-form-field>
+      </div>
+      <div fxLayout="row">
+        <mat-form-field fxFlex="30">
+          <!--<input matInput placeholder="Language" name="sapLanguage" [(ngModel)]="sapLanguage"> </mat-form-field>-->
+            <mat-select [(value)]="sapLanguage" 
+                        name="sapLanguage" 
+                        [(ngModel)]="sapLanguage" 
+                        placeholder="Language">
+          <mat-option value="DE">German</mat-option>
+          <mat-option value="EN">English</mat-option>
+          <mat-option value="IT">Italian</mat-option></mat-select>
+        </mat-form-field>
+      </div>
+      <div *ngFor="let field of fields; index as i;" fxLayout="row" fxLayoutGap="20px">
+        <mat-form-field fxFlex="30%">
+          <input matInput placeholder="Parameter" [(ngModel)]="field.parameter"> </mat-form-field>
+        <mat-form-field fxFlex="60%">
+          <input matInput placeholder="Value" [(ngModel)]="field.value"> </mat-form-field>
+        <div fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="end end">
+          <button mat-mini-fab color="accent" (click)="clearField(i)">
+            <mat-icon>clear</mat-icon>
+          </button>
+          <button mat-mini-fab color="warn" (click)="removeField(i)">
+            <mat-icon>remove</mat-icon>
+          </button>
+        </div>
+      </div>
+      <br />
+      <div fxLayout="row" fxLayoutAlign="center center">
+        <button mat-mini-fab color="primary" (click)="addField()">
+          <mat-icon>add</mat-icon>
+        </button> &nbsp;&nbsp;&nbsp;&nbsp;
+        <button mat-mini-fab color="accent" (click)="clearFields()">
+          <mat-icon>clear</mat-icon>
+        </button>
+        <div *ngIf="fields.length"> &nbsp;&nbsp;&nbsp;&nbsp;
+          <button mat-mini-fab color="warn" (click)="removeAllFields()">
+            <mat-icon>remove</mat-icon>
+          </button>
+        </div>
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <div fxLayout="row" fxLayoutAlign="center center">
+        <button mat-raised-button color="primary" (click)="getInterface()" style="width: 200px;">Get Interface</button>
+      </div>
+    </mat-card-actions>
+    <mat-card-footer>
+      <mat-progress-bar mode="indeterminate" *ngIf="progress"></mat-progress-bar>
+    </mat-card-footer>
+  </mat-card>
+  <br />
+  <mat-card class="mat-elevation-z8" *ngIf="response">
+    <mat-card-title>Response</mat-card-title>
+    <mat-card-content> 
+      <code>
+		<pre>{{response | json}}</pre>
+	  </code> 
+    </mat-card-content>
+  </mat-card>
+</div>
+
+<div fxLayout="column" fxLayoutAlign="center center">
+  <mat-card class="mat-elevation-z8">
+    <mat-card-title>Request</mat-card-title>
+    <mat-card-content>
+
+    </mat-card-content>
+    <mat-card-actions>
+      <div fxLayout="row" fxLayoutAlign="center center">
+        <button mat-raised-button color="primary" (click)="run()" style="width: 200px;">Run</button>
+      </div>
+    </mat-card-actions>
+    <mat-card-footer>
+      <mat-progress-bar mode="indeterminate" *ngIf="progress"></mat-progress-bar>
+    </mat-card-footer>
+  </mat-card>
+  <br />
+  <mat-card class="mat-elevation-z8" *ngIf="response">
+    <mat-card-title>Response</mat-card-title>
+    <mat-card-content> 
+      <code>
+		<pre>{{response | json}}</pre>
+	  </code> 
+    </mat-card-content>
+  </mat-card>
+  <br />
+</div>
+
+<div fxLayout="column" fxLayoutAlign="center center">
+  <mat-card class="mat-elevation-z8">
+    <mat-card-title>Result</mat-card-title>
+    <mat-card-content>
+
+    </mat-card-content>
+    <mat-card-actions>
+      <div fxLayout="row" fxLayoutAlign="center center">
+        <button mat-raised-button color="primary" (click)="reset()" style="width: 200px;">Reset</button>
+      </div>
+    </mat-card-actions>
+    <mat-card-footer>
+      <mat-progress-bar mode="indeterminate" *ngIf="progress"></mat-progress-bar>
+    </mat-card-footer>
+  </mat-card>
+  <br />
+  <mat-card class="mat-elevation-z8" *ngIf="response">
+    <mat-card-title>Response</mat-card-title>
+    <mat-card-content> 
+      <code>
+		<pre>{{response | json}}</pre>
+	  </code> 
+    </mat-card-content>
+  </mat-card>
+  <br />
+</div>
+

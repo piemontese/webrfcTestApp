@@ -1,0 +1,17 @@
+mat-card {
+  width: 90%;
+}
+
+mat-accordion {
+  width: 93.5%;
+}
+
+mat-expansion-panel {
+  width: 100%;
+}
+
+.mat-expansion-panel-header-title, 
+.mat-expansion-panel-header-description {
+  flex-basis: 0;
+}
+

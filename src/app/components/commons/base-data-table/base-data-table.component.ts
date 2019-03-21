@@ -87,13 +87,21 @@ export class BaseDataTableComponent implements OnInit {
 
   protected buttonClick(button: Buttons) {
     if (button.action !== '') {
-      eval('this.' + button.action + '()');
+      const fnString = button.action;
+      const fn =  this[fnString]();
+      if ( typeof fn === 'function' ) {
+        fn();
+      }
     }
   }
 
   protected iconBbuttonClick(iconButton: IconButtons) {
     if (iconButton.action !== '') {
-      eval('this.' + iconButton.action + '()');
+      const fnString = iconButton.action;
+      const fn =  this[fnString]();
+      if ( typeof fn === 'function' ) {
+        fn();
+      }
     }
   }
 
@@ -104,7 +112,6 @@ export class BaseDataTableComponent implements OnInit {
     if (this.dataSource.data.filter(item => item.selected === true).length === 1) {
       for (let i = 0; i < this.dataSource.data.length; i++) {
         if (this.dataSource.data[i].selected) {
-          debugger;
           const rec = this.dataSource.data[i];
           const detailFields = [];
           for (const [key, value] of Object.entries(rec)) {

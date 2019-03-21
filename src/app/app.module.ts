@@ -43,6 +43,7 @@ import { WebrfcDataTableComponent } from './components/webrfc-data-table/webrfc-
 
 import { PmtDialogModule } from 'pmt-dialog';
 import { PmtDataTableModule } from 'pmt-data-table';
+import { WebrfcCallPageComponent } from './components/webrfc-call-page/webrfc-call-page.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { PmtDataTableModule } from 'pmt-data-table';
     WebDataTablePageComponent,
     BaseDataTableComponent,
     WebDataTableComponent,
-    WebrfcDataTableComponent
+    WebrfcDataTableComponent,
+    WebrfcCallPageComponent
   ],
   imports: [
     BrowserModule,

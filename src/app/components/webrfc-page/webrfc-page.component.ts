@@ -100,7 +100,6 @@ export class WebrfcPageComponent implements OnInit {
 
 //    return this.http.jsonp(webrfcUrl, 'callback');
 
-    debugger;
     const jsonData = {
           '_FUNCTION':  this._FUNCTION,
           'callback':   this.callback
@@ -171,7 +170,7 @@ export class WebrfcPageComponent implements OnInit {
               );
           }
         },
-        error: function (data, status, error) {
+        error: function (_data, _status, _error) {
 //          alert(status + ' - ' + error);
           so.response = null;
           so.progress = false;
