@@ -27,7 +27,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import 'jquery';
-import { DataTableComponent } from './components/data-table/data-table.component';
 
 import { DataTableDetailService } from './services/data-table-detail.service';
 import { PositionPipe } from './pipes/position.pipe';
@@ -48,7 +47,6 @@ import { WebrfcCallPageComponent } from './components/webrfc-call-page/webrfc-ca
 @NgModule({
   declarations: [
     AppComponent,
-    DataTableComponent,
     PositionPipe,
     RowPipe,
     DataTableDetailComponent,

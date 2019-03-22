@@ -29,8 +29,9 @@
 								table="USRLIST"
 								[fields]="[ { name: 'sap-language', value:'EN', type: 'select', placeholder: 'Language' }	]"
 								[buttons]="[ { caption:'View', icon: 'search', position: 'left', action: 'view', color: 'prymary', row: 1, tooltip: 'View item', disabled: true, multiSel: false },
-											 { caption:'Change', icon: 'edit', position: 'left', action: 'change', color: 'prymary', row: 1, tooltip: 'Change item', disabled: true, multiSel: false } ]"
-								[iconButtons]="[ { icon: 'refresh', position: 'right', action: 'refresh', color: 'prymary', row: 0, tooltip: 'Refresh data', disabled: false, multiSel: null } ]"
+											 			 { caption:'Change', icon: 'edit', position: 'left', action: 'change', color: 'prymary', row: 1, tooltip: 'Change item', disabled: true, multiSel: false } ]"
+								[iconButtons]="[ { icon: 'delete', position: 'right', action: 'delete', color: 'accent', row: 0, tooltip: 'Delete data data', disabled: true, multiSel: null },
+																 { icon: 'refresh', position: 'right', action: 'refresh', color: 'prymary', row: 0, tooltip: 'Refresh data', disabled: false, multiSel: null } ]"
 								[displayedColumns]="['tid', 'mandt', 'bname', 'term', 'hostaddr', 'guiversion', 'zeit']" 
 								[displayedColumnsNames]="['TID', 'Client', 'User', 'Terminal', 'IP address', 'GUI version', 'Time']"> </lib-pmt-data-table>
 			</div>
@@ -46,7 +47,8 @@
         						[filter]="false"
         						[buttons]="[ { caption:'View', icon: 'search', position: 'left', action: 'view', color: 'prymary', row: 1, tooltip: 'View item', disabled: true, multiSel: false } ]"
         						[fields]="[ { name: 'sap-language', value:'EN', type: 'select', placeholder: 'Language' }	]"
-        						[iconButtons]="[ { icon: 'refresh', position: 'right', action: 'refresh', color: 'prymary', row: 0, tooltip: 'Refresh data', disabled: false, multiSel: null } ]"
+        						[iconButtons]="[ { icon: 'delete', position: 'right', action: 'delete', color: 'accent', row: 0, tooltip: 'Delete data data', disabled: true, multiSel: null },
+																     { icon: 'refresh', position: 'right', action: 'refresh', color: 'prymary', row: 0, tooltip: 'Refresh data', disabled: false, multiSel: null } ]"
         						method="TH_USER_LIST"
  								table="USRLIST"
  								title="User list"></lib-pmt-data-table>
@@ -63,10 +65,11 @@
         						[displayedColumns]="['avail_date', 'mrp_elemnt', 'mrp_element_ind', 'available', 'rec_reqd_qty']" 
         						[displayedColumnsNames]="['Available date', 'MRP element', 'MRP element ind.', 'Available', 'Available quantity']" 
         						[fields]="[ { name: 'sap-language', value:'EN', type: 'select', placeholder: 'Language' },
-        									{ name: 'plant', value:'', type: 'text', placeholder: 'Plant' },
-        								  	{ name: 'material', value:'', type: 'text', placeholder: 'Material' }	]"
+        												{ name: 'plant', value:'', type: 'text', placeholder: 'Plant' },
+        								  			{ name: 'material', value:'', type: 'text', placeholder: 'Material' }	]"
         						[buttons]="[ { caption:'View', icon: 'search', position: 'left', action: '', color: 'prymary', row: 1, tooltip: 'View item', disabled: true, multiSel: false } ]"
-        						[iconButtons]="[ { icon: 'refresh', position: 'right', action: 'refresh', color: 'prymary', row: 0, tooltip: 'Refresh data', disabled: false, multiSel: null } ]"
+        						[iconButtons]="[ { icon: 'delete', position: 'right', action: 'delete', color: 'accent', row: 0, tooltip: 'Delete data data', disabled: true, multiSel: null },
+																 		 { icon: 'refresh', position: 'right', action: 'refresh', color: 'prymary', row: 0, tooltip: 'Refresh data', disabled: false, multiSel: null } ]"
         						title="Material requirement list" 
         						method="BAPI_MATERIAL_STOCK_REQ_LIST" 
         						table="MRP_IND_LINES"></lib-pmt-data-table>
@@ -83,13 +86,14 @@
         						title="Plant list" 
         						[fields]="[ { name: 'sap-language', value:'EN', type: 'select', placeholder: 'Language' }	]"
         						[buttons]="[ { caption:'View', icon: 'search', position: 'left', action: 'view', color: 'prymary', row: 1, tooltip: 'View item', disabled: true, multiSel: false },
-        									 { caption:'Change', icon: 'edit', position: 'left', action: 'change', color: 'prymary', row: 1, tooltip: 'Change item', disabled: true, multiSel: false } ]"
- 		       					[iconButtons]="[ { icon: 'refresh', position: 'right', action: 'refresh', color: 'prymary', row: 0, tooltip: 'Refresh data', disabled: false, multiSel: null } ]"
+        									 			 { caption:'Change', icon: 'edit', position: 'left', action: 'change', color: 'prymary', row: 1, tooltip: 'Change item', disabled: true, multiSel: false } ]"
+ 		       					[iconButtons]="[ { icon: 'delete', position: 'right', action: 'delete', color: 'accent', row: 0, tooltip: 'Delete data data', disabled: true, multiSel: null },
+																 		 { icon: 'refresh', position: 'right', action: 'refresh', color: 'prymary', row: 0, tooltip: 'Refresh data', disabled: false, multiSel: null } ]"
         						[displayedColumns]="['mandt', 'werks', 'name1', 'ort01', 'pstlz', 'stras', 'land1']" 
         						[displayedColumnsNames]="['Client', 'Plant', 'Name', 'City', 'Post code', 'Street', 'Country']"
-								multiSelection="true"
-								method="MSR20_MD_PLANT_GETLIST"
- 								table="POT_PLANT"> </lib-pmt-data-table>
+										multiSelection="true"
+										method="MSR20_MD_PLANT_GETLIST"
+										table="POT_PLANT"> </lib-pmt-data-table>
       		</div>
     	</mat-expansion-panel>
 
@@ -102,10 +106,11 @@
         		<lib-pmt-data-table style="width: 100%; min-width: 600px;" 
         						title="Menu actions" 
         						[buttons]="[ { caption:'View', icon: 'search', position: 'left', action: 'view', color: 'prymary', row: 1, tooltip: 'View item', disabled: true, multiSel: false },
-        									 { caption:'Change', icon: 'edit', position: 'left', action: 'change', color: 'prymary', row: 1, tooltip: 'Change item', disabled: true, multiSel: false } ]"
-        						[iconButtons]="[ { icon: 'refresh', position: 'right', action: 'refresh', color: 'prymary', row: 0, tooltip: 'Refresh data', disabled: false, multiSel: null } ]"
-								method="Z_PMT_WRFC_GET_MENU"
- 								table="ET_MENU_ACTION"> </lib-pmt-data-table>
+        									 			 { caption:'Change', icon: 'edit', position: 'left', action: 'change', color: 'prymary', row: 1, tooltip: 'Change item', disabled: true, multiSel: false } ]"
+        						[iconButtons]="[ { icon: 'delete', position: 'right', action: 'delete', color: 'accent', row: 0, tooltip: 'Delete data data', disabled: true, multiSel: null },
+																 		 { icon: 'refresh', position: 'right', action: 'refresh', color: 'prymary', row: 0, tooltip: 'Refresh data', disabled: false, multiSel: null } ]"
+										method="Z_PMT_WRFC_GET_MENU"
+										table="ET_MENU_ACTION"> </lib-pmt-data-table>
       		</div>
     	</mat-expansion-panel>
 
@@ -118,8 +123,9 @@
         		<lib-pmt-data-table style="width: 100%; min-width: 600px;" 
         						title="Menu methods" 
         						[buttons]="[ { caption:'View', icon: 'search', position: 'left', action: 'view', color: 'prymary', row: 1, tooltip: 'View item', disabled: true, multiSel: false },
-        									 { caption:'Change', icon: 'edit', position: 'left', action: 'change', color: 'prymary', row: 1, tooltip: 'Change item', disabled: true, multiSel: false } ]"
-        						[iconButtons]="[ { icon: 'refresh', position: 'right', action: 'refresh', color: 'prymary', row: 0, tooltip: 'Refresh data', disabled: false, multiSel: null } ]"
+        									 			 { caption:'Change', icon: 'edit', position: 'left', action: 'change', color: 'prymary', row: 1, tooltip: 'Change item', disabled: true, multiSel: false } ]"
+        						[iconButtons]="[ { icon: 'delete', position: 'right', action: 'delete', color: 'accent', row: 0, tooltip: 'Delete data data', disabled: true, multiSel: null },
+																 		 { icon: 'refresh', position: 'right', action: 'refresh', color: 'prymary', row: 0, tooltip: 'Refresh data', disabled: false, multiSel: null } ]"
 								method="Z_PMT_WRFC_GET_MENU"
  								table="ET_MENU_METHOD"> </lib-pmt-data-table>
       		</div>
@@ -134,10 +140,11 @@
         		<lib-pmt-data-table style="width: 100%; min-width: 600px;" 
         						title="Tablespaces History" 
         						[buttons]="[ { caption:'View', icon: 'search', position: 'left', action: 'view', color: 'prymary', row: 1, tooltip: 'View item', disabled: true, multiSel: false },
-        									 { caption:'Change', icon: 'edit', position: 'left', action: 'change', color: 'prymary', row: 1, tooltip: 'Change item', disabled: true, multiSel: false } ]"
-        						[iconButtons]="[ { icon: 'refresh', position: 'right', action: 'refresh', color: 'prymary', row: 0, tooltip: 'Refresh data', disabled: false, multiSel: null } ]"
+        									 			 { caption:'Change', icon: 'edit', position: 'left', action: 'change', color: 'prymary', row: 1, tooltip: 'Change item', disabled: true, multiSel: false } ]"
+        						[iconButtons]="[ { icon: 'delete', position: 'right', action: 'delete', color: 'accent', row: 0, tooltip: 'Delete data data', disabled: true, multiSel: null },
+																 		 { icon: 'refresh', position: 'right', action: 'refresh', color: 'prymary', row: 0, tooltip: 'Refresh data', disabled: false, multiSel: null } ]"
         						[fields]="[ { name: 'sap-language', value:'EN', type: 'select', placeholder: 'Language', row: '0' },
-        									{ name: 'SELECT_DAYS_WEEKS_OR_MONTHS', value:'DAYS', type: 'text', placeholder: 'Period (DAYS, WEEKS or MONTHS)', row: '0' } ]"
+        												{ name: 'SELECT_DAYS_WEEKS_OR_MONTHS', value:'DAYS', type: 'text', placeholder: 'Period (DAYS, WEEKS or MONTHS)', row: '0' } ]"
 								method="DB_ORA_TABLESPACE_HISTORY"
  								table="HIST1"> </lib-pmt-data-table>
       		</div>
@@ -145,10 +152,11 @@
         		<lib-pmt-data-table style="width: 100%; min-width: 600px;" 
         						title="Summary of Tablespace History" 
         						[buttons]="[ { caption:'View', icon: 'search', position: 'left', action: 'view', color: 'prymary', row: 1, tooltip: 'View item', disabled: true, multiSel: false },
-        									 { caption:'Change', icon: 'edit', position: 'left', action: 'change', color: 'prymary', row: 1, tooltip: 'Change item', disabled: true, multiSel: false } ]"
-        						[iconButtons]="[ { icon: 'refresh', position: 'right', action: 'refresh', color: 'prymary', row: 0, tooltip: 'Refresh data', disabled: false, multiSel: null } ]"
+        									 			 { caption:'Change', icon: 'edit', position: 'left', action: 'change', color: 'prymary', row: 1, tooltip: 'Change item', disabled: true, multiSel: false } ]"
+        						[iconButtons]="[ { icon: 'delete', position: 'right', action: 'delete', color: 'accent', row: 0, tooltip: 'Delete data data', disabled: true, multiSel: null },
+																 		 { icon: 'refresh', position: 'right', action: 'refresh', color: 'prymary', row: 0, tooltip: 'Refresh data', disabled: false, multiSel: null } ]"
         						[fields]="[ { name: 'sap-language', value:'EN', type: 'select', placeholder: 'Language', row: '0' },
-        									{ name: 'SELECT_DAYS_WEEKS_OR_MONTHS', value:'DAYS', type: 'text', placeholder: 'Period (DAYS, WEEKS or MONTHS)', row: '0' } ]"
+        												{ name: 'SELECT_DAYS_WEEKS_OR_MONTHS', value:'DAYS', type: 'text', placeholder: 'Period (DAYS, WEEKS or MONTHS)', row: '0' } ]"
 								method="DB_ORA_TABLESPACE_HISTORY"
  								table="SUM_1"> </lib-pmt-data-table>
       		</div>
@@ -163,10 +171,11 @@
         		<lib-pmt-data-table style="width: 100%; min-width: 600px;" 
         						title="Table entries"
         						[buttons]="[ { caption:'View', icon: 'search', position: 'left', action: 'view', color: 'prymary', row: 1, tooltip: 'View item', disabled: true, multiSel: false },
-        									 { caption:'Change', icon: 'edit', position: 'left', action: 'change', color: 'prymary', row: 1, tooltip: 'Change item', disabled: true, multiSel: false } ]"
-        						[iconButtons]="[ { icon: 'refresh', position: 'right', action: 'refresh', color: 'prymary', row: 0, tooltip: 'Refresh data', disabled: false, multiSel: null } ]"
+        									 			 { caption:'Change', icon: 'edit', position: 'left', action: 'change', color: 'prymary', row: 1, tooltip: 'Change item', disabled: true, multiSel: false } ]"
+        						[iconButtons]="[ { icon: 'delete', position: 'right', action: 'delete', color: 'accent', row: 0, tooltip: 'Delete data data', disabled: true, multiSel: null },
+																 		 { icon: 'refresh', position: 'right', action: 'refresh', color: 'prymary', row: 0, tooltip: 'Refresh data', disabled: false, multiSel: null } ]"
         						[fields]="[ { name: 'sap-language', value:'EN', type: 'select', placeholder: 'Language', row: '0' },
-        									{ name: 'SQLTABLE', value:'', type: 'text', placeholder: 'Table', row: '0' } ]"
+        												{ name: 'SQLTABLE', value:'', type: 'text', placeholder: 'Table', row: '0' } ]"
 								_FUNCTION="Z_PMT_WRFC_TABLE"
  								refreshColumns="true"> </lib-pmt-data-table>
       		</div>
@@ -182,12 +191,13 @@
         						[filter]="true"
         						[buttons]="[ { caption:'View', icon: 'search', position: 'left', action: 'view', color: 'prymary', row: 1, tooltip: 'View item', disabled: true, multiSel: false } ]"
         						[fields]="[ { name: 'sap-language', value:'EN', type: 'select', placeholder: 'Language', row: '0' },
-        									{ name: 'IS_DATE', value:'', type: 'datePicker', placeholder: 'Date', range: 'true', row: '0' }	]"
-        						[iconButtons]="[ { icon: 'refresh', position: 'right', action: 'refresh', color: 'prymary', row: 0, tooltip: 'Refresh data', disabled: false, multiSel: null } ]"
-								multiSelection="true"
+        												{ name: 'IS_DATE', value:'', type: 'datePicker', placeholder: 'Date', range: 'true', row: '0' }	]"
+        						[iconButtons]="[ { icon: 'delete', position: 'right', action: 'delete', color: 'accent', row: 0, tooltip: 'Delete data data', disabled: true, multiSel: null },
+																 		 { icon: 'refresh', position: 'right', action: 'refresh', color: 'prymary', row: 0, tooltip: 'Refresh data', disabled: false, multiSel: null } ]"
+										multiSelection="true"
         						method="Z_PMT_WRFC_GET_DUMPS"
- 								table="ET_DUMPS"
- 								title="Dump list"></lib-pmt-data-table>
+ 										table="ET_DUMPS"
+ 										title="Dump list"></lib-pmt-data-table>
       		</div>
     	</mat-expansion-panel>
 
@@ -198,19 +208,20 @@
       		</mat-expansion-panel-header>
       		<div fxLayout="column" fxLayout.xs="column" fxLayoutAlign="center center">
 				<lib-pmt-data-table style="width: 100%; min-width: 600px;" 
-								color="accent"
+										color="accent"
         						[filter]="true"
         						[buttons]="[ { caption:'View', icon: 'search', position: 'left', action: 'view', color: 'prymary', row: 1, tooltip: 'View item', disabled: true, multiSel: false } ]"
         						[fields]="[ { name: 'sap-language', value:'EN', type: 'select', placeholder: 'Language', row: '0'  },
-        									{ name: 'IS_SEL:S_DATE', value:'', type: 'datePicker', placeholder: 'Date', range: 'true', isTable: 'true', row: '0'  },
-        									{ name: 'IS_SEL:S_TIME', value:'', type: 'timePicker', placeholder: 'Time', range: 'true', isTable: 'true', row: '0' },
-        									{ name: 'IS_SEL:S_USER', value:'', type: 'text', placeholder: 'User', range: 'true', isTable: 'true', row: '1' } ]"
-        						[iconButtons]="[ { icon: 'refresh', position: 'right', action: 'refresh', color: 'prymary', row: 0, tooltip: 'Refresh data', disabled: false, multiSel: null } ]"
-								multiSelection="true"
+        												{ name: 'IS_SEL:S_DATE', value:'', type: 'datePicker', placeholder: 'Date', range: 'true', isTable: 'true', row: '0'  },
+        												{ name: 'IS_SEL:S_TIME', value:'', type: 'timePicker', placeholder: 'Time', range: 'true', isTable: 'true', row: '0' },
+        												{ name: 'IS_SEL:S_USER', value:'', type: 'text', placeholder: 'User', range: 'true', isTable: 'true', row: '1' } ]"
+        						[iconButtons]="[ { icon: 'delete', position: 'right', action: 'delete', color: 'accent', row: 0, tooltip: 'Delete data data', disabled: true, multiSel: null },
+																 		 { icon: 'refresh', position: 'right', action: 'refresh', color: 'prymary', row: 0, tooltip: 'Refresh data', disabled: false, multiSel: null } ]"
+										multiSelection="true"
         						abapClass="ZCL_PMT_BC_GET_DUMPS"
         						method="GET_DUMPS"
- 								table="RT_DUMPS"
- 								title="Dump list"></lib-pmt-data-table>
+ 										table="RT_DUMPS"
+ 										title="Dump list"></lib-pmt-data-table>
       		</div>
     	</mat-expansion-panel>
 
