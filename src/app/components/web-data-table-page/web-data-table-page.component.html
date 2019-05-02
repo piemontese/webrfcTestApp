@@ -13,7 +13,8 @@
 		        								 type="GET"        								
 		        								 [buttons]="[ { caption:'View', icon: 'search', position: 'left', action: 'view', color: 'prymary', row: 1, tooltip: 'View item', disabled: true, multiSel: false },
 		        								  						{ caption:'Change', icon: 'edit', position: 'left', action: 'change', color: 'prymary', row: 1, tooltip: 'Change item', disabled: true, multiSel: false } ]"
-		        								 [iconButtons]="[ { icon: 'refresh', position: 'right', action: 'refresh', color: 'prymary', row: 0, tooltip: 'Refresh data', disabled: false, multiSel: null } ]"
+		        								 [iconButtons]="[ { icon: 'delete', position: 'right', action: 'delete', color: 'accent', row: 0, tooltip: 'Delete data data', disabled: true, multiSel: null },
+																 							{ icon: 'refresh', position: 'right', action: 'refresh', color: 'prymary', row: 0, tooltip: 'Refresh data', disabled: false, multiSel: null } ]"
 		        								 [displayedColumns]="['name', 'email', 'phone', 'company']" 
 		        								 [displayedColumnsNames]="['Name', 'Email', 'Phone', 'Company']"> </lib-pmt-base-data-table>
       </div>
@@ -36,7 +37,8 @@
 		        													   { name: 'currencyIsoCode', value:'EUR', type: 'text', placeholder: 'Currency ISO code' }	]"
 		        								 [buttons]="[ { caption:'View', icon: 'search', position: 'left', action: 'view', color: 'prymary', row: 1, tooltip: 'View item', disabled: true, multiSel: false },
 		        								  						{ caption:'Change', icon: 'edit', position: 'left', action: 'change', color: 'prymary', row: 1, tooltip: 'Change item', disabled: true, multiSel: false } ]"
-		        								 [iconButtons]="[ { icon: 'refresh', position: 'right', action: 'refresh', color: 'prymary', row: 0, tooltip: 'Refresh data', disabled: false, multiSel: null } ]"
+		        								 [iconButtons]="[ { icon: 'delete', position: 'right', action: 'delete', color: 'accent', row: 0, tooltip: 'Delete data data', disabled: true, multiSel: null },
+																 							{ icon: 'refresh', position: 'right', action: 'refresh', color: 'prymary', row: 0, tooltip: 'Refresh data', disabled: false, multiSel: null } ]"
 		        								 [displayedColumns]="['name', 'email', 'phone', 'company']" 
 		        								 [displayedColumnsNames]="['Name', 'Email', 'Phone', 'Company']"> </lib-pmt-base-data-table>
       </div>

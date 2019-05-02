@@ -1,3 +1,4 @@
+<!--
 <div fxLayout="column" fxLayoutAlign="center center">
   <mat-card class="mat-elevation-z8">
     <mat-card-title>Dynamic call</mat-card-title>
@@ -25,6 +26,9 @@
           <input matInput placeholder="Name" 
 						  name="method" 
 						  [(ngModel)]="method"></mat-form-field>
+          <lib-pmt-data-autocomplete sqlTable="TFDIR"
+                                    placeholder="Name"
+                                    [displayedColumns]="['funcname']"></lib-pmt-data-autocomplete>
       </div>
       <div fxLayout="row" *ngIf="object === 'class'">
         <mat-form-field fxFlex="30">
@@ -38,7 +42,6 @@
       </div>
       <div fxLayout="row">
         <mat-form-field fxFlex="30">
-          <!--<input matInput placeholder="Language" name="sapLanguage" [(ngModel)]="sapLanguage"> </mat-form-field>-->
             <mat-select [(value)]="sapLanguage" 
                         name="sapLanguage" 
                         [(ngModel)]="sapLanguage" 
@@ -150,4 +153,4 @@
   </mat-card>
   <br />
 </div>
-
+-->

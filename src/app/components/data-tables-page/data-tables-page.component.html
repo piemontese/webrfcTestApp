@@ -8,7 +8,53 @@
 -->
 
 <div fxLayout="column" fxLayoutAlign="center center">
-  	<mat-accordion>
+	<mat-accordion>
+    	<mat-expansion-panel class="mat-elevation-z8">
+      		<mat-expansion-panel-header>
+        		<mat-panel-title> Bind fields </mat-panel-title>
+        		<mat-panel-description> Sample of fields that retrieve data from host </mat-panel-description>
+      		</mat-expansion-panel-header>
+					<div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px grid">
+						<lib-pmt-data-autocomplete sqlTable="ZPMT_WRFC_USERS"
+																			placeholder="Webrfc user"
+																			[baseUrl]="'http://127.0.0.1:8001/sap/bc/webrfc'"
+																			[listWidth]="300"
+																			listLayout="row"
+																			[displayedColumns]="['usr', 'fullName']"></lib-pmt-data-autocomplete>
+						<lib-pmt-data-autocomplete sqlTable="TFTIT"
+																			sqlWhere="spras = 'EN' and funcname like 'Z%'"
+																			placeholder="Function"
+																			[baseUrl]="'http://127.0.0.1:8001/sap/bc/webrfc'"
+																			[listWidth]="800"
+																			listLayout="table"
+																			[displayedColumns]="['funcname', 'stext']"></lib-pmt-data-autocomplete>
+						<lib-pmt-data-autocomplete sqlTable="TFTIT"
+																			sqlWhere="spras = 'EN' and funcname like 'Z_PMT%'"
+																			placeholder="Function"
+																			[baseUrl]="'http://127.0.0.1:8001/sap/bc/webrfc'"
+																			[listWidth]="400"
+																			listLayout="column"
+																			[displayedColumns]="['funcname', 'stext']"></lib-pmt-data-autocomplete>
+
+						<lib-pmt-data-option [data]="[ { key: '1000', name: 'Milan' },
+																					{ key: '2000', name: 'Rome'} ,
+																					{ key: '3000', name: 'Naples' },
+																					{ key: '4000', name: 'Florence' },
+																					{ key: '5000', name: 'Turin' } ]"
+																placeholder="Plant"
+																[listWidth]="300"
+																listLayout="table"
+																[displayedColumns]="['usr', 'fullName']"></lib-pmt-data-option>
+						<lib-pmt-data-option sqlTable="TFTIT"
+																sqlWhere="spras = 'EN' and funcname like 'Z_PMT%'"
+																placeholder="Function"
+																[baseUrl]="'http://127.0.0.1:8001/sap/bc/webrfc'"
+																[listWidth]="300"
+																listLayout="column"
+																[displayedColumns]="['funcname', 'stext']"></lib-pmt-data-option>
+					</div>
+    	</mat-expansion-panel>
+
     	<mat-expansion-panel class="mat-elevation-z8">
       		<mat-expansion-panel-header>
         		<mat-panel-title> User list </mat-panel-title>
