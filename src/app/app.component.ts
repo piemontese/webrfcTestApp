@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Config } from './configuration';
 
 @Component({
   selector: 'app-root',
@@ -8,6 +9,7 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
   title = 'Webrfc Demo';
+  configuration = new Config;  // configuration;
 
   constructor(private router: Router ) {
   }

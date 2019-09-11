@@ -80,7 +80,7 @@
 																 { icon: 'refresh', position: 'right', action: 'refresh', color: 'prymary', row: 0, tooltip: 'Refresh data', disabled: false, multiSel: null } ]"
 								[displayedColumns]="['tid', 'mandt', 'bname', 'term', 'hostaddr', 'guiversion', 'zeit']" 
 								[displayedColumnsNames]="['TID', 'Client', 'User', 'Terminal', 'IP address', 'GUI version', 'Time']"> </lib-pmt-data-table>
-			</div>
+				</div>
     	</mat-expansion-panel>
     
     	<mat-expansion-panel class="mat-elevation-z8">
@@ -90,13 +90,15 @@
       		</mat-expansion-panel-header>
       		<div fxLayout="column" fxLayout.xs="column" fxLayoutAlign="center center">
         		<lib-pmt-data-table style="width: 100%; min-width: 600px;" 
-        						[filter]="false"
-        						[buttons]="[ { caption:'View', icon: 'search', position: 'left', action: 'view', color: 'prymary', row: 1, tooltip: 'View item', disabled: true, multiSel: false } ]"
-        						[fields]="[ { name: 'sap-language', value:'EN', type: 'select', placeholder: 'Language' }	]"
-        						[iconButtons]="[ { icon: 'delete', position: 'right', action: 'delete', color: 'accent', row: 0, tooltip: 'Delete data data', disabled: true, multiSel: null },
-																     { icon: 'refresh', position: 'right', action: 'refresh', color: 'prymary', row: 0, tooltip: 'Refresh data', disabled: false, multiSel: null } ]"
-        						method="TH_USER_LIST"
+        				[filter]="false"
+        				[buttons]="[ { caption:'View', icon: 'search', position: 'left', action: 'view', color: 'prymary', row: 1, tooltip: 'View item', disabled: true, multiSel: false } ]"
+        				[fields]="[ { name: 'sap-language', value:'EN', type: 'select', placeholder: 'Language' }	]"
+        				[iconButtons]="[ { icon: 'delete', position: 'right', action: 'delete', color: 'accent', row: 0, tooltip: 'Delete data data', disabled: true, multiSel: null },
+														     { icon: 'refresh', position: 'right', action: 'refresh', color: 'prymary', row: 0, tooltip: 'Refresh data', disabled: false, multiSel: null } ]"
+        				method="TH_USER_LIST"
  								table="USRLIST"
+								[displayedColumns]="['tid', 'mandt', 'bname', 'term', 'hostaddr', 'guiversion', 'zeit']" 
+								[displayedColumnsNames]="['TID', 'Client', 'User', 'Terminal', 'IP address', 'GUI version', 'Time']"
  								title="User list"></lib-pmt-data-table>
       		</div>
     	</mat-expansion-panel>
